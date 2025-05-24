@@ -1,5 +1,5 @@
 :root {
-  --btn-color: #070707;
+  --text-color: #070707;
   --primary-color: #009245;
   --secondary-color: #0feb75;
   --base-1: #ffffff;
@@ -33,6 +33,10 @@ img {
   height: auto;
 }
 
+.icon {
+  line-height: 0;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -50,6 +54,65 @@ header {
   gap: 20px;
   padding-top: 20px !important;
   padding-bottom: 20px !important;
+}
+
+.menu {
+  position: relative;
+  font-size: 16px;
+}
+
+.menu .btn .angle>svg {
+  transition: all var(--transition-1);
+}
+
+.menu:hover .btn .angle>svg {
+  transform: rotate(180deg);
+}
+
+.sub-menu,
+.menu-options {
+  position: absolute;
+  z-index: 999;
+  top: 100%;
+  opacity: 0;
+  display: none;
+  background-color: var(--base-1);
+  box-shadow: 0 4px 10px var(--shadow2);
+  border-radius: var(--radius-2);
+  width: max-content;
+}
+
+.menu-options .option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all var(--transition-1);
+  position: relative;
+}
+
+.sub-menu {
+  top: 0;
+  left: 100%;
+}
+
+.sub-menu .sub-option {
+  color: var(--text-color);
+  padding: 4px 10px;
+  border-radius: var(--radius-2);
+}
+
+.sub-menu .sub-option:hover,
+.menu-options .option:hover {
+  background-color: var(--primary-color);
+  color: var(--text-reverse);
+}
+
+.menu-options .option:hover .sub-menu,
+.menu:hover .menu-options {
+  opacity: 1;
+  display: block;
 }
 
 #search-input {
@@ -94,7 +157,7 @@ header {
 
 .btn-outline {
   background-color: transparent;
-  color: var(--btn-color);
+  color: var(--text-color);
 }
 
 .btn-outline:hover {
@@ -207,7 +270,7 @@ button.controls:hover {
   padding: 10px;
 }
 
-.options {
+.custom-select .options {
   display: none;
   position: absolute;
   top: 100%;
@@ -219,27 +282,26 @@ button.controls:hover {
   z-index: 100;
 }
 
-.option {
+.custom-select .option {
   padding: 10px;
   cursor: pointer;
 }
 
-.option:hover {
+.custom-select .option:hover {
   background: #f0f0f0;
 }
 
 
 /* Language Selection */
 .language-select-wrapper {
-  width: 180px;
+  width: 80px;
   position: relative;
   font-family: sans-serif;
+  font-size: 12px;
 }
 
 .language-select {
-  border: 1px solid #ccc;
   border-radius: var(--radius-2);
-  background: #fff;
   cursor: pointer;
   position: relative;
 }
@@ -255,8 +317,9 @@ button.controls:hover {
   display: none;
   position: absolute;
   top: 100%;
+  width: 100px;
   left: 0;
-  right: 0;
+  /* right: 0; */
   border: 1px solid #ccc;
   background: #fff;
   z-index: 100;
@@ -350,10 +413,70 @@ button.controls:hover {
   padding: 20px 14px;
   min-width: 22%;
 }
+
 .counter-value {
   font-size: 30px;
   font-weight: 700;
 }
+
 .counter-label {
   font-size: 20px;
+}
+
+.accordion-item {
+  border: 1px solid var(--primary-color);
+  position: relative;
+  border-radius: var(--radius-3);
+  min-width: 22%;
+}
+.accordion-header {
+  padding: 16px;
+  text-align: left;
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.accordion-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.accordion-subtitle {
+  font-size: 16px;
+}
+
+.accordion-content {
+  font-size: 16px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all var(--transition-1) ease;
+  padding: 0 16px;
+  position: absolute;
+  z-index: 99;
+  top: calc( 100% - 1px );
+  left: -1px;
+  width: 100vw;
+  max-width: 330px;
+  background-color: var(--secondary-color);
+  color: var(--text-reverse);
+  border-radius: 0 var(--radius-3) var(--radius-3);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.accordion-item:hover {
+  background-color: var(--primary-color);
+  color: var(--text-reverse);
+  border-radius: var(--radius-3) var(--radius-3) 0 0;
+}
+.accordion-item:hover .accordion-content,
+.accordion-item.active .accordion-content {
+  max-height: 200px;
+  opacity: 1;
+  min-height: fit-content;
+  padding: 16px;
 }

@@ -16,29 +16,102 @@
         <input type="search" id="search-input" name="q" placeholder="Search..." aria-label="Search" required />
         </form>
         <div class="btn-group">
-            <!-- <div class="btn btn-outline">Course</div> -->
-            <!-- <div class="btn btn-outline">Others</div> -->
-            <div class="custom-select-wrapper">
-                <div class="custom-select">
-                    <div class="selected">Select fruit</div>
-                    <div class="options">
-                        <div class="option" data-value="apple">Apple</div>
-                        <div class="option" data-value="banana">Banana</div>
-                        <div class="option" data-value="cherry">Cherry</div>
+            <div class="menu">
+                <div class="btn btn-outline">
+                    <div>Course</div>
+                    <div class="angle icon">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M12 14.5C11.9015 14.5005 11.8038 14.4813 11.7128 14.4435C11.6218 14.4057 11.5392 14.3501 11.47 14.28L8 10.78C7.90861 10.6391 7.86719 10.4715 7.88238 10.3042C7.89756 10.1369 7.96848 9.97954 8.08376 9.85735C8.19904 9.73515 8.352 9.65519 8.51814 9.63029C8.68428 9.6054 8.85396 9.63699 9 9.72003L12 12.72L15 9.72003C15.146 9.63699 15.3157 9.6054 15.4819 9.63029C15.648 9.65519 15.801 9.73515 15.9162 9.85735C16.0315 9.97954 16.1024 10.1369 16.1176 10.3042C16.1328 10.4715 16.0914 10.6391 16 10.78L12.5 14.28C12.3675 14.4144 12.1886 14.4931 12 14.5Z"
+                                    fill="currentColor"></path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="menu-child">
+                    <div class="menu-options">
+                        <div class="option">Course 1</div>
+                        <div class="option">
+                            <div>Course 2</div>
+                            <div class="angle icon">
+                                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
+                                            fill="currentColor"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="sub-menu">
+                                <div class="sub-option">Course 1</div>
+                                <div class="sub-option">Course 2</div>
+                                <div class="sub-option">Course 3</div>
+                            </div>
+                        </div>
+                        <div class="option">Course 3</div>
                     </div>
                 </div>
             </div>
-
-            <div class="custom-select-wrapper">
-                <div class="custom-select">
-                    <div class="selected">Select color</div>
-                    <div class="options">
-                        <div class="option" data-value="red">Red</div>
-                        <div class="option" data-value="blue">Blue</div>
-                        <div class="option" data-value="green">Green</div>
+            <div class="menu">
+                <div class="btn btn-outline">
+                    <div>Course</div>
+                    <div class="angle icon">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M12 14.5C11.9015 14.5005 11.8038 14.4813 11.7128 14.4435C11.6218 14.4057 11.5392 14.3501 11.47 14.28L8 10.78C7.90861 10.6391 7.86719 10.4715 7.88238 10.3042C7.89756 10.1369 7.96848 9.97954 8.08376 9.85735C8.19904 9.73515 8.352 9.65519 8.51814 9.63029C8.68428 9.6054 8.85396 9.63699 9 9.72003L12 12.72L15 9.72003C15.146 9.63699 15.3157 9.6054 15.4819 9.63029C15.648 9.65519 15.801 9.73515 15.9162 9.85735C16.0315 9.97954 16.1024 10.1369 16.1176 10.3042C16.1328 10.4715 16.0914 10.6391 16 10.78L12.5 14.28C12.3675 14.4144 12.1886 14.4931 12 14.5Z"
+                                    fill="currentColor"></path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="menu-child">
+                    <div class="menu-options">
+                        <div class="option">Course 1</div>
+                        <div class="option">
+                            <div>Course 2</div>
+                            <div class="angle icon">
+                                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
+                                            fill="currentColor"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="sub-menu">
+                                <div class="sub-option">Course 1</div>
+                                <div class="sub-option">Course 2</div>
+                                <div class="sub-option">Course 3</div>
+                            </div>
+                        </div>
+                        <div class="option">Course 3</div>
                     </div>
                 </div>
             </div>
+            <!-- <div class="custom-select-wrapper">
+                <div class="custom-select">
+                    <div class="selected">Course</div>
+                    <div class="options">
+                        <div class="option" data-value="apple">Course 1</div>
+                        <div class="option" data-value="banana">Course 2</div>
+                        <div class="option" data-value="cherry">Course 3</div>
+                    </div>
+                </div>
+            </div> -->
         </div>
         <div class="btn-group">
             <div class="language-select-wrapper">
@@ -61,6 +134,7 @@
 
     </header>
 
+    <!-- Skider -->
     <div class="container mb-50">
         <div class="slider-container">
             <button class="controls" id="prev">&#10094;</button>
@@ -138,6 +212,7 @@
         </div>
     </div>
 
+    <!-- Skills -->
     <div class="container skill-section mb-40">
         <div class="section-title">This is the section tiltle</div>
         <div class="flex-container">
@@ -179,6 +254,7 @@
         </div>
     </div>
 
+    <!-- Counter -->
     <div class="container flex-container mb-50">
         <div class="counter-wrapper">
             <div class="counter counter-value" data-target="1500">0</div>
@@ -199,6 +275,118 @@
             <div class="counter-label">Projects</div>
         </div>
     </div>
+
+    <!-- Accordion -->
+    <div class="container mb-50">
+        <div class="section-title">This is the section tiltle</div>
+        <div class="flex-container">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">Section 1</div>
+                    <div class="accordion-subtitle">Description 1</div>
+                </div>
+                <div class="accordion-content">
+                    <div>CLass 1</div>
+                    <div>CLass 2</div>
+                    <div>CLass 3</div>
+                    <div>CLass 4</div>
+                    <div>CLass 5</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">Section 1</div>
+                    <div class="accordion-subtitle">Description 1</div>
+                </div>
+                <div class="accordion-content">
+                    <div>CLass 1</div>
+                    <div>CLass 2</div>
+                    <div>CLass 3</div>
+                    <div>CLass 4</div>
+                    <div>CLass 5</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">Section 1</div>
+                    <div class="accordion-subtitle">Description 1</div>
+                </div>
+                <div class="accordion-content">
+                    <div>CLass 1</div>
+                    <div>CLass 2</div>
+                    <div>CLass 3</div>
+                    <div>CLass 4</div>
+                    <div>CLass 5</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">Section 1</div>
+                    <div class="accordion-subtitle">Description 1</div>
+                </div>
+                <div class="accordion-content">
+                    <div>CLass 1</div>
+                    <div>CLass 2</div>
+                    <div>CLass 3</div>
+                    <div>CLass 4</div>
+                    <div>CLass 5</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">Section 1</div>
+                    <div class="accordion-subtitle">Description 1</div>
+                </div>
+                <div class="accordion-content">
+                    <div>CLass 1</div>
+                    <div>CLass 2</div>
+                    <div>CLass 3</div>
+                    <div>CLass 4</div>
+                    <div>CLass 5</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">Section 1</div>
+                    <div class="accordion-subtitle">Description 1</div>
+                </div>
+                <div class="accordion-content">
+                    <div>CLass 1</div>
+                    <div>CLass 2</div>
+                    <div>CLass 3</div>
+                    <div>CLass 4</div>
+                    <div>CLass 5</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">Section 1</div>
+                    <div class="accordion-subtitle">Description 1</div>
+                </div>
+                <div class="accordion-content">
+                    <div>CLass 1</div>
+                    <div>CLass 2</div>
+                    <div>CLass 3</div>
+                    <div>CLass 4</div>
+                    <div>CLass 5</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">Section 1</div>
+                    <div class="accordion-subtitle">Description 1</div>
+                </div>
+                <div class="accordion-content">
+                    <div>CLass 1</div>
+                    <div>CLass 2</div>
+                    <div>CLass 3</div>
+                    <div>CLass 4</div>
+                    <div>CLass 5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="main.js"></script>
 </body>
