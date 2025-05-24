@@ -1,0 +1,9 @@
+@media (max-width: 690px) {
+    .slide {
+        flex-wrap: wrap;
+    }
+
+    img.slider-img {
+        width: 100%;
+    }
+}

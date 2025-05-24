@@ -1,16 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/responsive.css" />
     <title>Soroborno</title>
 </head>
+
 <body>
+    <header class="container">
+        <img class="logo" src="assets/4-01.png" alt="logo" />
+        <input type="search" id="search-input" name="q" placeholder="Search..." aria-label="Search" required />
+        </form>
+        <div class="btn-group">
+            <div class="btn btn-outline">Course</div>
+            <div class="btn btn-outline">Others</div>
+        </div>
+        <div class="btn">Login</div>
+    </header>
 
-    <header></header>
+    <div class="container">
+        <div class="slider-container">
+            <button class="controls" id="prev">&#10094;</button>
 
+            <div class="slides" id="slides">
+                <div class="slide">
+                    <div class="slider-content">
+                        <div class="slider-title">This is a course title</div>
+                        <div class="slider-subtitle">This is a course subtitle</div>
+                        <div class="btn slider-btn">Start Learning <svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div class="slider-description">This is the description for this course. Here you will find the
+                            short information about this course</div>
+                        <div class="btn-group">
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                        </div>
+                    </div>
+                    <img class="slider-img" src="assets/4-01.png" alt="Slide 1" />
+                </div>
+                <div class="slide">
+                    <div class="slider-content">
+                        <div class="slider-title">This is a course title</div>
+                        <div class="slider-subtitle">This is a course subtitle</div>
+                        <div class="btn slider-btn">Start Learning <svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div class="slider-description">This is the description for this course. Here you will find the
+                            short information about this course</div>
+                        <div class="btn-group">
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                        </div>
+                    </div>
+                    <img class="slider-img" src="assets/4-01.png" alt="Slide 1" />
+                </div>
+                <div class="slide">
+                    <div class="slider-content">
+                        <div class="slider-title">This is a course title</div>
+                        <div class="slider-subtitle">This is a course subtitle</div>
+                        <div class="btn slider-btn">Start Learning <svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.172 11L10.808 5.63605L12.222 4.22205L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div class="slider-description">This is the description for this course. Here you will find the
+                            short information about this course</div>
+                        <div class="btn-group">
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                            <div class="slide-partner"><img src="assets/4-01.png" alt="Slide 2" /></div>
+                        </div>
+                    </div>
+                    <img class="slider-img" src="assets/4-01.png" alt="Slide 1" />
+                </div>
+            </div>
+            
+            <button class="controls" id="next">&#10095;</button>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>
+
 </html>
