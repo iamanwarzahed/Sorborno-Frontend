@@ -1,0 +1,21 @@
+.d-flex {
+    display: flex;
+}
+.item-center {
+    align-items: center;
+}
+.justify-center {
+    justify-content: center;
+}
+.gap-20 {
+   gap: 20px; 
+}
+.row-gap-74 {
+   row-gap: 74px; 
+}
+.mb-50 {
+  margin-bottom: 50px;
+}
+.mb-40 {
+  margin-bottom: 40px;
+}

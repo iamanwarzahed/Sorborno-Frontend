@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/default.css" />
     <link rel="stylesheet" href="style/responsive.css" />
     <title>Soroborno</title>
 </head>
@@ -15,13 +16,52 @@
         <input type="search" id="search-input" name="q" placeholder="Search..." aria-label="Search" required />
         </form>
         <div class="btn-group">
-            <div class="btn btn-outline">Course</div>
-            <div class="btn btn-outline">Others</div>
+            <!-- <div class="btn btn-outline">Course</div> -->
+            <!-- <div class="btn btn-outline">Others</div> -->
+            <div class="custom-select-wrapper">
+                <div class="custom-select">
+                    <div class="selected">Select fruit</div>
+                    <div class="options">
+                        <div class="option" data-value="apple">Apple</div>
+                        <div class="option" data-value="banana">Banana</div>
+                        <div class="option" data-value="cherry">Cherry</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-select-wrapper">
+                <div class="custom-select">
+                    <div class="selected">Select color</div>
+                    <div class="options">
+                        <div class="option" data-value="red">Red</div>
+                        <div class="option" data-value="blue">Blue</div>
+                        <div class="option" data-value="green">Green</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="btn">Login</div>
+        <div class="btn-group">
+            <div class="language-select-wrapper">
+                <div class="language-select">
+                    <div class="selected">
+                        <img src="https://flagcdn.com/w40/us.png" alt="EN"> English
+                    </div>
+                    <div class="options">
+                        <div class="option" data-lang="en">
+                            <img src="https://flagcdn.com/w40/us.png" alt="EN"> English
+                        </div>
+                        <div class="option" data-lang="bn">
+                            <img src="https://flagcdn.com/w40/bd.png" alt="BN"> বাংলা
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn">Login</div>
+        </div>
+
     </header>
 
-    <div class="container">
+    <div class="container mb-50">
         <div class="slider-container">
             <button class="controls" id="prev">&#10094;</button>
 
@@ -93,8 +133,70 @@
                     <img class="slider-img" src="assets/4-01.png" alt="Slide 1" />
                 </div>
             </div>
-            
+
             <button class="controls" id="next">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="container skill-section mb-40">
+        <div class="section-title">This is the section tiltle</div>
+        <div class="flex-container">
+            <div class="skill-item">
+                <img class="skill-img" src="assets/group.png" alt="">
+                <div class="skill-title">Skill Title</div>
+                <div class="skill-description">This is a short description for this skill training program</div>
+            </div>
+            <div class="skill-item">
+                <img class="skill-img" src="assets/group.png" alt="">
+                <div class="skill-title">Skill Title</div>
+                <div class="skill-description">This is a short description for this skill training program</div>
+            </div>
+            <div class="skill-item">
+                <img class="skill-img" src="assets/group.png" alt="">
+                <div class="skill-title">Skill Title</div>
+                <div class="skill-description">This is a short description for this skill training program</div>
+            </div>
+            <div class="skill-item">
+                <img class="skill-img" src="assets/group.png" alt="">
+                <div class="skill-title">Skill Title</div>
+                <div class="skill-description">This is a short description for this skill training program</div>
+            </div>
+            <div class="skill-item">
+                <img class="skill-img" src="assets/group.png" alt="">
+                <div class="skill-title">Skill Title</div>
+                <div class="skill-description">This is a short description for this skill training program</div>
+            </div>
+            <div class="skill-item">
+                <img class="skill-img" src="assets/group.png" alt="">
+                <div class="skill-title">Skill Title</div>
+                <div class="skill-description">This is a short description for this skill training program</div>
+            </div>
+            <div class="skill-item">
+                <img class="skill-img" src="assets/group.png" alt="">
+                <div class="skill-title">Skill Title</div>
+                <div class="skill-description">This is a short description for this skill training program</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container flex-container mb-50">
+        <div class="counter-wrapper">
+            <div class="counter counter-value" data-target="1500">0</div>
+            <div class="counter-label">Customers</div>
+        </div>
+
+        <div class="counter-wrapper">
+            <div class="counter counter-value" data-target="250">0</div>
+            <div class="counter-label">Projects</div>
+        </div>
+        <div class="counter-wrapper">
+            <div class="counter counter-value" data-target="1500">0</div>
+            <div class="counter-label">Customers</div>
+        </div>
+
+        <div class="counter-wrapper">
+            <div class="counter counter-value" data-target="250">0</div>
+            <div class="counter-label">Projects</div>
         </div>
     </div>
 

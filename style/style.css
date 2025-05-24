@@ -2,10 +2,19 @@
   --btn-color: #070707;
   --primary-color: #009245;
   --secondary-color: #0feb75;
+  --base-1: #ffffff;
   --text-reverse: #ffffff;
   --shadow1: rgba(0, 0, 0, 0.2);
   --shadow2: rgba(0, 0, 0, 0.5);
   --shadow3: rgba(0, 0, 0, 0.7);
+
+  --radius-1: 2px;
+  --radius-2: 4px;
+  --radius-3: 8px;
+  --radius-4: 12px;
+
+  --transition-1: 0.3s;
+  --transition-2: 0.5s;
 }
 
 * {
@@ -27,6 +36,7 @@ img {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
 .logo {
@@ -38,7 +48,8 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 20px 0;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
 }
 
 #search-input {
@@ -46,7 +57,7 @@ header {
   max-width: 400px;
   height: 30px;
   padding: 4px 8px;
-  border-radius: 8px;
+  border-radius: var(--radius-3);
   border: 1px solid var(--primary-color);
 }
 
@@ -66,7 +77,7 @@ header {
   border: 1px solid var(--primary-color);
   background-color: var(--primary-color);
   color: var(--text-reverse);
-  border-radius: 4px;
+  border-radius: var(--radius-2);
   padding: 4px 20px;
   cursor: pointer;
   width: fit-content;
@@ -95,10 +106,10 @@ header {
 /* slider style */
 .slider-container {
   max-width: 100%;
-  margin: 40px auto;
+  /* margin: 40px auto; */
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: var(--radius-4);
   box-shadow: 0 4px 10px var(--shadow2);
   display: flex;
   align-items: center;
@@ -170,8 +181,179 @@ button.controls:hover {
   font-weight: 600;
   margin-bottom: 36px;
 }
+
 .slider-description {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 16px;
+}
+
+/* Select Dropdown */
+.custom-select-wrapper {
+  position: relative;
+  width: 200px;
+  font-family: sans-serif;
+}
+
+.custom-select {
+  border: 1px solid #ccc;
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  background: white;
+  position: relative;
+}
+
+.selected {
+  padding: 10px;
+}
+
+.options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  background: white;
+  z-index: 100;
+}
+
+.option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: #f0f0f0;
+}
+
+
+/* Language Selection */
+.language-select-wrapper {
+  width: 180px;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.language-select {
+  border: 1px solid #ccc;
+  border-radius: var(--radius-2);
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+}
+
+.language-select .selected {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-select .options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  background: #fff;
+  z-index: 100;
+}
+
+.language-select .option {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.language-select .option:hover {
+  background: #f2f2f2;
+}
+
+.language-select img {
+  width: 20px;
+  height: auto;
+  border-radius: var(--radius-1);
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.skill-item {
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-4);
+  padding: 20px 14px;
+  overflow: hidden;
+  cursor: pointer;
+  min-width: 22%;
+}
+
+.skill-img {
+  max-width: 100px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+}
+
+.skill-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.skill-description {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--primary-color);
+  color: var(--text-reverse);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all var(--transition-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.skill-item:hover .skill-description {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+/* Counter Number */
+.counter-wrapper {
+  text-align: center;
+  font-family: sans-serif;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-4);
+  padding: 20px 14px;
+  min-width: 22%;
+}
+.counter-value {
+  font-size: 30px;
+  font-weight: 700;
+}
+.counter-label {
+  font-size: 20px;
 }
