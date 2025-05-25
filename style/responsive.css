@@ -1,6 +1,8 @@
 @media (max-width: 690px) {
-
-    header,
+    .btn {
+        padding: 4px 14px;
+    }
+    header .container,
     .slide {
         flex-wrap: wrap;
     }
@@ -15,6 +17,13 @@
 }
 
 @media (max-width: 440px) {
+    .btn-group {
+        gap: 8px;
+    }
+    .btn {
+        padding: 4px 6px;
+        font-size: 14px;
+    }
     .logo {
         width: 120px;
     }
