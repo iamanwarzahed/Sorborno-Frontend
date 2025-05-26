@@ -25,6 +25,7 @@
 
 * {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body,
@@ -380,7 +381,7 @@ button.controls:hover {
     padding: 20px 14px;
     overflow: hidden;
     cursor: pointer;
-    min-width: 22%;
+    min-width: 22.8%;
 }
 
 .skill-img {
@@ -424,7 +425,7 @@ button.controls:hover {
     border: 1px solid var(--primary-color);
     border-radius: var(--radius-4);
     padding: 20px 14px;
-    min-width: 22%;
+    min-width: 22.8%;
 }
 
 .counter-value {
@@ -440,7 +441,7 @@ button.controls:hover {
     border: 1px solid var(--primary-color);
     position: relative;
     border-radius: var(--radius-3);
-    min-width: 22%;
+    min-width: 22.8%;
 }
 .accordion-header {
     padding: 16px;
