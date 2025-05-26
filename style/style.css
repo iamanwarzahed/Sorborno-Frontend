@@ -233,7 +233,7 @@ button.controls:hover {
 
 .slider-img {
     width: 40vw;
-    max-width: 580px;
+    max-width: 700px;
 }
 
 .slide-partner img {
@@ -587,4 +587,87 @@ button.controls:hover {
 
 .stars .filled {
     color: gold;
+}
+
+
+/* Testimonial */
+.testimonial-section {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  height: 300px;
+  margin: auto;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.testimonial-marquee {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonial-column {
+  display: flex;
+  flex-direction: column;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.marquee-up .testimonial-column {
+  animation-name: scroll-up;
+}
+
+.marquee-down .testimonial-column {
+  animation-name: scroll-down;
+}
+
+/* Pause scrolling on hover */
+.testimonial-marquee:hover .testimonial-column {
+  animation-play-state: paused;
+}
+
+.testimonial {
+  padding: 15px;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  height: 75px;
+  box-sizing: border-box;
+  cursor: pointer; /* <-- make testimonials clickable */
+}
+
+/* Animations */
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/* Optional: Responsive tweaks */
+@media (max-width: 768px) {
+  .testimonial-section {
+    flex-direction: column;
+    height: auto;
+  }
+  .testimonial-marquee {
+    height: 150px;
+  }
 }
