@@ -641,7 +641,7 @@ button.controls:hover {
 .testimonial-content {
     padding-bottom: 12px;
     margin-bottom: 12px;
-    border-bottom: 1px solid var(--shadow1);
+    border-bottom: 1px solid var(--primary-color);
 }
 .testimonial-author img {
     max-width: 50px;
@@ -657,7 +657,7 @@ button.controls:hover {
     font-size: 12px;
 }
 .testimonial-program {
-    border-top: 1px solid var(--shadow1);
+    border-top: 1px solid var(--primary-color);
     padding-top: 12px;
 }
 
@@ -695,6 +695,7 @@ button.controls:hover {
 .contact-form {
     border-radius: 10px;
     box-shadow: 0 0 15px var(--shadow1);
+    background-color: var(--primary-color);
     overflow: hidden;
 }
 .contact-info {
@@ -727,7 +728,11 @@ button.controls:hover {
     display: flex;
     padding: 50px;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 50px auto;
+    max-width: 30%;
+    background-color: var(--base-1);
+    border-radius: 10px;
+    box-shadow: 0 0 15px var(--shadow1);
 }
 
 .contact-form label {
