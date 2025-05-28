@@ -921,7 +921,7 @@ button.controls:hover {
     transform: rotate(180deg);
 }
 .accordion-item.active .accordion-content {
-    max-height: 200px; /* Adjust based on your content height */
+    max-height: 500px; /* Adjust based on your content height */
     padding: 16px;
 }
 
