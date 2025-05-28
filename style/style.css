@@ -886,8 +886,8 @@ button.controls:hover {
 
 /* Footer */
 .footer-wrapper {
-    /* background-color: var(--primary-color); */
-    /* color: var(--text-reverse); */
+    background-color: var(--secondary-color);
+    color: var(--text-reverse);
     padding: 70px 20px;
     text-align: center;
 }
@@ -895,7 +895,7 @@ button.controls:hover {
     justify-content: space-between;
 }
 .footer-wrapper a {
-    /* color: var(--text-reverse); */
+    color: var(--text-reverse);
     text-decoration: none;
 }
 .footer-links {
