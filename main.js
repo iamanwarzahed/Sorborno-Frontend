@@ -1,3 +1,4 @@
+document.getElementById("year").textContent = new Date().getFullYear();
 // Slider Logic
 const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
