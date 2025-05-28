@@ -900,11 +900,26 @@ button.controls:hover {
     color: var(--text-reverse);
     text-decoration: none;
 }
+.footer-wrapper a:focus,
+.footer-wrapper a:hover,
+.footer-bottom a:focus,
+.footer-bottom a:hover {
+    color: var(--img-bg);
+}
 .footer-links {
     text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 .footer-bottom {
     padding: 30px 0;
     background-color: var(--tertiary-color);
     color: var(--text-reverse);
+}
+.copyright a {
+    color: var(--secondary-color);
+}
+.copyright a {
+    color: var(--secondary-color);
 }
