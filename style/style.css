@@ -825,6 +825,47 @@ button.controls:hover {
     color: var(--text-color);
 }
 
+/* Download */
+.download {
+    background-color: var(--primary-color);
+    color: var(--text-reverse);
+    border-radius: var(--radius-4);
+    overflow: hidden;
+}
+.download-content {
+    max-width: 900px;
+    padding: 70px 50px 50px;
+}
+.download-title {
+    font-size: 60px;
+    line-height: 4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.download-description {
+    font-size: 26px;
+    line-height: 2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.btn-store {
+    max-width: 200px;
+    padding: 0;
+    border-color: transparent;
+}
+.btn-store:hover {
+    background-color: transparent;
+    border: 0;
+}
+.download-img {
+    line-height: 0;
+}
+.download-img img {
+    width: 386px;
+    max-width: 500px;
+    transform: translateY(85px);
+}
+
 /* Accordion */
 .accordion-wrapper {
     align-items: start;
