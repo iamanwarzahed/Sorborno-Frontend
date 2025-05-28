@@ -863,7 +863,7 @@ button.controls:hover {
 .download-img img {
     width: 386px;
     max-width: 500px;
-    transform: translateY(85px);
+    transform: translate(-20px, 85px);
 }
 
 /* Accordion */
