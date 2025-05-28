@@ -894,9 +894,13 @@ button.controls:hover {
 .footer-wrapper .flex-container,
 .footer-bottom .flex-container {
     justify-content: space-between;
+    align-items: start;
 }
 .first-widget {
     max-width: 300px;
+}
+.second-widget {
+    max-width: 400px;
 }
 .footer-wrapper a,
 .footer-bottom a {
@@ -931,11 +935,21 @@ button.controls:hover {
     padding: 8px;
     border-radius: var(--radius-2);
 }
+.communication {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.communication-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 .footer-links {
-    text-align: start;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    min-width: 22%;
 }
 .footer-bottom {
     padding: 30px 0;
