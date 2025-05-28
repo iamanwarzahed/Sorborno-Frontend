@@ -883,3 +883,21 @@ button.controls:hover {
     max-height: 200px; /* Adjust based on your content height */
     padding: 16px;
 }
+
+/* Footer */
+.footer-wrapper {
+    /* background-color: var(--primary-color); */
+    /* color: var(--text-reverse); */
+    padding: 70px 20px;
+    text-align: center;
+}
+.footer-wrapper .flex-container {
+    justify-content: space-between;
+}
+.footer-wrapper a {
+    /* color: var(--text-reverse); */
+    text-decoration: none;
+}
+.footer-links {
+    text-align: start;
+}
