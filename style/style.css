@@ -976,7 +976,7 @@ button.controls:hover {
     padding: 8px;
     border-radius: var(--radius-2);
 }
-.communication {
+.footer-title {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 12px;
