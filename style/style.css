@@ -895,6 +895,9 @@ button.controls:hover {
 .footer-bottom .flex-container {
     justify-content: space-between;
 }
+.first-widget {
+    max-width: 300px;
+}
 .footer-wrapper a,
 .footer-bottom a {
     color: var(--text-reverse);
@@ -905,6 +908,28 @@ button.controls:hover {
 .footer-bottom a:focus,
 .footer-bottom a:hover {
     color: var(--img-bg);
+}
+.footer-logo {
+    line-height: 0;
+    margin-bottom: 12px;
+}
+.footer-logo img {
+    max-width: 120px;
+}
+.footer-description {
+    margin-bottom: 20px;
+}
+.footer-socials  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+.footer-socials a {
+    line-height: 0;
+    background-color: var(--tertiary-color);
+    padding: 8px;
+    border-radius: var(--radius-2);
 }
 .footer-links {
     text-align: start;
