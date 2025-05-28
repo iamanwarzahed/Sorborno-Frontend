@@ -3,10 +3,11 @@
     --primary-color: #009245;
     --secondary-color: #0feb75;
     --tertiary-color: #010e07;
-    --light-color: #9a9d9b;
+    --light-color: #d0ddd4;
     --warning-color: #ff0000;
     --img-bg: #9c069c;
     --base-1: #ffffff;
+    --base-2: #e7f1ec;
     --text-reverse: #ffffff;
     --shadow1: rgba(0, 0, 0, 0.2);
     --shadow2: rgba(0, 0, 0, 0.5);
@@ -45,7 +46,12 @@ img {
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.container-2 {
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 16px;
 }
@@ -381,7 +387,7 @@ button.controls:hover {
     padding: 20px 14px;
     overflow: hidden;
     cursor: pointer;
-    min-width: 22.8%;
+    min-width: 22%;
 }
 
 .skill-img {
@@ -425,7 +431,7 @@ button.controls:hover {
     border: 1px solid var(--primary-color);
     border-radius: var(--radius-4);
     padding: 20px 14px;
-    min-width: 22.8%;
+    min-width: 22%;
 }
 
 .counter-value {
@@ -437,13 +443,14 @@ button.controls:hover {
     font-size: 20px;
 }
 
-.accordion-item {
+/* Category */
+.category-item {
     border: 1px solid var(--primary-color);
     position: relative;
     border-radius: var(--radius-3);
-    min-width: 22.8%;
+    min-width: 22%;
 }
-.accordion-header {
+.category-header {
     padding: 16px;
     text-align: left;
     width: 100%;
@@ -451,17 +458,17 @@ button.controls:hover {
     outline: none;
     cursor: pointer;
 }
-.accordion-title {
+.category-title {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 12px;
 }
 
-.accordion-subtitle {
+.category-subtitle {
     font-size: 16px;
 }
 
-.accordion-content {
+.category-content {
     font-size: 16px;
     max-height: 0;
     opacity: 0;
@@ -482,13 +489,13 @@ button.controls:hover {
     gap: 8px;
 }
 
-.accordion-item:hover {
+.category-item:hover {
     background-color: var(--primary-color);
     color: var(--text-reverse);
     border-radius: var(--radius-3) var(--radius-3) 0 0;
 }
-.accordion-item:hover .accordion-content,
-.accordion-item.active .accordion-content {
+.category-item:hover .category-content,
+.category-item.active .category-content {
     max-height: 200px;
     opacity: 1;
     min-height: fit-content;
@@ -499,16 +506,16 @@ button.controls:hover {
 .course-item {
     border: 1px solid var(--primary-color);
     border-radius: var(--radius-3);
-    padding: 10px 20px;
+    padding: 10px 15px;
     position: relative;
     text-align: center;
     cursor: pointer;
     box-shadow: 0 4px 10px var(--shadow1);
-    max-width: 327px;
+    max-width: 277px;
 }
 .course-img-wrapper {
     background-color: var(--tertiary-color);
-    padding: 20px 30px;
+    padding: 15px;
 }
 .course-img-container {
     width: fit-content;
@@ -522,7 +529,8 @@ button.controls:hover {
     width: 100%;
     border-radius: var(--radius-6);
     border: 2px solid var(--base-1);
-    max-width: 228px;
+    /* max-width: 228px; */
+    max-height: 220px;
 }
 .course-info {
     padding: 10px;
@@ -540,15 +548,15 @@ button.controls:hover {
 .course-subtitle {
     font-size: 12px;
     margin-top: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 .course-title {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 8px;
 }
 .course-number {
-    font-size: 14px;
+    font-size: 12px;
 }
 .price {
     font-size: 18px;
@@ -635,7 +643,8 @@ button.controls:hover {
     font-size: 1rem;
     box-sizing: border-box;
     cursor: pointer;
-    box-shadow: 0 0 4px 1px var(--shadow1);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 4px 10px var(--shadow1);
     border-radius: var(--radius-3);
 }
 .testimonial-content {
@@ -759,4 +768,117 @@ button.controls:hover {
     font-size: 16px;
     padding: 12px;
     margin-top: 18px;
+}
+
+/* Partner */
+.partner-item-wrapper {
+    border: 1px solid var(--primary-color);
+    padding: 20px;
+    border-radius: var(--radius-3);
+}
+.partner-item-container {
+    background-color: var(--base-2);
+    padding: 35px;
+    border-radius: 50%;
+    line-height: 0;
+}
+.partner-item-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: var(--radius-6);
+}
+
+/* Learn to Win */
+.learn-to-win {
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--text-reverse);
+    padding: 70px 20px;
+    border-radius: var(--radius-4);
+}
+.learn-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.learn-description {
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+.btn-win {
+    flex-basis: 50%;
+    background-color: var(--img-bg);
+    padding: 10px;
+    border-radius: var(--radius-2);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.btn-win-2 {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+.btn-win:hover {
+    background-color: var(--base-1);
+    color: var(--text-color);
+}
+
+/* Accordion */
+.accordion-wrapper {
+    align-items: start;
+}
+.accordion {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    flex-basis: 48%;
+}
+
+.accordion-item {
+    background-color: var(--primary-color);
+    margin-bottom: 20px;
+    color: var(--text-reverse);
+    border-radius: var(--radius-3);
+    box-shadow: 0 4px 10px var(--shadow1);
+    overflow: hidden;
+}
+
+.accordion-header {
+    padding: 16px;
+    text-align: left;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-bottom: 1px solid var(--base-1);
+    margin-bottom: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.accordion-header:hover {
+    background-color: var(--secondary-color);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 16px;
+    transition: all 0.3s ease;
+}
+
+.accordion-item .angle {
+    transition: all var(--transition-1);
+}
+.accordion-item.active .angle {
+    transform: rotate(180deg);
+}
+.accordion-item.active .accordion-content {
+    max-height: 200px; /* Adjust based on your content height */
+    padding: 16px;
 }

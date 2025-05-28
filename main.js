@@ -122,34 +122,34 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Accordion
-// document.addEventListener("DOMContentLoaded", () => {
-//   document.querySelectorAll(".accordion-item").forEach((item) => {
-//     const header = item.querySelector(".accordion-header");
-//     let hovered = false;
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".accordion-item").forEach((item) => {
+        const header = item.querySelector(".accordion-header");
+        let hovered = false;
 
-//     // Toggle on click
-//     header.addEventListener("click", () => {
-//       const isActive = item.classList.contains("active");
-//       document
-//         .querySelectorAll(".accordion-item")
-//         .forEach((i) => i.classList.remove("active"));
-//       if (!isActive) {
-//         item.classList.add("active");
-//       }
-//     });
+        // Toggle on click
+        header.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+            document
+                .querySelectorAll(".accordion-item")
+                .forEach((i) => i.classList.remove("active"));
+            if (!isActive) {
+                item.classList.add("active");
+            }
+        });
 
-//     // Add active on hover
-//     item.addEventListener("mouseenter", () => {
-//       hovered = true;
-//       item.classList.add("active");
-//     });
+        // Add active on hover
+        // item.addEventListener("mouseenter", () => {
+        //   hovered = true;
+        //   item.classList.add("active");
+        // });
 
-//     // Remove active on mouse leave (only if it was from hover)
-//     item.addEventListener("mouseleave", () => {
-//       if (hovered) {
-//         item.classList.remove("active");
-//         hovered = false;
-//       }
-//     });
-//   });
-// });
+        // // Remove active on mouse leave (only if it was from hover)
+        // item.addEventListener("mouseleave", () => {
+        //   if (hovered) {
+        //     item.classList.remove("active");
+        //     hovered = false;
+        //   }
+        // });
+    });
+});
