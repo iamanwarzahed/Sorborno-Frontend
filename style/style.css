@@ -786,6 +786,7 @@ button.controls:hover {
     width: 150px;
     height: 150px;
     border-radius: var(--radius-6);
+    object-fit: cover;
 }
 
 /* Learn to Win */
