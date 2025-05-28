@@ -1,4 +1,16 @@
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Navigation Logic
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const navItems = document.getElementById("nav-items");
+
+    hamburger.addEventListener("click", () => {
+        // navItems.classList.toggle("show");
+        hamburger.textContent = hamburger.textContent === "☰" ? "✕" : "☰";
+    });
+});
+
 // Slider Logic
 const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
@@ -56,7 +68,6 @@ document.querySelectorAll(".language-select").forEach((select) => {
             selected.innerHTML = option.innerHTML;
             selected.setAttribute("data-lang", option.dataset.lang);
             options.style.display = "none";
-            console.log("Language selected:", option.dataset.lang);
         });
     });
 });

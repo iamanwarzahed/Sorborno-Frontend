@@ -1,6 +1,48 @@
-@media (max-width: 690px) {
+.hamburger {
+    display: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 999;
+}
+.btn.login.responsive {
+    display: none;
+}
+.mobile {
+    display: none;
+}
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
     .btn {
         padding: 4px 14px;
+    }
+    .menu-course {
+        padding: 4px;
+        font-size: 12px;
+    }
+    .language-select-wrapper {
+        width: 20px;
+        height: 10px;
+    }
+    .language-select .selected {
+        padding: 0;
+    }
+    .not-mobile,
+    .selected .responsive,
+    .options .responsive,
+    .btn-outline.responsive,
+    .btn.login {
+        display: none;
+    }
+    .btn.login.responsive {
+        display: block;
+    }
+    .mobile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
     header .container,
     .slide {
