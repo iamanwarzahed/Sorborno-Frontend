@@ -12,23 +12,43 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Slider Logic
-const slides = document.getElementById("slides");
-const totalSlides = slides.children.length;
-let index = 0;
+document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
+    const slidesContainer = wrapper.querySelector(".slides");
+    const slides = slidesContainer.children;
+    const totalSlides = slides.length;
+    let index = 0;
 
-document.getElementById("next").addEventListener("click", () => {
-    index = (index + 1) % totalSlides;
-    updateSlide();
+    const prevBtn = wrapper.querySelector(".controls.prev");
+    const nextBtn = wrapper.querySelector(".controls.next");
+
+    function updateSlide() {
+        slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function goToNextSlide() {
+        index = (index + 1) % totalSlides;
+        updateSlide();
+    }
+
+    prevBtn.addEventListener("click", () => {
+        index = (index - 1 + totalSlides) % totalSlides;
+        updateSlide();
+    });
+
+    nextBtn.addEventListener("click", goToNextSlide);
+
+    // Auto slide
+    let interval = setInterval(goToNextSlide, 3000);
+
+    // Pause on hover, resume on leave
+    wrapper.addEventListener("mouseenter", () => {
+        clearInterval(interval);
+    });
+
+    wrapper.addEventListener("mouseleave", () => {
+        interval = setInterval(goToNextSlide, 3000);
+    });
 });
-
-document.getElementById("prev").addEventListener("click", () => {
-    index = (index - 1 + totalSlides) % totalSlides;
-    updateSlide();
-});
-
-function updateSlide() {
-    slides.style.transform = `translateX(-${index * 100}%)`;
-}
 
 // Custom Select Dropdown
 document.querySelectorAll(".custom-select").forEach((select) => {

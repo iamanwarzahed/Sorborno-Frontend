@@ -220,7 +220,7 @@ button.controls {
     cursor: pointer;
 }
 
-button.controls#next {
+button.controls.next {
     right: 0;
     left: auto;
 }
