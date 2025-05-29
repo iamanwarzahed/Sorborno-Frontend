@@ -3,11 +3,16 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // Navigation Logic
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburger");
-    const navItems = document.getElementById("nav-items");
+    const drawer = document.getElementById("nav-drawer");
 
     hamburger.addEventListener("click", () => {
-        // navItems.classList.toggle("show");
-        hamburger.textContent = hamburger.textContent === "☰" ? "✕" : "☰";
+        if (drawer.classList.contains("active")) {
+            drawer.classList.remove("active");
+            hamburger.textContent = "☰";
+        } else {
+            drawer.classList.add("active");
+            hamburger.textContent = "✕";
+        }
     });
 });
 
@@ -58,6 +63,13 @@ document.querySelectorAll(".custom-select").forEach((select) => {
     selected.addEventListener("click", (e) => {
         e.stopPropagation();
         closeAllDropdownsExcept(select);
+        if (selected.classList.contains("active")) {
+            selected.classList.remove("active");
+            options.classList.remove("active");
+        } else {
+            selected.classList.add("active");
+            options.classList.add("active");
+        }
         options.style.display =
             options.style.display === "block" ? "none" : "block";
     });
