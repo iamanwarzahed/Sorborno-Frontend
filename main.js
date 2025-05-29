@@ -1,17 +1,63 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // Navigation Logic
+// document.addEventListener("DOMContentLoaded", () => {
+//     const hamburger = document.getElementById("hamburger");
+//     const drawer = document.getElementById("nav-drawer");
+
+//     function closeDrawer() {
+//         drawer.classList.remove("active");
+//         hamburger.textContent = "☰";
+//     }
+
+//     hamburger.addEventListener("click", (event) => {
+//         event.stopPropagation(); // Prevents the outside click listener from triggering immediately
+//         if (drawer.classList.contains("active")) {
+//             closeDrawer();
+//         } else {
+//             drawer.classList.add("active");
+//             hamburger.textContent = "✕";
+//         }
+//     });
+
+//     // Close drawer on outside click
+//     document.addEventListener("click", (event) => {
+//         if (
+//             drawer.classList.contains("active") &&
+//             !drawer.contains(event.target) &&
+//             !hamburger.contains(event.target)
+//         ) {
+//             closeDrawer();
+//         }
+//     });
+// });
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburger");
-    const drawer = document.getElementById("nav-drawer");
+    const wrapper = document.getElementById("nav-drawer-wrapper");
 
-    hamburger.addEventListener("click", () => {
-        if (drawer.classList.contains("active")) {
-            drawer.classList.remove("active");
-            hamburger.textContent = "☰";
+    function closeDrawer() {
+        wrapper.classList.remove("active");
+        hamburger.textContent = "☰";
+    }
+
+    hamburger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        if (wrapper.classList.contains("active")) {
+            closeDrawer();
         } else {
-            drawer.classList.add("active");
+            wrapper.classList.add("active");
             hamburger.textContent = "✕";
+        }
+    });
+
+    // Close on outside click (overlay or anywhere outside drawer)
+    document.addEventListener("click", (event) => {
+        if (
+            wrapper.classList.contains("active") &&
+            !document.getElementById("nav-drawer").contains(event.target) &&
+            !hamburger.contains(event.target)
+        ) {
+            closeDrawer();
         }
     });
 });
