@@ -84,14 +84,11 @@ document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
 
     nextBtn.addEventListener("click", goToNextSlide);
 
-    // Auto slide
     let interval = setInterval(goToNextSlide, 3000);
 
-    // Pause on hover, resume on leave
     wrapper.addEventListener("mouseenter", () => {
         clearInterval(interval);
     });
-
     wrapper.addEventListener("mouseleave", () => {
         interval = setInterval(goToNextSlide, 3000);
     });

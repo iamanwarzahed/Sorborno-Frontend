@@ -64,6 +64,7 @@
     }
     .btn.login.responsive {
         display: block;
+        font-size: 12px;
     }
     .mobile {
         display: flex;
@@ -73,6 +74,25 @@
     header .container,
     .slide {
         flex-wrap: wrap;
+    }
+    .slide {
+        gap: 24px;
+        padding: 30px;
+        justify-content: start;
+    }
+    .slider-title {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+    .slider-subtitle {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .slider-btn {
+        margin-bottom: 10px;
+    }
+    .slider-description {
+        font-size: 12px;
     }
     .multi-slider-wrapper {
         max-width: 565px;
@@ -90,11 +110,22 @@
     .flex-container {
         gap: 20px;
     }
+    .multi-container {
+        gap: 0;
+    }
+    .skill-item {
+        padding: 20px 10px 10px;
+    }
     .skill-title {
         font-size: 16px;
     }
     .skill-img {
         max-width: 80px;
+        margin-bottom: 0px;
+    }
+    .skill-description {
+        padding: 8px;
+        font-size: 12px;
     }
     .counter-wrapper {
         padding: 16px 8px;
@@ -107,21 +138,25 @@
         font-size: 14px;
     }
     .category-wrapper {
-        padding: 0 16px;
+        padding: 12px 16px;
         min-width: 20%;
     }
     .category-wrapper img {
-        width: 36px;
-    }
-    .category-header {
-        padding: 12px;
+        width: 24px;
     }
     .category-title {
-        font-size: 18px;
-        margin-bottom: 4px;
+        font-size: 16px;
     }
     .category-subtitle {
         font-size: 12px;
+    }
+    .category-content {
+        font-size: 12px;
+        gap: 0;
+    }
+    .category-wrapper:hover .category-content,
+    .category-wrapper.active .category-content {
+        padding: 10px;
     }
     .course-info {
         padding: 2px 4px 8px;
@@ -223,9 +258,62 @@
     .accordion-item.active .accordion-content {
         padding: 8px 12px;
     }
+    .footer-wrapper {
+        padding: 30px 0px;
+    }
+    .footer-wrapper .flex-container,
+    .footer-bottom .flex-container {
+        justify-content: space-around;
+    }
+    .footer-logo .logo {
+        width: 90px;
+    }
+    .footer-description {
+        margin-bottom: 14px;
+        font-size: 12px;
+    }
+    .footer-socials {
+        gap: 12px;
+    }
+    .footer-socials svg {
+        width: 16px;
+        height: 16px;
+    }
+    .footer-socials a {
+        padding: 4px;
+    }
+    .footer-title {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+    .communication-details {
+        gap: 4px;
+        font-size: 12px;
+    }
+    .footer-links {
+        gap: 0px;
+        min-width: 20%;
+    }
+    .footer-wrapper a {
+        font-size: 12px;
+    }
+    .first-widget {
+        max-width: 220px;
+    }
+    .second-widget {
+        max-width: 260px;
+    }
+    .footer-bottom {
+        padding: 15px 0;
+        font-size: 12px;
+    }
+    .footer-bottom .flex-container {
+        justify-content: space-between;
+        gap: 10px;
+    }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 480px) {
     .btn-group {
         gap: 8px;
     }
@@ -235,5 +323,98 @@
     }
     .logo {
         width: 108px;
+    }
+    .skill-img {
+        max-width: 74px;
+    }
+    .skill-title {
+        font-size: 14px;
+    }
+    .slider-btn {
+        font-size: 12px;
+    }
+    .slider-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    .slider-description {
+        margin-bottom: 10px;
+    }
+    .section-title {
+        font-size: 24px;
+    }
+    .counter-value {
+        font-size: 14px;
+    }
+    .counter-label {
+        font-size: 12px;
+    }
+    .category-wrapper {
+        padding: 4px 10px;
+    }
+    .category-wrapper img {
+        width: 20px;
+    }
+    .category-title {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+    .section-title-wrapper {
+        gap: 4px;
+        margin-bottom: 16px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .multi-slider-wrapper {
+        max-width: 270px;
+    }
+    .contact-form .d-flex {
+        gap: 10px;
+    }
+    .contact-info {
+        padding: 30px 0px 10px;
+    }
+    .contact-input-form {
+        padding: 15px;
+    }
+    .partner-slider-wrapper {
+        max-width: 100%;
+    }
+    .download .d-flex {
+        flex-direction: column;
+    }
+    .btn-store {
+        max-width: 100px;
+        padding: 0;
+    }
+    .download-title {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+    .download-description {
+        font-size: 14px;
+    }
+    .download-img {
+        margin-bottom: 30px;
+    }
+    .download-img img {
+        height: 190px;
+    }
+    .accordion-item {
+        margin-bottom: 14px;
+    }
+    .accordion {
+        flex-basis: 100%;
+    }
+    .accordion-wrapper {
+        gap: 0;
+    }
+    .footer-wrapper .flex-container,
+    .footer-bottom .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mb-50 {
+        margin-bottom: 30px;
     }
 }

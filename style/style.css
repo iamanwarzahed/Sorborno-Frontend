@@ -400,7 +400,7 @@ button.controls:hover {
 
 .slider-subtitle {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 24px;
 }
 
@@ -542,7 +542,7 @@ button.controls:hover {
 
 .section-title-wrapper {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     gap: 40px;
     margin-bottom: 24px;
@@ -594,6 +594,7 @@ button.controls:hover {
     align-items: center;
     justify-content: center;
     padding: 16px;
+    line-height: 1rem;
 }
 
 .skill-item:hover .skill-description {
@@ -623,26 +624,27 @@ button.controls:hover {
 .category-wrapper {
     border: 1px solid var(--primary-color);
     position: relative;
-    padding: 0 20px;
+    padding: 16px 20px;
     border-radius: var(--radius-3);
     min-width: 22%;
+    gap: 8px;
 }
 .category-wrapper img {
-    width: 50px;
+    width: 30px;
     filter: grayscale(1);
 }
 .category-header {
-    padding: 16px;
     text-align: left;
     width: 100%;
     border: none;
     outline: none;
     cursor: pointer;
+    line-height: 1rem;
 }
 .category-title {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
 }
 
 .category-subtitle {
