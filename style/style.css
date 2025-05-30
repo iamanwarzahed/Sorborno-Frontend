@@ -214,7 +214,7 @@ header .container {
 .nav-item {
     padding-left: 10px;
     margin-bottom: 4px;
-} 
+}
 #nav-drawer-wrapper {
     position: fixed;
     top: 0;
@@ -259,6 +259,13 @@ header .container {
 }
 
 /* slider style */
+.multi-slider-wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
 .slider-container {
     max-width: 100%;
     /* margin: 40px auto; */
@@ -877,22 +884,32 @@ button.controls:hover {
 }
 
 /* Partner */
+.partner-container {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 20px;
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+    margin: 8px 4px;
+}
 .partner-item-wrapper {
-    border: 1px solid var(--primary-color);
-    padding: 20px;
-    border-radius: var(--radius-3);
+    flex: 0 0 auto;
+    padding: 20px 50px;
+    border-radius: var(--radius-4);
+    text-align: center;
+    box-shadow: 0px 0px 10px 0px var(--shadow1);
 }
-.partner-item-container {
-    background-color: var(--base-2);
-    padding: 35px;
-    border-radius: 50%;
+.partner-img {
     line-height: 0;
+    margin-bottom: 12px;
 }
-.partner-item-container img {
-    width: 150px;
-    height: 150px;
+.partner-img img {
+    width: 60px;
     border-radius: var(--radius-6);
     object-fit: cover;
+}
+.partner-name {
+    font-size: 18px;
 }
 
 /* Learn to Win */

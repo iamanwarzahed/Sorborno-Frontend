@@ -1,36 +1,6 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // Navigation Logic
-// document.addEventListener("DOMContentLoaded", () => {
-//     const hamburger = document.getElementById("hamburger");
-//     const drawer = document.getElementById("nav-drawer");
-
-//     function closeDrawer() {
-//         drawer.classList.remove("active");
-//         hamburger.textContent = "☰";
-//     }
-
-//     hamburger.addEventListener("click", (event) => {
-//         event.stopPropagation(); // Prevents the outside click listener from triggering immediately
-//         if (drawer.classList.contains("active")) {
-//             closeDrawer();
-//         } else {
-//             drawer.classList.add("active");
-//             hamburger.textContent = "✕";
-//         }
-//     });
-
-//     // Close drawer on outside click
-//     document.addEventListener("click", (event) => {
-//         if (
-//             drawer.classList.contains("active") &&
-//             !drawer.contains(event.target) &&
-//             !hamburger.contains(event.target)
-//         ) {
-//             closeDrawer();
-//         }
-//     });
-// });
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburger");
     const wrapper = document.getElementById("nav-drawer-wrapper");
@@ -98,6 +68,69 @@ document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
 
     wrapper.addEventListener("mouseleave", () => {
         interval = setInterval(goToNextSlide, 3000);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".multi-slider").forEach((slider) => {
+        const container = slider.querySelector(".multi-container");
+        const items = container.querySelectorAll(".multi-item-wrapper");
+        const nextBtn = slider.querySelector(".next");
+        const prevBtn = slider.querySelector(".prev");
+
+        let index = 0;
+        const itemCount = items.length;
+        const itemWidth = items[0].offsetWidth + 20;
+
+        // Clone items to loop seamlessly
+        items.forEach((item) => {
+            const clone = item.cloneNode(true);
+            container.appendChild(clone);
+        });
+
+        function updateSlide() {
+            container.style.transition = "transform 0.4s ease";
+            container.style.transform = `translateX(-${index * itemWidth}px)`;
+        }
+
+        function goToNext() {
+            index++;
+            updateSlide();
+
+            if (index >= itemCount) {
+                setTimeout(() => {
+                    container.style.transition = "none";
+                    index = 0;
+                    container.style.transform = `translateX(0px)`;
+                }, 400);
+            }
+        }
+
+        nextBtn.addEventListener("click", goToNext);
+
+        prevBtn.addEventListener("click", () => {
+            if (index <= 0) {
+                index = itemCount;
+                container.style.transition = "none";
+                container.style.transform = `translateX(-${
+                    index * itemWidth
+                }px)`;
+            }
+
+            setTimeout(() => {
+                index--;
+                updateSlide();
+            }, 10);
+        });
+
+        // ✅ Auto slide
+        let autoSlide = setInterval(goToNext, 3000);
+
+        // ✅ Pause on hover
+        slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
+        slider.addEventListener("mouseleave", () => {
+            autoSlide = setInterval(goToNext, 3000);
+        });
     });
 });
 
