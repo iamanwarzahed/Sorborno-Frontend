@@ -1,4 +1,13 @@
 @media (max-width: 768px) {
+    .mb-12 {
+        margin-bottom: 6px;
+    }
+    .gap-4 {
+        gap: 2px;
+    }
+    .gap-8 {
+        gap: 4px;
+    }
     .hamburger {
         display: block;
     }
@@ -65,13 +74,79 @@
     .slide {
         flex-wrap: wrap;
     }
-
+    .multi-slider-wrapper {
+        max-width: 565px;
+    }
     #search-input {
         width: 50%;
     }
 
+    .section-title {
+        font-size: 30px;
+    }
     img.slider-img {
         width: 100%;
+    }
+    .flex-container {
+        gap: 20px;
+    }
+    .skill-title {
+        font-size: 16px;
+    }
+    .skill-img {
+        max-width: 80px;
+    }
+    .counter-wrapper {
+        padding: 16px 8px;
+        min-width: 20%;
+    }
+    .counter-value {
+        font-size: 24px;
+    }
+    .counter-label {
+        font-size: 14px;
+    }
+    .category-wrapper {
+        padding: 0 16px;
+        min-width: 20%;
+    }
+    .category-wrapper img {
+        width: 36px;
+    }
+    .category-header {
+        padding: 12px;
+    }
+    .category-title {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+    .category-subtitle {
+        font-size: 12px;
+    }
+    .course-info {
+        padding: 2px 4px 8px;
+    }
+    .course-name {
+        font-size: 16px;
+    }
+    .course-sub-name {
+        font-size: 12px;
+    }
+    .course-title {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    .price {
+        font-size: 16px;
+    }
+    .contact-form .d-flex {
+        flex-wrap: wrap;
+    }
+    .contact-info, .contact-input-form {
+        flex-basis: 90%;
+        width: 90%;
+        margin: 0 auto;
+        max-width: 100%;
     }
 }
 
