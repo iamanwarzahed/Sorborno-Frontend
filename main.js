@@ -123,12 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 10);
         });
 
-        // let autoSlide = setInterval(goToNext, 3000);
+        let autoSlide = setInterval(goToNext, 3000);
 
-        // slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
-        // slider.addEventListener("mouseleave", () => {
-        //     autoSlide = setInterval(goToNext, 3000);
-        // });
+        slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
+        slider.addEventListener("mouseleave", () => {
+            autoSlide = setInterval(goToNext, 3000);
+        });
     });
 });
 
