@@ -874,18 +874,7 @@ button.controls:hover {
     }
 }
 
-@media (max-width: 768px) {
-    .testimonial-section {
-        flex-direction: column;
-        height: auto;
-    }
-    .testimonial-marquee {
-        height: 150px;
-    }
-}
-
 /* Contact Form */
-
 .contact-form {
     border-radius: 10px;
     box-shadow: 0 0 15px var(--shadow1);

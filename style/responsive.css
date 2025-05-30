@@ -1,3 +1,15 @@
+@media (max-width: 992px) {
+    .testimonial-section {
+        gap: 14px;
+    }
+    .testimonial-marquee.column-3,
+    .testimonial-marquee.column-4 {
+        display: none;
+    }
+    .testimonial-section {
+        max-width: 640px;
+    }
+}
 @media (max-width: 768px) {
     .mb-12 {
         margin-bottom: 6px;
@@ -310,6 +322,12 @@
     .footer-bottom .flex-container {
         justify-content: space-between;
         gap: 10px;
+    }
+    .testimonial-section {
+        max-width: 340px;
+    }
+    .testimonial-marquee.column-2 {
+        display: none;
     }
 }
 
