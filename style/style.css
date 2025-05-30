@@ -514,7 +514,6 @@ button.controls:hover {
     padding: 20px 14px;
     overflow: hidden;
     cursor: pointer;
-    min-width: 22%;
 }
 
 .skill-img {
