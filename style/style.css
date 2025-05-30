@@ -28,6 +28,7 @@
 * {
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: "Hind Siliguri", sans-serif;
 }
 
 body,
@@ -493,7 +494,6 @@ button.controls:hover {
 .language-select-wrapper {
     width: 80px;
     position: relative;
-    font-family: sans-serif;
     font-size: 12px;
 }
 
@@ -603,7 +603,6 @@ button.controls:hover {
 /* Counter Number */
 .counter-wrapper {
     text-align: center;
-    font-family: sans-serif;
     border: 1px solid var(--primary-color);
     border-radius: var(--radius-4);
     padding: 20px 14px;
@@ -1069,7 +1068,6 @@ button.controls:hover {
 .accordion {
     max-width: 600px;
     margin: 0 auto;
-    font-family: sans-serif;
     flex-basis: 48%;
 }
 
