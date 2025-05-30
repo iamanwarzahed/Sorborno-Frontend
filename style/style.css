@@ -491,11 +491,19 @@ button.controls:hover {
     border-radius: var(--radius-1);
 }
 
+.section-title-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 24px;
+}
 .section-title {
     font-size: 40px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 24px;
+    align-items: center;
+    justify-content: center;
 }
 
 .skill-item {
