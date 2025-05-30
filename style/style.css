@@ -903,6 +903,7 @@ button.controls:hover {
 .contact-title {
     font-size: 36px;
     font-weight: 700;
+    line-height: 1em;
 }
 .contact-description {
     font-size: 16px;
@@ -939,6 +940,7 @@ button.controls:hover {
     border-radius: 6px;
     font-size: 16px;
     transition: border-color 0.3s;
+    height: 36px;
 }
 
 .contact-form input:focus {
@@ -1031,12 +1033,13 @@ button.controls:hover {
 }
 .download-content {
     max-width: 900px;
-    padding: 70px 50px 50px;
+    padding: 50px;
 }
 .download-title {
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 700;
     margin-bottom: 16px;
+    line-height: 1;
 }
 .download-description {
     font-size: 20px;
@@ -1088,7 +1091,6 @@ button.controls:hover {
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 16px;
     border-bottom: 1px solid var(--base-1);
     margin-bottom: -1px;
     display: flex;
