@@ -29,6 +29,7 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: "Hind Siliguri", sans-serif;
+    line-height: 1em;
 }
 
 body,
