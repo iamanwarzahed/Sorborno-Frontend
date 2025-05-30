@@ -628,7 +628,7 @@ button.controls:hover {
     padding: 16px 20px;
     border-radius: var(--radius-3);
     min-width: 22%;
-    gap: 8px;
+    gap: 20px;
 }
 .category-wrapper img {
     width: 30px;
@@ -1026,6 +1026,7 @@ button.controls:hover {
 .download-content {
     max-width: 900px;
     padding: 50px;
+    padding-right: 0;
 }
 .download-title {
     font-size: 34px;

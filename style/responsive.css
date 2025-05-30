@@ -9,6 +9,17 @@
     .testimonial-section {
         max-width: 640px;
     }
+    .flex-container {
+        gap: 20px;
+    }
+    .multi-container {
+        gap: 0;
+    }
+    .category-wrapper {
+        padding: 12px 16px;
+        min-width: 20%;
+        gap: 8px;
+    }
 }
 @media (max-width: 768px) {
     .mb-12 {
@@ -121,9 +132,6 @@
     }
     .flex-container {
         gap: 20px;
-    }
-    .multi-container {
-        gap: 0;
     }
     .skill-item {
         padding: 20px 10px 10px;
