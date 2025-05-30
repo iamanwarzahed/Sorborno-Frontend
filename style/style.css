@@ -671,7 +671,7 @@ button.controls:hover {
     /* border: 2px solid var(--base-1); */
     /* max-width: 228px; */
     max-height: 220px;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/8;
     object-fit: cover;
 }
 .course-content-wrapper {
