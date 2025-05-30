@@ -32,6 +32,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Search
+document.addEventListener("DOMContentLoaded", () => {
+    console.log('sunning')
+    const input = document.getElementById("search-input");
+    const resultBox = document.querySelector(".search-result-wrapper");
+    const wrapper = document.querySelector(".input-wrapper");
+
+    // Show result box on input focus
+    input.addEventListener("focus", () => {
+        resultBox.style.display = "block";
+        console.log('first');
+    });
+
+    // Handle outside click
+    document.addEventListener("click", (event) => {
+        const isClickInside = wrapper.contains(event.target);
+        if (!isClickInside) {
+            resultBox.style.display = "none";
+        }
+    });
+
+    // Prevent immediate hiding if clicking inside result box
+    resultBox.addEventListener("mousedown", (e) => {
+        e.preventDefault(); // Prevents blur on input
+        console.log('SECOND');
+    });
+});
+
+
 // Slider Logic
 document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
     const slidesContainer = wrapper.querySelector(".slides");
@@ -80,7 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let index = 0;
         const itemCount = items.length;
-        const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginRight);
+        const itemWidth =
+            items[0].offsetWidth +
+            parseInt(getComputedStyle(items[0]).marginRight);
 
         // Clone items to loop seamlessly
         items.forEach((item) => {
