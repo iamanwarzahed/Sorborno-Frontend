@@ -186,7 +186,8 @@ header .container {
     display: block;
 }
 
-.input-wrapper {
+/* search */
+.search-input-wrapper {
     width: 80%;
     max-width: 450px;
     margin: 0 auto;
@@ -194,14 +195,22 @@ header .container {
     border-radius: var(--radius-3);
     border: 1px solid var(--primary-color);
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--base-1);
 }
-.input-wrapper #search-input,
-.input-wrapper #search-input:focus {
+.search-input-wrapper .search-input,
+.search-input-wrapper .search-input:focus {
+    width: 100%;
     border: 0;
     outline: 0;
     box-shadow: none;
     width: 100%;
     height: 20px;
+    padding: 0;
+    transition: all var(--transition-1);
 }
 .search-result-wrapper {
     display: none;
@@ -238,6 +247,10 @@ header .container {
 .search-item:hover {
     background-color: var(--base-2);
 }
+.search-input-wrapper .search-icon {
+    display: none;
+}
+
 
 /* Nav Drawer */
 .hamburger {

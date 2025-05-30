@@ -34,32 +34,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Search
 document.addEventListener("DOMContentLoaded", () => {
-    console.log('sunning')
-    const input = document.getElementById("search-input");
-    const resultBox = document.querySelector(".search-result-wrapper");
-    const wrapper = document.querySelector(".input-wrapper");
+    document.querySelectorAll(".search-input-wrapper").forEach((wrapper) => {
+        const input = wrapper.querySelector(".search-input");
+        const resultBox = wrapper.querySelector(".search-result-wrapper");
 
-    // Show result box on input focus
-    input.addEventListener("focus", () => {
-        resultBox.style.display = "block";
-        console.log('first');
-    });
+        wrapper.addEventListener("click", () => {
+            wrapper.classList.add("active");
+            resultBox.style.display = "block";
+            input.focus();
+        });
 
-    // Handle outside click
-    document.addEventListener("click", (event) => {
-        const isClickInside = wrapper.contains(event.target);
-        if (!isClickInside) {
-            resultBox.style.display = "none";
-        }
-    });
+        // Handle outside click
+        document.addEventListener("click", (event) => {
+            if (!wrapper.contains(event.target)) {
+                wrapper.classList.remove("active");
+                resultBox.style.display = "none";
+            }
+        });
 
-    // Prevent immediate hiding if clicking inside result box
-    resultBox.addEventListener("mousedown", (e) => {
-        e.preventDefault(); // Prevents blur on input
-        console.log('SECOND');
+        resultBox.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+        });
     });
 });
-
 
 // Slider Logic
 document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
