@@ -645,18 +645,18 @@ button.controls:hover {
 .course-item {
     border: 1px solid var(--primary-color);
     border-radius: var(--radius-3);
-    padding: 10px 15px;
+    /* padding: 10px 15px; */
     position: relative;
     text-align: center;
     cursor: pointer;
     box-shadow: 0 4px 10px var(--shadow1);
-    max-width: 277px;
+    max-width: 270px;
     margin-right: 24px;
 }
-.course-img-wrapper {
+/* .course-img-wrapper {
     background-color: var(--tertiary-color);
     padding: 15px;
-}
+} */
 .course-img-container {
     width: fit-content;
     background-color: var(--img-bg);
@@ -667,13 +667,18 @@ button.controls:hover {
 }
 .course-img-container img {
     width: 100%;
-    border-radius: var(--radius-6);
-    border: 2px solid var(--base-1);
+    border-radius: var(--radius-2) var(--radius-2) 0 0;
+    /* border: 2px solid var(--base-1); */
     /* max-width: 228px; */
     max-height: 220px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+.course-content-wrapper {
+    padding: 4px 8px;
 }
 .course-info {
-    padding: 10px;
+    padding: 4px 4px 12px;
     text-align: center;
 }
 .course-name {
@@ -687,8 +692,7 @@ button.controls:hover {
 }
 .course-subtitle {
     font-size: 12px;
-    margin-top: 12px;
-    margin-bottom: 4px;
+    margin: 4px auto
 }
 .course-title {
     font-size: 20px;
