@@ -274,7 +274,7 @@ header .container {
 .multi-container {
     flex-wrap: nowrap;
     justify-content: space-between;
-    margin: 8px 4px;
+    margin: 8px 0px;
     gap: 0;
 }
 .multi-item {
@@ -632,7 +632,7 @@ button.controls:hover {
 
 /* Course */
 .course-container {
-    margin: 16px;
+    margin-bottom: 16px;
 }
 .course-item {
     border: 1px solid var(--primary-color);
@@ -902,12 +902,16 @@ button.controls:hover {
 }
 
 /* Partner */
+.partner-slider-wrapper button.controls.prev {
+    left: 4px;
+}
 .partner-container {
     flex-wrap: nowrap;
     justify-content: space-between;
     gap: 0px;
     transition: transform 0.3s ease-in-out;
     will-change: transform;
+    margin: 8px 4px;
 }
 .partner-item-wrapper {
     flex: 0 0 auto;
