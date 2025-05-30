@@ -55,6 +55,13 @@ img {
     margin: 0 auto;
     padding: 0 16px;
 }
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
 
 /* Button */
 
@@ -266,9 +273,17 @@ header .container {
     display: flex;
     align-items: center;
 }
+.multi-container {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 8px 4px;
+    gap: 0;
+}
+.multi-item {
+    flex: 0 0 auto;
+}
 .slider-container {
     max-width: 100%;
-    /* margin: 40px auto; */
     position: relative;
     overflow: hidden;
     border-radius: var(--radius-4);
@@ -483,14 +498,6 @@ button.controls:hover {
     margin-bottom: 24px;
 }
 
-.flex-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-}
-
 .skill-item {
     text-align: center;
     position: relative;
@@ -616,6 +623,9 @@ button.controls:hover {
 }
 
 /* Course */
+.course-container {
+    margin: 16px;
+}
 .course-item {
     border: 1px solid var(--primary-color);
     border-radius: var(--radius-3);
@@ -625,6 +635,7 @@ button.controls:hover {
     cursor: pointer;
     box-shadow: 0 4px 10px var(--shadow1);
     max-width: 277px;
+    margin-right: 24px;
 }
 .course-img-wrapper {
     background-color: var(--tertiary-color);
@@ -887,13 +898,13 @@ button.controls:hover {
 .partner-container {
     flex-wrap: nowrap;
     justify-content: space-between;
-    gap: 20px;
+    gap: 0px;
     transition: transform 0.3s ease-in-out;
     will-change: transform;
-    margin: 8px 4px;
 }
 .partner-item-wrapper {
     flex: 0 0 auto;
+    margin-right: 20px;
     padding: 20px 50px;
     border-radius: var(--radius-4);
     text-align: center;

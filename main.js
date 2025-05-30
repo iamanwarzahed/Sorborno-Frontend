@@ -74,13 +74,13 @@ document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".multi-slider").forEach((slider) => {
         const container = slider.querySelector(".multi-container");
-        const items = container.querySelectorAll(".multi-item-wrapper");
+        const items = container.querySelectorAll(".multi-item");
         const nextBtn = slider.querySelector(".next");
         const prevBtn = slider.querySelector(".prev");
 
         let index = 0;
         const itemCount = items.length;
-        const itemWidth = items[0].offsetWidth + 20;
+        const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginRight);
 
         // Clone items to loop seamlessly
         items.forEach((item) => {
@@ -123,10 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 10);
         });
 
-        // ✅ Auto slide
         let autoSlide = setInterval(goToNext, 3000);
 
-        // ✅ Pause on hover
         slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
         slider.addEventListener("mouseleave", () => {
             autoSlide = setInterval(goToNext, 3000);
