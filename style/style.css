@@ -570,11 +570,22 @@ button.controls:hover {
 }
 
 /* Category */
-.category-item {
+.category-wrapper {
     border: 1px solid var(--primary-color);
     position: relative;
+    padding: 0 20px;
     border-radius: var(--radius-3);
     min-width: 22%;
+}
+.category-wrapper img {
+    width: 50px;
+    filter: grayscale(1);
+}
+.category-item {
+    /* border: 1px solid var(--primary-color);
+    position: relative;
+    border-radius: var(--radius-3);
+    min-width: 22%; */
 }
 .category-header {
     padding: 16px;
@@ -605,8 +616,6 @@ button.controls:hover {
     z-index: 99;
     top: calc(100% - 1px);
     left: -1px;
-    /* width: 40vw;
-    max-width: 330px; */
     right: -1px;
     background-color: var(--secondary-color);
     color: var(--text-reverse);
@@ -616,13 +625,13 @@ button.controls:hover {
     gap: 8px;
 }
 
-.category-item:hover {
+.category-wrapper:hover {
     background-color: var(--primary-color);
     color: var(--text-reverse);
     border-radius: var(--radius-3) var(--radius-3) 0 0;
 }
-.category-item:hover .category-content,
-.category-item.active .category-content {
+.category-wrapper:hover .category-content,
+.category-wrapper.active .category-content {
     max-height: 200px;
     opacity: 1;
     min-height: fit-content;
