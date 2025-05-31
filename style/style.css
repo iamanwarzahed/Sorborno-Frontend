@@ -165,7 +165,6 @@ header .container {
     box-shadow: 0 4px 10px var(--shadow2);
     border-radius: var(--radius-2);
     width: max-content;
-    padding: 6px 0;
 }
 
 .menu-options .option {
