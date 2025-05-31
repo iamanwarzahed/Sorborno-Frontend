@@ -91,6 +91,7 @@
     .btn.login.responsive {
         display: block;
         font-size: 12px;
+        padding: 8px 10px;
     }
     .mobile {
         display: flex;
@@ -362,6 +363,38 @@
     }
     .logo {
         width: 108px;
+    }
+    .drawer-title {
+        font-size: 18px;
+    }
+    .login-process-wrapper {
+        padding: 12px;
+    }
+    .account-title {
+        font-size: 20px;
+    }
+    .tab-btn {
+        padding: 6px 24px;
+        font-size: 12px;
+    }
+    .login-form input {
+        font-size: 14px;
+        height: 30px;
+    }
+    .login-form .btn {
+        margin-top: 8px;
+        padding: 8px;
+    }
+    .login-form .btn.outside {
+        margin-top: 3px;
+        padding: 2px;
+        font-size: 12px;
+    }
+    .help-btn {
+        flex-wrap: wrap;
+    }
+    .communication-need {
+        font-size: 12px;
     }
     .skill-img {
         max-width: 74px;

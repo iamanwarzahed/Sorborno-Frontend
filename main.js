@@ -1,6 +1,6 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Navigation Logic
+// Navigation
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburger");
     const wrapper = document.getElementById("nav-drawer-wrapper");
@@ -29,6 +29,83 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
             closeDrawer();
         }
+    });
+});
+
+// Drawer
+document.addEventListener("DOMContentLoaded", () => {
+    const loginButtons = document.querySelectorAll(".btn.login");
+    const wrapper = document.getElementById("login-drawer-wrapper");
+    const drawer = document.getElementById("login-drawer");
+    const closeBtn = document.querySelector(".drawer-close");
+
+    function closeDrawer() {
+        wrapper.classList.remove("active");
+    }
+
+    loginButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            event.stopPropagation();
+            if (wrapper.classList.contains("active")) {
+                closeDrawer();
+            } else {
+                wrapper.classList.add("active");
+            }
+        });
+    });
+
+    closeBtn.addEventListener("click", closeDrawer);
+
+    // Close on outside click (overlay or anywhere outside drawer)
+    document.addEventListener("click", (event) => {
+        if (
+            wrapper.classList.contains("active") &&
+            !drawer.contains(event.target) &&
+            !event.target.closest(".btn.login")
+        ) {
+            closeDrawer();
+        }
+    });
+});
+
+// Tab Selection
+document.addEventListener("DOMContentLoaded", () => {
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+    const newBtn = document.querySelector(".new-btn, .help-btn a");
+    const loginBtn = document.querySelector(".login-btn");
+
+    function activateTab(tabType) {
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        tabContents.forEach((content) => content.classList.remove("active"));
+
+        document
+            .querySelectorAll(".login-title, .create-title")
+            .forEach((title) => {
+                title.classList.remove("active");
+            });
+
+        document.querySelector(`.tab-${tabType}`)?.classList.add("active");
+        document
+            .querySelector(`.tab-${tabType}-content`)
+            ?.classList.add("active");
+        document.querySelector(`.${tabType}-title`)?.classList.add("active");
+    }
+
+    tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const isLogin = btn.classList.contains("tab-login");
+            activateTab(isLogin ? "login" : "create");
+        });
+    });
+
+    newBtn?.addEventListener("click", (e) => {
+        e.preventDefault(); // for anchor tags
+        activateTab("create");
+    });
+
+    loginBtn?.addEventListener("click", () => {
+        activateTab("login");
     });
 });
 
