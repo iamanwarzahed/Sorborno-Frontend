@@ -252,6 +252,9 @@
     .download .d-flex {
         gap: 0;
     }
+    .download .btn-group {
+        gap: 4px;
+    }
     .download-content {
         padding: 30px 20px 30px;
     }
@@ -260,12 +263,12 @@
         height: 230px;
     }
     .download-title {
-        font-size: 30px;
-        margin-bottom: 0px;
+        font-size: 26px;
+        margin-bottom: 6px;
     }
     .download-description {
-        font-size: 16px;
-        margin-bottom: 10px;
+        font-size: 14px;
+        margin-bottom: 12px;
     }
     .btn-store {
         max-width: 120px;
@@ -345,6 +348,9 @@
     }
 }
 @media (max-width: 620px) {
+    .download .d-flex {
+        flex-direction: column;
+    }
     .footer-container {
         grid-template-columns: 1fr 1fr;
         row-gap: 40px;
@@ -451,9 +457,6 @@
     }
     .partner-slider-wrapper {
         max-width: 100%;
-    }
-    .download .d-flex {
-        flex-direction: column;
     }
     .btn-store {
         max-width: 100px;

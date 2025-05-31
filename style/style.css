@@ -1198,9 +1198,12 @@ button.controls:hover {
     margin-bottom: 20px;
 }
 .btn-store {
-    max-width: 180px;
+    max-width: 130px;
     padding: 0;
     border-color: transparent;
+}
+.btn-store.windows {
+    margin-left: -4px;
 }
 .btn-store:hover {
     background-color: transparent;
