@@ -110,6 +110,14 @@ img {
     white-space: nowrap;
     padding: 7px 20px;
 }
+.btn-close {
+    background-color: var(--base-2);
+    border-radius: var(--radius-2);
+    cursor: pointer;
+}
+.btn-close:hover {
+    color: var(--warning-color);
+}
 
 /* Header */
 .logo {
@@ -338,14 +346,6 @@ header .container {
 .drawer-title.active {
     display: block;
 }
-.drawer-close {
-    background-color: var(--base-2);
-    border-radius: var(--radius-2);
-    cursor: pointer;
-}
-.drawer-close:hover {
-    color: var(--warning-color);
-}
 .drawer-body {
     display: flex;
     flex-direction: column;
@@ -429,6 +429,7 @@ header .container {
 .login-form label {
     font-size: 14px;
     font-weight: 500;
+    text-align: start;
 }
 .login-form input {
     font-size: 16px;
@@ -479,6 +480,50 @@ header .container {
 }
 .help-btn a:hover,
 .help-btn a:focus {
+    color: var(--primary-color);
+}
+
+/* OTP */
+.resend-container {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-size: 12px;
+}
+.resend-timer {
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.resend-btn {
+    background-color: var(--base-3);
+    border-color: var(--base-3);
+    color: var(--text-color);
+    margin: 8px auto;
+}
+.resend-btn:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+.number-check-container {
+    background-color: var(--base-2);
+    padding: 8px;
+    border-radius: var(--radius-2);
+    font-size: 12px;
+}
+.number-check-title {
+    margin-bottom: 12px;
+}
+.number-submitted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.number-check {
     color: var(--primary-color);
 }
 

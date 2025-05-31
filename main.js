@@ -74,7 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabContents = document.querySelectorAll(".tab-content");
     const newBtn = document.querySelector(".new-btn, .help-btn a");
     const loginBtn = document.querySelector(".login-btn");
+    const otpBtn = document.getElementById("otp-btn");
+    const editNumber = document.getElementById("number-edit");
     const registrationBtn = document.getElementById("registration-btn");
+
+    const accountTitle = document.querySelector(".account-header-title");
+    const profileTitle = document.querySelector(".profile-header-title");
+    const otpTitle = document.querySelector(".otp-header-title");
+    const accountContainer = document.querySelector(".login-step");
+    const profileContainer = document.querySelector(".profile-info-update");
+    const otpContainer = document.querySelector(".opt-verification-container");
 
     function activateTab(tabType) {
         tabButtons.forEach((btn) => btn.classList.remove("active"));
@@ -112,11 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
     registrationBtn?.addEventListener("click", (e) => {
         e.preventDefault();
 
-        const accountTitle = document.querySelector(".account-header-title");
-        const profileTitle = document.querySelector(".profile-header-title");
-        const accountContainer = document.querySelector(".login-step");
-        const profileContainer = document.querySelector(".profile-info-update");
-
         if (accountTitle && profileTitle) {
             accountTitle.classList.remove("active");
             profileTitle.classList.add("active");
@@ -124,6 +128,50 @@ document.addEventListener("DOMContentLoaded", () => {
             profileContainer.classList.add("active");
         }
     });
+    otpBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (accountTitle && otpTitle) {
+            accountTitle.classList.remove("active");
+            otpTitle.classList.add("active");
+            accountContainer.classList.remove("active");
+            profileContainer.classList.remove("active");
+            otpContainer.classList.add("active");
+        }
+    });
+    editNumber?.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        console.log("first");
+
+        if (accountTitle && otpTitle) {
+            accountTitle.classList.add("active");
+            otpTitle.classList.remove("active");
+            otpContainer.classList.remove("active");
+            accountContainer.classList.add("active");
+        }
+    });
+});
+
+// Timer
+document.addEventListener("DOMContentLoaded", () => {
+    const timerEl = document.getElementById("timer");
+    let duration = 2 * 60; // 2 minutes in seconds
+
+    const countdown = setInterval(() => {
+        const minutes = Math.floor(duration / 60);
+        const seconds = duration % 60;
+        timerEl.textContent = `${String(minutes).padStart(2, "0")}:${String(
+            seconds
+        ).padStart(2, "0")}`;
+
+        if (duration <= 0) {
+            clearInterval(countdown);
+            timerEl.textContent = "00:00";
+        } else {
+            duration--;
+        }
+    }, 1000);
 });
 
 // Search
