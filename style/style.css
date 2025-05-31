@@ -76,7 +76,8 @@ img {
     gap: 16px;
 }
 
-.btn {
+.btn,
+a.btn {
     border: 1px solid var(--primary-color);
     background-color: var(--primary-color);
     color: var(--text-reverse);
@@ -88,6 +89,7 @@ img {
     align-items: center;
     justify-content: center;
     gap: 4px;
+    text-decoration: none;
 }
 
 .btn:hover {
@@ -122,6 +124,7 @@ img {
 /* Header */
 .logo {
     width: 180px;
+    max-width: 180px;
 }
 
 header.header {
@@ -1251,7 +1254,8 @@ button.controls:hover {
     margin-bottom: 50px;
     font-size: 18px;
 }
-.btn-win {
+.btn-win,
+a.btn-win {
     flex-basis: 50%;
     background-color: var(--img-bg);
     padding: 10px;

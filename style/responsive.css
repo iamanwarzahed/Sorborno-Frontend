@@ -1,4 +1,7 @@
 @media (max-width: 992px) {
+    .logo {
+        max-width: 120px;
+    }
     .testimonial-section {
         gap: 14px;
     }
@@ -37,15 +40,13 @@
     .hamburger {
         display: block;
     }
-    .btn {
+    .btn,
+    a.btn {
         padding: 4px 14px;
     }
     header.header {
         padding-top: 10px;
         padding-bottom: 10px;
-    }
-    .logo {
-        width: 120px;
     }
     .menu-course {
         padding: 4px;
@@ -240,7 +241,8 @@
         margin-bottom: 16px;
         font-size: 14px;
     }
-    .btn-win {
+    .btn-win,
+    a.btn-win {
         padding: 4px;
         font-size: 16px;
         font-weight: 500;
@@ -363,7 +365,8 @@
     .btn-group {
         gap: 8px;
     }
-    .btn {
+    .btn,
+    a.btn {
         padding: 4px 6px;
         font-size: 14px;
     }
