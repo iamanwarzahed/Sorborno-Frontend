@@ -167,7 +167,8 @@ header .container {
     width: max-content;
 }
 
-.menu-options .option {
+.menu-options .option,
+.menu-options a.option {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -175,6 +176,8 @@ header .container {
     cursor: pointer;
     transition: all var(--transition-1);
     position: relative;
+    text-decoration: none;
+    color: var(--text-color);
 }
 
 .sub-menu {
