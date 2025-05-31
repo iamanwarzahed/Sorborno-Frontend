@@ -681,7 +681,12 @@
             <div class="overlay"></div>
             <div id="login-drawer" class="drawer-container">
                 <div class="drawer-header">
-                    <div class="drawer-title">Learn with Soroborno</div>
+                    <div class="drawer-title account-header-title active">
+                        Learn with Soroborno
+                    </div>
+                    <div class="drawer-title profile-header-title">
+                        Complete your profile
+                    </div>
                     <div class="icon drawer-close">
                         <svg
                             width="24px"
@@ -709,35 +714,75 @@
                     </div>
                 </div>
                 <div class="drawer-body">
-                    <div class="login-process-wrapper">
-                        <div class="account-title login-title active">Login to Account</div>
-                        <div class="account-title create-title">Create New Account</div>
-                        <div class="tab-selection">
-                            <div class="tab-btn tab-login active">Login</div>
-                            <div class="tab-btn tab-create">Create New</div>
-                        </div>
-                        <div class="tab-content tab-login-content active">
-                            <form class="login-form" action="#" method="POST">
-                                <label for="login-id"
-                                    >Phone Number / Email</label
+                    <div class="drawer-content login-step active">
+                        <div class="login-process-wrapper">
+                            <div class="account-title login-title active">
+                                Login to Account
+                            </div>
+                            <div class="account-title create-title">
+                                Create New Account
+                            </div>
+                            <div class="tab-selection">
+                                <div class="tab-btn tab-login active">
+                                    Login
+                                </div>
+                                <div class="tab-btn tab-create">Create New</div>
+                            </div>
+                            <div class="tab-content tab-login-content active">
+                                <form
+                                    class="login-form"
+                                    action="#"
+                                    method="POST"
                                 >
-                                <input
-                                    type="text"
-                                    id="login-id"
-                                    name="login-id"
-                                    placeholder="+1 234 567 8900"
-                                    required
-                                    pattern="[\d\s\+\-]{7,15}"
-                                />
+                                    <label for="login-id"
+                                        >Phone Number / Email</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="login-id"
+                                        name="login-id"
+                                        placeholder="+1 234 567 8900"
+                                        required
+                                        pattern="[\d\s\+\-]{7,15}"
+                                    />
 
-                                <button class="btn" type="submit">
-                                    Submit
+                                    <button class="btn" type="submit">
+                                        Submit
+                                        <div class="icon">
+                                            <svg
+                                                width="20px"
+                                                height="20px"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <g
+                                                    id="SVGRepo_bgCarrier"
+                                                    stroke-width="0"
+                                                ></g>
+                                                <g
+                                                    id="SVGRepo_tracerCarrier"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
+                                                        fill="currentColor"
+                                                    ></path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </form>
+                                <div class="help-btn">
+                                    <a class="new-btn" href="#">New Account</a>
                                     <div class="icon">
                                         <svg
-                                            width="20px"
-                                            height="20px"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
+                                            fill="currentColor"
+                                            width="12px"
+                                            height="12px"
+                                            viewBox="0 0 32 32"
                                             xmlns="http://www.w3.org/2000/svg"
                                         >
                                             <g
@@ -751,152 +796,379 @@
                                             ></g>
                                             <g id="SVGRepo_iconCarrier">
                                                 <path
-                                                    d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
-                                                    fill="currentColor"
+                                                    d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z"
                                                 ></path>
                                             </g>
                                         </svg>
                                     </div>
-                                </button>
-                            </form>
-                            <div class="help-btn">
-                                <a class="new-btn" href="#">New Account</a>
-                                <div class="icon">
-                                    <svg
-                                        fill="currentColor"
-                                        width="12px"
-                                        height="12px"
-                                        viewBox="0 0 32 32"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <g
-                                            id="SVGRepo_bgCarrier"
-                                            stroke-width="0"
-                                        ></g>
-                                        <g
-                                            id="SVGRepo_tracerCarrier"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        ></g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path
-                                                d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z"
-                                            ></path>
-                                        </g>
-                                    </svg>
+                                    <a href="#">Forget Password</a>
                                 </div>
-                                <a href="#">Forget Password</a>
+                            </div>
+                            <div class="tab-content tab-create-content">
+                                <form
+                                    class="login-form"
+                                    action="#"
+                                    method="POST"
+                                >
+                                    <label for="registration-id">Email</label>
+                                    <input
+                                        type="email"
+                                        id="registration-id"
+                                        name="registration-id"
+                                        placeholder="user@gmail.com"
+                                        required
+                                    />
+
+                                    <button
+                                        class="btn"
+                                        id="registration-btn"
+                                        type="submit"
+                                    >
+                                        Submit
+                                        <div class="icon">
+                                            <svg
+                                                width="20px"
+                                                height="20px"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <g
+                                                    id="SVGRepo_bgCarrier"
+                                                    stroke-width="0"
+                                                ></g>
+                                                <g
+                                                    id="SVGRepo_tracerCarrier"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
+                                                        fill="currentColor"
+                                                    ></path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button class="btn outside" type="submit">
+                                        Outside Country
+                                        <div class="icon">
+                                            <svg
+                                                width="20px"
+                                                height="20px"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <g
+                                                    id="SVGRepo_bgCarrier"
+                                                    stroke-width="0"
+                                                ></g>
+                                                <g
+                                                    id="SVGRepo_tracerCarrier"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
+                                                        fill="currentColor"
+                                                    ></path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </form>
+                                <div class="help-btn">
+                                    <div>Have account?</div>
+                                    <a class="login-btn" href="#">Login</a>
+                                    <div class="icon">
+                                        <svg
+                                            fill="currentColor"
+                                            width="14px"
+                                            height="14px"
+                                            viewBox="0 0 32 32"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <g
+                                                id="SVGRepo_bgCarrier"
+                                                stroke-width="0"
+                                            ></g>
+                                            <g
+                                                id="SVGRepo_tracerCarrier"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            ></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z"
+                                                ></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <a href="#">Forget Password</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="tab-content tab-create-content">
-                            <form class="login-form" action="#" method="POST">
-                                <label for="registration-id"
-                                    >Email</label
-                                >
-                                <input
-                                    type="email"
-                                    id="registration-id"
-                                    name="registration-id"
-                                    placeholder="user@gmail.com"
-                                    required
-                                />
-
-                                <button class="btn" type="submit">
-                                    Submit
-                                    <div class="icon">
-                                        <svg
-                                            width="20px"
-                                            height="20px"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <g
-                                                id="SVGRepo_bgCarrier"
-                                                stroke-width="0"
-                                            ></g>
-                                            <g
-                                                id="SVGRepo_tracerCarrier"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            ></g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <path
-                                                    d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
-                                                    fill="currentColor"
-                                                ></path>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                </button>
-                                <button class="btn outside" type="submit">
-                                    Outside Country
-                                    <div class="icon">
-                                        <svg
-                                            width="20px"
-                                            height="20px"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <g
-                                                id="SVGRepo_bgCarrier"
-                                                stroke-width="0"
-                                            ></g>
-                                            <g
-                                                id="SVGRepo_tracerCarrier"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            ></g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <path
-                                                    d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
-                                                    fill="currentColor"
-                                                ></path>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                </button>
-                            </form>
-                            <div class="help-btn">
-                                <div>Have account?</div>
-                                <a class="login-btn" href="#">Login</a>
-                                <div class="icon">
-                                    <svg
-                                        fill="currentColor"
-                                        width="14px"
-                                        height="14px"
-                                        viewBox="0 0 32 32"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <g
-                                            id="SVGRepo_bgCarrier"
-                                            stroke-width="0"
-                                        ></g>
-                                        <g
-                                            id="SVGRepo_tracerCarrier"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        ></g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path
-                                                d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z"
-                                            ></path>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <a href="#">Forget Password</a>
-                            </div>
+                        <div class="communication-need">
+                            Call for communication +8801700000000
                         </div>
                     </div>
-                    <div class="communication-need">
-                        Call for communication +8801700000000
+                    <div class="drawer-content profile-info-update">
+                        <form
+                            class="login-form profile-form"
+                            action="#"
+                            method="POST"
+                        >
+                            <div class="image-uploader">
+                                <input
+                                    type="file"
+                                    id="imageInput"
+                                    accept="image/*"
+                                    hidden
+                                />
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="preview-area" id="previewArea">
+                                        <img
+                                            class="profile-image"
+                                            src="assets/author.jpg"
+                                            alt="Preview"
+                                        />
+                                    </div>
+                                    <div class="icon">
+                                        <svg
+                                            width="28px"
+                                            height="28px"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <g
+                                                id="SVGRepo_bgCarrier"
+                                                stroke-width="0"
+                                            ></g>
+                                            <g
+                                                id="SVGRepo_tracerCarrier"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            ></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M8 4C8 3.44772 8.41328 3 8.92308 3H15.0769C15.5867 3 16 3.44772 16 4C16 4.55228 15.5867 5 15.0769 5H8.92308C8.41328 5 8 4.55228 8 4Z"
+                                                    fill="#1C274C"
+                                                ></path>
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M9.77778 21H14.2222C17.3433 21 18.9038 21 20.0248 20.2777C20.51 19.965 20.9267 19.5632 21.251 19.0953C22 18.0143 22 16.5095 22 13.4999C22 10.4903 21.9998 8.9857 21.2508 7.90473C20.9266 7.43676 20.5099 7.03497 20.0246 6.72228C18.9036 6 17.3431 6 14.2221 6H9.77761C6.65659 6 5.09607 6 3.97508 6.72228C3.48979 7.03497 3.07312 7.43676 2.74886 7.90473C2 8.98547 2 10.4896 2 13.4979L2 13.4999C2 16.5095 2 18.0143 2.74902 19.0953C3.07328 19.5632 3.48995 19.965 3.97524 20.2777C5.09624 21 6.65675 21 9.77778 21ZM7.83333 13.4999C7.83333 11.2808 9.69881 9.48196 12 9.48196C14.3012 9.48196 16.1667 11.2808 16.1667 13.4999C16.1667 15.7189 14.3012 17.5178 12 17.5178C9.69881 17.5178 7.83333 15.7189 7.83333 13.4999ZM9.5 13.4999C9.5 12.1685 10.6193 11.0891 12 11.0891C13.3807 11.0891 14.5 12.1685 14.5 13.4999C14.5 14.8313 13.3807 15.9106 12 15.9106C10.6193 15.9106 9.5 14.8313 9.5 13.4999ZM18.1111 9.48196C17.6509 9.48196 17.2778 9.84174 17.2778 10.2855C17.2778 10.7294 17.6509 11.0891 18.1111 11.0891H18.6667C19.1269 11.0891 19.5 10.7294 19.5 10.2855C19.5 9.84174 19.1269 9.48196 18.6667 9.48196H18.1111Z"
+                                                    fill="#1C274C"
+                                                ></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="image-upload-content">
+                                    Upload your profile picture
+                                </div>
+                            </div>
+
+                            <label for="profile-name">Name</label>
+                            <input
+                                type="text"
+                                id="profile-name"
+                                name="profile-name"
+                                placeholder="Your full name"
+                                required
+                            />
+                            <input
+                                type="email"
+                                id="profile-id"
+                                name="profile-id"
+                                placeholder="user@gmail.com"
+                                required
+                            />
+                            <input
+                                type="text"
+                                id="profile-phone"
+                                name="profile-phone"
+                                placeholder="+1 234 567 8900"
+                                required
+                                pattern="[\d\s\+\-]{7,15}"
+                            />
+
+                            <div class="custom-select-wrapper">
+                                <div class="custom-select">
+                                    <div class="selected">
+                                        <div>Select Your Gender</div>
+                                        <div class="angle icon">
+                                            <svg
+                                                width="20px"
+                                                height="20px"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <g
+                                                    id="SVGRepo_bgCarrier"
+                                                    stroke-width="0"
+                                                ></g>
+                                                <g
+                                                    id="SVGRepo_tracerCarrier"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M12 14.5C11.9015 14.5005 11.8038 14.4813 11.7128 14.4435C11.6218 14.4057 11.5392 14.3501 11.47 14.28L8 10.78C7.90861 10.6391 7.86719 10.4715 7.88238 10.3042C7.89756 10.1369 7.96848 9.97954 8.08376 9.85735C8.19904 9.73515 8.352 9.65519 8.51814 9.63029C8.68428 9.6054 8.85396 9.63699 9 9.72003L12 12.72L15 9.72003C15.146 9.63699 15.3157 9.6054 15.4819 9.63029C15.648 9.65519 15.801 9.73515 15.9162 9.85735C16.0315 9.97954 16.1024 10.1369 16.1176 10.3042C16.1328 10.4715 16.0914 10.6391 16 10.78L12.5 14.28C12.3675 14.4144 12.1886 14.4931 12 14.5Z"
+                                                        fill="currentColor"
+                                                    ></path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="options">
+                                        <div class="option" data-value="apple">
+                                            Male
+                                        </div>
+                                        <div class="option" data-value="banana">
+                                            Female
+                                        </div>
+                                        <div class="option" data-value="cherry">
+                                            Others
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="custom-select-wrapper">
+                                <div class="custom-select">
+                                    <div class="selected">
+                                        <div>Select Your Occupation</div>
+                                        <div class="angle icon">
+                                            <svg
+                                                width="20px"
+                                                height="20px"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <g
+                                                    id="SVGRepo_bgCarrier"
+                                                    stroke-width="0"
+                                                ></g>
+                                                <g
+                                                    id="SVGRepo_tracerCarrier"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M12 14.5C11.9015 14.5005 11.8038 14.4813 11.7128 14.4435C11.6218 14.4057 11.5392 14.3501 11.47 14.28L8 10.78C7.90861 10.6391 7.86719 10.4715 7.88238 10.3042C7.89756 10.1369 7.96848 9.97954 8.08376 9.85735C8.19904 9.73515 8.352 9.65519 8.51814 9.63029C8.68428 9.6054 8.85396 9.63699 9 9.72003L12 12.72L15 9.72003C15.146 9.63699 15.3157 9.6054 15.4819 9.63029C15.648 9.65519 15.801 9.73515 15.9162 9.85735C16.0315 9.97954 16.1024 10.1369 16.1176 10.3042C16.1328 10.4715 16.0914 10.6391 16 10.78L12.5 14.28C12.3675 14.4144 12.1886 14.4931 12 14.5Z"
+                                                        fill="currentColor"
+                                                    ></path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="options">
+                                        <div class="option" data-value="apple">
+                                            Student
+                                        </div>
+                                        <div class="option" data-value="banana">
+                                            Teacher
+                                        </div>
+                                        <div class="option" data-value="cherry">
+                                            Job Holder
+                                        </div>
+                                        <div class="option" data-value="cherry">
+                                            Others
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="custom-select-wrapper">
+                                <div class="custom-select">
+                                    <div class="selected">
+                                        <div>Select Your Career</div>
+                                        <div class="angle icon">
+                                            <svg
+                                                width="20px"
+                                                height="20px"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <g
+                                                    id="SVGRepo_bgCarrier"
+                                                    stroke-width="0"
+                                                ></g>
+                                                <g
+                                                    id="SVGRepo_tracerCarrier"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                ></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M12 14.5C11.9015 14.5005 11.8038 14.4813 11.7128 14.4435C11.6218 14.4057 11.5392 14.3501 11.47 14.28L8 10.78C7.90861 10.6391 7.86719 10.4715 7.88238 10.3042C7.89756 10.1369 7.96848 9.97954 8.08376 9.85735C8.19904 9.73515 8.352 9.65519 8.51814 9.63029C8.68428 9.6054 8.85396 9.63699 9 9.72003L12 12.72L15 9.72003C15.146 9.63699 15.3157 9.6054 15.4819 9.63029C15.648 9.65519 15.801 9.73515 15.9162 9.85735C16.0315 9.97954 16.1024 10.1369 16.1176 10.3042C16.1328 10.4715 16.0914 10.6391 16 10.78L12.5 14.28C12.3675 14.4144 12.1886 14.4931 12 14.5Z"
+                                                        fill="currentColor"
+                                                    ></path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="options">
+                                        <div class="option" data-value="apple">
+                                            Digital Marketing
+                                        </div>
+                                        <div class="option" data-value="banana">
+                                            Web Developer
+                                        </div>
+                                        <div class="option" data-value="cherry">
+                                            App Developer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn" type="submit">
+                                Submit
+                                <div class="icon">
+                                    <svg
+                                        width="20px"
+                                        height="20px"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g
+                                            id="SVGRepo_bgCarrier"
+                                            stroke-width="0"
+                                        ></g>
+                                        <g
+                                            id="SVGRepo_tracerCarrier"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        ></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Skider -->
+        <!-- Slider -->
         <div class="container mb-50 slider-wrapper">
             <div class="slider-container">
                 <button class="controls prev">&#10094;</button>

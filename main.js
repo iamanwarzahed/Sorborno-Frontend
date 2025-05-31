@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabContents = document.querySelectorAll(".tab-content");
     const newBtn = document.querySelector(".new-btn, .help-btn a");
     const loginBtn = document.querySelector(".login-btn");
+    const registrationBtn = document.getElementById("registration-btn");
 
     function activateTab(tabType) {
         tabButtons.forEach((btn) => btn.classList.remove("active"));
@@ -106,6 +107,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginBtn?.addEventListener("click", () => {
         activateTab("login");
+    });
+
+    registrationBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const accountTitle = document.querySelector(".account-header-title");
+        const profileTitle = document.querySelector(".profile-header-title");
+        const accountContainer = document.querySelector(".login-step");
+        const profileContainer = document.querySelector(".profile-info-update");
+
+        if (accountTitle && profileTitle) {
+            accountTitle.classList.remove("active");
+            profileTitle.classList.add("active");
+            accountContainer.classList.remove("active");
+            profileContainer.classList.add("active");
+        }
     });
 });
 
@@ -375,4 +392,44 @@ document.addEventListener("DOMContentLoaded", () => {
         //   }
         // });
     });
+});
+
+// Image uploader
+document.addEventListener("DOMContentLoaded", () => {
+    const imageInput = document.getElementById("imageInput");
+    const uploadArea = document.getElementById("uploadArea");
+    const previewArea = document.getElementById("previewArea");
+
+    uploadArea.addEventListener("click", () => {
+        imageInput.click();
+    });
+
+    uploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadArea.classList.add("hover");
+    });
+
+    uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("hover");
+    });
+
+    uploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove("hover");
+        const file = e.dataTransfer.files[0];
+        if (file) showPreview(file);
+    });
+
+    imageInput.addEventListener("change", () => {
+        const file = imageInput.files[0];
+        if (file) showPreview(file);
+    });
+
+    function showPreview(file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            previewArea.innerHTML = `<img class="profile-image" src="${reader.result}" alt="Preview" />`;
+        };
+        reader.readAsDataURL(file);
+    }
 });
