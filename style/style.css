@@ -1127,6 +1127,14 @@ button.controls:hover {
     justify-content: space-between;
     align-items: start;
 }
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+    gap: 20px;
+}
+.footer-widget {
+    margin: 0 auto;
+}
 .first-widget {
     max-width: 300px;
 }
@@ -1169,7 +1177,7 @@ button.controls:hover {
 .footer-title {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 .communication-details {
     display: flex;

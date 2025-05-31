@@ -304,14 +304,16 @@
     }
     .footer-title {
         font-size: 16px;
-        margin-bottom: 4px;
+    }
+    .footer-links-wrapper .footer-title {
+        margin-bottom: 15px;
     }
     .communication-details {
         gap: 4px;
         font-size: 12px;
     }
     .footer-links {
-        gap: 0px;
+        gap: 4px;
         min-width: 20%;
     }
     .footer-wrapper a {
@@ -338,7 +340,12 @@
         display: none;
     }
 }
-
+@media (max-width: 620px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 40px;
+    }
+}
 @media (max-width: 480px) {
     .btn-group {
         gap: 8px;
