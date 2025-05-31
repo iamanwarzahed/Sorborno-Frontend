@@ -461,7 +461,6 @@ header .container {
     border-color: var(--primary-color);
     color: var(--text-reverse);
 }
-
 .help-btn {
     display: flex;
     align-items: center;
@@ -555,13 +554,11 @@ header .container {
     display: flex;
     align-items: center;
 }
-
 .slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
     width: 100%;
 }
-
 button.controls {
     position: absolute;
     z-index: 999;
@@ -575,16 +572,13 @@ button.controls {
     padding: 6px;
     cursor: pointer;
 }
-
 button.controls.next {
     right: 0;
     left: auto;
 }
-
 button.controls:hover {
     background-color: var(--shadow3);
 }
-
 .slide {
     min-width: 100%;
     transition: opacity 0.5s ease-in-out;
@@ -594,35 +588,29 @@ button.controls:hover {
     gap: 40px;
     padding: 50px;
 }
-
 .slider-img {
     width: 40vw;
     max-width: 700px;
 }
-
 .slide-partner img {
     max-width: 60px;
 }
-
 .slider-title {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 16px;
 }
-
 .slider-subtitle {
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 24px;
 }
-
 .slider-btn {
     font-size: 14px;
     line-height: 1.25rem;
     font-weight: 600;
     margin-bottom: 36px;
 }
-
 .slider-description {
     font-size: 16px;
     font-weight: 500;
@@ -637,7 +625,6 @@ button.controls:hover {
     position: relative;
     width: 100%;
 }
-
 .custom-select {
     border: 1px solid var(--primary-color);
     border-radius: var(--radius-2);
@@ -651,7 +638,6 @@ button.controls:hover {
     cursor: pointer;
     position: relative;
 }
-
 .selected {
     padding: 10px;
     display: flex;
@@ -670,7 +656,6 @@ button.controls:hover {
 .selected.active .angle {
     transform: rotate(180deg);
 }
-
 .custom-select .options {
     display: none;
     position: absolute;
