@@ -1,13 +1,10 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Navigation and chat
+// Navigation
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburger");
     const wrapper = document.getElementById("nav-drawer-wrapper");
-
-    const chatOpenButtons = document.querySelectorAll(".live-chat-open");
-    const chatWrapper = document.querySelector(".live-chat-wrapper");
-    const closeChatBtn = document.querySelector(".chat-close");
+    const navItems = document.querySelectorAll(".nav-item");
 
     function closeDrawer() {
         wrapper.classList.remove("active");
@@ -35,10 +32,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    navItems.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            closeDrawer();
+        });
+    });
+
+});
+
+// Live chat
+document.addEventListener("DOMContentLoaded", () => {
+    const chatOpenButtons = document.querySelectorAll(".live-chat-open");
+    const chatWrapper = document.querySelector(".live-chat-wrapper");
+    const closeChatBtn = document.querySelector(".chat-close");
+
     chatOpenButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
             chatWrapper.classList.add("active");
-            closeDrawer();
         });
     });
 

@@ -284,9 +284,13 @@ header .container {
     font-size: 18px;
     margin-bottom: 8px;
 }
-.nav-item {
+.nav-item,
+a.nav-item {
     padding-left: 10px;
     margin-bottom: 12px;
+    text-decoration: none;
+    display: block;
+    color: var(--text-color);
 }
 .drawer-wrapper {
     position: fixed;
