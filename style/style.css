@@ -1561,3 +1561,13 @@ a.btn-win {
     width: 100%;
     padding: 0;
 }
+
+
+.listing-container {
+    gap: 20px;
+    justify-content: center;
+}
+.listing-container .course-item {
+    margin-right: 0;
+    margin-bottom: 12px;
+}
