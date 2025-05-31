@@ -20,6 +20,9 @@
         min-width: 20%;
         gap: 8px;
     }
+    .second-widget {
+        margin-left: 20px;
+    }
 }
 @media (max-width: 768px) {
     .mb-12 {
@@ -344,6 +347,9 @@
     .footer-container {
         grid-template-columns: 1fr 1fr;
         row-gap: 40px;
+    }
+    .second-widget {
+        margin-left: 0px;
     }
 }
 @media (max-width: 480px) {

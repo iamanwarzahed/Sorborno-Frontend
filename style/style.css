@@ -1140,6 +1140,7 @@ button.controls:hover {
 }
 .second-widget {
     max-width: 400px;
+    margin-left: 40px;
 }
 .footer-wrapper a {
     color: var(--text-color);
