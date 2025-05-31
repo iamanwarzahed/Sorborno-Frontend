@@ -1,9 +1,13 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Navigation
+// Navigation and chat
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburger");
     const wrapper = document.getElementById("nav-drawer-wrapper");
+
+    const chatOpenButtons = document.querySelectorAll(".live-chat-open");
+    const chatWrapper = document.querySelector(".live-chat-wrapper");
+    const closeChatBtn = document.querySelector(".chat-close");
 
     function closeDrawer() {
         wrapper.classList.remove("active");
@@ -30,6 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
             closeDrawer();
         }
     });
+
+    chatOpenButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            chatWrapper.classList.add("active");
+            closeDrawer();
+        });
+    });
+
+    if (closeChatBtn) {
+        closeChatBtn.addEventListener("click", () => {
+            chatWrapper.classList.remove("active");
+        });
+    }
 });
 
 // Drawer
@@ -157,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const timerEl = document.getElementById("timer");
     let duration = 2 * 60; // 2 minutes in seconds
-    
+
     const countdown = setInterval(() => {
         const minutes = Math.floor(duration / 60);
         const seconds = duration % 60;
@@ -172,20 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
             duration--;
         }
     }, 1000);
-});
-
-// Live chat
-document.addEventListener("DOMContentLoaded", () => {
-    const chatOpen = document.getElementById("live-chat-open");
-    const chatWrapper = document.querySelector(".live-chat-wrapper");
-    const closeChatBtn = document.querySelector(".chat-close");
-
-    chatOpen.addEventListener("click", () => {
-        chatWrapper.classList.add("active");
-    });
-    closeChatBtn.addEventListener("click", () => {
-        chatWrapper.classList.remove("active");
-    });
 });
 
 // Search
