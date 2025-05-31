@@ -1027,6 +1027,15 @@ button.controls:hover {
 .btn-course:hover {
     background-color: var(--secondary-color);
 }
+.blog-item {
+    text-align: start;
+}
+.blog-item .course-img-container {
+    background-color: transparent;
+}
+.blog-item .course-subtitle {
+    margin-bottom: 40px;
+}
 
 /* Star ratings */
 .stars {
@@ -1561,7 +1570,6 @@ a.btn-win {
     width: 100%;
     padding: 0;
 }
-
 
 .listing-container {
     gap: 20px;
