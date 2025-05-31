@@ -10,7 +10,7 @@
     --warning-color: #ff0000;
     --img-bg: #9c069c;
     --base-1: #fefffe;
-    --base-2: #daeae2;
+    --base-2: #e7fdf2;
     --base-3: #dde3e0;
     --text-reverse: #ffffff;
     --shadow1: rgba(0, 0, 0, 0.2);
@@ -165,13 +165,14 @@ header .container {
     box-shadow: 0 4px 10px var(--shadow2);
     border-radius: var(--radius-2);
     width: max-content;
+    padding: 6px 0;
 }
 
 .menu-options .option {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 4px 10px;
+    padding: 6px 10px;
     cursor: pointer;
     transition: all var(--transition-1);
     position: relative;
@@ -1469,4 +1470,84 @@ button.controls:hover {
 }
 .mobile .language-select .options {
     top: calc(100% - 5px);
+}
+
+/* Live Chat */
+.live-chat-wrapper {
+    max-width: 300px;
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius-3) var(--radius-3) 0 0;
+    box-shadow: 0px 0px 4px 0px var(--shadow2);
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    background-color: var(--base-1);
+    z-index: 999999;
+    display: none;
+}
+.live-chat-wrapper.active {
+    display: block;
+}
+.live-chat-header {
+    width: 100%;
+    border-radius: var(--radius-3) var(--radius-3) 0 0;
+    padding: 8px;
+    background-color: var(--base-3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.live-chat-header img {
+    max-width: 70px;
+}
+.live-chat-body {
+    height: 320px;
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: auto;
+    scrollbar-width: none;
+}
+.live-chat-body::-webkit-scrollbar {
+    display: none;
+}
+.live-chat-item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+}
+.live-chat-item.chat-user {
+    flex-direction: row-reverse;
+    justify-content: end;
+    text-align: end;
+}
+.live-chat-item img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.live-chat-message {
+    white-space: break-space;
+    max-width: 70%;
+}
+.live-chat-footer {
+    padding: 8px;
+    border-top: 1px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.live-chat-footer input,
+.live-chat-footer input:focus {
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid var(--shadow1);
+    width: 100%;
+    padding: 0;
 }
