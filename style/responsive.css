@@ -348,6 +348,16 @@
     .testimonial-marquee.column-2 {
         display: none;
     }
+
+    .blog-container {
+        width: 90%;
+        margin: 30px auto;
+    }
+}
+@media (max-width: 670px) {
+    .blog-header-container {
+        flex-direction: column;
+    }
 }
 @media (max-width: 620px) {
     .download .d-flex {
