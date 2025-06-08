@@ -190,8 +190,7 @@ header .container {
 
 .sub-menu .sub-option {
     color: var(--text-color);
-    padding: 4px 10px;
-    border-radius: var(--radius-2);
+    padding: 6px 10px;
 }
 
 .sub-menu .sub-option:hover,
@@ -295,7 +294,7 @@ a.nav-item {
     display: block;
     color: var(--text-color);
 }
-.drawer-wrapper {
+.overlay-wrapper {
     position: fixed;
     top: 0;
     right: 0;
@@ -303,8 +302,11 @@ a.nav-item {
     height: 100vh;
     z-index: 999999;
     pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.drawer-wrapper.active {
+.overlay-wrapper.active {
     pointer-events: auto;
 }
 .overlay {
@@ -317,10 +319,10 @@ a.nav-item {
     opacity: 0;
     transition: all var(--transition-1);
 }
-.drawer-wrapper.active .overlay {
+.overlay-wrapper.active .overlay {
     opacity: 1;
 }
-.drawer-container {
+.overlay-container {
     position: absolute;
     top: 0;
     right: 0;
@@ -334,10 +336,27 @@ a.nav-item {
     transform: translateX(100%);
     transition: all var(--transition-1);
 }
-#login-drawer.drawer-container {
+#login-wrapper .overlay-container {
     max-width: 450px;
+    height: fit-content;
+    background-color: var(--base-1);
+    right: unset;
+    top: unset;
+    bottom: unset;
+    transform: translate(0);
+    display: none;
+    border-radius: var(--radius-4);
 }
-.drawer-wrapper.active .drawer-container {
+#login-wrapper .drawer-header {
+   margin-bottom: 20px;
+}
+#login-wrapper .drawer-body {
+   height: fit-content;
+}
+#login-wrapper.active .overlay-container {
+    display: block;
+}
+.overlay-wrapper.active .overlay-container {
     transform: translateX(0%);
 }
 
@@ -600,6 +619,12 @@ a.nav-item {
 .multi-item {
     flex: 0 0 auto;
 }
+.slider-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+}
 .slider-container {
     max-width: 100%;
     position: relative;
@@ -642,6 +667,28 @@ button.controls:hover {
     justify-content: center;
     gap: 40px;
     padding: 50px;
+}
+.dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: -20px;
+}
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--base-3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition-1) ease;
+}
+.dot.active {
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
 }
 .slider-img {
     width: 40vw;
@@ -1289,6 +1336,7 @@ a.btn-win {
     color: var(--text-reverse);
     border-radius: var(--radius-4);
     overflow: hidden;
+    padding: 30px 0;
 }
 .download-content {
     max-width: 900px;

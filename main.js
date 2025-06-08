@@ -3,7 +3,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // Navigation
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburger");
-    const wrapper = document.getElementById("nav-drawer-wrapper");
+    const wrapper = document.getElementById("nav-overlay-wrapper");
     const navItems = document.querySelectorAll(".nav-item");
 
     function closeDrawer() {
@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
             closeDrawer();
         });
     });
-
 });
 
 // Live chat
@@ -62,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // Drawer
 document.addEventListener("DOMContentLoaded", () => {
     const loginButtons = document.querySelectorAll(".btn.login");
-    const wrapper = document.getElementById("login-drawer-wrapper");
-    const drawer = document.getElementById("login-drawer");
+    const wrapper = document.getElementById("login-wrapper");
+    const drawer = document.getElementById("overlay-container");
     const closeBtn = document.querySelector(".drawer-close");
 
     function closeDrawer() {
@@ -237,8 +236,27 @@ document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
     const prevBtn = wrapper.querySelector(".controls.prev");
     const nextBtn = wrapper.querySelector(".controls.next");
 
+    const dotsContainer = wrapper.querySelector(".dots");
+
+    // Create dots
+    const dots = [];
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+            index = i;
+            updateSlide();
+        });
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+    }
+
     function updateSlide() {
         slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
     }
 
     function goToNextSlide() {
