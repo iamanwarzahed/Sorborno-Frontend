@@ -1009,6 +1009,7 @@ button.controls:hover {
     margin: 0 auto;
     border-radius: var(--radius-6) var(--radius-6) var(--radius-4)
         var(--radius-4);
+        line-height: 0;
 }
 .course-img-container img {
     width: 100%;
@@ -1060,11 +1061,11 @@ button.controls:hover {
 .btn-course {
     background-color: var(--primary-color);
     color: var(--text-reverse);
-    border-radius: 30px;
+    border-radius: 0 0 var(--radius-3) var(--radius-3);
     position: absolute;
     z-index: 99;
-    left: 0;
-    right: 0;
+    left: -1px;
+    right: -1px;
     bottom: -12px;
     height: 40px;
     display: flex;
