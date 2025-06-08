@@ -1,0 +1,63 @@
+header.header {
+    margin-bottom: 0;
+}
+.affiliate-container {
+    text-align: center;
+    padding: 4rem 0;
+    background-image: linear-gradient(
+        var(--primary-color),
+        var(--light-medium-color)
+    );
+}
+.affiliate-title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 12px;
+    color: var(--text-reverse);
+}
+.affiliate-btn {
+    margin: 0 auto;
+    border-radius: 50px;
+}
+
+.affiliate-steps-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(270px, 1fr));
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+}
+.step-icon {
+    font-size: 3.75rem;
+}
+.step-number {
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    height: 35px;
+    width: 35px;
+    margin: 12px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-reverse);
+}
+.step-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.step-description {
+    font-size: 16px;
+}
+
+@media (max-width: 920px) {
+    .affiliate-steps-container {
+        grid-template-columns: repeat(1, minmax(270px, 1fr));
+    }
+}
+@media (max-width: 768px) {
+    .affiliate-btn.btn.login {
+        display: block;
+    }
+}
