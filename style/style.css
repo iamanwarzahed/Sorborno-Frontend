@@ -428,6 +428,9 @@ a.nav-item {
     padding: 4px 8px;
     border-radius: var(--radius-2);
 }
+.tab-selection.remove {
+    display: none;
+}
 .tab-btn {
     padding: 8px 30px;
     border-radius: var(--radius-2);
@@ -488,6 +491,9 @@ a.nav-item {
     background-color: var(--base-2);
     border-color: var(--base-2);
     color: var(--text-color);
+}
+.login-form .btn.outside.remove {
+    display: none;
 }
 .login-form .btn.outside:hover {
     background-color: var(--primary-color);

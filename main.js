@@ -96,9 +96,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Tab Selection
 document.addEventListener("DOMContentLoaded", () => {
+    const tabContainer = document.querySelectorAll(".tab-selection");
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabContents = document.querySelectorAll(".tab-content");
-    const newBtn = document.querySelector(".new-btn, .help-btn a");
+    const newBtn = document.querySelector(".new-btn");
+    const outsideBtn = document.querySelector(".btn.outside");
+    const forgetButtons = document.querySelectorAll(".forget-password");
     const loginBtn = document.querySelector(".login-btn");
     const otpBtn = document.getElementById("otp-btn");
     const editNumber = document.getElementById("number-edit");
@@ -110,10 +113,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const accountContainer = document.querySelector(".login-step");
     const profileContainer = document.querySelector(".profile-info-update");
     const otpContainer = document.querySelector(".opt-verification-container");
+    const titles = document.querySelectorAll(".account-title");
 
     function activateTab(tabType) {
         tabButtons.forEach((btn) => btn.classList.remove("active"));
         tabContents.forEach((content) => content.classList.remove("active"));
+        tabContainer.forEach((tab) => tab.classList.remove("remove"));
+        outsideBtn.classList.remove("remove");
 
         document
             .querySelectorAll(".login-title, .create-title")
@@ -136,9 +142,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     newBtn?.addEventListener("click", (e) => {
-        e.preventDefault(); // for anchor tags
+        e.preventDefault();
         activateTab("create");
     });
+
+    forgetButtons.forEach((forgetBtn) =>
+        forgetBtn?.addEventListener("click", (e) => {
+            e.preventDefault();
+            accountTitle.textContent = "Recover your password";
+            titles.forEach((title) => title.classList.remove("active"));
+            tabContainer.forEach((tab) => tab.classList.add("remove"));
+            outsideBtn.classList.add("remove");
+        })
+    );
 
     loginBtn?.addEventListener("click", () => {
         activateTab("login");
