@@ -1397,7 +1397,9 @@ a.btn-win {
     margin: 0 auto;
     flex-basis: 48%;
 }
-
+.details-faq .accordion {
+    max-width: 100%;
+}
 .accordion-item {
     background-color: var(--primary-color);
     margin-bottom: 20px;
