@@ -106,6 +106,9 @@ ul.course-learning-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
+.info-wrapper section {
+    padding: 0 2px;
+}
 #syllabus-container .accordion-wrapper {
     flex-wrap: nowrap;
 }
