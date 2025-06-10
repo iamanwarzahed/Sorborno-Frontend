@@ -39,8 +39,8 @@
 }
 
 .info-tab-container {
-    background-color: var(--base-3);
-    border-radius: var(--radius-3);
+    /* background-color: var(--base-3);
+    border-radius: var(--radius-3); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,11 +51,13 @@
     padding: 12px;
     width: 100%;
     text-align: center;
+    background-color: var(--base-3);
 }
 .info-tab.active {
     font-weight: bold;
-    background-color: var(--base-1);
-    border-radius: var(--radius-2);
+    background-color: var(--base-2);
+    /* border-radius: var(--radius-2); */
+    border-bottom: 2px solid var(--primary-color);
 }
 .info-tab-wrapper {
     background-color: var(--base-1);
