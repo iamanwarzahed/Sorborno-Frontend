@@ -542,3 +542,61 @@ document.addEventListener("DOMContentLoaded", () => {
         reader.readAsDataURL(file);
     }
 });
+
+// Scroll and selection
+document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".info-tab");
+    const detailsSection = document.getElementById("details-container");
+    const syllabusSection = document.getElementById("syllabus-container");
+    const infoTabContainer = document.querySelector(".info-tab-container");
+
+    const OFFSET = 150;
+    let isAutoScrolling = false;
+    let scrollTimeout;
+
+    function getOffsetTop(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top + window.scrollY - infoTabContainer.offsetHeight - OFFSET;
+    }
+
+    function setActiveTab(index) {
+        tabs.forEach(t => t.classList.remove("active"));
+        tabs[index].classList.add("active");
+    }
+
+    tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => {
+            setActiveTab(index);
+
+            const targetSection = index === 0 ? detailsSection : syllabusSection;
+            const scrollTo = getOffsetTop(targetSection);
+
+            isAutoScrolling = true;
+            window.scrollTo({
+                top: scrollTo,
+                behavior: "smooth"
+            });
+
+            // Disable scroll updates temporarily
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isAutoScrolling = false;
+            }, 500); // adjust duration to match smooth scroll
+        });
+    });
+
+    window.addEventListener("scroll", () => {
+        if (isAutoScrolling) return;
+
+        const currentScroll = window.scrollY + infoTabContainer.offsetHeight + OFFSET;
+        const detailsTop = detailsSection.offsetTop;
+        const syllabusTop = syllabusSection.offsetTop;
+
+        if (currentScroll >= syllabusTop) {
+            setActiveTab(1); // Syllabus
+        } else {
+            setActiveTab(0); // Details
+        }
+    });
+});
+

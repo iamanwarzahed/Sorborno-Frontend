@@ -1002,10 +1002,8 @@ button.controls:hover {
 .course-item {
     border: 1px solid var(--primary-color);
     border-radius: var(--radius-3);
-
     position: relative;
     text-align: center;
-    cursor: pointer;
     box-shadow: 0 4px 10px var(--shadow1);
     max-width: 270px;
     margin-right: 24px;

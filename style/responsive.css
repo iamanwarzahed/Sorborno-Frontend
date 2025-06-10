@@ -52,13 +52,6 @@
         padding: 4px;
         font-size: 12px;
     }
-    /* .language-select-wrapper {
-        width: 20px;
-        height: 10px;
-    }
-    .language-select .selected {
-        padding: 0;
-    } */
     .search-input-wrapper {
         width: fit-content;
         position: fixed;
