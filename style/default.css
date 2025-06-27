@@ -10,6 +10,9 @@
 .item-center {
     align-items: center;
 }
+.item-end {
+    align-items: end;
+}
 .justify-center {
     justify-content: center;
 }
@@ -40,13 +43,21 @@
 .mb-30 {
   margin-bottom: 30px;
 }
+.mb-16 {
+  margin-bottom: 16px;
+}
 .mb-12 {
   margin-bottom: 12px;
+}
+.mb-6 {
+  margin-bottom: 6px;
 }
 .w-full {
   width: 100%;
 }
-
+.w-360 {
+  max-width: 360px;
+}
 .lh-0 {
   line-height: 0;
 }

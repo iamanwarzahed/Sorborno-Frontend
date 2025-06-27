@@ -353,6 +353,7 @@
     }
 }
 @media (max-width: 620px) {
+    .book-container .d-flex,
     .download .d-flex {
         flex-direction: column;
     }
