@@ -1,5 +1,6 @@
 :root {
     --text-color: #070707;
+    --dark-color: #0e9b50;
     --primary-color: #009245;
     --secondary-color: #0feb75;
     --tertiary-color: #010e07;
@@ -17,6 +18,7 @@
     --shadow1: rgba(0, 0, 0, 0.2);
     --shadow2: rgba(0, 0, 0, 0.5);
     --shadow3: rgba(0, 0, 0, 0.7);
+    --primary-shadow: rgba(17, 233, 118, 0.205);
 
     --blog-header: #bbff00;
 

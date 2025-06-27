@@ -123,19 +123,26 @@ ul.course-learning-container {
 }
 #syllabus-container .accordion-item.active .accordion-content {
     border-top: 1px solid var(--primary-color);
+    background-color: var(--base-1);
 }
 .course-week {
     text-align: center;
     padding: 8px;
     border-radius: var(--radius-2);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 .week-1 {
     background-color: var(--primary-color);
+    color: var(--text-reverse);
 }
 .week-2 {
     background-color: var(--secondary-color);
 }
 .week-3 {
+     color: var(--text-reverse);
     background-color: var(--img-bg);
 }
 .course-short-info {
@@ -196,4 +203,28 @@ ul.course-learning-container {
     ul.course-learning-container {
         grid-template-columns: repeat(1, 1fr);
     }
+}
+.accordion {
+    max-width: 100%;   
+}
+
+.syllabus-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.syllabus-icon {
+    color: #9DA1A9;
+}
+.syllabus-item.active .syllabus-icon {
+    color: var(--primary-color);
+}
+.syllabus-btn {
+     color: #9DA1A9;
+}
+.syllabus-item.active .syllabus-btn {
+    background-color: var(--primary-shadow);
+    color: var(--dark-color);
+    padding: 8px 12px;
+    border-radius: 6px;
 }
