@@ -341,6 +341,7 @@ a.nav-item {
     transform: translateX(100%);
     transition: all var(--transition-1);
 }
+#popup-wrapper .overlay-container,
 #login-wrapper .overlay-container {
     max-width: 450px;
     height: fit-content;
@@ -355,9 +356,12 @@ a.nav-item {
 #login-wrapper .drawer-header {
    margin-bottom: 20px;
 }
+#popup-wrapper .drawer-body,
 #login-wrapper .drawer-body {
    height: fit-content;
+   max-height: 90hv;
 }
+#popup-wrapper.active .overlay-container,
 #login-wrapper.active .overlay-container {
     display: block;
 }

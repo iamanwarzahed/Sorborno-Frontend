@@ -80,7 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    closeBtn.addEventListener("click", closeDrawer);
+    closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeDrawer();
+    });
 
     // Close on outside click (overlay or anywhere outside drawer)
     document.addEventListener("click", (event) => {
@@ -93,6 +96,50 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+// popup close
+document.addEventListener("DOMContentLoaded", () => {
+    const wrapper = document.getElementById("popup-wrapper");
+    const drawer = document.getElementById("popup-container");
+    const bookImg = document.querySelector(".book-img");
+    const readBtn = document.querySelector(".btn-read");
+
+    function openDrawer() {
+        wrapper.classList.add("active");
+    }
+
+    function closeDrawer() {
+        wrapper.classList.remove("active");
+    }
+
+    bookImg?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openDrawer();
+    });
+
+    readBtn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openDrawer();
+    });
+
+    // Unified event handler: close on icon OR outside
+    document.addEventListener("click", (e) => {
+        if (e.target.closest(".drawer-close")) {
+            e.stopPropagation();
+            closeDrawer();
+            return;
+        }
+
+        if (
+            wrapper.classList.contains("active") &&
+            !drawer.contains(e.target) &&
+            !e.target.closest(".book-img") &&
+            !e.target.closest(".btn-read")
+        ) {
+            closeDrawer();
+        }
+    });
+});
+
 
 // Tab Selection
 document.addEventListener("DOMContentLoaded", () => {

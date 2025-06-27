@@ -66,3 +66,24 @@ del {
     border-bottom: 0px;
     padding-bottom: 0px;
 }
+#popup-wrapper .btn-group {
+    margin: 0;
+}
+#popup-wrapper .overlay-container {
+    max-width: 900px;
+}
+#popup-wrapper .drawer-header {
+   border-bottom: 0px;
+}
+#popup-wrapper .drawer-body {
+   border: 5px dashed var(--primary-color);
+   border-radius: var(--radius-4);
+   padding: 12px;
+   line-height: 0;
+   display: flex;
+   flex-direction: column;
+   background-color: var(--soft-color);
+   gap: 20px;
+   overflow: auto;
+   max-height: 70vh;
+}
