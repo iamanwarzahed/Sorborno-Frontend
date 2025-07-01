@@ -47,6 +47,9 @@ del {
     align-items: stretch;
     margin-bottom: 20px;
 }
+header .btn-group {
+    margin-bottom: 0;
+}
 .btn-win {
     border-color: var(--img-bg);
 }
