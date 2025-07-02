@@ -1,0 +1,70 @@
+header.header {
+    margin-bottom: 0;
+}
+.teacher-header {
+    background-color: var(--teacher-header);
+    padding: 40px 0;
+}
+.teacher-header-container {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    gap: 40px;
+}
+.teacher-header-img {
+    line-height: 0;
+}
+.teacher-header-img img {
+    max-width: 280px;
+    aspect-ratio: 8/12;
+    object-fit: cover;
+    border-radius: var(--radius-2);
+}
+
+.teacher-header-content {
+    max-width: 620px;
+    color: var(--text-reverse);
+}
+.teacher-name {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.teacher-designation {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+.teacher-course {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.teacher-description {
+    line-height: 1.4;
+}
+.counter-wrapper {
+    text-align: center;
+    border: 0px solid var(--primary-color);
+    padding: 0;
+    min-width: 30%;
+}
+.course-learning-wrapper .flex-container {
+    justify-content: space-between;
+}
+.multi-slider-wrapper {
+    max-width: 780px;
+}
+.course-item {
+    max-width: 240px;
+    margin-right: 24px;
+}
+
+@media (max-width: 836px) {
+    .teacher-header-container {
+        flex-direction: column;
+    }
+    .teacher-header-img {
+        margin: 0 auto;
+    }
+}
