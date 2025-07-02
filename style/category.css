@@ -1,0 +1,229 @@
+header.header {
+    margin-bottom: 0;
+}
+.category-header {
+    background-color: var(--category-header);
+    padding: 70px 0;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+.category-container {
+    display: grid;
+    grid-template-columns: 2.7fr 11fr;
+    gap: 20px;
+}
+.listing-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(231px, auto));
+}
+.container {
+    max-width: 1400px;
+}
+.right-panel .container {
+    padding: 0;
+}
+
+.course-filter-container {
+  border: 1px solid var(--soft-color);
+  border-radius: var(--radius-3);
+  padding: 20px;
+  height: 94%;
+}
+
+.filter-group {
+  border-bottom: 1px solid var(--primary-color);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+
+.filter-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.range-slider {
+    position: relative;
+    margin: 30px auto 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.range-track {
+    background-color: var(--light-soft-color);
+    height: 8px;
+    width: 96%;
+    position: absolute;
+    z-index: -1;
+    top: -11px;
+    border-radius: var(--radius-3);
+    left: 2%;
+}
+
+.range-highlight {
+    height: 100%;
+    position: absolute;
+    background-color: var(--primary-color);
+    border-radius: var(--radius-3);
+}
+
+.range-slider input[type="range"] {
+    position: absolute;
+    width: 100%;
+    pointer-events: none; /* prevents default interactions */
+    -webkit-appearance: none;
+    background: transparent;
+    top: -12px;
+}
+
+.range-slider input[type="range"]::-webkit-slider-thumb {
+    pointer-events: all; /* re-enable pointer events for thumbs */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -8px;
+}
+
+.range-slider input[type="range"]::-moz-range-thumb {
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.range-values {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+
+.custom-radio-group {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  padding-left: 12px;
+  /* align-items: center; */
+}
+
+.custom-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  user-select: none;
+}
+
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+/* Outer circle */
+.radio-circle {
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+/* Inner dot when selected */
+.radio-circle::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  right: 4px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Show dot when checked */
+.custom-radio input[type="radio"]:checked + .radio-circle::after {
+  opacity: 1;
+}
+.radio-text {
+  font-size: 14px;
+}
+
+
+.custom-checkbox-group {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+.has-subgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.checkbox-subgroup {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  padding-left: 24px;
+}
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  position: relative;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+/* Checkbox square */
+.checkbox-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  position: relative;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Checkmark (✓) when checked */
+.checkbox-box::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 10px;
+    border: 1px solid var(--base-1);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* When checked: show filled background + checkmark */
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-box {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-box::after {
+  opacity: 1;
+}
+
+.checkbox-text {
+  font-size: 14px;
+}
