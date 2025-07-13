@@ -25,6 +25,9 @@
 .gap-20 {
    gap: 20px; 
 }
+.gap-10 {
+   gap: 10px; 
+}
 .gap-8 {
    gap: 8px; 
 }
@@ -63,4 +66,14 @@
 }
 .lh-0 {
   line-height: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-end {
+  text-align: end;
+}
+.text-start {
+  text-align: start;
 }

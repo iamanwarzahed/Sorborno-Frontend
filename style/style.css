@@ -1654,3 +1654,34 @@ a.btn-win {
     margin-right: 0;
     margin-bottom: 12px;
 }
+
+.short-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.details-container {
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    gap: 40px;
+}
+.details-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.course-short-info {
+    position: sticky;
+    top: 134px;
+}
+.course-short-info-2 {
+    display: none;
+    margin-top: 30px;
+}
+.course-learning-wrapper {
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius-4);
+}

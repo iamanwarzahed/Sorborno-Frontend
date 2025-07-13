@@ -26,6 +26,14 @@
     .second-widget {
         margin-left: 20px;
     }
+
+    .details-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .course-short-info-2 {
+        display: block;
+    }
 }
 @media (max-width: 768px) {
     .mb-12 {

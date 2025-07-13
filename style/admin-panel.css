@@ -1,0 +1,134 @@
+.short-title {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: start;
+    margin-bottom: 24px;
+}
+.batch,
+.batch-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #101828;
+}
+.batch {
+    background-color: #eaecf0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 0px #00000013;
+}
+.notification-card {
+    margin-top: 12px;
+    background-color: #ffffff;
+    padding: 16px;
+    border: 1px solid #eaecf0;
+    border-radius: 8px;
+}
+.notification-title {
+    color: #1d2939;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 32px;
+    margin-bottom: 20px;
+}
+.notification-btn {
+    padding: 12px 24px;
+    background-color: #e9eeeb;
+    color: #101828;
+    border-radius: 6px;
+    text-align: center;
+    display: block;
+    border: none;
+    font-size: 14px;
+    line-height: 20px;
+    transition: all var(--transition-1);
+    cursor: pointer;
+    width: 100%;
+}
+.notification-btn:hover {
+    background-color: #d9dddb;
+}
+.notification-wrapper {
+    margin-top: 12px;
+    background-color: #eef1f0;
+    padding: 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+.batch-breadcrumb {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+.tag-1,
+.breadcrumb-1 {
+    color: #22c579;
+}
+.breadcrumb-2 {
+    color: #d14e45;
+}
+.dot {
+    width: 3px;
+    height: 3px;
+    background-color: currentColor;
+    border-radius: 50%;
+    cursor: default;
+    transition: all var(--transition-1) ease;
+    margin-right: 4px;
+}
+.get-promo {
+    white-space: nowrap;
+    background-color: #ebd300;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-1);
+}
+.get-promo:hover {
+    background-color: #ceba04;
+}
+.course-card {
+    background-color: #ffffff;
+    padding: 16px;
+    border: 1px solid #eaecf0;
+    border-radius: 16px;
+}
+.admin-title {
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #101828;
+    margin-bottom: 20px;
+}
+.course-item {
+    background-color: #f6fcf9;
+    padding: 8px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap:12px;
+    min-width: 325px;
+    width: 100%;
+    cursor: pointer;
+}
+.course-img img {
+    max-width: 180px;
+    border-radius: 8px;
+}
+.course-content {
+    text-align: start;
+}
+.course-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+.course-tag {
+    font-size: 12px;
+    background-color: #dfe2e0;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.recommended-card .course-tag {
+    color: #f51404;
+}
