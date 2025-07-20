@@ -176,7 +176,12 @@
     color: var(--text-color);
 }
 .ask-question {
-    background: linear-gradient(to right, rgb(81, 28, 127), rgb(35, 11, 54), rgb(27, 25, 69));
+    background: linear-gradient(
+        to right,
+        rgb(81, 28, 127),
+        rgb(35, 11, 54),
+        rgb(27, 25, 69)
+    );
 }
 .ask-question .icon {
     max-width: 40px;
@@ -193,6 +198,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    max-width: 90vw;
+    overflow: auto;
 }
 
 .tab {
@@ -225,4 +232,32 @@
 
 .tab-content.active {
     display: block;
+}
+@media (max-width: 768px) {
+    .admin-course-details .accordion-header {
+        padding: 16px;
+    }
+}
+@media (max-width: 530px) {
+    .certificate-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px;
+    }
+    .certificate-btn-group {
+        flex-direction: row;
+        gap: 8px;
+    }
+}
+@media (max-width: 448px) {
+    .resource-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .no-resource-title {
+        margin-bottom: 0px;
+    }
+    .certificate-title {
+        font-size: 20px;
+    }
 }
