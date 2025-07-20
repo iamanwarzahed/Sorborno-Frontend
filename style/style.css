@@ -1011,6 +1011,17 @@ button.controls:hover {
 }
 
 /* Course */
+a.course-item {
+    text-decoration: none;
+    color: var(--text-color);
+}
+a.course-item:focus,
+a.course-item:visited {
+    color: var(--text-color);
+}
+a.course-item:hover {
+    color: var(--primary-color);
+}
 .course-container {
     margin-bottom: 16px;
 }
@@ -1439,7 +1450,7 @@ a.btn-win {
 }
 
 .accordion-header:hover {
-    background-color: var(--secondary-color);
+    background-color: #76cc88;
 }
 
 .accordion-content {

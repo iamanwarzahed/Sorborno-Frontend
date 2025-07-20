@@ -1,0 +1,228 @@
+.btn-join {
+    border: 0;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: var(--radius-3);
+    cursor: pointer;
+}
+.btn-whatsapp {
+    color: #12b76a;
+    background-color: #ecfdf3;
+}
+.btn-facebook {
+    color: #4478ff;
+    background-color: #e9efff;
+}
+.btn-join:hover {
+    background-color: #eaecf0;
+}
+.leader-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 24px;
+    border-radius: var(--radius-3);
+    background-color: #e2e7e4;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    position: relative;
+    overflow: hidden;
+}
+.leader-tag {
+    position: absolute;
+    z-index: 1;
+    background-color: var(--base-1);
+    text-align: center;
+    padding: 4px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    left: -15px;
+    top: 4px;
+    transform: rotate(-45deg);
+    letter-spacing: 0.02rem;
+}
+.leader-item .icon {
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #fff6d9;
+}
+.leader-position {
+    font-size: 16px;
+    font-weight: 600;
+}
+.mark {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+}
+.mark-title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+.leader-1 {
+    background-color: #d1fadf;
+}
+.leader-1 .leader-position,
+.leader-1 .mark {
+    color: #12b76a;
+}
+.leader-2 {
+    background-color: #dae4ff;
+}
+.leader-2 .leader-position,
+.leader-2 .mark {
+    color: #4478ff;
+}
+.leader-3 {
+    background-color: #fff2cc;
+}
+.leader-3 .leader-position,
+.leader-3 .mark {
+    color: #c5980f;
+}
+.leader-own {
+    background-color: #ffe8db;
+}
+.leader-own .leader-position,
+.leader-own .mark {
+    color: #ff8c4b;
+}
+.accordion-header {
+    background-color: var(--base-3);
+    color: var(--text-color);
+}
+.accordion-item.active .accordion-content {
+    background-color: #c1f5db;
+    color: var(--text-color);
+}
+.resource-container {
+    background-color: #fff1ea;
+    padding: 30px;
+    border-radius: var(--radius-3);
+}
+.resource-container .icon {
+    margin-top: -12px;
+}
+.no-resource-title {
+    font-size: 30px;
+    line-height: 39px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.no-resource-subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    max-width: 400px;
+}
+.certificate-container {
+    background-color: #15384f;
+    background-image: linear-gradient(
+        90deg,
+        rgba(21, 56, 79, 1) 0%,
+        rgba(28, 82, 62, 1) 20%,
+        rgba(61, 89, 35, 1) 40%,
+        rgba(80, 99, 18, 1) 60%,
+        rgba(17, 92, 30, 1) 80%,
+        rgba(30, 65, 94, 1) 100%
+    );
+    color: var(--text-reverse);
+    padding: 10px 20px;
+    border-radius: var(--radius-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.certificate-title {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 34px;
+}
+.certificate-subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+}
+.certificate-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.certificate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: var(--radius-2);
+    width: 130px;
+    padding: 4px 20px;
+    opacity: 0.9;
+    cursor: pointer;
+}
+.certificate-btn:hover {
+    opacity: 1;
+}
+.certificate-download {
+    background-color: #ebf3ee;
+    color: var(--text-color);
+}
+.certificate-share {
+    background-color: #ffe70c;
+    color: var(--text-color);
+}
+.ask-question {
+    background: linear-gradient(to right, rgb(81, 28, 127), rgb(35, 11, 54), rgb(27, 25, 69));
+}
+.ask-question .icon {
+    max-width: 40px;
+}
+.ask-question .certificate-title {
+    font-size: 20px;
+    line-height: 26px;
+    border-radius: var(--radius-4);
+}
+.ask-question .certificate-share {
+    width: auto;
+}
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tab {
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background: none;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    border-radius: var(--radius-2);
+}
+
+.tab.active {
+    color: var(--text-reverse);
+    background-color: var(--primary-color);
+    pointer-events: none;
+}
+.tab:hover:not(.active) {
+    color: var(--text-color);
+    border-color: #89f0b4;
+    background-color: #89f0b4;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}

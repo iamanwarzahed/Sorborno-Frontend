@@ -115,17 +115,18 @@ ul.course-learning-container {
     text-align: center;
     padding: 8px;
     border-radius: var(--radius-2);
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     gap: 4px;
 }
 .week-1 {
-    background-color: var(--primary-color);
-    color: var(--text-reverse);
+    background-color: rgb(183, 199, 38);
+    color: var(--text-color);
 }
 .week-2 {
     background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 .week-3 {
      color: var(--text-reverse);
@@ -179,6 +180,12 @@ ul.course-learning-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
+    background-color: #e6f1ec;
+    padding: 9px 24px;
+    border-radius: var(--radius-3);
+    min-height: 50px;
+    color: var(--text-color);
 }
 .syllabus-icon {
     color: #9DA1A9;
