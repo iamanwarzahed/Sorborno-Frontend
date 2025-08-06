@@ -1202,6 +1202,17 @@ a.course-item:hover {
     padding-top: 12px;
 }
 
+.my-account {
+    display: none;
+}
+.my-account.active {
+    display: block;
+}
+.my-account img {
+    border-radius: 50%;
+    max-width: 30px;
+}
+
 /* Animations */
 @keyframes scroll-up {
     0% {
