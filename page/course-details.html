@@ -755,6 +755,11 @@
                     <div class="drawer-title otp-header-title">
                         OTP Verification
                     </div>
+                    <div class="booking-header-title active">
+                        <div class="drawer-title active">
+                            Book a seat for the course
+                        </div>
+                    </div>
                     <div class="icon drawer-close btn-close">
                         <svg
                             width="24px"
@@ -1123,7 +1128,7 @@
                                 </div>
                             </div>
 
-                            <label for="profile-name">Name</label>
+                            <label for="profile-name" class="profile-name-label">Name</label>
                             <input
                                 type="text"
                                 id="profile-name"
@@ -1147,7 +1152,7 @@
                                 pattern="[\d\s\+\-]{7,15}"
                             />
 
-                            <div class="custom-select-wrapper">
+                            <div class="custom-select-wrapper hide-for-booking">
                                 <div class="custom-select">
                                     <div class="selected">
                                         <div>Select Your Gender</div>
@@ -1191,7 +1196,7 @@
                                 </div>
                             </div>
 
-                            <div class="custom-select-wrapper">
+                            <div class="custom-select-wrapper hide-for-booking">
                                 <div class="custom-select">
                                     <div class="selected">
                                         <div>Select Your Occupation</div>
@@ -1238,7 +1243,7 @@
                                 </div>
                             </div>
 
-                            <div class="custom-select-wrapper">
+                            <div class="custom-select-wrapper hide-for-booking">
                                 <div class="custom-select">
                                     <div class="selected">
                                         <div>Select Your Career</div>
@@ -1366,7 +1371,9 @@
                                     <div>Course Fee</div>
                                     <div>$500</div>
                                 </div>
-                                <div class="btn w-full">In roll</div>
+                                <div class="btn w-full btn-in-roll">
+                                    In roll
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2873,7 +2880,9 @@
                                     <div>Course Fee</div>
                                     <div>$500</div>
                                 </div>
-                                <div class="btn w-full">In roll</div>
+                                <div class="btn w-full btn-in-roll">
+                                    In roll
+                                </div>
                             </div>
                         </div>
                     </div>

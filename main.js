@@ -61,21 +61,58 @@ document.addEventListener("DOMContentLoaded", () => {
 // Drawer
 document.addEventListener("DOMContentLoaded", () => {
     const loginButtons = document.querySelectorAll(".btn.login");
+    const inRoll = document.querySelectorAll(".btn-in-roll");
     const wrapper = document.getElementById("login-wrapper");
     const drawer = document.getElementById("overlay-container");
     const closeBtn = document.querySelector(".drawer-close");
-
+    
+    const accountTitle = document.querySelector(".account-header-title");
+    const bookingTitle = document.querySelector(".booking-header-title");
+    const accountContainer = document.querySelector(".login-step");
+    const nameLabel = document.querySelector(".profile-name-label");
+    const profileContainer = document.querySelector(".profile-info-update");
+    const imageContainer = document.querySelector(".image-uploader");
+    const hideForBooking = document.querySelectorAll(".hide-for-booking");
+    
     function closeDrawer() {
         wrapper.classList.remove("active");
+        accountTitle.style.display = "";
+        nameLabel.style.display = "";
+        bookingTitle.style.display = "none";
+        accountContainer.classList.add("active");
+        profileContainer.classList.remove("active");
+        imageContainer.style.display = "";
+        hideForBooking.forEach(el => el.style.display = "");
     }
-
+    
     loginButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
             event.stopPropagation();
             if (wrapper.classList.contains("active")) {
                 closeDrawer();
             } else {
+                hideForBooking.style.display="";
+                accountTitle.style.display = "";
+                bookingTitle.style.display = "none";
+                accountContainer.classList.add("active");
                 wrapper.classList.add("active");
+            }
+        });
+    });
+    inRoll.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            event.stopPropagation();
+            if (wrapper.classList.contains("active")) {
+                closeDrawer();
+            } else {
+                hideForBooking.forEach(el => el.style.display = "none");
+                bookingTitle.style.display = "";
+                imageContainer.style.display = "none";
+                profileContainer.classList.add("active");
+                accountContainer.classList.remove("active");
+                accountTitle.style.display = "none";
+                wrapper.classList.add("active");
+                nameLabel.style.display = "none";
             }
         });
     });
