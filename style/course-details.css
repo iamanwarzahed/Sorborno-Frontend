@@ -203,3 +203,12 @@ ul.course-learning-container {
     border-radius: 6px;
     white-space: nowrap;
 }
+.teacher-container {
+    padding: 12px 20px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-color);
+}
+.teacher-container img {
+    max-width: 50px;
+    border-radius: 50%;
+}
