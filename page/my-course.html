@@ -292,7 +292,9 @@
                                 <a class="option" href="download.html"
                                     >Download</a
                                 >
-                                <a class="option" href="teacher-listing.html">Teacher</a>
+                                <a class="option" href="teacher-listing.html"
+                                    >Teacher</a
+                                >
                                 <a class="option" href="blog-listing.html"
                                     >Blog</a
                                 >
@@ -1373,6 +1375,7 @@
                             <button class="tab" data-tab="tab4">
                                 Certificate
                             </button>
+                            <button class="tab" data-tab="tab6">E-Books</button>
                         </div>
 
                         <div id="tabContents">
@@ -2253,6 +2256,46 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="tab6" class="tab-content">
+                                <div class="book-container">
+                                    <div class="d-flex gap-10 item-center">
+                                        <div class="icon">
+                                            <img
+                                                src="../assets/book-image.png"
+                                                alt="book image"
+                                            />
+                                        </div>
+                                        <div class="certificate-content">
+                                            <div class="certificate-title">
+                                                Book Title Here
+                                            </div>
+                                            <div class="certificate-subtitle">
+                                                Short not about this book
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn btn-win btn-read">Read</div>
+                                </div>
+                                <div class="book-container">
+                                    <div class="d-flex gap-10 item-center">
+                                        <div class="icon">
+                                            <img
+                                                src="../assets/book-image.png"
+                                                alt="book image"
+                                            />
+                                        </div>
+                                        <div class="certificate-content">
+                                            <div class="certificate-title">
+                                                Book Title Here
+                                            </div>
+                                            <div class="certificate-subtitle">
+                                                Short not about this book
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn btn-win btn-read">Read</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2717,6 +2760,51 @@
                         &copy; <span id="year"></span> All rights reserved by
                         <a href="#">Soroborno</a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup -->
+        <div id="popup-wrapper" class="overlay-wrapper">
+            <div class="overlay"></div>
+            <div id="popup-container" class="overlay-container">
+                <div class="drawer-header">
+                    <div class="d-flex item-center gap-8">
+                        <div class="drawer-title active">Book Title</div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="icon drawer-close btn-close">
+                            <svg
+                                width="24px"
+                                height="24px"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g
+                                    id="SVGRepo_tracerCarrier"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M16 8L8 16M8.00001 8L16 16"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    ></path>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="drawer-body">
+                    <img src="../assets/book-page-1.jpg" alt="book page" />
+                    <img src="../assets/book-page-2.jpg" alt="book page" />
+                    <img src="../assets/book-page-3.jpg" alt="book page" />
+                    <img src="../assets/book-page-4.jpg" alt="book page" />
                 </div>
             </div>
         </div>
