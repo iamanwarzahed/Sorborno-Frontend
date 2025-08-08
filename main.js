@@ -727,8 +727,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const target = groupWrapper.querySelector(`#${tab.dataset.tab}`);
                 if (target) target.classList.add("active");
 
-                // If the clicked tab is "myCourse", reset its nested tabs
-                if (tab.dataset.tab === "myCourse") {
+                // If the clicked tab is "joining", reset its nested tabs
+                if (tab.dataset.tab === "joining") {
                     const nestedTabs = target.querySelectorAll(".tabs .tab");
                     if (nestedTabs.length) {
                         nestedTabs[0].click(); // Click the first inner tab
@@ -738,11 +738,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Clicking a course-action should open MyCourse in outer tabs
+    // Clicking a course-action should open joining in outer tabs
     document.querySelectorAll(".course-action").forEach((course) => {
         course.addEventListener("click", () => {
-            const myCourseTab = document.querySelector('.tabs .tab[data-tab="myCourse"]');
-            if (myCourseTab) myCourseTab.click();
+            const joiningTab = document.querySelector('.tabs .tab[data-tab="joining"]');
+            if (joiningTab) joiningTab.click();
         });
     });
 });
