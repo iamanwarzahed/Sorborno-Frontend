@@ -107,7 +107,7 @@
     border-radius: 16px;
     display: flex;
     align-items: center;
-    gap:12px;
+    gap: 12px;
     min-width: 325px;
     width: 100%;
     cursor: pointer;
@@ -131,4 +131,53 @@
 }
 .recommended-card .course-tag {
     color: #f51404;
+}
+.payment-table {
+    border-radius: var(--radius-3);
+    overflow: hidden;
+}
+.payment-row {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+}
+.payment-header {
+    background-color: var(--base-2);
+    text-align: center;
+    border-bottom: 3px solid var(--base-1);
+}
+.payment-body {
+    background-color: var(--base-3);
+}
+.payment-item {
+    padding: 12px 20px;
+    width: 100%;
+    border-right: 3px solid var(--base-1);
+}
+.payment-item:last-child {
+    border-right: 0;
+}
+.payment-content {
+    border-bottom: 3px solid var(--base-1);
+}
+.payment-content:last-child {
+    border-bottom: 0;
+}
+.payment-for-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    max-width: 24rem;
+    max-height: 2.9rem;
+}
+.payment-amount-content {
+    text-align: end;
+}
+.payment-by-content,
+.payment-date-content {
+    text-align: center;
 }
