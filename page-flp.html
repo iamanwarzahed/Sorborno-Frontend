@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style/style.css" />
         <title>3D Flipbook with Bidirectional Drag</title>
         <style>
             * {
@@ -72,27 +73,27 @@
 
             .page:nth-child(1) {
                 z-index: 6;
-                left: 0;
+                right: 0;
             }
             .page:nth-child(2) {
                 z-index: 5;
-                left: 0;
+                right: 0;
             }
             .page:nth-child(3) {
                 z-index: 4;
-                left: 0;
+                right: 0;
             }
             .page:nth-child(4) {
                 z-index: 3;
-                left: 0;
+                right: 0;
             }
             .page:nth-child(5) {
                 z-index: 2;
-                left: 0;
+                right: 0;
             }
             .page:nth-child(6) {
                 z-index: 1;
-                left: 0;
+                right: 0;
             }
 
             .page-content {
@@ -261,133 +262,37 @@
             <!-- Cover Page -->
             <div class="page" data-page="0">
                 <div class="page-front cover-page">
-                    <div class="page-title">My Photo Album</div>
-                    <div class="page-text">
-                        Drag left or right to explore beautiful memories
-                    </div>
-                    <div class="page-number">1</div>
+                    <img src="assets/book-image.png" alt="" />
                 </div>
                 <div class="page-back">
-                    <div class="page-content">
-                        <div class="placeholder-image">📷</div>
-                        <div class="page-caption">
-                            <div class="page-title">Welcome</div>
-                            <div class="page-text">
-                                Start your journey through this interactive
-                                photo album.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-number">2</div>
-                    <div class="drag-indicator">⋮</div>
+                    <img src="assets/book-page-1.jpg" alt="" />
                 </div>
             </div>
 
             <!-- Page 1 -->
             <div class="page" data-page="1">
                 <div class="page-front">
-                    <div class="page-content">
-                        <div class="placeholder-image">🌅</div>
-                        <div class="page-caption">
-                            <div class="page-title">Beautiful Sunrise</div>
-                            <div class="page-text">
-                                Drag your own images here to replace these
-                                placeholders.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-number">3</div>
-                    <div class="drag-indicator">⋮</div>
+                    <img src="assets/book-page-2.jpg" alt="" />
                 </div>
                 <div class="page-back">
-                    <div class="page-content">
-                        <div class="placeholder-image">🏔️</div>
-                        <div class="page-caption">
-                            <div class="page-title">Mountain View</div>
-                            <div class="page-text">
-                                Replace with your favorite landscape photos.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-number">4</div>
-                    <div class="drag-indicator">⋮</div>
+                    <img src="assets/book-page-3.jpg" alt="" />
                 </div>
             </div>
 
             <!-- Page 2 -->
             <div class="page" data-page="2">
                 <div class="page-front">
-                    <div class="page-content">
-                        <div class="placeholder-image">🌸</div>
-                        <div class="page-caption">
-                            <div class="page-title">Spring Blossoms</div>
-                            <div class="page-text">
-                                Add your own nature photography here.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-number">5</div>
-                    <div class="drag-indicator">⋮</div>
+                    <img src="assets/book-page-4.jpg" alt="">
                 </div>
                 <div class="page-back">
-                    <div class="page-content">
-                        <div class="placeholder-image">🌊</div>
-                        <div class="page-caption">
-                            <div class="page-title">Ocean Waves</div>
-                            <div class="page-text">
-                                Perfect spot for your beach vacation photos.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-number">6</div>
-                    <div class="drag-indicator">⋮</div>
-                </div>
-            </div>
-
-            <!-- Page 3 -->
-            <div class="page" data-page="3">
-                <div class="page-front">
-                    <div class="page-content">
-                        <div class="placeholder-image">🌙</div>
-                        <div class="page-caption">
-                            <div class="page-title">Moonlit Night</div>
-                            <div class="page-text">
-                                Upload your night photography here.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-number">7</div>
-                    <div class="drag-indicator">⋮</div>
-                </div>
-                <div class="page-back">
-                    <div class="page-content">
-                        <div class="placeholder-image">⭐</div>
-                        <div class="page-caption">
-                            <div class="page-title">Starry Sky</div>
-                            <div class="page-text">
-                                Replace with your astronomical captures.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-number">8</div>
-                    <div class="drag-indicator">⋮</div>
+                    <img src="assets/book-page-3.jpg" alt="">
                 </div>
             </div>
 
             <!-- Back Cover -->
             <div class="page" data-page="4">
                 <div class="page-front">
-                    <div class="page-content">
-                        <div class="placeholder-image">📖</div>
-                        <div class="page-caption">
-                            <div class="page-title">The End</div>
-                            <div class="page-text">
-                                Thanks for viewing this interactive flipbook!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-number">9</div>
-                    <div class="drag-indicator">⋮</div>
+                    <img src="assets/book-page-4.jpg" alt="">
                 </div>
                 <div
                     class="page-back cover-page"
@@ -395,12 +300,6 @@
                         background: linear-gradient(135deg, #2d3436, #636e72);
                     "
                 >
-                    <div class="page-title">Back Cover</div>
-                    <div class="page-text">
-                        Customize this flipbook with your own images and
-                        content!
-                    </div>
-                    <div class="page-number">10</div>
                 </div>
             </div>
         </div>
@@ -516,10 +415,10 @@
                     if (Math.abs(deltaX) > 10 && !this.isDragging) {
                         this.isDragging = true;
                         this.dragPage.classList.add("dragging");
-                        
+
                         // Determine drag direction
-                        this.dragDirection = deltaX > 0 ? 'right' : 'left';
-                        
+                        this.dragDirection = deltaX > 0 ? "right" : "left";
+
                         // Update z-indices to bring dragging page to front
                         this.updateZIndices();
                     }
@@ -528,32 +427,56 @@
                         const page = this.dragPage;
                         const isFlipped = page.classList.contains("flipped");
 
-                        if (this.dragDirection === 'left' && !isFlipped) {
+                        if (this.dragDirection === "left" && !isFlipped) {
                             // Dragging left to flip forward (next page)
                             const angle = Math.max(-180, (deltaX / 200) * 180);
                             page.style.transform = `rotateY(${angle}deg)`;
-                        } else if (this.dragDirection === 'right' && isFlipped) {
+                        } else if (
+                            this.dragDirection === "right" &&
+                            isFlipped
+                        ) {
                             // Dragging right to flip backward (previous page)
                             // For flipped pages, we need to reverse the transform
-                            const angle = Math.min(0, -180 + ((deltaX / 200) * 180));
+                            const angle = Math.min(
+                                0,
+                                -180 + (deltaX / 200) * 180
+                            );
                             page.style.transform = `rotateY(${angle}deg)`;
-                        } else if (this.dragDirection === 'right' && !isFlipped) {
+                        } else if (
+                            this.dragDirection === "right" &&
+                            !isFlipped
+                        ) {
                             // User is trying to drag right on an unflipped page
                             // Find the last flipped page to drag back instead
                             const lastFlippedPage = this.getLastFlippedPage();
-                            if (lastFlippedPage && this.dragPage === this.pages[this.currentDragPage]) {
+                            if (
+                                lastFlippedPage &&
+                                this.dragPage ===
+                                    this.pages[this.currentDragPage]
+                            ) {
                                 // Only switch once, and only if we haven't already switched
                                 page.classList.remove("dragging");
                                 this.dragPage = lastFlippedPage;
-                                this.currentDragPage = parseInt(lastFlippedPage.dataset.page);
+                                this.currentDragPage = parseInt(
+                                    lastFlippedPage.dataset.page
+                                );
                                 lastFlippedPage.classList.add("dragging");
                                 // Update z-indices for new drag page
                                 this.updateZIndices();
-                                const angle = Math.min(0, -180 + ((deltaX / 200) * 180));
+                                const angle = Math.min(
+                                    0,
+                                    -180 + (deltaX / 200) * 180
+                                );
                                 lastFlippedPage.style.transform = `rotateY(${angle}deg)`;
-                            } else if (lastFlippedPage && this.dragPage === lastFlippedPage) {
+                            } else if (
+                                lastFlippedPage &&
+                                this.dragPage === lastFlippedPage
+                            ) {
                                 // Continue dragging the switched page
-                                const angle = Math.min(0, -180 + ((deltaX / 200) * 180));
+                                const angle = Math.min(
+                                    0,
+                                    -180 + (deltaX / 200) * 180
+                                );
                                 lastFlippedPage.style.transform = `rotateY(${angle}deg)`;
                             }
                         }
@@ -589,7 +512,7 @@
                         const angle = this.extractAngle(currentTransform);
                         const isFlipped = page.classList.contains("flipped");
 
-                        if (this.dragDirection === 'left' && !isFlipped) {
+                        if (this.dragDirection === "left" && !isFlipped) {
                             // Forward drag - flip if dragged enough
                             if (angle < -this.dragThreshold) {
                                 this.flipPageForward(this.currentDragPage);
@@ -604,7 +527,10 @@
                                     }
                                 }, 600);
                             }
-                        } else if (this.dragDirection === 'right' && isFlipped) {
+                        } else if (
+                            this.dragDirection === "right" &&
+                            isFlipped
+                        ) {
                             // Backward drag - unflip if dragged enough
                             if (angle > -180 + this.dragThreshold) {
                                 this.flipPageBackward(this.currentDragPage);
@@ -612,7 +538,7 @@
                                 // Snap back to flipped state (back side)
                                 page.classList.remove("dragging");
                                 page.style.transform = "rotateY(-180deg)";
-                                // Remove transform after animation  
+                                // Remove transform after animation
                                 setTimeout(() => {
                                     if (page.classList.contains("flipped")) {
                                         page.style.transform = "";
@@ -646,7 +572,7 @@
                     this.dragPage = null;
                     this.dragStartX = 0;
                     this.dragDirection = null;
-                    
+
                     // Reset z-indices after drag ends
                     this.updateZIndices();
                 }
@@ -660,7 +586,7 @@
                     if (pageIndex >= this.totalPages) return;
 
                     const page = this.pages[pageIndex];
-                    
+
                     if (!page.classList.contains("flipped")) {
                         // Forward flip - flip this page
                         this.flipPageForward(pageIndex);
@@ -675,7 +601,7 @@
                     // Ensure clean state
                     page.classList.remove("dragging");
                     page.style.transform = "";
-                    
+
                     // Add flipped class immediately to prevent content flash
                     page.classList.add("flipped");
                     this.playFlipSound();
@@ -741,11 +667,14 @@
                     if (this.isDragging && this.dragPage) {
                         this.dragPage.style.zIndex = this.totalPages + 10;
                     }
-                    
+
                     // Flipped pages should be below unflipped pages
                     let z = this.totalPages;
                     for (let i = 0; i < this.totalPages; i++) {
-                        if (this.pages[i] === this.dragPage && this.isDragging) {
+                        if (
+                            this.pages[i] === this.dragPage &&
+                            this.isDragging
+                        ) {
                             continue; // Skip the dragging page, it's already set above
                         }
                         if (this.pages[i].classList.contains("flipped")) {
@@ -760,18 +689,22 @@
                 reset() {
                     let anyFlipped = false;
                     this.pages.forEach((page) => {
-                        if (page.classList.contains("flipped") || page.classList.contains("dragging")) {
+                        if (
+                            page.classList.contains("flipped") ||
+                            page.classList.contains("dragging")
+                        ) {
                             anyFlipped = true;
                         }
                         page.classList.remove("flipped", "dragging");
                         page.style.transform = "";
                     });
-                    
+
                     this.updateState();
 
                     // Play book close sound on reset
                     if (anyFlipped) {
-                        const closeAudio = document.getElementById("bookCloseSound");
+                        const closeAudio =
+                            document.getElementById("bookCloseSound");
                         if (closeAudio) {
                             try {
                                 closeAudio.currentTime = 0;
@@ -786,7 +719,8 @@
                 updateControls() {
                     this.prevBtn.disabled = this.currentPage === 0;
                     this.resetBtn.disabled = this.currentPage === 0;
-                    this.nextBtn.disabled = this.currentPage === this.totalPages;
+                    this.nextBtn.disabled =
+                        this.currentPage === this.totalPages;
                 }
             }
 
