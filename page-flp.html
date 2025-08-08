@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>3D Flipbook with Images and Drag</title>
+        <title>3D Flipbook with Bidirectional Drag</title>
         <style>
             * {
                 margin: 0;
@@ -245,11 +245,16 @@
                 color: white;
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
+
+            /* Flipped page positioning - keep same layout */
+            .page.flipped {
+                transform: rotateY(-180deg);
+            }
         </style>
     </head>
     <body>
         <div class="instructions">
-            Click pages or drag from right edge to flip • Use controls below
+            Drag left/right or click pages to flip • Use controls below
         </div>
 
         <div class="flipbook-container">
@@ -258,7 +263,7 @@
                 <div class="page-front cover-page">
                     <div class="page-title">My Photo Album</div>
                     <div class="page-text">
-                        Drag or click to explore beautiful memories
+                        Drag left or right to explore beautiful memories
                     </div>
                     <div class="page-number">1</div>
                 </div>
@@ -426,6 +431,7 @@
                 init() {
                     this.setupEventListeners();
                     this.updateControls();
+                    this.updateZIndices();
                 }
 
                 getCurrentPage() {
@@ -442,7 +448,7 @@
                     this.pages.forEach((page, index) => {
                         // Click to flip
                         page.addEventListener("click", (e) => {
-                            if (!this.isDragging) {
+                            if (!this.isDragging && !this.justFinishedDrag) {
                                 this.flipPage(index);
                             }
                         });
@@ -489,11 +495,12 @@
                     if (pageIndex >= this.totalPages) return;
 
                     const page = this.pages[pageIndex];
-                    // Allow drag if not flipped (for next) or if flipped (for previous)
-                    this.isDragging = false; // Will become true if user actually drags
+                    this.isDragging = false;
+                    this.justFinishedDrag = false;
                     this.dragStartX = event.clientX || event.pageX;
                     this.currentDragPage = pageIndex;
                     this.dragPage = page;
+                    this.dragDirection = null; // Will be set based on drag direction
 
                     // Add visual feedback
                     page.style.cursor = "grabbing";
@@ -504,26 +511,65 @@
 
                     const currentX = event.clientX || event.pageX;
                     const deltaX = currentX - this.dragStartX;
-                    const page = this.dragPage;
-                    const isFlipped = page.classList.contains("flipped");
 
                     // Only start dragging if moved enough
-                    if (Math.abs(deltaX) > 10) {
+                    if (Math.abs(deltaX) > 10 && !this.isDragging) {
                         this.isDragging = true;
-                        page.classList.add("dragging");
+                        this.dragPage.classList.add("dragging");
+                        
+                        // Determine drag direction
+                        this.dragDirection = deltaX > 0 ? 'right' : 'left';
+                        
+                        // Update z-indices to bring dragging page to front
+                        this.updateZIndices();
                     }
 
                     if (this.isDragging) {
-                        if (!isFlipped && deltaX < 0) {
-                            // Dragging left (turning page forward)
+                        const page = this.dragPage;
+                        const isFlipped = page.classList.contains("flipped");
+
+                        if (this.dragDirection === 'left' && !isFlipped) {
+                            // Dragging left to flip forward (next page)
                             const angle = Math.max(-180, (deltaX / 200) * 180);
                             page.style.transform = `rotateY(${angle}deg)`;
-                        } else if (isFlipped && deltaX > 0) {
-                            // Dragging right (turning page backward)
-                            const angle = Math.min(0, -180 + (deltaX / 200) * 180);
+                        } else if (this.dragDirection === 'right' && isFlipped) {
+                            // Dragging right to flip backward (previous page)
+                            // For flipped pages, we need to reverse the transform
+                            const angle = Math.min(0, -180 + ((deltaX / 200) * 180));
                             page.style.transform = `rotateY(${angle}deg)`;
+                        } else if (this.dragDirection === 'right' && !isFlipped) {
+                            // User is trying to drag right on an unflipped page
+                            // Find the last flipped page to drag back instead
+                            const lastFlippedPage = this.getLastFlippedPage();
+                            if (lastFlippedPage && this.dragPage === this.pages[this.currentDragPage]) {
+                                // Only switch once, and only if we haven't already switched
+                                page.classList.remove("dragging");
+                                this.dragPage = lastFlippedPage;
+                                this.currentDragPage = parseInt(lastFlippedPage.dataset.page);
+                                lastFlippedPage.classList.add("dragging");
+                                // Update z-indices for new drag page
+                                this.updateZIndices();
+                                const angle = Math.min(0, -180 + ((deltaX / 200) * 180));
+                                lastFlippedPage.style.transform = `rotateY(${angle}deg)`;
+                            } else if (lastFlippedPage && this.dragPage === lastFlippedPage) {
+                                // Continue dragging the switched page
+                                const angle = Math.min(0, -180 + ((deltaX / 200) * 180));
+                                lastFlippedPage.style.transform = `rotateY(${angle}deg)`;
+                            }
                         }
                     }
+                }
+
+                getLastFlippedPage() {
+                    // Find the last (rightmost) flipped page
+                    let lastFlippedPage = null;
+                    for (let i = this.totalPages - 1; i >= 0; i--) {
+                        if (this.pages[i].classList.contains("flipped")) {
+                            lastFlippedPage = this.pages[i];
+                            break;
+                        }
+                    }
+                    return lastFlippedPage;
                 }
 
                 endDrag() {
@@ -531,44 +577,65 @@
 
                     const page = this.dragPage;
                     page.style.cursor = "grab";
-                    const isFlipped = page.classList.contains("flipped");
 
                     if (this.isDragging) {
+                        this.justFinishedDrag = true;
+                        // Reset this flag after a short delay
+                        setTimeout(() => {
+                            this.justFinishedDrag = false;
+                        }, 100);
+
                         const currentTransform = page.style.transform;
                         const angle = this.extractAngle(currentTransform);
+                        const isFlipped = page.classList.contains("flipped");
 
-                        if (!isFlipped) {
-                            // Forward flip
+                        if (this.dragDirection === 'left' && !isFlipped) {
+                            // Forward drag - flip if dragged enough
                             if (angle < -this.dragThreshold) {
-                                this.flipPage(this.currentDragPage);
+                                this.flipPageForward(this.currentDragPage);
                             } else {
-                                // Snap back
+                                // Snap back to original position (front side)
                                 page.classList.remove("dragging");
-                                page.style.transform = "";
+                                page.style.transform = "rotateY(0deg)";
+                                // Remove transform after animation
+                                setTimeout(() => {
+                                    if (!page.classList.contains("flipped")) {
+                                        page.style.transform = "";
+                                    }
+                                }, 600);
+                            }
+                        } else if (this.dragDirection === 'right' && isFlipped) {
+                            // Backward drag - unflip if dragged enough
+                            if (angle > -180 + this.dragThreshold) {
+                                this.flipPageBackward(this.currentDragPage);
+                            } else {
+                                // Snap back to flipped state (back side)
+                                page.classList.remove("dragging");
+                                page.style.transform = "rotateY(-180deg)";
+                                // Remove transform after animation  
+                                setTimeout(() => {
+                                    if (page.classList.contains("flipped")) {
+                                        page.style.transform = "";
+                                    }
+                                }, 600);
                             }
                         } else {
-                            // Backward flip
-                            if (angle > -180 + this.dragThreshold) {
-                                // Unflip
-                                page.classList.remove("flipped", "dragging");
-                                page.style.transform = "";
-                                this.currentPage = this.getCurrentPage();
-                                this.updateZIndices();
-                                this.updateControls();
-                                // Play flip sound on backward drag
-                                const audio = document.getElementById("pageFlipSound");
-                                if (audio) {
-                                    try {
-                                        audio.currentTime = 0;
-                                        audio.play();
-                                    } catch (error) {
-                                        console.error("Audio play error:", error);
+                            // Invalid drag direction - snap back
+                            page.classList.remove("dragging");
+                            if (isFlipped) {
+                                page.style.transform = "rotateY(-180deg)";
+                                setTimeout(() => {
+                                    if (page.classList.contains("flipped")) {
+                                        page.style.transform = "";
                                     }
-                                }
+                                }, 600);
                             } else {
-                                // Snap back to flipped
-                                page.classList.remove("dragging");
-                                page.style.transform = "";
+                                page.style.transform = "rotateY(0deg)";
+                                setTimeout(() => {
+                                    if (!page.classList.contains("flipped")) {
+                                        page.style.transform = "";
+                                    }
+                                }, 600);
                             }
                         }
                     }
@@ -578,6 +645,10 @@
                     this.currentDragPage = undefined;
                     this.dragPage = null;
                     this.dragStartX = 0;
+                    this.dragDirection = null;
+                    
+                    // Reset z-indices after drag ends
+                    this.updateZIndices();
                 }
 
                 extractAngle(transform) {
@@ -589,78 +660,83 @@
                     if (pageIndex >= this.totalPages) return;
 
                     const page = this.pages[pageIndex];
-                    const audio = document.getElementById("pageFlipSound");
-
+                    
                     if (!page.classList.contains("flipped")) {
-                        page.classList.remove("dragging");
-                        page.style.transform = "";
-                        page.classList.add("flipped");
+                        // Forward flip - flip this page
+                        this.flipPageForward(pageIndex);
+                    } else {
+                        // Backward flip - flip this flipped page back
+                        this.flipPageBackward(pageIndex);
+                    }
+                }
 
-                        if (audio) {
-                            try {
-                                audio.currentTime = 0;
-                                let playPromise = audio.play();
-                                if (playPromise !== undefined) {
-                                    playPromise;
-                                }
-                            } catch (error) {
-                                console.error("Audio play error:", error);
-                            }
+                flipPageForward(pageIndex) {
+                    const page = this.pages[pageIndex];
+                    page.classList.remove("dragging");
+                    page.style.transform = "";
+                    page.classList.add("flipped");
+                    this.playFlipSound();
+                    this.updateState();
+                }
+
+                flipPageBackward(pageIndex) {
+                    const page = this.pages[pageIndex];
+                    page.classList.remove("flipped", "dragging");
+                    page.style.transform = "";
+                    this.playFlipSound();
+                    this.updateState();
+                }
+
+                playFlipSound() {
+                    const audio = document.getElementById("pageFlipSound");
+                    if (audio) {
+                        try {
+                            audio.currentTime = 0;
+                            audio.play();
+                        } catch (error) {
+                            console.error("Audio play error:", error);
                         }
                     }
-
-                    // Always recalculate currentPage based on flipped pages
-                    this.currentPage = this.getCurrentPage();
-                    this.updateZIndices();
-                    this.updateControls();
                 }
 
                 nextPage() {
                     // Find the first unflipped page
-                    let nextIdx = -1;
                     for (let i = 0; i < this.totalPages; i++) {
                         if (!this.pages[i].classList.contains("flipped")) {
-                            nextIdx = i;
+                            this.flipPageForward(i);
                             break;
                         }
-                    }
-                    if (nextIdx !== -1) {
-                        this.flipPage(nextIdx);
                     }
                 }
 
                 previousPage() {
                     // Find the last flipped page
-                    let lastIdx = -1;
                     for (let i = this.totalPages - 1; i >= 0; i--) {
                         if (this.pages[i].classList.contains("flipped")) {
-                            lastIdx = i;
+                            this.flipPageBackward(i);
                             break;
                         }
                     }
-                    if (lastIdx !== -1) {
-                        this.pages[lastIdx].classList.remove("flipped", "dragging");
-                        this.pages[lastIdx].style.transform = "";
-                        this.currentPage = this.getCurrentPage();
-                        this.updateZIndices();
-                        this.updateControls();
-
-                        // Play flip sound on backward flip
-                        const audio = document.getElementById("pageFlipSound");
-                        if (audio) {
-                            try {
-                                audio.currentTime = 0;
-                                audio.play();
-                            } catch (error) {
-                                console.error("Audio play error:", error);
-                            }
-                        }
-                    }
                 }
+
+                updateState() {
+                    this.currentPage = this.getCurrentPage();
+                    this.updateZIndices();
+                    this.updateControls();
+                }
+
                 updateZIndices() {
+                    // Currently dragging page should be on top
+                    if (this.isDragging && this.dragPage) {
+                        this.dragPage.style.zIndex = this.totalPages + 10;
+                    }
+                    
                     // Flipped pages should be below unflipped pages
                     let z = this.totalPages;
                     for (let i = 0; i < this.totalPages; i++) {
+                        if (this.pages[i] === this.dragPage && this.isDragging) {
+                            continue; // Skip the dragging page, it's already set above
+                        }
                         if (this.pages[i].classList.contains("flipped")) {
                             this.pages[i].style.zIndex = i + 1; // Lower z-index for flipped
                         } else {
@@ -679,9 +755,8 @@
                         page.classList.remove("flipped", "dragging");
                         page.style.transform = "";
                     });
-                    this.currentPage = 0;
-                    this.updateZIndices();
-                    this.updateControls();
+                    
+                    this.updateState();
 
                     // Play book close sound on reset
                     if (anyFlipped) {
@@ -698,8 +773,6 @@
                 }
 
                 updateControls() {
-                    // Recalculate currentPage
-                    this.currentPage = this.getCurrentPage();
                     this.prevBtn.disabled = this.currentPage === 0;
                     this.resetBtn.disabled = this.currentPage === 0;
                     this.nextBtn.disabled = this.currentPage === this.totalPages;
