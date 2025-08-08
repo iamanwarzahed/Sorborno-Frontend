@@ -1212,6 +1212,9 @@ a.course-item:hover {
     border-radius: 50%;
     max-width: 30px;
 }
+.min-container-height {
+    min-height: 30.2vh;
+}
 
 /* Animations */
 @keyframes scroll-up {

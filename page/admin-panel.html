@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="../style/style.css" />
         <link rel="stylesheet" href="../style/default.css" />
         <!-- <link rel="stylesheet" href="../style/course-details.css" /> -->
+        <link rel="stylesheet" href="../style/course-details.css" />
+        <link rel="stylesheet" href="../style/my-course.css" />
         <link rel="stylesheet" href="../style/admin-panel.css" />
         <link rel="stylesheet" href="../style/responsive.css" />
 
@@ -291,7 +293,9 @@
                                 <a class="option" href="download.html"
                                     >Download</a
                                 >
-                                <a class="option" href="teacher-listing.html">Teacher</a>
+                                <a class="option" href="teacher-listing.html"
+                                    >Teacher</a
+                                >
                                 <a class="option" href="blog-listing.html"
                                     >Blog</a
                                 >
@@ -1322,250 +1326,1712 @@
 
         <!-- Details -->
         <div class="container mb-50">
-            <div class="details-container">
-                <div class="left-panel">
-                    <div class="d-flex flex-column gap-20">
-                        <div class="course-card">
-                            <div class="admin-title">My Course</div>
-                            <div class="d-flex item-center flex-wrap gap-20">
-                                <a href="my-course.html" class="course-item course-action">
-                                    <div class="course-img lh-0">
-                                        <img
-                                            src="../assets/admin-course-img-1.jpg"
-                                        />
+            <div class="d-flex flex-column gap-10">
+                <div class="tabs mb-20">
+                    <button class="tab active" data-tab="dashboard">
+                        Dashboard
+                    </button>
+                    <button class="tab" data-tab="myCourse">My Course</button>
+                    <button class="tab" data-tab="e-book">E-Books</button>
+                    <button class="tab" data-tab="payment">Payments</button>
+                </div>
+
+                <div>
+                    <div id="dashboard" class="tab-content active">
+                        <div class="details-container">
+                            <div class="left-panel">
+                                <div class="d-flex flex-column gap-20">
+                                    <div class="course-card">
+                                        <div class="admin-title">My Course</div>
+                                        <div
+                                            class="d-flex item-center flex-wrap gap-20"
+                                        >
+                                            <div
+                                                class="course-item course-action"
+                                            >
+                                                <div class="course-img lh-0">
+                                                    <img
+                                                        src="../assets/admin-course-img-1.jpg"
+                                                    />
+                                                </div>
+                                                <div class="course-content">
+                                                    <div class="course-title">
+                                                        JavaScript Workshop for
+                                                        Absolute Beginners
+                                                    </div>
+                                                    <div
+                                                        class="d-flex item-center gap-8 flex-wrap"
+                                                    >
+                                                        <div
+                                                            class="course-tag tag-1"
+                                                        >
+                                                            Upcoming
+                                                        </div>
+                                                        <div class="course-tag">
+                                                            Batch 1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="course-item course-action"
+                                            >
+                                                <div class="course-img lh-0">
+                                                    <img
+                                                        src="../assets/admin-course-img-1.jpg"
+                                                    />
+                                                </div>
+                                                <div class="course-content">
+                                                    <div class="course-title">
+                                                        JavaScript Workshop for
+                                                        Absolute Beginners
+                                                    </div>
+                                                    <div
+                                                        class="d-flex item-center gap-8 flex-wrap"
+                                                    >
+                                                        <div
+                                                            class="course-tag tag-1"
+                                                        >
+                                                            Upcoming
+                                                        </div>
+                                                        <div class="course-tag">
+                                                            Batch 1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="course-item course-action"
+                                            >
+                                                <div class="course-img lh-0">
+                                                    <img
+                                                        src="../assets/admin-course-img-1.jpg"
+                                                    />
+                                                </div>
+                                                <div class="course-content">
+                                                    <div class="course-title">
+                                                        JavaScript Workshop for
+                                                        Absolute Beginners
+                                                    </div>
+                                                    <div
+                                                        class="d-flex item-center gap-8 flex-wrap"
+                                                    >
+                                                        <div
+                                                            class="course-tag tag-1"
+                                                        >
+                                                            Upcoming
+                                                        </div>
+                                                        <div class="course-tag">
+                                                            Batch 1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="course-item course-action"
+                                            >
+                                                <div class="course-img lh-0">
+                                                    <img
+                                                        src="../assets/admin-course-img-1.jpg"
+                                                    />
+                                                </div>
+                                                <div class="course-content">
+                                                    <div class="course-title">
+                                                        JavaScript Workshop for
+                                                        Absolute Beginners
+                                                    </div>
+                                                    <div
+                                                        class="d-flex item-center gap-8 flex-wrap"
+                                                    >
+                                                        <div
+                                                            class="course-tag tag-1"
+                                                        >
+                                                            Upcoming
+                                                        </div>
+                                                        <div class="course-tag">
+                                                            Batch 1
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="course-content">
-                                        <div class="course-title">
-                                            JavaScript Workshop for Absolute
-                                            Beginners
+                                    <div class="course-card recommended-card">
+                                        <div class="admin-title">
+                                            Recommended Course
                                         </div>
                                         <div
-                                            class="d-flex item-center gap-8 flex-wrap"
+                                            class="d-flex item-center flex-wrap gap-20"
                                         >
-                                            <div class="course-tag tag-1">
-                                                Upcoming
-                                            </div>
-                                            <div class="course-tag">
-                                                Batch 1
-                                            </div>
+                                            <a
+                                                href="course-details.html"
+                                                class="course-item"
+                                            >
+                                                <div class="course-img lh-0">
+                                                    <img
+                                                        src="../assets/admin-course-img-1.jpg"
+                                                    />
+                                                </div>
+                                                <div class="course-content">
+                                                    <div class="course-title">
+                                                        JavaScript Workshop for
+                                                        Absolute Beginners
+                                                    </div>
+                                                    <div
+                                                        class="d-flex item-center gap-8 flex-wrap"
+                                                    >
+                                                        <div class="course-tag">
+                                                            Remain:
+                                                        </div>
+                                                        <div class="course-tag">
+                                                            13D 1H 2M 27S
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a
+                                                href="course-details.html"
+                                                class="course-item"
+                                            >
+                                                <div class="course-img lh-0">
+                                                    <img
+                                                        src="../assets/admin-course-img-1.jpg"
+                                                    />
+                                                </div>
+                                                <div class="course-content">
+                                                    <div class="course-title">
+                                                        JavaScript Workshop for
+                                                        Absolute Beginners
+                                                    </div>
+                                                    <div
+                                                        class="d-flex item-center gap-8 flex-wrap"
+                                                    >
+                                                        <div class="course-tag">
+                                                            Remain:
+                                                        </div>
+                                                        <div class="course-tag">
+                                                            13D 1H 2M 27S
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a
+                                                href="course-details.html"
+                                                class="course-item"
+                                            >
+                                                <div class="course-img lh-0">
+                                                    <img
+                                                        src="../assets/admin-course-img-1.jpg"
+                                                    />
+                                                </div>
+                                                <div class="course-content">
+                                                    <div class="course-title">
+                                                        JavaScript Workshop for
+                                                        Absolute Beginners
+                                                    </div>
+                                                    <div
+                                                        class="d-flex item-center gap-8 flex-wrap"
+                                                    >
+                                                        <div class="course-tag">
+                                                            Remain:
+                                                        </div>
+                                                        <div class="course-tag">
+                                                            13D 1H 2M 27S
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a
+                                                href="course-details.html"
+                                                class="course-item"
+                                            >
+                                                <div class="course-img lh-0">
+                                                    <img
+                                                        src="../assets/admin-course-img-1.jpg"
+                                                    />
+                                                </div>
+                                                <div class="course-content">
+                                                    <div class="course-title">
+                                                        JavaScript Workshop for
+                                                        Absolute Beginners
+                                                    </div>
+                                                    <div
+                                                        class="d-flex item-center gap-8 flex-wrap"
+                                                    >
+                                                        <div class="course-tag">
+                                                            Remain:
+                                                        </div>
+                                                        <div class="course-tag">
+                                                            13D 1H 2M 27S
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
-                                </a>
-                                <a href="my-course.html" class="course-item course-action">
-                                    <div class="course-img lh-0">
-                                        <img
-                                            src="../assets/admin-course-img-1.jpg"
-                                        />
-                                    </div>
-                                    <div class="course-content">
-                                        <div class="course-title">
-                                            JavaScript Workshop for Absolute
-                                            Beginners
-                                        </div>
-                                        <div
-                                            class="d-flex item-center gap-8 flex-wrap"
-                                        >
-                                            <div class="course-tag tag-1">
-                                                Upcoming
-                                            </div>
-                                            <div class="course-tag">
-                                                Batch 1
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="my-course.html" class="course-item course-action">
-                                    <div class="course-img lh-0">
-                                        <img
-                                            src="../assets/admin-course-img-1.jpg"
-                                        />
-                                    </div>
-                                    <div class="course-content">
-                                        <div class="course-title">
-                                            JavaScript Workshop for Absolute
-                                            Beginners
-                                        </div>
-                                        <div
-                                            class="d-flex item-center gap-8 flex-wrap"
-                                        >
-                                            <div class="course-tag tag-1">
-                                                Upcoming
-                                            </div>
-                                            <div class="course-tag">
-                                                Batch 1
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="my-course.html" class="course-item course-action">
-                                    <div class="course-img lh-0">
-                                        <img
-                                            src="../assets/admin-course-img-1.jpg"
-                                        />
-                                    </div>
-                                    <div class="course-content">
-                                        <div class="course-title">
-                                            JavaScript Workshop for Absolute
-                                            Beginners
-                                        </div>
-                                        <div
-                                            class="d-flex item-center gap-8 flex-wrap"
-                                        >
-                                            <div class="course-tag tag-1">
-                                                Upcoming
-                                            </div>
-                                            <div class="course-tag">
-                                                Batch 1
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="course-card recommended-card">
-                            <div class="admin-title">Recommended Course</div>
-                            <div class="d-flex item-center flex-wrap gap-20">
-                                <a href="course-details.html" class="course-item">
-                                    <div class="course-img lh-0">
-                                        <img
-                                            src="../assets/admin-course-img-1.jpg"
-                                        />
-                                    </div>
-                                    <div class="course-content">
-                                        <div class="course-title">
-                                            JavaScript Workshop for Absolute
-                                            Beginners
+                            <div class="right-panel">
+                                <div class="course-short-info">
+                                    <div class="course-learning-wrapper">
+                                        <div class="short-title">
+                                            What will learn
                                         </div>
-                                        <div
-                                            class="d-flex item-center gap-8 flex-wrap"
-                                        >
-                                            <div class="course-tag">
-                                                Remain: 
-                                            </div>
-                                            <div class="course-tag">
-                                                13D 1H 2M 27S
+                                        <div class="d-flex gap-8 item-center">
+                                            <div class="batch">Batch-1</div>
+                                            <div class="batch-title">
+                                                JavaScript Workshop for Absolute
+                                                Beginners
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                                <a href="course-details.html"  class="course-item">
-                                    <div class="course-img lh-0">
-                                        <img
-                                            src="../assets/admin-course-img-1.jpg"
-                                        />
-                                    </div>
-                                    <div class="course-content">
-                                        <div class="course-title">
-                                            JavaScript Workshop for Absolute
-                                            Beginners
-                                        </div>
-                                        <div
-                                            class="d-flex item-center gap-8 flex-wrap"
-                                        >
-                                            <div class="course-tag">
-                                                Remain: 
+                                        <div class="notification-card">
+                                            <div class="batch-breadcrumb">
+                                                <div class="breadcrumb-1">
+                                                    Module 1
+                                                </div>
+                                                <div class="breadcrumb-2">
+                                                    <div
+                                                        class="d-flex item-center"
+                                                    >
+                                                        <div class="dot"></div>
+                                                        <div>Live Class</div>
+                                                    </div>
+                                                </div>
+                                                <div class="breadcrumb-3">
+                                                    <div
+                                                        class="d-flex item-center"
+                                                    >
+                                                        <div class="dot"></div>
+                                                        <div>
+                                                            Instractor: Abu
+                                                            Haider
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="course-tag">
-                                                13D 1H 2M 27S
+                                            <div class="notification-title">
+                                                টপিকঃ The Web Development World
                                             </div>
+                                            <button
+                                                id=""
+                                                type="button"
+                                                class="notification-btn"
+                                            >
+                                                ক্লাস শুরু হবে রাত ৯:০০
+                                            </button>
                                         </div>
                                     </div>
-                                </a>
-                                <a href="course-details.html"  class="course-item">
-                                    <div class="course-img lh-0">
-                                        <img
-                                            src="../assets/admin-course-img-1.jpg"
-                                        />
-                                    </div>
-                                    <div class="course-content">
-                                        <div class="course-title">
-                                            JavaScript Workshop for Absolute
-                                            Beginners
-                                        </div>
-                                        <div
-                                            class="d-flex item-center gap-8 flex-wrap"
-                                        >
-                                            <div class="course-tag">
-                                                Remain: 
+                                    <div class="notification-wrapper">
+                                        <div class="d-flex item-center gap-8">
+                                            <div>
+                                                সব কোর্সে ৩৫% ছাড় পেতে এই প্রোমো
+                                                ব্যাবহার করুন
                                             </div>
-                                            <div class="course-tag">
-                                                13D 1H 2M 27S
+                                            <div class="get-promo">
+                                                Get Promo
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <a href="course-details.html"  class="course-item">
-                                    <div class="course-img lh-0">
-                                        <img
-                                            src="../assets/admin-course-img-1.jpg"
-                                        />
-                                    </div>
-                                    <div class="course-content">
-                                        <div class="course-title">
-                                            JavaScript Workshop for Absolute
-                                            Beginners
-                                        </div>
-                                        <div
-                                            class="d-flex item-center gap-8 flex-wrap"
-                                        >
-                                            <div class="course-tag">
-                                                Remain: 
-                                            </div>
-                                            <div class="course-tag">
-                                                13D 1H 2M 27S
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="right-panel">
-                    <div class="course-short-info">
-                        <div class="course-learning-wrapper">
-                            <div class="short-title">What will learn</div>
-                            <div class="d-flex gap-8 item-center">
-                                <div class="batch">Batch-1</div>
-                                <div class="batch-title">
-                                    JavaScript Workshop for Absolute Beginners
+                    <div id="myCourse" class="tab-content">
+                        <div class="details-container admin-course-details">
+                            <div class="left-panel">
+                                <div
+                                    class="certificate-container ask-question mb-20"
+                                >
+                                    <div class="d-flex item-center gap-10">
+                                        <div class="icon">
+                                            <img
+                                                src="../assets/chat-profile.png"
+                                                alt=""
+                                            />
+                                        </div>
+                                        <div class="certificate-content">
+                                            <div class="certificate-title">
+                                                Hello, I'm Piku!
+                                            </div>
+                                            <div class="certificate-subtitle">
+                                                If you are confused about any
+                                                topic, ask.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="certificate-btn certificate-share live-chat-open"
+                                    >
+                                        <div>Ask Here</div>
+                                        <div class="icon">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                            >
+                                                <path
+                                                    d="M6.455 19L2 22.5V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V18C22 18.2652 21.8946 18.5196 21.7071 18.7071C21.5196 18.8946 21.2652 19 21 19H6.455ZM5.763 17H20V5H4V18.385L5.763 17ZM11 10H13V12H11V10ZM7 10H9V12H7V10ZM15 10H17V12H15V10Z"
+                                                    fill="currentColor"
+                                                />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column gap-10">
+                                    <div class="tabs">
+                                        <button
+                                            class="tab active"
+                                            data-tab="tab1"
+                                        >
+                                            Module
+                                        </button>
+                                        <button class="tab" data-tab="tab2">
+                                            Recording
+                                        </button>
+                                        <button class="tab" data-tab="tab3">
+                                            Resource
+                                        </button>
+                                        <button class="tab" data-tab="tab4">
+                                            Certificate
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <div
+                                            id="tab1"
+                                            class="tab-content active"
+                                        >
+                                            <div class="accordion-wrapper">
+                                                <div class="accordion">
+                                                    <div
+                                                        class="accordion-item active"
+                                                    >
+                                                        <div
+                                                            class="accordion-header"
+                                                        >
+                                                            <div
+                                                                class="d-flex item-center gap-8"
+                                                            >
+                                                                <div
+                                                                    class="course-week week-1"
+                                                                >
+                                                                    <div>
+                                                                        Week
+                                                                    </div>
+                                                                    <div>1</div>
+                                                                </div>
+                                                                <div>
+                                                                    Foundation
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="angle icon"
+                                                            >
+                                                                <svg
+                                                                    fill="currentColor"
+                                                                    width="24px"
+                                                                    height="24px"
+                                                                    viewBox="-8.5 0 32 32"
+                                                                    version="1.1"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <g
+                                                                        id="SVGRepo_bgCarrier"
+                                                                        stroke-width="0"
+                                                                    ></g>
+                                                                    <g
+                                                                        id="SVGRepo_tracerCarrier"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                    ></g>
+                                                                    <g
+                                                                        id="SVGRepo_iconCarrier"
+                                                                    >
+                                                                        <title>
+                                                                            angle-down
+                                                                        </title>
+                                                                        <path
+                                                                            d="M7.28 20.040c-0.24 0-0.44-0.080-0.6-0.24l-6.44-6.44c-0.32-0.32-0.32-0.84 0-1.2 0.32-0.32 0.84-0.32 1.2 0l5.84 5.84 5.84-5.84c0.32-0.32 0.84-0.32 1.2 0 0.32 0.32 0.32 0.84 0 1.2l-6.44 6.44c-0.16 0.16-0.4 0.24-0.6 0.24z"
+                                                                        ></path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="accordion-content"
+                                                        >
+                                                            <div
+                                                                class="d-flex flex-column gap-20"
+                                                            >
+                                                                <div
+                                                                    class="syllabus-item active"
+                                                                >
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0 syllabus-icon"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 24 24"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="20"
+                                                                                height="20"
+                                                                            >
+                                                                                <path
+                                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Welcome
+                                                                            to
+                                                                            the
+                                                                            course
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0"
+                                                                        >
+                                                                            <svg
+                                                                                width="16"
+                                                                                height="16"
+                                                                                viewBox="0 0 16 16"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                            >
+                                                                                <path
+                                                                                    d="M8 0C3.584 0 0 3.584 0 8C0 12.416 3.584 16 8 16C12.416 16 16 12.416 16 8C16 3.584 12.416 0 8 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M5 12.3731V3.62694C5 3.11467 5.66285 2.8148 6.12825 3.12717L12.7144 7.50022C13.0952 7.75011 13.0952 8.24989 12.7144 8.49978L6.12825 12.8728C5.66285 13.1852 5 12.8853 5 12.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Free
+                                                                            video
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="syllabus-item"
+                                                                >
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0 syllabus-icon"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 24 24"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="20"
+                                                                                height="20"
+                                                                            >
+                                                                                <path
+                                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Welcome
+                                                                            to
+                                                                            the
+                                                                            course
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 17 20"
+                                                                                width="17"
+                                                                                height="20"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                class="LessonsWithContents_resource_icon_list_locked__bgtkG"
+                                                                            >
+                                                                                <path
+                                                                                    fill-rule="evenodd"
+                                                                                    clip-rule="evenodd"
+                                                                                    d="M14.0019 6.66667H13.0018V4.7619C13.0018 2.13333 10.7615 0 8.00108 0C5.24071 0 3.00041 2.13333 3.00041 4.7619V6.66667H2.00027C0.900122 6.66667 0 7.52381 0 8.57143V18.0952C0 19.1429 0.900122 20 2.00027 20H14.0019C15.102 20 16.0022 19.1429 16.0022 18.0952V8.57143C16.0022 7.52381 15.102 6.66667 14.0019 6.66667ZM8.00027 15.2354C6.90012 15.2354 6 14.3782 6 13.3306C6 12.283 6.90012 11.4259 8.00027 11.4259C9.10042 11.4259 10.0005 12.283 10.0005 13.3306C10.0005 14.3782 9.10042 15.2354 8.00027 15.2354ZM5 4.75955V6.66432H11.0008V4.75955C11.0008 3.1786 9.66063 1.90241 8.00041 1.90241C6.34018 1.90241 5 3.1786 5 4.75955Z"
+                                                                                    fill="#9DA1A9"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <div
+                                                            class="accordion-header"
+                                                        >
+                                                            <div
+                                                                class="d-flex item-center gap-8"
+                                                            >
+                                                                <div
+                                                                    class="course-week week-2"
+                                                                >
+                                                                    <div>
+                                                                        Week
+                                                                    </div>
+                                                                    <div>2</div>
+                                                                </div>
+                                                                <div>
+                                                                    Foundation
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="angle icon"
+                                                            >
+                                                                <svg
+                                                                    fill="currentColor"
+                                                                    width="24px"
+                                                                    height="24px"
+                                                                    viewBox="-8.5 0 32 32"
+                                                                    version="1.1"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <g
+                                                                        id="SVGRepo_bgCarrier"
+                                                                        stroke-width="0"
+                                                                    ></g>
+                                                                    <g
+                                                                        id="SVGRepo_tracerCarrier"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                    ></g>
+                                                                    <g
+                                                                        id="SVGRepo_iconCarrier"
+                                                                    >
+                                                                        <title>
+                                                                            angle-down
+                                                                        </title>
+                                                                        <path
+                                                                            d="M7.28 20.040c-0.24 0-0.44-0.080-0.6-0.24l-6.44-6.44c-0.32-0.32-0.32-0.84 0-1.2 0.32-0.32 0.84-0.32 1.2 0l5.84 5.84 5.84-5.84c0.32-0.32 0.84-0.32 1.2 0 0.32 0.32 0.32 0.84 0 1.2l-6.44 6.44c-0.16 0.16-0.4 0.24-0.6 0.24z"
+                                                                        ></path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="accordion-content"
+                                                        >
+                                                            <div
+                                                                class="d-flex flex-column gap-20"
+                                                            >
+                                                                <div
+                                                                    class="syllabus-item active"
+                                                                >
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0 syllabus-icon"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 24 24"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="20"
+                                                                                height="20"
+                                                                            >
+                                                                                <path
+                                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Welcome
+                                                                            to
+                                                                            the
+                                                                            course
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0"
+                                                                        >
+                                                                            <svg
+                                                                                width="16"
+                                                                                height="16"
+                                                                                viewBox="0 0 16 16"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                            >
+                                                                                <path
+                                                                                    d="M8 0C3.584 0 0 3.584 0 8C0 12.416 3.584 16 8 16C12.416 16 16 12.416 16 8C16 3.584 12.416 0 8 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M5 12.3731V3.62694C5 3.11467 5.66285 2.8148 6.12825 3.12717L12.7144 7.50022C13.0952 7.75011 13.0952 8.24989 12.7144 8.49978L6.12825 12.8728C5.66285 13.1852 5 12.8853 5 12.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Free
+                                                                            video
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="syllabus-item"
+                                                                >
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0 syllabus-icon"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 24 24"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="20"
+                                                                                height="20"
+                                                                            >
+                                                                                <path
+                                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Welcome
+                                                                            to
+                                                                            the
+                                                                            course
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 17 20"
+                                                                                width="17"
+                                                                                height="20"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                class="LessonsWithContents_resource_icon_list_locked__bgtkG"
+                                                                            >
+                                                                                <path
+                                                                                    fill-rule="evenodd"
+                                                                                    clip-rule="evenodd"
+                                                                                    d="M14.0019 6.66667H13.0018V4.7619C13.0018 2.13333 10.7615 0 8.00108 0C5.24071 0 3.00041 2.13333 3.00041 4.7619V6.66667H2.00027C0.900122 6.66667 0 7.52381 0 8.57143V18.0952C0 19.1429 0.900122 20 2.00027 20H14.0019C15.102 20 16.0022 19.1429 16.0022 18.0952V8.57143C16.0022 7.52381 15.102 6.66667 14.0019 6.66667ZM8.00027 15.2354C6.90012 15.2354 6 14.3782 6 13.3306C6 12.283 6.90012 11.4259 8.00027 11.4259C9.10042 11.4259 10.0005 12.283 10.0005 13.3306C10.0005 14.3782 9.10042 15.2354 8.00027 15.2354ZM5 4.75955V6.66432H11.0008V4.75955C11.0008 3.1786 9.66063 1.90241 8.00041 1.90241C6.34018 1.90241 5 3.1786 5 4.75955Z"
+                                                                                    fill="#9DA1A9"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <div
+                                                            class="accordion-header"
+                                                        >
+                                                            <div
+                                                                class="d-flex item-center gap-8"
+                                                            >
+                                                                <div
+                                                                    class="course-week week-3"
+                                                                >
+                                                                    <div>
+                                                                        Week
+                                                                    </div>
+                                                                    <div>3</div>
+                                                                </div>
+                                                                <div>
+                                                                    Foundation
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="angle icon"
+                                                            >
+                                                                <svg
+                                                                    fill="currentColor"
+                                                                    width="24px"
+                                                                    height="24px"
+                                                                    viewBox="-8.5 0 32 32"
+                                                                    version="1.1"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <g
+                                                                        id="SVGRepo_bgCarrier"
+                                                                        stroke-width="0"
+                                                                    ></g>
+                                                                    <g
+                                                                        id="SVGRepo_tracerCarrier"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                    ></g>
+                                                                    <g
+                                                                        id="SVGRepo_iconCarrier"
+                                                                    >
+                                                                        <title>
+                                                                            angle-down
+                                                                        </title>
+                                                                        <path
+                                                                            d="M7.28 20.040c-0.24 0-0.44-0.080-0.6-0.24l-6.44-6.44c-0.32-0.32-0.32-0.84 0-1.2 0.32-0.32 0.84-0.32 1.2 0l5.84 5.84 5.84-5.84c0.32-0.32 0.84-0.32 1.2 0 0.32 0.32 0.32 0.84 0 1.2l-6.44 6.44c-0.16 0.16-0.4 0.24-0.6 0.24z"
+                                                                        ></path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="accordion-content"
+                                                        >
+                                                            <div
+                                                                class="d-flex flex-column gap-20"
+                                                            >
+                                                                <div
+                                                                    class="syllabus-item active"
+                                                                >
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0 syllabus-icon"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 24 24"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="20"
+                                                                                height="20"
+                                                                            >
+                                                                                <path
+                                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Welcome
+                                                                            to
+                                                                            the
+                                                                            course
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0"
+                                                                        >
+                                                                            <svg
+                                                                                width="16"
+                                                                                height="16"
+                                                                                viewBox="0 0 16 16"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                            >
+                                                                                <path
+                                                                                    d="M8 0C3.584 0 0 3.584 0 8C0 12.416 3.584 16 8 16C12.416 16 16 12.416 16 8C16 3.584 12.416 0 8 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M5 12.3731V3.62694C5 3.11467 5.66285 2.8148 6.12825 3.12717L12.7144 7.50022C13.0952 7.75011 13.0952 8.24989 12.7144 8.49978L6.12825 12.8728C5.66285 13.1852 5 12.8853 5 12.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Free
+                                                                            video
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="syllabus-item"
+                                                                >
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0 syllabus-icon"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 24 24"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="20"
+                                                                                height="20"
+                                                                            >
+                                                                                <path
+                                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                                    fill="currentColor"
+                                                                                ></path>
+                                                                                <path
+                                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                                    fill="white"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div>
+                                                                            Welcome
+                                                                            to
+                                                                            the
+                                                                            course
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                                    >
+                                                                        <div
+                                                                            class="lh-0"
+                                                                        >
+                                                                            <svg
+                                                                                viewBox="0 0 17 20"
+                                                                                width="17"
+                                                                                height="20"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                class="LessonsWithContents_resource_icon_list_locked__bgtkG"
+                                                                            >
+                                                                                <path
+                                                                                    fill-rule="evenodd"
+                                                                                    clip-rule="evenodd"
+                                                                                    d="M14.0019 6.66667H13.0018V4.7619C13.0018 2.13333 10.7615 0 8.00108 0C5.24071 0 3.00041 2.13333 3.00041 4.7619V6.66667H2.00027C0.900122 6.66667 0 7.52381 0 8.57143V18.0952C0 19.1429 0.900122 20 2.00027 20H14.0019C15.102 20 16.0022 19.1429 16.0022 18.0952V8.57143C16.0022 7.52381 15.102 6.66667 14.0019 6.66667ZM8.00027 15.2354C6.90012 15.2354 6 14.3782 6 13.3306C6 12.283 6.90012 11.4259 8.00027 11.4259C9.10042 11.4259 10.0005 12.283 10.0005 13.3306C10.0005 14.3782 9.10042 15.2354 8.00027 15.2354ZM5 4.75955V6.66432H11.0008V4.75955C11.0008 3.1786 9.66063 1.90241 8.00041 1.90241C6.34018 1.90241 5 3.1786 5 4.75955Z"
+                                                                                    fill="#9DA1A9"
+                                                                                ></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab2" class="tab-content">
+                                            <div
+                                                class="d-flex flex-column gap-20"
+                                            >
+                                                <div
+                                                    class="syllabus-item active"
+                                                >
+                                                    <div
+                                                        class="d-flex gap-8 item-center"
+                                                    >
+                                                        <div
+                                                            class="lh-0 syllabus-icon"
+                                                        >
+                                                            <svg
+                                                                viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                            >
+                                                                <path
+                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                    fill="currentColor"
+                                                                ></path>
+                                                                <path
+                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                    fill="white"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            Welcome to the
+                                                            course
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                    >
+                                                        <div class="lh-0">
+                                                            <svg
+                                                                width="16"
+                                                                height="16"
+                                                                viewBox="0 0 16 16"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                            >
+                                                                <path
+                                                                    d="M8 0C3.584 0 0 3.584 0 8C0 12.416 3.584 16 8 16C12.416 16 16 12.416 16 8C16 3.584 12.416 0 8 0Z"
+                                                                    fill="currentColor"
+                                                                ></path>
+                                                                <path
+                                                                    d="M5 12.3731V3.62694C5 3.11467 5.66285 2.8148 6.12825 3.12717L12.7144 7.50022C13.0952 7.75011 13.0952 8.24989 12.7144 8.49978L6.12825 12.8728C5.66285 13.1852 5 12.8853 5 12.3731Z"
+                                                                    fill="white"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div>Free video</div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="syllabus-item active"
+                                                >
+                                                    <div
+                                                        class="d-flex gap-8 item-center"
+                                                    >
+                                                        <div
+                                                            class="lh-0 syllabus-icon"
+                                                        >
+                                                            <svg
+                                                                viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                            >
+                                                                <path
+                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                    fill="currentColor"
+                                                                ></path>
+                                                                <path
+                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                    fill="white"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            Welcome to the
+                                                            course
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                    >
+                                                        <div class="lh-0">
+                                                            <svg
+                                                                width="16"
+                                                                height="16"
+                                                                viewBox="0 0 16 16"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                            >
+                                                                <path
+                                                                    d="M8 0C3.584 0 0 3.584 0 8C0 12.416 3.584 16 8 16C12.416 16 16 12.416 16 8C16 3.584 12.416 0 8 0Z"
+                                                                    fill="currentColor"
+                                                                ></path>
+                                                                <path
+                                                                    d="M5 12.3731V3.62694C5 3.11467 5.66285 2.8148 6.12825 3.12717L12.7144 7.50022C13.0952 7.75011 13.0952 8.24989 12.7144 8.49978L6.12825 12.8728C5.66285 13.1852 5 12.8853 5 12.3731Z"
+                                                                    fill="white"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div>Free video</div>
+                                                    </div>
+                                                </div>
+                                                <div class="syllabus-item">
+                                                    <div
+                                                        class="d-flex gap-8 item-center"
+                                                    >
+                                                        <div
+                                                            class="lh-0 syllabus-icon"
+                                                        >
+                                                            <svg
+                                                                viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                            >
+                                                                <path
+                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                    fill="currentColor"
+                                                                ></path>
+                                                                <path
+                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                    fill="white"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            Welcome to the
+                                                            course
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                    >
+                                                        <div class="lh-0">
+                                                            <svg
+                                                                viewBox="0 0 17 20"
+                                                                width="17"
+                                                                height="20"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                class="LessonsWithContents_resource_icon_list_locked__bgtkG"
+                                                            >
+                                                                <path
+                                                                    fill-rule="evenodd"
+                                                                    clip-rule="evenodd"
+                                                                    d="M14.0019 6.66667H13.0018V4.7619C13.0018 2.13333 10.7615 0 8.00108 0C5.24071 0 3.00041 2.13333 3.00041 4.7619V6.66667H2.00027C0.900122 6.66667 0 7.52381 0 8.57143V18.0952C0 19.1429 0.900122 20 2.00027 20H14.0019C15.102 20 16.0022 19.1429 16.0022 18.0952V8.57143C16.0022 7.52381 15.102 6.66667 14.0019 6.66667ZM8.00027 15.2354C6.90012 15.2354 6 14.3782 6 13.3306C6 12.283 6.90012 11.4259 8.00027 11.4259C9.10042 11.4259 10.0005 12.283 10.0005 13.3306C10.0005 14.3782 9.10042 15.2354 8.00027 15.2354ZM5 4.75955V6.66432H11.0008V4.75955C11.0008 3.1786 9.66063 1.90241 8.00041 1.90241C6.34018 1.90241 5 3.1786 5 4.75955Z"
+                                                                    fill="#9DA1A9"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="syllabus-item">
+                                                    <div
+                                                        class="d-flex gap-8 item-center"
+                                                    >
+                                                        <div
+                                                            class="lh-0 syllabus-icon"
+                                                        >
+                                                            <svg
+                                                                viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                            >
+                                                                <path
+                                                                    d="M12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0Z"
+                                                                    fill="currentColor"
+                                                                ></path>
+                                                                <path
+                                                                    d="M9 16.3731V7.62694C9 7.11467 9.57999 6.8148 9.98722 7.12717L15.7501 11.5002C16.0833 11.7501 16.0833 12.2499 15.7501 12.4998L9.98722 16.8728C9.57999 17.1852 9 16.8853 9 16.3731Z"
+                                                                    fill="white"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            Welcome to the
+                                                            course
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex gap-8 item-center syllabus-btn"
+                                                    >
+                                                        <div class="lh-0">
+                                                            <svg
+                                                                viewBox="0 0 17 20"
+                                                                width="17"
+                                                                height="20"
+                                                                fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                class="LessonsWithContents_resource_icon_list_locked__bgtkG"
+                                                            >
+                                                                <path
+                                                                    fill-rule="evenodd"
+                                                                    clip-rule="evenodd"
+                                                                    d="M14.0019 6.66667H13.0018V4.7619C13.0018 2.13333 10.7615 0 8.00108 0C5.24071 0 3.00041 2.13333 3.00041 4.7619V6.66667H2.00027C0.900122 6.66667 0 7.52381 0 8.57143V18.0952C0 19.1429 0.900122 20 2.00027 20H14.0019C15.102 20 16.0022 19.1429 16.0022 18.0952V8.57143C16.0022 7.52381 15.102 6.66667 14.0019 6.66667ZM8.00027 15.2354C6.90012 15.2354 6 14.3782 6 13.3306C6 12.283 6.90012 11.4259 8.00027 11.4259C9.10042 11.4259 10.0005 12.283 10.0005 13.3306C10.0005 14.3782 9.10042 15.2354 8.00027 15.2354ZM5 4.75955V6.66432H11.0008V4.75955C11.0008 3.1786 9.66063 1.90241 8.00041 1.90241C6.34018 1.90241 5 3.1786 5 4.75955Z"
+                                                                    fill="#9DA1A9"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab3" class="tab-content">
+                                            <div
+                                                class="d-flex item-center justify-center resource-container gap-10"
+                                            >
+                                                <div class="icon">
+                                                    <svg
+                                                        width="112"
+                                                        height="112"
+                                                        viewBox="0 0 112 112"
+                                                        fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path
+                                                            d="M26.25 24.5C24.8576 24.5 23.5223 25.0531 22.5377 26.0377C21.5531 27.0223 21 28.3576 21 29.75V54.25L33.25 57.75L52.5 49L57.75 33.25L54.25 24.5H26.25Z"
+                                                            fill="#7DAFFF"
+                                                        />
+                                                        <path
+                                                            d="M42 35H56V38.5H42V35Z"
+                                                            fill="#548AFF"
+                                                        />
+                                                        <path
+                                                            d="M28 35H38.5V38.5H28V35Z"
+                                                            fill="#548AFF"
+                                                        />
+                                                        <path
+                                                            d="M28 43.75H52.5V47.25H28V43.75Z"
+                                                            fill="#548AFF"
+                                                        />
+                                                        <path
+                                                            d="M89.25 37.1744V101.5C89.2496 102.892 88.6964 104.227 87.7119 105.212C86.7274 106.196 85.3923 106.75 84 106.75H31.5C30.1077 106.75 28.7726 106.196 27.7881 105.212C26.8036 104.227 26.2504 102.892 26.25 101.5V57.75L54.25 50.75V17.5H69.5756C70.9678 17.5012 72.3027 18.0542 73.2879 19.0378L87.7121 33.4622C88.6957 34.4474 89.2487 35.7822 89.25 37.1744Z"
+                                                            fill="#548AFF"
+                                                        />
+                                                        <path
+                                                            d="M35 91H52.5V94.5H35V91Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M56 91H68.25V94.5H56V91Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M71.75 91H82.25V94.5H71.75V91Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M35 80.5H40.25V84H35V80.5Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M43.75 80.5H61.25V84H43.75V80.5Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M35 70H49V73.5H35V70Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M52.5 70H66.5V73.5H52.5V70Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M77 52.5H80.5V56H77V52.5Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M57.75 52.5H73.5V56H57.75V52.5Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M70 42H80.5V45.5H70V42Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M56 42H66.5V45.5H56V42Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M64.75 80.5H77V84H64.75V80.5Z"
+                                                            fill="#486BE0"
+                                                        />
+                                                        <path
+                                                            d="M48.9893 55.125L55.1133 49.0009L60.8 54.6876L54.676 60.8117L48.9893 55.125Z"
+                                                            fill="#F78E00"
+                                                        />
+                                                        <path
+                                                            d="M54.2378 61.25L61.2368 54.251L66.5939 59.6082L59.5949 66.6071L54.2378 61.25Z"
+                                                            fill="#FFB401"
+                                                        />
+                                                        <path
+                                                            d="M57.7363 68.25L68.2347 57.7516L103.229 92.7463L92.731 103.245L57.7363 68.25Z"
+                                                            fill="#FFC431"
+                                                        />
+                                                        <path
+                                                            d="M92.75 103.25L94.0754 104.575C94.7648 105.265 95.5833 105.812 96.4841 106.185C97.3849 106.558 98.3504 106.75 99.3254 106.75H99.3254C101.295 106.75 103.183 105.968 104.575 104.575C105.968 103.183 106.75 101.295 106.75 99.3254V99.3254C106.75 98.3504 106.558 97.3849 106.185 96.4841C105.812 95.5833 105.265 94.7648 104.575 94.0754L103.25 92.75L92.75 103.25Z"
+                                                            fill="#FFB401"
+                                                        />
+                                                        <path
+                                                            d="M33.25 5.25C27.7121 5.25 22.2986 6.89217 17.694 9.96885C13.0895 13.0455 9.50064 17.4185 7.38139 22.5349C5.26213 27.6512 4.70764 33.2811 5.78802 38.7125C6.86841 44.144 9.53515 49.1331 13.451 53.049C17.3669 56.9649 22.356 59.6316 27.7875 60.712C33.219 61.7924 38.8488 61.2379 43.9651 59.1186C49.0815 56.9994 53.4545 53.4105 56.5312 48.806C59.6078 44.2014 61.25 38.7879 61.25 33.25C61.25 25.8239 58.3 18.702 53.049 13.451C47.798 8.2 40.6761 5.25001 33.25 5.25ZM33.25 54.25C29.0966 54.25 25.0365 53.0184 21.583 50.7109C18.1296 48.4034 15.438 45.1236 13.8485 41.2864C12.2591 37.4491 11.8432 33.2267 12.6535 29.1531C13.4638 25.0795 15.4639 21.3377 18.4008 18.4008C21.3377 15.4639 25.0795 13.4638 29.1531 12.6535C33.2267 11.8432 37.4491 12.2591 41.2864 13.8485C45.1236 15.438 48.4034 18.1296 50.7109 21.583C53.0184 25.0365 54.25 29.0966 54.25 33.25C54.25 38.8195 52.0375 44.161 48.0993 48.0992C44.161 52.0375 38.8196 54.25 33.25 54.25Z"
+                                                            fill="#FFC431"
+                                                        />
+                                                        <path
+                                                            d="M88.7775 35.0002H75.25C74.7903 35.0003 74.3352 34.9099 73.9105 34.734C73.4858 34.5582 73.0999 34.3004 72.7749 33.9753C72.4498 33.6503 72.192 33.2644 72.0162 32.8397C71.8403 32.415 71.7499 31.9598 71.75 31.5002V17.9727C72.3225 18.2324 72.8435 18.5933 73.2879 19.038L87.7121 33.4624C88.1569 33.9067 88.5178 34.4277 88.7775 35.0002Z"
+                                                            fill="#7DAFFF"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                                <div
+                                                    class="no-resource-content"
+                                                >
+                                                    <div
+                                                        class="no-resource-title"
+                                                    >
+                                                        No resource uploaded
+                                                    </div>
+                                                    <div
+                                                        class="no-resource-subtitle"
+                                                    >
+                                                        Necessary resources will
+                                                        be added gradually, in
+                                                        coordination with the
+                                                        progress of the course.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab4" class="tab-content">
+                                            <div class="certificate-container">
+                                                <div class="d-flex gap-10">
+                                                    <div class="icon">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                            width="66"
+                                                            height="66"
+                                                            viewBox="0 0 66 66"
+                                                            fill="none"
+                                                        >
+                                                            <rect
+                                                                x="0.601562"
+                                                                y="0.600098"
+                                                                width="64.8"
+                                                                height="64.8"
+                                                                fill="url(#pattern0_4434_135)"
+                                                            />
+                                                            <defs>
+                                                                <pattern
+                                                                    id="pattern0_4434_135"
+                                                                    patternContentUnits="objectBoundingBox"
+                                                                    width="1"
+                                                                    height="1"
+                                                                >
+                                                                    <use
+                                                                        xlink:href="#image0_4434_135"
+                                                                        transform="scale(0.00195312)"
+                                                                    />
+                                                                </pattern>
+                                                                <image
+                                                                    id="image0_4434_135"
+                                                                    width="512"
+                                                                    height="512"
+                                                                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAAAXNSR0IArs4c6QAAIABJREFUeAHtnQeYFFXatuf/Prt6AkMOkpEoUXKSIDmLRCUIikRRVjFgQMWwBmQVQcSAqKAugmD4zAQDKoqigMCqrGsCjGvELLz/dWa3tWl6ZqrOqa7uqrq9rrZ7mu6uU8953ve9z6mqU1lZ/IcCKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACKIACbinwP1lZWWV4oAEewAN4AA/gAc88oGqvp//lWpY1PBqN3mJZ1mbLsr61LEt4oAEewAN4AA/gAc898I2qxdFodJFlWcOysrJyXCeC7Ozs2tFodDEF3/POBa4ATDyAB/AAHrDrgW/VAD07O/soN0CgRCQSmWdZ1m+QHcUfD+ABPIAH8IAvPPCrZVnXZ2Vl5WmBQCQSaWFZ1m462xedbZcO+RwjCTyAB/BAeDzwTiQSae4IArKzs3talvU9xZ/ijwfwAB7AA3jA1x74IRqN9rcFAeqDlmWp6QMoEQ3wAB7AA3gAD/jfA79Go9G+RUJAJBI5xrKsHyj+wA8ewAN4AA/ggUB5YL9lWU0LgwB1id87dHigOhxy9z+504f0IR7AA255YFfSSwUty7qG4k/xxwN4AA/gATwQaA9cecgsQE5OTjXLsn6h0wPd6W4RJL/DaAQP4AE8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"
+                                                                />
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+                                                    <div
+                                                        class="certificate-content"
+                                                    >
+                                                        <div
+                                                            class="certificate-title"
+                                                        >
+                                                            Completion
+                                                            Certificate 🎉
+                                                        </div>
+                                                        <div
+                                                            class="certificate-subtitle"
+                                                        >
+                                                            Share your success
+                                                            on social media.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="certificate-btn-group"
+                                                >
+                                                    <div
+                                                        class="certificate-btn certificate-download"
+                                                    >
+                                                        <div>Download</div>
+                                                        <div class="icon">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="24"
+                                                                height="24"
+                                                                viewBox="0 0 24 24"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.2652 21.8946 20.5196 21.7071 20.7071C21.5196 20.8946 21.2652 21 21 21H3C2.73478 21 2.48043 20.8946 2.29289 20.7071C2.10536 20.5196 2 20.2652 2 20V12H4V19Z"
+                                                                    fill="currentColor"
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="certificate-btn certificate-share"
+                                                    >
+                                                        <div>Share</div>
+                                                        <div class="icon">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="24"
+                                                                height="24"
+                                                                viewBox="0 0 24 24"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    d="M10 6V8H5V19H16V14H18V20C18 20.2652 17.8946 20.5196 17.7071 20.7071C17.5196 20.8946 17.2652 21 17 21H4C3.73478 21 3.48043 20.8946 3.29289 20.7071C3.10536 20.5196 3 20.2652 3 20V7C3 6.73478 3.10536 6.48043 3.29289 6.29289C3.48043 6.10536 3.73478 6 4 6H10ZM21 3V11H19V6.413L11.207 14.207L9.793 12.793L17.585 5H13V3H21Z"
+                                                                    fill="currentColor"
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="notification-card">
-                                <div class="batch-breadcrumb">
-                                    <div class="breadcrumb-1">Module 1</div>
-                                    <div class="breadcrumb-2">
-                                        <div class="d-flex item-center">
-                                            <div class="dot"></div>
-                                            <div>Live Class</div>
+                            <div class="right-panel">
+                                <div class="course-short-info">
+                                    <div class="course-learning-wrapper mb-20">
+                                        <div class="short-title">
+                                            Join private group
+                                        </div>
+                                        <div class="btn-group">
+                                            <div
+                                                class="btn-join btn-whatsapp w-full"
+                                            >
+                                                <div>Join</div>
+                                                <div class="icon">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                    >
+                                                        <path
+                                                            d="M7.25301 18.494L7.97701 18.917C9.19795 19.6291 10.5866 20.0029 12 20C13.5823 20 15.129 19.5308 16.4446 18.6518C17.7602 17.7727 18.7855 16.5233 19.3911 15.0615C19.9966 13.5997 20.155 11.9911 19.8463 10.4393C19.5376 8.88743 18.7757 7.46197 17.6569 6.34315C16.538 5.22433 15.1126 4.4624 13.5607 4.15372C12.0089 3.84504 10.4004 4.00346 8.93855 4.60896C7.47674 5.21447 6.22731 6.23984 5.34826 7.55544C4.46921 8.87103 4.00001 10.4177 4.00001 12C4.00001 13.436 4.37701 14.813 5.08401 16.024L5.50601 16.748L4.85301 19.149L7.25301 18.494ZM2.00401 22L3.35601 17.032C2.46515 15.5049 1.99711 13.768 2.00001 12C2.00001 6.477 6.47701 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22C10.2328 22.0029 8.49667 21.5352 6.97001 20.645L2.00401 22ZM8.39101 7.308C8.52501 7.298 8.66001 7.298 8.79401 7.304C8.84801 7.308 8.90201 7.314 8.95601 7.32C9.11501 7.338 9.29001 7.435 9.34901 7.569C9.64701 8.245 9.93701 8.926 10.217 9.609C10.279 9.761 10.242 9.956 10.124 10.146C10.0429 10.2745 9.95507 10.3986 9.86101 10.518C9.74801 10.663 9.50501 10.929 9.50501 10.929C9.50501 10.929 9.40601 11.047 9.44401 11.194C9.45801 11.25 9.50401 11.331 9.54601 11.399L9.60501 11.494C9.86101 11.921 10.205 12.354 10.625 12.762C10.745 12.878 10.862 12.997 10.988 13.108C11.456 13.521 11.986 13.858 12.558 14.108L12.563 14.11C12.648 14.147 12.691 14.167 12.815 14.22C12.877 14.246 12.941 14.269 13.006 14.286C13.0732 14.3031 13.1439 14.2999 13.2093 14.2767C13.2746 14.2536 13.3316 14.2116 13.373 14.156C14.097 13.279 14.163 13.222 14.169 13.222V13.224C14.2193 13.1771 14.2791 13.1415 14.3443 13.1196C14.4095 13.0977 14.4786 13.09 14.547 13.097C14.607 13.101 14.668 13.112 14.724 13.137C15.255 13.38 16.124 13.759 16.124 13.759L16.706 14.02C16.804 14.067 16.893 14.178 16.896 14.285C16.9 14.352 16.906 14.46 16.883 14.658C16.851 14.917 16.773 15.228 16.695 15.391C16.6416 15.5022 16.5707 15.6042 16.485 15.693C16.3841 15.7989 16.2736 15.8954 16.155 15.981C16.114 16.0119 16.0723 16.0419 16.03 16.071C15.9056 16.1499 15.7778 16.2233 15.647 16.291C15.3895 16.4278 15.1052 16.5063 14.814 16.521C14.629 16.531 14.444 16.545 14.258 16.535C14.25 16.535 13.69 16.448 13.69 16.448C12.2683 16.074 10.9534 15.3735 9.85001 14.402C9.62401 14.203 9.41501 13.989 9.20101 13.776C8.31101 12.891 7.63901 11.936 7.23101 11.034C7.02218 10.5913 6.90938 10.1094 6.90001 9.62C6.89589 9.01285 7.09436 8.42167 7.46401 7.94C7.53701 7.846 7.60601 7.748 7.72501 7.635C7.85201 7.515 7.93201 7.451 8.01901 7.407C8.13469 7.34903 8.26088 7.31502 8.39001 7.307L8.39101 7.308Z"
+                                                            fill="#12B76A"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="btn-join btn-facebook w-full"
+                                            >
+                                                <div>Join</div>
+                                                <div class="icon">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                    >
+                                                        <path
+                                                            d="M13 19.938C15.0173 19.6813 16.8611 18.6661 18.1568 17.0988C19.4525 15.5314 20.1027 13.5295 19.9754 11.5C19.848 9.47041 18.9527 7.56549 17.4713 6.17238C15.9898 4.77927 14.0336 4.00252 12 4C9.96396 3.99848 8.00395 4.77334 6.51934 6.16668C5.03473 7.56002 4.13724 9.46699 4.00974 11.499C3.88225 13.5311 4.53434 15.5353 5.83314 17.1033C7.13195 18.6712 8.97974 19.685 11 19.938V14H9V12H11V10.346C11 9.009 11.14 8.524 11.4 8.035C11.6561 7.55119 12.052 7.15569 12.536 6.9C12.918 6.695 13.393 6.572 14.223 6.519C14.552 6.498 14.978 6.524 15.501 6.599V8.499H15C14.083 8.499 13.704 8.542 13.478 8.663C13.3431 8.73236 13.2334 8.84215 13.164 8.977C13.044 9.203 13 9.427 13 10.345V12H15.5L15 14H13V19.938ZM12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22Z"
+                                                            fill="#4478FF"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="breadcrumb-3">
-                                        <div class="d-flex item-center">
-                                            <div class="dot"></div>
-                                            <div>Instractor: Abu Haider</div>
+                                    <div class="course-learning-wrapper">
+                                        <div
+                                            class="d-flex item-center justify-between w-full mb-12"
+                                        >
+                                            <div>Leaderboard</div>
+                                            <!-- <div style="font-size: 12px;">See All</div> -->
+                                        </div>
+                                        <div class="d-flex flex-column gap-8">
+                                            <div class="leader-item leader-own">
+                                                <div class="leader-tag">
+                                                    You
+                                                </div>
+                                                <div class="leader-position">
+                                                    244
+                                                </div>
+                                                <div
+                                                    class="d-flex item-center justify-between w-full"
+                                                >
+                                                    <div
+                                                        class="d-flex item-center gap-8"
+                                                    >
+                                                        <div class="icon">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="16"
+                                                                height="16"
+                                                                viewBox="0 0 11 11"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    d="M8.82353 9.70588H7.94118V8.82353C7.94118 8.47251 7.80174 8.13586 7.55353 7.88765C7.30532 7.63944 6.96867 7.5 6.61765 7.5H3.97059C3.61957 7.5 3.28293 7.63944 3.03472 7.88765C2.78651 8.13586 2.64706 8.47251 2.64706 8.82353V9.70588H1.76471V8.82353C1.76471 8.23849 1.99711 7.67742 2.4108 7.26374C2.82448 6.85005 3.38556 6.61765 3.97059 6.61765H6.61765C7.20269 6.61765 7.76376 6.85005 8.17744 7.26374C8.59113 7.67742 8.82353 8.23849 8.82353 8.82353V9.70588ZM5.29412 5.7353C4.9465 5.7353 4.60229 5.66683 4.28114 5.5338C3.95998 5.40077 3.66817 5.20579 3.42237 4.95999C3.17657 4.71419 2.98158 4.42238 2.84856 4.10122C2.71553 3.78007 2.64706 3.43585 2.64706 3.08824C2.64706 2.74062 2.71553 2.39641 2.84856 2.07525C2.98158 1.75409 3.17657 1.46229 3.42237 1.21648C3.66817 0.970681 3.95998 0.7757 4.28114 0.642673C4.60229 0.509646 4.9465 0.441177 5.29412 0.441177C5.99616 0.441177 6.66946 0.720063 7.16587 1.21648C7.66229 1.7129 7.94118 2.38619 7.94118 3.08824C7.94118 3.79028 7.66229 4.46357 7.16587 4.95999C6.66946 5.45641 5.99616 5.73529 5.29412 5.7353ZM5.29412 4.85294C5.76215 4.85294 6.21101 4.66702 6.54196 4.33607C6.8729 4.00513 7.05883 3.55627 7.05883 3.08824C7.05883 2.62021 6.8729 2.17135 6.54196 1.8404C6.21101 1.50945 5.76215 1.32353 5.29412 1.32353C4.82609 1.32353 4.37723 1.50945 4.04629 1.8404C3.71534 2.17135 3.52942 2.62021 3.52942 3.08824C3.52942 3.55627 3.71534 4.00513 4.04629 4.33607C4.37723 4.66702 4.82609 4.85294 5.29412 4.85294Z"
+                                                                    fill="#101828"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="user-name">
+                                                            User Name
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="mark">
+                                                            0%
+                                                        </div>
+                                                        <div class="mark-title">
+                                                            Mark
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="leader-item leader-1">
+                                                <div class="leader-position">
+                                                    1
+                                                </div>
+                                                <div
+                                                    class="d-flex item-center justify-between w-full"
+                                                >
+                                                    <div
+                                                        class="d-flex item-center gap-8"
+                                                    >
+                                                        <div class="icon">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="16"
+                                                                height="16"
+                                                                viewBox="0 0 11 11"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    d="M8.82353 9.70588H7.94118V8.82353C7.94118 8.47251 7.80174 8.13586 7.55353 7.88765C7.30532 7.63944 6.96867 7.5 6.61765 7.5H3.97059C3.61957 7.5 3.28293 7.63944 3.03472 7.88765C2.78651 8.13586 2.64706 8.47251 2.64706 8.82353V9.70588H1.76471V8.82353C1.76471 8.23849 1.99711 7.67742 2.4108 7.26374C2.82448 6.85005 3.38556 6.61765 3.97059 6.61765H6.61765C7.20269 6.61765 7.76376 6.85005 8.17744 7.26374C8.59113 7.67742 8.82353 8.23849 8.82353 8.82353V9.70588ZM5.29412 5.7353C4.9465 5.7353 4.60229 5.66683 4.28114 5.5338C3.95998 5.40077 3.66817 5.20579 3.42237 4.95999C3.17657 4.71419 2.98158 4.42238 2.84856 4.10122C2.71553 3.78007 2.64706 3.43585 2.64706 3.08824C2.64706 2.74062 2.71553 2.39641 2.84856 2.07525C2.98158 1.75409 3.17657 1.46229 3.42237 1.21648C3.66817 0.970681 3.95998 0.7757 4.28114 0.642673C4.60229 0.509646 4.9465 0.441177 5.29412 0.441177C5.99616 0.441177 6.66946 0.720063 7.16587 1.21648C7.66229 1.7129 7.94118 2.38619 7.94118 3.08824C7.94118 3.79028 7.66229 4.46357 7.16587 4.95999C6.66946 5.45641 5.99616 5.73529 5.29412 5.7353ZM5.29412 4.85294C5.76215 4.85294 6.21101 4.66702 6.54196 4.33607C6.8729 4.00513 7.05883 3.55627 7.05883 3.08824C7.05883 2.62021 6.8729 2.17135 6.54196 1.8404C6.21101 1.50945 5.76215 1.32353 5.29412 1.32353C4.82609 1.32353 4.37723 1.50945 4.04629 1.8404C3.71534 2.17135 3.52942 2.62021 3.52942 3.08824C3.52942 3.55627 3.71534 4.00513 4.04629 4.33607C4.37723 4.66702 4.82609 4.85294 5.29412 4.85294Z"
+                                                                    fill="#101828"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="user-name">
+                                                            Nowrose Irab Poll
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="mark">
+                                                            0%
+                                                        </div>
+                                                        <div class="mark-title">
+                                                            Mark
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="leader-item leader-2">
+                                                <div class="leader-position">
+                                                    2
+                                                </div>
+                                                <div
+                                                    class="d-flex item-center justify-between w-full"
+                                                >
+                                                    <div
+                                                        class="d-flex item-center gap-8"
+                                                    >
+                                                        <div class="icon">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="16"
+                                                                height="16"
+                                                                viewBox="0 0 11 11"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    d="M8.82353 9.70588H7.94118V8.82353C7.94118 8.47251 7.80174 8.13586 7.55353 7.88765C7.30532 7.63944 6.96867 7.5 6.61765 7.5H3.97059C3.61957 7.5 3.28293 7.63944 3.03472 7.88765C2.78651 8.13586 2.64706 8.47251 2.64706 8.82353V9.70588H1.76471V8.82353C1.76471 8.23849 1.99711 7.67742 2.4108 7.26374C2.82448 6.85005 3.38556 6.61765 3.97059 6.61765H6.61765C7.20269 6.61765 7.76376 6.85005 8.17744 7.26374C8.59113 7.67742 8.82353 8.23849 8.82353 8.82353V9.70588ZM5.29412 5.7353C4.9465 5.7353 4.60229 5.66683 4.28114 5.5338C3.95998 5.40077 3.66817 5.20579 3.42237 4.95999C3.17657 4.71419 2.98158 4.42238 2.84856 4.10122C2.71553 3.78007 2.64706 3.43585 2.64706 3.08824C2.64706 2.74062 2.71553 2.39641 2.84856 2.07525C2.98158 1.75409 3.17657 1.46229 3.42237 1.21648C3.66817 0.970681 3.95998 0.7757 4.28114 0.642673C4.60229 0.509646 4.9465 0.441177 5.29412 0.441177C5.99616 0.441177 6.66946 0.720063 7.16587 1.21648C7.66229 1.7129 7.94118 2.38619 7.94118 3.08824C7.94118 3.79028 7.66229 4.46357 7.16587 4.95999C6.66946 5.45641 5.99616 5.73529 5.29412 5.7353ZM5.29412 4.85294C5.76215 4.85294 6.21101 4.66702 6.54196 4.33607C6.8729 4.00513 7.05883 3.55627 7.05883 3.08824C7.05883 2.62021 6.8729 2.17135 6.54196 1.8404C6.21101 1.50945 5.76215 1.32353 5.29412 1.32353C4.82609 1.32353 4.37723 1.50945 4.04629 1.8404C3.71534 2.17135 3.52942 2.62021 3.52942 3.08824C3.52942 3.55627 3.71534 4.00513 4.04629 4.33607C4.37723 4.66702 4.82609 4.85294 5.29412 4.85294Z"
+                                                                    fill="#101828"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="user-name">
+                                                            Nowrose Irab Poll
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="mark">
+                                                            0%
+                                                        </div>
+                                                        <div class="mark-title">
+                                                            Mark
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="leader-item leader-3">
+                                                <div class="leader-position">
+                                                    3
+                                                </div>
+                                                <div
+                                                    class="d-flex item-center justify-between w-full"
+                                                >
+                                                    <div
+                                                        class="d-flex item-center gap-8"
+                                                    >
+                                                        <div class="icon">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="16"
+                                                                height="16"
+                                                                viewBox="0 0 11 11"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    d="M8.82353 9.70588H7.94118V8.82353C7.94118 8.47251 7.80174 8.13586 7.55353 7.88765C7.30532 7.63944 6.96867 7.5 6.61765 7.5H3.97059C3.61957 7.5 3.28293 7.63944 3.03472 7.88765C2.78651 8.13586 2.64706 8.47251 2.64706 8.82353V9.70588H1.76471V8.82353C1.76471 8.23849 1.99711 7.67742 2.4108 7.26374C2.82448 6.85005 3.38556 6.61765 3.97059 6.61765H6.61765C7.20269 6.61765 7.76376 6.85005 8.17744 7.26374C8.59113 7.67742 8.82353 8.23849 8.82353 8.82353V9.70588ZM5.29412 5.7353C4.9465 5.7353 4.60229 5.66683 4.28114 5.5338C3.95998 5.40077 3.66817 5.20579 3.42237 4.95999C3.17657 4.71419 2.98158 4.42238 2.84856 4.10122C2.71553 3.78007 2.64706 3.43585 2.64706 3.08824C2.64706 2.74062 2.71553 2.39641 2.84856 2.07525C2.98158 1.75409 3.17657 1.46229 3.42237 1.21648C3.66817 0.970681 3.95998 0.7757 4.28114 0.642673C4.60229 0.509646 4.9465 0.441177 5.29412 0.441177C5.99616 0.441177 6.66946 0.720063 7.16587 1.21648C7.66229 1.7129 7.94118 2.38619 7.94118 3.08824C7.94118 3.79028 7.66229 4.46357 7.16587 4.95999C6.66946 5.45641 5.99616 5.73529 5.29412 5.7353ZM5.29412 4.85294C5.76215 4.85294 6.21101 4.66702 6.54196 4.33607C6.8729 4.00513 7.05883 3.55627 7.05883 3.08824C7.05883 2.62021 6.8729 2.17135 6.54196 1.8404C6.21101 1.50945 5.76215 1.32353 5.29412 1.32353C4.82609 1.32353 4.37723 1.50945 4.04629 1.8404C3.71534 2.17135 3.52942 2.62021 3.52942 3.08824C3.52942 3.55627 3.71534 4.00513 4.04629 4.33607C4.37723 4.66702 4.82609 4.85294 5.29412 4.85294Z"
+                                                                    fill="#101828"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="user-name">
+                                                            Nowrose Irab Poll
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="mark">
+                                                            0%
+                                                        </div>
+                                                        <div class="mark-title">
+                                                            Mark
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="leader-item">
+                                                <div class="leader-position">
+                                                    4
+                                                </div>
+                                                <div
+                                                    class="d-flex item-center justify-between w-full"
+                                                >
+                                                    <div
+                                                        class="d-flex item-center gap-8"
+                                                    >
+                                                        <div class="icon">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="16"
+                                                                height="16"
+                                                                viewBox="0 0 11 11"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    d="M8.82353 9.70588H7.94118V8.82353C7.94118 8.47251 7.80174 8.13586 7.55353 7.88765C7.30532 7.63944 6.96867 7.5 6.61765 7.5H3.97059C3.61957 7.5 3.28293 7.63944 3.03472 7.88765C2.78651 8.13586 2.64706 8.47251 2.64706 8.82353V9.70588H1.76471V8.82353C1.76471 8.23849 1.99711 7.67742 2.4108 7.26374C2.82448 6.85005 3.38556 6.61765 3.97059 6.61765H6.61765C7.20269 6.61765 7.76376 6.85005 8.17744 7.26374C8.59113 7.67742 8.82353 8.23849 8.82353 8.82353V9.70588ZM5.29412 5.7353C4.9465 5.7353 4.60229 5.66683 4.28114 5.5338C3.95998 5.40077 3.66817 5.20579 3.42237 4.95999C3.17657 4.71419 2.98158 4.42238 2.84856 4.10122C2.71553 3.78007 2.64706 3.43585 2.64706 3.08824C2.64706 2.74062 2.71553 2.39641 2.84856 2.07525C2.98158 1.75409 3.17657 1.46229 3.42237 1.21648C3.66817 0.970681 3.95998 0.7757 4.28114 0.642673C4.60229 0.509646 4.9465 0.441177 5.29412 0.441177C5.99616 0.441177 6.66946 0.720063 7.16587 1.21648C7.66229 1.7129 7.94118 2.38619 7.94118 3.08824C7.94118 3.79028 7.66229 4.46357 7.16587 4.95999C6.66946 5.45641 5.99616 5.73529 5.29412 5.7353ZM5.29412 4.85294C5.76215 4.85294 6.21101 4.66702 6.54196 4.33607C6.8729 4.00513 7.05883 3.55627 7.05883 3.08824C7.05883 2.62021 6.8729 2.17135 6.54196 1.8404C6.21101 1.50945 5.76215 1.32353 5.29412 1.32353C4.82609 1.32353 4.37723 1.50945 4.04629 1.8404C3.71534 2.17135 3.52942 2.62021 3.52942 3.08824C3.52942 3.55627 3.71534 4.00513 4.04629 4.33607C4.37723 4.66702 4.82609 4.85294 5.29412 4.85294Z"
+                                                                    fill="#101828"
+                                                                ></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="user-name">
+                                                            Nowrose Irab Poll
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="mark">
+                                                            0%
+                                                        </div>
+                                                        <div class="mark-title">
+                                                            Mark
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="notification-title">
-                                    টপিকঃ The Web Development World
-                                </div>
-                                <button
-                                    id=""
-                                    type="button"
-                                    class="notification-btn"
-                                >
-                                    ক্লাস শুরু হবে রাত ৯:০০
-                                </button>
                             </div>
                         </div>
-                        <div class="notification-wrapper">
-                            <div class="d-flex item-center gap-8">
-                                <div>
-                                    সব কোর্সে ৩৫% ছাড় পেতে এই প্রোমো ব্যাবহার
-                                    করুন
+                    </div>
+                    <div id="e-book" class="tab-content">
+                        <div class="min-container-height">
+                            <div class="book-container">
+                                <div class="d-flex gap-10 item-center">
+                                    <div class="icon">
+                                        <img
+                                            src="../assets/book-image.png"
+                                            alt="book image"
+                                        />
+                                    </div>
+                                    <div class="certificate-content">
+                                        <div class="certificate-title">
+                                            Book Title Here
+                                        </div>
+                                        <div class="certificate-subtitle">
+                                            Short not about this book
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="get-promo">Get Promo</div>
+                                <div class="btn btn-win btn-read">Read</div>
+                            </div>
+                            <div class="book-container">
+                                <div class="d-flex gap-10 item-center">
+                                    <div class="icon">
+                                        <img
+                                            src="../assets/book-image.png"
+                                            alt="book image"
+                                        />
+                                    </div>
+                                    <div class="certificate-content">
+                                        <div class="certificate-title">
+                                            Book Title Here
+                                        </div>
+                                        <div class="certificate-subtitle">
+                                            Short not about this book
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn btn-win btn-read">Read</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="payment" class="tab-content">
+                        <div class="min-container-height">
+                            <div class="book-container">
+                                <div class="d-flex gap-10 item-center">
+                                    <div class="icon">
+                                        <img
+                                            src="../assets/book-image.png"
+                                            alt="book image"
+                                        />
+                                    </div>
+                                    <div class="certificate-content">
+                                        <div class="certificate-title">
+                                            Book Title Here
+                                        </div>
+                                        <div class="certificate-subtitle">
+                                            Short not about this book
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn btn-win btn-read">Read</div>
+                            </div>
+                            <div class="book-container">
+                                <div class="d-flex gap-10 item-center">
+                                    <div class="icon">
+                                        <img
+                                            src="../assets/book-image.png"
+                                            alt="book image"
+                                        />
+                                    </div>
+                                    <div class="certificate-content">
+                                        <div class="certificate-title">
+                                            Book Title Here
+                                        </div>
+                                        <div class="certificate-subtitle">
+                                            Short not about this book
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn btn-win btn-read">Read</div>
                             </div>
                         </div>
                     </div>
@@ -1827,6 +3293,51 @@
                         &copy; <span id="year"></span> All rights reserved by
                         <a href="#">Soroborno</a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup -->
+        <div id="popup-wrapper" class="overlay-wrapper">
+            <div class="overlay"></div>
+            <div id="popup-container" class="overlay-container">
+                <div class="drawer-header">
+                    <div class="d-flex item-center gap-8">
+                        <div class="drawer-title active">Book Title</div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="icon drawer-close btn-close">
+                            <svg
+                                width="24px"
+                                height="24px"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g
+                                    id="SVGRepo_tracerCarrier"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M16 8L8 16M8.00001 8L16 16"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    ></path>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="drawer-body">
+                    <img src="../assets/book-page-1.jpg" alt="book page" />
+                    <img src="../assets/book-page-2.jpg" alt="book page" />
+                    <img src="../assets/book-page-3.jpg" alt="book page" />
+                    <img src="../assets/book-page-4.jpg" alt="book page" />
                 </div>
             </div>
         </div>

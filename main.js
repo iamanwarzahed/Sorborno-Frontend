@@ -709,18 +709,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Only Tabs
 document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll(".tab");
-    const contents = document.querySelectorAll(".tab-content");
+    // Scoped tab switching
+    document.querySelectorAll(".tabs").forEach((tabContainer) => {
+        const tabs = tabContainer.querySelectorAll(".tab");
 
-    tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-            // Remove active classes
-            tabs.forEach((t) => t.classList.remove("active"));
-            contents.forEach((c) => c.classList.remove("active"));
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                const groupWrapper = tabContainer.nextElementSibling || tabContainer.parentElement;
 
-            // Add active to clicked tab and corresponding content
-            tab.classList.add("active");
-            document.getElementById(tab.dataset.tab).classList.add("active");
+                // Remove active in this group
+                tabs.forEach((t) => t.classList.remove("active"));
+                const groupContents = groupWrapper.querySelectorAll(":scope > .tab-content");
+                groupContents.forEach((c) => c.classList.remove("active"));
+
+                // Activate clicked tab and its content
+                tab.classList.add("active");
+                const target = groupWrapper.querySelector(`#${tab.dataset.tab}`);
+                if (target) target.classList.add("active");
+
+                // If the clicked tab is "myCourse", reset its nested tabs
+                if (tab.dataset.tab === "myCourse") {
+                    const nestedTabs = target.querySelectorAll(".tabs .tab");
+                    if (nestedTabs.length) {
+                        nestedTabs[0].click(); // Click the first inner tab
+                    }
+                }
+            });
+        });
+    });
+
+    // Clicking a course-action should open MyCourse in outer tabs
+    document.querySelectorAll(".course-action").forEach((course) => {
+        course.addEventListener("click", () => {
+            const myCourseTab = document.querySelector('.tabs .tab[data-tab="myCourse"]');
+            if (myCourseTab) myCourseTab.click();
         });
     });
 });
