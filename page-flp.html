@@ -3,8 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style/style.css" />
-        <title>3D Flipbook with Bidirectional Drag</title>
+        <title>Responsive 3D Flipbook with Bidirectional Drag</title>
         <style>
             * {
                 margin: 0;
@@ -21,19 +20,29 @@
                 align-items: center;
                 perspective: 1200px;
                 overflow: hidden;
+                padding: 20px;
             }
 
             .flipbook-container {
                 position: relative;
-                width: 700px;
-                height: 500px;
+                width: min(700px, 90vw);
+                height: min(500px, 70vh);
                 transform-style: preserve-3d;
+            }
+
+            /* Mobile responsive adjustments */
+            @media (max-width: 768px) {
+                .flipbook-container {
+                    width: min(350px, 90vw);
+                    height: min(500px, 80vh);
+                    overflow: hidden;
+                }
             }
 
             .page {
                 position: absolute;
-                width: 350px;
-                height: 500px;
+                width: 50%;
+                height: 100%;
                 background: white;
                 border: 2px solid #333;
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -43,6 +52,17 @@
                 cursor: grab;
                 border-radius: 5px;
                 user-select: none;
+                right: 0;
+            }
+
+            /* Mobile: Full width pages */
+            @media (max-width: 768px) {
+                .page {
+                    width: 100%;
+                    right: auto;
+                    left: 0;
+                    transform-origin: center center;
+                }
             }
 
             .page:active {
@@ -57,116 +77,121 @@
                 backface-visibility: hidden;
                 border-radius: 3px;
                 overflow: hidden;
+                display: flex;
+                flex-direction: column;
             }
 
             .page-back {
                 transform: rotateY(180deg);
             }
 
-            .page.flipped {
-                transform: rotateY(-180deg);
+            /* Desktop flip behavior */
+            @media (min-width: 769px) {
+                .page.flipped {
+                    transform: rotateY(-180deg);
+                }
+
+                .page.dragging {
+                    transition: none;
+                }
+
+                .page:nth-child(1) {
+                    z-index: 6;
+                }
+                .page:nth-child(2) {
+                    z-index: 5;
+                }
+                .page:nth-child(3) {
+                    z-index: 4;
+                }
+                .page:nth-child(4) {
+                    z-index: 3;
+                }
+                .page:nth-child(5) {
+                    z-index: 2;
+                }
             }
 
-            .page.dragging {
-                transition: none;
+            /* Mobile positioning and behavior */
+            @media (max-width: 768px) {
+                .page {
+                    z-index: 1;
+                    transition: transform 0.5s ease-in-out;
+                }
+
+                .page.mobile-active {
+                    z-index: 10;
+                    transform: translateX(0);
+                }
+
+                .page.mobile-left {
+                    transform: translateX(-100%);
+                    z-index: 5;
+                }
+
+                .page.mobile-right {
+                    transform: translateX(100%);
+                    z-index: 5;
+                }
+
+                .page.mobile-flip-front {
+                    transform: rotateY(0deg);
+                }
+
+                .page.mobile-flip-back {
+                    transform: rotateY(-180deg);
+                }
             }
 
-            .page:nth-child(1) {
-                z-index: 6;
-                right: 0;
-            }
-            .page:nth-child(2) {
-                z-index: 5;
-                right: 0;
-            }
-            .page:nth-child(3) {
-                z-index: 4;
-                right: 0;
-            }
-            .page:nth-child(4) {
-                z-index: 3;
-                right: 0;
-            }
-            .page:nth-child(5) {
-                z-index: 2;
-                right: 0;
-            }
-            .page:nth-child(6) {
-                z-index: 1;
-                right: 0;
-            }
-
-            .page-content {
-                position: relative;
+            .placeholder-content {
                 width: 100%;
                 height: 100%;
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
                 display: flex;
                 flex-direction: column;
-                background: white;
-            }
-
-            .page-image {
-                width: 100%;
-                height: 80%;
-                object-fit: cover;
-                border-radius: 3px 3px 0 0;
-            }
-
-            .page-caption {
-                padding: 15px;
-                height: 20%;
-                display: flex;
-                flex-direction: column;
+                align-items: center;
                 justify-content: center;
-                background: white;
-                border-radius: 0 0 3px 3px;
+                color: white;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .placeholder-icon {
+                font-size: clamp(2em, 6vw, 4em);
+                margin-bottom: 15px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
 
             .page-title {
-                font-size: 1.3em;
+                font-size: clamp(1.2em, 3vw, 2em);
                 font-weight: bold;
-                color: #333;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             }
 
-            .page-text {
-                font-size: 0.9em;
-                color: #666;
-                line-height: 1.4;
+            .placeholder-text {
+                font-size: clamp(0.9em, 2.5vw, 1.2em);
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             }
 
             .page-number {
                 position: absolute;
-                bottom: 10px;
+                bottom: 15px;
                 right: 15px;
-                font-size: 0.8em;
-                color: #999;
-                background: rgba(255, 255, 255, 0.8);
-                padding: 2px 6px;
-                border-radius: 10px;
+                background: rgba(0, 0, 0, 0.7);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 0.9em;
+                font-weight: bold;
             }
 
             .cover-page {
                 background: linear-gradient(135deg, #ff6b6b, #feca57);
-                color: white;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                padding: 40px;
             }
 
-            .cover-page .page-title {
-                color: white;
-                font-size: 2.5em;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-                margin-bottom: 20px;
-            }
-
-            .cover-page .page-text {
-                color: rgba(255, 255, 255, 0.9);
-                font-size: 1.2em;
+            .back-cover {
+                background: linear-gradient(135deg, #2d3436, #636e72);
             }
 
             .controls {
@@ -186,12 +211,19 @@
                 border: none;
                 border-radius: 25px;
                 cursor: pointer;
-                font-size: 1em;
+                font-size: clamp(0.8em, 2vw, 1em);
                 transition: all 0.3s;
                 backdrop-filter: blur(10px);
             }
 
-            .btn:hover {
+            @media (max-width: 480px) {
+                .btn {
+                    padding: 10px 16px;
+                    font-size: 0.8em;
+                }
+            }
+
+            .btn:hover:not(:disabled) {
                 background: rgba(0, 0, 0, 0.9);
                 transform: translateY(-2px);
             }
@@ -202,104 +234,244 @@
                 transform: none;
             }
 
-            .drag-indicator {
-                position: absolute;
-                top: 50%;
-                right: 10px;
-                transform: translateY(-50%);
-                width: 30px;
-                height: 60px;
-                background: rgba(0, 0, 0, 0.1);
-                border-radius: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.5em;
-                color: rgba(0, 0, 0, 0.3);
-                pointer-events: none;
-                opacity: 1;
-            }
-
             .instructions {
                 position: fixed;
-                top: 30px;
+                top: 20px;
                 left: 50%;
                 transform: translateX(-50%);
                 background: rgba(0, 0, 0, 0.8);
                 color: white;
                 padding: 10px 20px;
                 border-radius: 20px;
-                font-size: 0.9em;
+                font-size: clamp(0.7em, 2vw, 0.9em);
                 z-index: 1000;
                 backdrop-filter: blur(10px);
+                text-align: center;
+                max-width: 90vw;
             }
 
-            /* Placeholder for when no images are loaded */
-            .placeholder-image {
-                width: 100%;
-                height: 80%;
-                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 4em;
+            .mobile-page-indicator {
+                position: fixed;
+                top: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.7);
                 color: white;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                padding: 5px 15px;
+                border-radius: 15px;
+                font-size: 0.8em;
+                z-index: 1000;
+                display: none;
             }
 
-            /* Flipped page positioning - keep same layout */
-            .page.flipped {
-                transform: rotateY(-180deg);
+            @media (max-width: 768px) {
+                .mobile-page-indicator {
+                    display: block;
+                }
+
+                .instructions {
+                    top: 10px;
+                    padding: 8px 16px;
+                }
             }
         </style>
     </head>
     <body>
         <div class="instructions">
-            Drag left/right or click pages to flip • Use controls below
+            <span class="desktop-text"
+                >Drag left/right or click pages to flip • Use controls
+                below</span
+            >
+            <span class="mobile-text"
+                >Tap to flip pages or use controls below</span
+            >
+        </div>
+
+        <div class="mobile-page-indicator">
+            Page <span id="currentPageNum">1</span> of
+            <span id="totalPageNum">8</span>
         </div>
 
         <div class="flipbook-container">
             <!-- Cover Page -->
-            <div class="page" data-page="0">
+            <div class="page mobile-active" data-page="0">
                 <div class="page-front cover-page">
-                    <img src="assets/book-image.png" alt="" />
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">📖</div>
+                        <div class="page-title">My Amazing Book</div>
+                        <div class="placeholder-text">
+                            A Journey Through Pages
+                        </div>
+                    </div>
                 </div>
                 <div class="page-back">
-                    <img src="assets/book-page-1.jpg" alt="" />
+                    <div
+                        class="placeholder-content"
+                        style="
+                            background: linear-gradient(
+                                135deg,
+                                #74b9ff,
+                                #0984e3
+                            );
+                        "
+                    >
+                        <div class="placeholder-icon">📝</div>
+                        <div class="page-title">Page 1</div>
+                        <div class="placeholder-text">
+                            Welcome to our story...
+                        </div>
+                        <div class="page-number">1</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Page 1 -->
-            <div class="page" data-page="1">
+            <div class="page mobile-right" data-page="1">
                 <div class="page-front">
-                    <img src="assets/book-page-2.jpg" alt="" />
+                    <div
+                        class="placeholder-content"
+                        style="
+                            background: linear-gradient(
+                                135deg,
+                                #00b894,
+                                #00a085
+                            );
+                        "
+                    >
+                        <div class="placeholder-icon">🌟</div>
+                        <div class="page-title">Page 2</div>
+                        <div class="placeholder-text">
+                            The adventure begins here
+                        </div>
+                        <div class="page-number">2</div>
+                    </div>
                 </div>
                 <div class="page-back">
-                    <img src="assets/book-page-3.jpg" alt="" />
+                    <div
+                        class="placeholder-content"
+                        style="
+                            background: linear-gradient(
+                                135deg,
+                                #e17055,
+                                #d63031
+                            );
+                        "
+                    >
+                        <div class="placeholder-icon">🎨</div>
+                        <div class="page-title">Page 3</div>
+                        <div class="placeholder-text">Colors come alive</div>
+                        <div class="page-number">3</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Page 2 -->
-            <div class="page" data-page="2">
+            <div class="page mobile-right" data-page="2">
                 <div class="page-front">
-                    <img src="assets/book-page-4.jpg" alt="">
+                    <div
+                        class="placeholder-content"
+                        style="
+                            background: linear-gradient(
+                                135deg,
+                                #fd79a8,
+                                #e84393
+                            );
+                        "
+                    >
+                        <div class="placeholder-icon">🌈</div>
+                        <div class="page-title">Page 4</div>
+                        <div class="placeholder-text">
+                            A rainbow of possibilities
+                        </div>
+                        <div class="page-number">4</div>
+                    </div>
                 </div>
                 <div class="page-back">
-                    <img src="assets/book-page-3.jpg" alt="">
+                    <div
+                        class="placeholder-content"
+                        style="
+                            background: linear-gradient(
+                                135deg,
+                                #6c5ce7,
+                                #5f3dc4
+                            );
+                        "
+                    >
+                        <div class="placeholder-icon">🚀</div>
+                        <div class="page-title">Page 5</div>
+                        <div class="placeholder-text">Launch into space</div>
+                        <div class="page-number">5</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3 -->
+            <div class="page mobile-right" data-page="3">
+                <div class="page-front">
+                    <div
+                        class="placeholder-content"
+                        style="
+                            background: linear-gradient(
+                                135deg,
+                                #fdcb6e,
+                                #e17055
+                            );
+                        "
+                    >
+                        <div class="placeholder-icon">🌸</div>
+                        <div class="page-title">Page 6</div>
+                        <div class="placeholder-text">
+                            Flowers bloom everywhere
+                        </div>
+                        <div class="page-number">6</div>
+                    </div>
+                </div>
+                <div class="page-back">
+                    <div
+                        class="placeholder-content"
+                        style="
+                            background: linear-gradient(
+                                135deg,
+                                #a29bfe,
+                                #6c5ce7
+                            );
+                        "
+                    >
+                        <div class="placeholder-icon">⭐</div>
+                        <div class="page-title">Page 7</div>
+                        <div class="placeholder-text">Stars light the way</div>
+                        <div class="page-number">7</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Back Cover -->
-            <div class="page" data-page="4">
+            <div class="page mobile-right" data-page="4">
                 <div class="page-front">
-                    <img src="assets/book-page-4.jpg" alt="">
+                    <div
+                        class="placeholder-content"
+                        style="
+                            background: linear-gradient(
+                                135deg,
+                                #55a3ff,
+                                #003d82
+                            );
+                        "
+                    >
+                        <div class="placeholder-icon">🎯</div>
+                        <div class="page-title">Page 8</div>
+                        <div class="placeholder-text">The final chapter</div>
+                        <div class="page-number">8</div>
+                    </div>
                 </div>
-                <div
-                    class="page-back cover-page"
-                    style="
-                        background: linear-gradient(135deg, #2d3436, #636e72);
-                    "
-                >
+                <div class="page-back back-cover">
+                    <div class="placeholder-content" style="background: none">
+                        <div class="placeholder-icon">📚</div>
+                        <div class="page-title">The End</div>
+                        <div class="placeholder-text">
+                            Thank you for reading!
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -309,69 +481,145 @@
             <button class="btn" id="nextBtn">Next</button>
             <button class="btn" id="resetBtn">Reset</button>
         </div>
-
         <script>
-            class DraggableFlipbook {
+            class ResponsiveFlipbook {
                 constructor() {
                     this.pages = document.querySelectorAll(".page");
                     this.totalPages = this.pages.length;
+
                     this.isDragging = false;
                     this.dragStartX = 0;
                     this.dragThreshold = 50;
+                    this.isMobile = window.innerWidth <= 768;
+
+                    // Detect if device supports touch
+                    this.isTouchDevice =
+                        "ontouchstart" in window ||
+                        navigator.maxTouchPoints > 0;
+
+                    // Mobile state
+                    this.mobileCurrentPageIndex = 0;
+                    this.mobileShowingBack = false;
+                    this.totalMobileViews = this.totalPages * 2; // front and back of each page
+
+                    // Desktop state
+                    this.currentPage = 0;
 
                     this.prevBtn = document.getElementById("prevBtn");
                     this.nextBtn = document.getElementById("nextBtn");
                     this.resetBtn = document.getElementById("resetBtn");
 
-                    this.currentPage = this.getCurrentPage();
+                    // Bind handlers for removeEventListener use
+                    this.boundOnDrag = (e) => this.drag(e);
+                    this.boundEndDrag = () => this.endDrag();
+
+                    // Store desktop page click handlers for removal
+                    this.desktopClickHandlers = [];
+
                     this.init();
+                    this.updateResponsiveDisplay();
+
+                    window.addEventListener("resize", () =>
+                        this.handleResize()
+                    );
+                }
+
+                handleResize() {
+                    const wasMobile = this.isMobile;
+                    this.isMobile = window.innerWidth <= 768;
+
+                    if (wasMobile !== this.isMobile) {
+                        this.reset();
+                        this.updateResponsiveDisplay();
+                    }
+                }
+
+                updateResponsiveDisplay() {
+                    const desktopText = document.querySelector(".desktop-text");
+                    const mobileText = document.querySelector(".mobile-text");
+
+                    if (this.isMobile) {
+                        if (desktopText) desktopText.style.display = "none";
+                        if (mobileText) mobileText.style.display = "inline";
+                        this.setupMobileView();
+                    } else {
+                        if (desktopText) desktopText.style.display = "inline";
+                        if (mobileText) mobileText.style.display = "none";
+                        this.setupDesktopView();
+                    }
                 }
 
                 init() {
                     this.setupEventListeners();
                     this.updateControls();
-                    this.updateZIndices();
                 }
 
-                getCurrentPage() {
-                    // Number of flipped pages
-                    let flipped = 0;
-                    this.pages.forEach((page) => {
-                        if (page.classList.contains("flipped")) flipped++;
+                setupMobileView() {
+                    // Reset all pages
+                    this.pages.forEach((page, index) => {
+                        page.classList.remove(
+                            "mobile-active",
+                            "mobile-left",
+                            "mobile-right",
+                            "flipped",
+                            "mobile-flip-front",
+                            "mobile-flip-back"
+                        );
+
+                        if (index === 0) {
+                            page.classList.add(
+                                "mobile-active",
+                                "mobile-flip-front"
+                            );
+                        } else {
+                            page.classList.add("mobile-right");
+                        }
                     });
-                    return flipped;
+
+                    this.mobileCurrentPageIndex = 0;
+                    this.mobileShowingBack = false;
+                    this.updateMobileIndicator();
+
+                    this.removeDesktopEvents(); // remove desktop events if any
+                }
+
+                setupDesktopView() {
+                    // Reset all pages for desktop
+                    this.pages.forEach((page, index) => {
+                        page.classList.remove(
+                            "mobile-active",
+                            "mobile-left",
+                            "mobile-right",
+                            "mobile-flip-front",
+                            "mobile-flip-back"
+                        );
+                        page.style.transform = "";
+                        page.style.zIndex = "";
+                    });
+
+                    this.currentPage = 0;
+                    this.updateZIndices();
+
+                    this.setupDesktopEvents();
+                }
+
+                updateMobileIndicator() {
+                    const currentPageNum =
+                        document.getElementById("currentPageNum");
+                    const totalPageNum =
+                        document.getElementById("totalPageNum");
+
+                    if (currentPageNum && totalPageNum) {
+                        const visualPage =
+                            this.mobileCurrentPageIndex * 2 +
+                            (this.mobileShowingBack ? 2 : 1);
+                        currentPageNum.textContent = visualPage;
+                        totalPageNum.textContent = this.totalMobileViews;
+                    }
                 }
 
                 setupEventListeners() {
-                    // Page interactions
-                    this.pages.forEach((page, index) => {
-                        // Click to flip
-                        page.addEventListener("click", (e) => {
-                            if (!this.isDragging && !this.justFinishedDrag) {
-                                this.flipPage(index);
-                            }
-                        });
-
-                        // Touch and mouse drag events
-                        page.addEventListener("mousedown", (e) =>
-                            this.startDrag(e, index)
-                        );
-                        page.addEventListener(
-                            "touchstart",
-                            (e) => this.startDrag(e.touches[0], index),
-                            { passive: true }
-                        );
-                    });
-
-                    // Global drag events
-                    document.addEventListener("mousemove", (e) => this.drag(e));
-                    document.addEventListener(
-                        "touchmove",
-                        (e) => this.drag(e.touches[0]),
-                        { passive: true }
-                    );
-                    document.addEventListener("mouseup", () => this.endDrag());
-                    document.addEventListener("touchend", () => this.endDrag());
+                    // Mobile and desktop page click handled separately now
 
                     // Control buttons
                     this.prevBtn.addEventListener("click", () =>
@@ -382,7 +630,7 @@
                     );
                     this.resetBtn.addEventListener("click", () => this.reset());
 
-                    // Prevent context menu on long press
+                    // Prevent context menu on pages
                     document.addEventListener("contextmenu", (e) => {
                         if (e.target.closest(".page")) {
                             e.preventDefault();
@@ -390,8 +638,181 @@
                     });
                 }
 
+                setupDesktopEvents() {
+                    this.removeDesktopEvents();
+
+                    this.pages.forEach((page, index) => {
+                        page.style.cursor = "grab";
+
+                        page.addEventListener("mousedown", (e) =>
+                            this.startDrag(e, index)
+                        );
+                        if (this.isTouchDevice) {
+                            page.addEventListener(
+                                "touchstart",
+                                (e) => this.startDrag(e.touches[0], index),
+                                { passive: true }
+                            );
+                        }
+                    });
+
+                    document.addEventListener("mousemove", this.boundOnDrag);
+                    document.addEventListener("mouseup", this.boundEndDrag);
+
+                    if (this.isTouchDevice) {
+                        document.addEventListener(
+                            "touchmove",
+                            (e) => this.drag(e.touches[0]),
+                            { passive: true }
+                        );
+                        document.addEventListener(
+                            "touchend",
+                            this.boundEndDrag
+                        );
+                    }
+
+                    this.setupDesktopPageClicks();
+                }
+
+                removeDesktopEvents() {
+                    this.pages.forEach((page, index) => {
+                        page.style.cursor = "";
+                        page.removeEventListener("mousedown", (e) =>
+                            this.startDrag(e, index)
+                        );
+                        if (this.isTouchDevice) {
+                            page.removeEventListener("touchstart", (e) =>
+                                this.startDrag(e.touches[0], index)
+                            );
+                        }
+                    });
+
+                    document.removeEventListener("mousemove", this.boundOnDrag);
+                    document.removeEventListener("mouseup", this.boundEndDrag);
+
+                    if (this.isTouchDevice) {
+                        document.removeEventListener("touchmove", (e) =>
+                            this.drag(e.touches[0])
+                        );
+                        document.removeEventListener(
+                            "touchend",
+                            this.boundEndDrag
+                        );
+                    }
+
+                    this.removeDesktopPageClicks();
+                }
+
+                setupDesktopPageClicks() {
+                    this.removeDesktopPageClicks();
+                    this.pages.forEach((page, index) => {
+                        const handler = () => {
+                            if (!this.isDragging && !this.justFinishedDrag) {
+                                this.flipPage(index);
+                            }
+                        };
+                        page.addEventListener("click", handler);
+                        this.desktopClickHandlers[index] = handler;
+                    });
+                }
+
+                removeDesktopPageClicks() {
+                    this.pages.forEach((page, index) => {
+                        const handler = this.desktopClickHandlers[index];
+                        if (handler) page.removeEventListener("click", handler);
+                    });
+                    this.desktopClickHandlers = [];
+                }
+
+                nextPage() {
+                    if (this.isMobile) {
+                        this.nextMobilePage();
+                    } else {
+                        this.nextDesktopPage();
+                    }
+                }
+
+                previousPage() {
+                    if (this.isMobile) {
+                        this.prevMobilePage();
+                    } else {
+                        this.prevDesktopPage();
+                    }
+                }
+
+                nextMobilePage() {
+                    const currentPage = this.pages[this.mobileCurrentPageIndex];
+
+                    if (!this.mobileShowingBack) {
+                        // First click: flip to show back of current page
+                        this.mobileShowingBack = true;
+                        currentPage.classList.remove("mobile-flip-front");
+                        currentPage.classList.add("mobile-flip-back");
+                    } else {
+                        // Second click: slide to next page
+                        if (this.mobileCurrentPageIndex < this.totalPages - 1) {
+                            const nextPage =
+                                this.pages[this.mobileCurrentPageIndex + 1];
+
+                            // Slide current page left
+                            currentPage.classList.remove("mobile-active");
+                            currentPage.classList.add("mobile-left");
+
+                            // Bring next page from right
+                            nextPage.classList.remove("mobile-right");
+                            nextPage.classList.add(
+                                "mobile-active",
+                                "mobile-flip-front"
+                            );
+
+                            this.mobileCurrentPageIndex++;
+                            this.mobileShowingBack = false;
+                        }
+                    }
+
+                    this.updateMobileIndicator();
+                    this.updateMobileZIndices();
+                    this.updateControls();
+                }
+
+                prevMobilePage() {
+                    const currentPage = this.pages[this.mobileCurrentPageIndex];
+
+                    if (this.mobileShowingBack) {
+                        // Flip back to front of current page
+                        this.mobileShowingBack = false;
+                        currentPage.classList.remove("mobile-flip-back");
+                        currentPage.classList.add("mobile-flip-front");
+                    } else {
+                        // Go to previous page
+                        if (this.mobileCurrentPageIndex > 0) {
+                            const prevPage =
+                                this.pages[this.mobileCurrentPageIndex - 1];
+
+                            // Slide current page right
+                            currentPage.classList.remove("mobile-active");
+                            currentPage.classList.add("mobile-right");
+
+                            // Bring previous page from left, show its back
+                            prevPage.classList.remove("mobile-left");
+                            prevPage.classList.add(
+                                "mobile-active",
+                                "mobile-flip-back"
+                            );
+
+                            this.mobileCurrentPageIndex--;
+                            this.mobileShowingBack = true;
+                        }
+                    }
+
+                    this.updateMobileIndicator();
+                    this.updateMobileZIndices();
+                    this.updateControls();
+                }
+
+                // Desktop dragging methods
                 startDrag(event, pageIndex) {
-                    if (pageIndex >= this.totalPages) return;
+                    if (this.isMobile || pageIndex >= this.totalPages) return;
 
                     const page = this.pages[pageIndex];
                     this.isDragging = false;
@@ -399,27 +820,22 @@
                     this.dragStartX = event.clientX || event.pageX;
                     this.currentDragPage = pageIndex;
                     this.dragPage = page;
-                    this.dragDirection = null; // Will be set based on drag direction
+                    this.dragDirection = null;
 
-                    // Add visual feedback
                     page.style.cursor = "grabbing";
                 }
 
                 drag(event) {
-                    if (this.currentDragPage === undefined) return;
+                    if (this.isMobile || this.currentDragPage === undefined)
+                        return;
 
                     const currentX = event.clientX || event.pageX;
                     const deltaX = currentX - this.dragStartX;
 
-                    // Only start dragging if moved enough
                     if (Math.abs(deltaX) > 10 && !this.isDragging) {
                         this.isDragging = true;
                         this.dragPage.classList.add("dragging");
-
-                        // Determine drag direction
                         this.dragDirection = deltaX > 0 ? "right" : "left";
-
-                        // Update z-indices to bring dragging page to front
                         this.updateZIndices();
                     }
 
@@ -428,152 +844,70 @@
                         const isFlipped = page.classList.contains("flipped");
 
                         if (this.dragDirection === "left" && !isFlipped) {
-                            // Dragging left to flip forward (next page)
                             const angle = Math.max(-180, (deltaX / 200) * 180);
                             page.style.transform = `rotateY(${angle}deg)`;
                         } else if (
                             this.dragDirection === "right" &&
                             isFlipped
                         ) {
-                            // Dragging right to flip backward (previous page)
-                            // For flipped pages, we need to reverse the transform
                             const angle = Math.min(
                                 0,
                                 -180 + (deltaX / 200) * 180
                             );
                             page.style.transform = `rotateY(${angle}deg)`;
-                        } else if (
-                            this.dragDirection === "right" &&
-                            !isFlipped
-                        ) {
-                            // User is trying to drag right on an unflipped page
-                            // Find the last flipped page to drag back instead
-                            const lastFlippedPage = this.getLastFlippedPage();
-                            if (
-                                lastFlippedPage &&
-                                this.dragPage ===
-                                    this.pages[this.currentDragPage]
-                            ) {
-                                // Only switch once, and only if we haven't already switched
-                                page.classList.remove("dragging");
-                                this.dragPage = lastFlippedPage;
-                                this.currentDragPage = parseInt(
-                                    lastFlippedPage.dataset.page
-                                );
-                                lastFlippedPage.classList.add("dragging");
-                                // Update z-indices for new drag page
-                                this.updateZIndices();
-                                const angle = Math.min(
-                                    0,
-                                    -180 + (deltaX / 200) * 180
-                                );
-                                lastFlippedPage.style.transform = `rotateY(${angle}deg)`;
-                            } else if (
-                                lastFlippedPage &&
-                                this.dragPage === lastFlippedPage
-                            ) {
-                                // Continue dragging the switched page
-                                const angle = Math.min(
-                                    0,
-                                    -180 + (deltaX / 200) * 180
-                                );
-                                lastFlippedPage.style.transform = `rotateY(${angle}deg)`;
-                            }
                         }
                     }
-                }
-
-                getLastFlippedPage() {
-                    // Find the last (rightmost) flipped page
-                    let lastFlippedPage = null;
-                    for (let i = this.totalPages - 1; i >= 0; i--) {
-                        if (this.pages[i].classList.contains("flipped")) {
-                            lastFlippedPage = this.pages[i];
-                            break;
-                        }
-                    }
-                    return lastFlippedPage;
                 }
 
                 endDrag() {
-                    if (this.currentDragPage === undefined) return;
+                    if (this.isMobile || this.currentDragPage === undefined)
+                        return;
 
                     const page = this.dragPage;
                     page.style.cursor = "grab";
 
                     if (this.isDragging) {
                         this.justFinishedDrag = true;
-                        // Reset this flag after a short delay
-                        setTimeout(() => {
-                            this.justFinishedDrag = false;
-                        }, 100);
+                        setTimeout(() => (this.justFinishedDrag = false), 100);
 
                         const currentTransform = page.style.transform;
                         const angle = this.extractAngle(currentTransform);
                         const isFlipped = page.classList.contains("flipped");
 
-                        if (this.dragDirection === "left" && !isFlipped) {
-                            // Forward drag - flip if dragged enough
-                            if (angle < -this.dragThreshold) {
-                                this.flipPageForward(this.currentDragPage);
-                            } else {
-                                // Snap back to original position (front side)
-                                page.classList.remove("dragging");
-                                page.style.transform = "rotateY(0deg)";
-                                // Remove transform after animation
-                                setTimeout(() => {
-                                    if (!page.classList.contains("flipped")) {
-                                        page.style.transform = "";
-                                    }
-                                }, 600);
-                            }
+                        if (
+                            this.dragDirection === "left" &&
+                            !isFlipped &&
+                            angle < -this.dragThreshold
+                        ) {
+                            this.flipPageForward(this.currentDragPage);
                         } else if (
                             this.dragDirection === "right" &&
-                            isFlipped
+                            isFlipped &&
+                            angle > -180 + this.dragThreshold
                         ) {
-                            // Backward drag - unflip if dragged enough
-                            if (angle > -180 + this.dragThreshold) {
-                                this.flipPageBackward(this.currentDragPage);
-                            } else {
-                                // Snap back to flipped state (back side)
-                                page.classList.remove("dragging");
-                                page.style.transform = "rotateY(-180deg)";
-                                // Remove transform after animation
-                                setTimeout(() => {
-                                    if (page.classList.contains("flipped")) {
-                                        page.style.transform = "";
-                                    }
-                                }, 600);
-                            }
+                            this.flipPageBackward(this.currentDragPage);
                         } else {
-                            // Invalid drag direction - snap back
+                            // Snap back
                             page.classList.remove("dragging");
-                            if (isFlipped) {
-                                page.style.transform = "rotateY(-180deg)";
-                                setTimeout(() => {
-                                    if (page.classList.contains("flipped")) {
-                                        page.style.transform = "";
-                                    }
-                                }, 600);
-                            } else {
-                                page.style.transform = "rotateY(0deg)";
-                                setTimeout(() => {
-                                    if (!page.classList.contains("flipped")) {
-                                        page.style.transform = "";
-                                    }
-                                }, 600);
-                            }
+                            page.style.transform = isFlipped
+                                ? "rotateY(-180deg)"
+                                : "rotateY(0deg)";
+                            setTimeout(() => {
+                                if (
+                                    (isFlipped &&
+                                        page.classList.contains("flipped")) ||
+                                    (!isFlipped &&
+                                        !page.classList.contains("flipped"))
+                                ) {
+                                    page.style.transform = "";
+                                }
+                            }, 600);
                         }
                     }
 
-                    // Reset drag state
                     this.isDragging = false;
                     this.currentDragPage = undefined;
                     this.dragPage = null;
-                    this.dragStartX = 0;
-                    this.dragDirection = null;
-
-                    // Reset z-indices after drag ends
                     this.updateZIndices();
                 }
 
@@ -586,36 +920,28 @@
                     if (pageIndex >= this.totalPages) return;
 
                     const page = this.pages[pageIndex];
-
                     if (!page.classList.contains("flipped")) {
-                        // Forward flip - flip this page
                         this.flipPageForward(pageIndex);
                     } else {
-                        // Backward flip - flip this flipped page back
                         this.flipPageBackward(pageIndex);
                     }
                 }
 
                 flipPageForward(pageIndex) {
                     const page = this.pages[pageIndex];
-                    // Ensure clean state
                     page.classList.remove("dragging");
                     page.style.transform = "";
-
-                    // Add flipped class immediately to prevent content flash
                     page.classList.add("flipped");
+                    this.updateDesktopState();
                     this.playFlipSound();
-                    this.updateState();
                 }
 
                 flipPageBackward(pageIndex) {
                     const page = this.pages[pageIndex];
-                    // Ensure clean state
                     page.classList.remove("flipped", "dragging");
                     page.style.transform = "";
-                    page.style.zIndex = ""; // Reset z-index to CSS default
+                    this.updateDesktopState();
                     this.playFlipSound();
-                    this.updateState();
                 }
 
                 playFlipSound() {
@@ -630,21 +956,16 @@
                     }
                 }
 
-                nextPage() {
-                    // Find the first unflipped page
+                nextDesktopPage() {
                     for (let i = 0; i < this.totalPages; i++) {
                         if (!this.pages[i].classList.contains("flipped")) {
-                            // Ensure page is in a clean state before flipping
-                            this.pages[i].classList.remove("dragging");
-                            this.pages[i].style.transform = "";
                             this.flipPageForward(i);
                             break;
                         }
                     }
                 }
 
-                previousPage() {
-                    // Find the last flipped page
+                prevDesktopPage() {
                     for (let i = this.totalPages - 1; i >= 0; i--) {
                         if (this.pages[i].classList.contains("flipped")) {
                             this.flipPageBackward(i);
@@ -653,82 +974,114 @@
                     }
                 }
 
-                updateState() {
-                    this.currentPage = this.getCurrentPage();
+                updateDesktopState() {
+                    this.currentPage = Array.from(this.pages).filter((p) =>
+                        p.classList.contains("flipped")
+                    ).length;
                     this.updateControls();
-                    // Delay z-index update slightly to prevent visual glitches
-                    setTimeout(() => {
-                        this.updateZIndices();
-                    }, 50);
+                    setTimeout(() => this.updateZIndices(), 50);
                 }
 
                 updateZIndices() {
-                    // Currently dragging page should be on top
+                    if (this.isMobile) return;
+
                     if (this.isDragging && this.dragPage) {
                         this.dragPage.style.zIndex = this.totalPages + 10;
                     }
 
-                    // Flipped pages should be below unflipped pages
                     let z = this.totalPages;
                     for (let i = 0; i < this.totalPages; i++) {
-                        if (
-                            this.pages[i] === this.dragPage &&
-                            this.isDragging
-                        ) {
-                            continue; // Skip the dragging page, it's already set above
-                        }
+                        if (this.pages[i] === this.dragPage && this.isDragging)
+                            continue;
+
                         if (this.pages[i].classList.contains("flipped")) {
-                            this.pages[i].style.zIndex = i + 1; // Lower z-index for flipped
+                            this.pages[i].style.zIndex = i + 1;
                         } else {
                             this.pages[i].style.zIndex = z;
                             z--;
                         }
                     }
                 }
+                updateMobileZIndices() {
+                    // For mobile, the currently active page should be on top
+                    // Pages to the left go behind, pages to the right also behind in order
+
+                    const activeIndex = this.mobileCurrentPageIndex;
+
+                    this.pages.forEach((page, index) => {
+                        if (index === activeIndex) {
+                            // Active page on top
+                            page.style.zIndex = 1000;
+                        } else if (index < activeIndex) {
+                            // Pages to the left - lower z-index
+                            page.style.zIndex = index;
+                        } else {
+                            // Pages to the right - higher than left pages but less than active
+                            page.style.zIndex =
+                                activeIndex + (this.totalPages - index);
+                        }
+                    });
+                }
 
                 reset() {
-                    let anyFlipped = false;
-                    this.pages.forEach((page) => {
-                        if (
-                            page.classList.contains("flipped") ||
-                            page.classList.contains("dragging")
-                        ) {
-                            anyFlipped = true;
-                        }
-                        page.classList.remove("flipped", "dragging");
-                        page.style.transform = "";
-                    });
+                    if (this.isMobile) {
+                        this.setupMobileView();
+                    } else {
+                        const anyFlipped = Array.from(this.pages).some((page) =>
+                            page.classList.contains("flipped")
+                        );
 
-                    this.updateState();
+                        this.pages.forEach((page) => {
+                            page.classList.remove("flipped", "dragging");
+                            page.style.transform = "";
+                        });
+                        this.currentPage = 0;
+                        this.updateZIndices();
 
-                    // Play book close sound on reset
-                    if (anyFlipped) {
-                        const closeAudio =
-                            document.getElementById("bookCloseSound");
-                        if (closeAudio) {
-                            try {
-                                closeAudio.currentTime = 0;
-                                closeAudio.play();
-                            } catch (error) {
-                                console.error("Audio play error:", error);
+                        // Play book close sound on reset
+                        if (anyFlipped) {
+                            const closeAudio =
+                                document.getElementById("bookCloseSound");
+                            if (closeAudio) {
+                                try {
+                                    closeAudio.currentTime = 0;
+                                    closeAudio.play();
+                                } catch (error) {
+                                    console.error("Audio play error:", error);
+                                }
                             }
                         }
                     }
+                    this.updateControls();
                 }
 
                 updateControls() {
-                    this.prevBtn.disabled = this.currentPage === 0;
-                    this.resetBtn.disabled = this.currentPage === 0;
-                    this.nextBtn.disabled =
-                        this.currentPage === this.totalPages;
+                    if (this.isMobile) {
+                        const isAtStart =
+                            this.mobileCurrentPageIndex === 0 &&
+                            !this.mobileShowingBack;
+                        const isAtEnd =
+                            this.mobileCurrentPageIndex ===
+                                this.totalPages - 1 && this.mobileShowingBack;
+
+                        this.prevBtn.disabled = isAtStart;
+                        this.nextBtn.disabled = isAtEnd;
+                        this.resetBtn.disabled = isAtStart;
+                    } else {
+                        this.prevBtn.disabled = this.currentPage === 0;
+                        this.nextBtn.disabled =
+                            this.currentPage === this.totalPages;
+                        this.resetBtn.disabled = this.currentPage === 0;
+                    }
                 }
             }
 
-            // Initialize the flipbook when the page loads
+            // Initialize when DOM is loaded
             document.addEventListener("DOMContentLoaded", () => {
-                new DraggableFlipbook();
+                new ResponsiveFlipbook();
             });
         </script>
+
         <audio
             id="pageFlipSound"
             src="assets/turnpage.mp3"
