@@ -410,7 +410,6 @@
             class DraggableFlipbook {
                 constructor() {
                     this.pages = document.querySelectorAll(".page");
-                    this.currentPage = 0;
                     this.totalPages = this.pages.length;
                     this.isDragging = false;
                     this.dragStartX = 0;
@@ -420,12 +419,22 @@
                     this.nextBtn = document.getElementById("nextBtn");
                     this.resetBtn = document.getElementById("resetBtn");
 
+                    this.currentPage = this.getCurrentPage();
                     this.init();
                 }
 
                 init() {
                     this.setupEventListeners();
                     this.updateControls();
+                }
+
+                getCurrentPage() {
+                    // Number of flipped pages
+                    let flipped = 0;
+                    this.pages.forEach((page) => {
+                        if (page.classList.contains("flipped")) flipped++;
+                    });
+                    return flipped;
                 }
 
                 setupEventListeners() {
@@ -564,28 +573,42 @@
                                 console.error("Audio play error:", error);
                             }
                         }
-
-                        this.currentPage = Math.max(
-                            this.currentPage,
-                            pageIndex + 1
-                        );
                     }
 
+                    // Always recalculate currentPage based on flipped pages
+                    this.currentPage = this.getCurrentPage();
+                    this.updateZIndices();
                     this.updateControls();
                 }
 
                 nextPage() {
-                    if (this.currentPage < this.totalPages) {
-                        this.flipPage(this.currentPage);
+                    // Find the first unflipped page
+                    let nextIdx = -1;
+                    for (let i = 0; i < this.totalPages; i++) {
+                        if (!this.pages[i].classList.contains("flipped")) {
+                            nextIdx = i;
+                            break;
+                        }
+                    }
+                    if (nextIdx !== -1) {
+                        this.flipPage(nextIdx);
                     }
                 }
 
                 previousPage() {
-                    if (this.currentPage > 0) {
-                        this.currentPage--;
-                        const page = this.pages[this.currentPage];
-                        page.classList.remove("flipped");
-                        page.style.transform = "";
+                    // Find the last flipped page
+                    let lastIdx = -1;
+                    for (let i = this.totalPages - 1; i >= 0; i--) {
+                        if (this.pages[i].classList.contains("flipped")) {
+                            lastIdx = i;
+                            break;
+                        }
+                    }
+                    if (lastIdx !== -1) {
+                        this.pages[lastIdx].classList.remove("flipped", "dragging");
+                        this.pages[lastIdx].style.transform = "";
+                        this.currentPage = this.getCurrentPage();
+                        this.updateZIndices();
                         this.updateControls();
 
                         // Play flip sound on backward flip
@@ -600,19 +623,34 @@
                         }
                     }
                 }
+                updateZIndices() {
+                    // Flipped pages should be below unflipped pages
+                    let z = this.totalPages;
+                    for (let i = 0; i < this.totalPages; i++) {
+                        if (this.pages[i].classList.contains("flipped")) {
+                            this.pages[i].style.zIndex = i + 1; // Lower z-index for flipped
+                        } else {
+                            this.pages[i].style.zIndex = z;
+                            z--;
+                        }
+                    }
+                }
 
                 reset() {
-                    if (this.currentPage > 0) {
-                        this.pages.forEach((page) => {
-                            page.classList.remove("flipped", "dragging");
-                            page.style.transform = "";
-                        });
-                        this.currentPage = 0;
-                        this.updateControls();
+                    let anyFlipped = false;
+                    this.pages.forEach((page) => {
+                        if (page.classList.contains("flipped") || page.classList.contains("dragging")) {
+                            anyFlipped = true;
+                        }
+                        page.classList.remove("flipped", "dragging");
+                        page.style.transform = "";
+                    });
+                    this.currentPage = 0;
+                    this.updateControls();
 
-                        // Play book close sound on reset
-                        const closeAudio =
-                            document.getElementById("bookCloseSound");
+                    // Play book close sound on reset
+                    if (anyFlipped) {
+                        const closeAudio = document.getElementById("bookCloseSound");
                         if (closeAudio) {
                             try {
                                 closeAudio.currentTime = 0;
@@ -625,10 +663,11 @@
                 }
 
                 updateControls() {
+                    // Recalculate currentPage
+                    this.currentPage = this.getCurrentPage();
                     this.prevBtn.disabled = this.currentPage === 0;
                     this.resetBtn.disabled = this.currentPage === 0;
-                    this.nextBtn.disabled =
-                        this.currentPage === this.totalPages;
+                    this.nextBtn.disabled = this.currentPage === this.totalPages;
                 }
             }
 
