@@ -67,22 +67,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".drawer-close");
     
     const accountTitle = document.querySelector(".account-header-title");
-    const bookingTitle = document.querySelector(".booking-header-title");
+    // const bookingTitle = document.querySelector(".booking-header-title");
     const accountContainer = document.querySelector(".login-step");
     const nameLabel = document.querySelector(".profile-name-label");
     const profileContainer = document.querySelector(".profile-info-update");
     const imageContainer = document.querySelector(".image-uploader");
-    const hideForBooking = document.querySelectorAll(".hide-for-booking");
+    // const hideForBooking = document.querySelectorAll(".hide-for-booking");
     
     function closeDrawer() {
         wrapper.classList.remove("active");
         accountTitle.style.display = "";
         nameLabel.style.display = "";
-        bookingTitle.style.display = "none";
+        // bookingTitle.style.display = "none";
         accountContainer.classList.add("active");
         profileContainer.classList.remove("active");
         imageContainer.style.display = "";
-        hideForBooking.forEach(el => el.style.display = "");
+        // hideForBooking.forEach(el => el.style.display = "");
     }
     
     loginButtons.forEach((button) => {
@@ -91,9 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (wrapper.classList.contains("active")) {
                 closeDrawer();
             } else {
-                hideForBooking.style.display="";
+                // hideForBooking.style.display="";
                 accountTitle.style.display = "";
-                bookingTitle.style.display = "none";
+                // bookingTitle.style.display = "none";
                 accountContainer.classList.add("active");
                 wrapper.classList.add("active");
             }
@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (wrapper.classList.contains("active")) {
                 closeDrawer();
             } else {
-                hideForBooking.forEach(el => el.style.display = "none");
-                bookingTitle.style.display = "";
+                // hideForBooking.forEach(el => el.style.display = "none");
+                // bookingTitle.style.display = "";
                 imageContainer.style.display = "none";
                 profileContainer.classList.add("active");
                 accountContainer.classList.remove("active");
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const otpTitle = document.querySelector(".otp-header-title");
     const accountContainer = document.querySelector(".login-step");
     const profileContainer = document.querySelector(".profile-info-update");
-    const otpContainer = document.querySelector(".opt-verification-container");
+    const otpContainer = document.querySelector(".otp-verification-container");
     const titles = document.querySelectorAll(".account-title");
 
     function activateTab(tabType) {
