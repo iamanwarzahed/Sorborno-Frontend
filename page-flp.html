@@ -672,8 +672,11 @@
 
                 flipPageForward(pageIndex) {
                     const page = this.pages[pageIndex];
+                    // Ensure clean state
                     page.classList.remove("dragging");
                     page.style.transform = "";
+                    
+                    // Add flipped class immediately to prevent content flash
                     page.classList.add("flipped");
                     this.playFlipSound();
                     this.updateState();
@@ -681,8 +684,10 @@
 
                 flipPageBackward(pageIndex) {
                     const page = this.pages[pageIndex];
+                    // Ensure clean state
                     page.classList.remove("flipped", "dragging");
                     page.style.transform = "";
+                    page.style.zIndex = ""; // Reset z-index to CSS default
                     this.playFlipSound();
                     this.updateState();
                 }
@@ -703,6 +708,9 @@
                     // Find the first unflipped page
                     for (let i = 0; i < this.totalPages; i++) {
                         if (!this.pages[i].classList.contains("flipped")) {
+                            // Ensure page is in a clean state before flipping
+                            this.pages[i].classList.remove("dragging");
+                            this.pages[i].style.transform = "";
                             this.flipPageForward(i);
                             break;
                         }
@@ -721,8 +729,11 @@
 
                 updateState() {
                     this.currentPage = this.getCurrentPage();
-                    this.updateZIndices();
                     this.updateControls();
+                    // Delay z-index update slightly to prevent visual glitches
+                    setTimeout(() => {
+                        this.updateZIndices();
+                    }, 50);
                 }
 
                 updateZIndices() {
