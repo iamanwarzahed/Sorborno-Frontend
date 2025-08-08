@@ -489,8 +489,7 @@
                     if (pageIndex >= this.totalPages) return;
 
                     const page = this.pages[pageIndex];
-                    if (page.classList.contains("flipped")) return;
-
+                    // Allow drag if not flipped (for next) or if flipped (for previous)
                     this.isDragging = false; // Will become true if user actually drags
                     this.dragStartX = event.clientX || event.pageX;
                     this.currentDragPage = pageIndex;
@@ -505,17 +504,25 @@
 
                     const currentX = event.clientX || event.pageX;
                     const deltaX = currentX - this.dragStartX;
+                    const page = this.dragPage;
+                    const isFlipped = page.classList.contains("flipped");
 
                     // Only start dragging if moved enough
                     if (Math.abs(deltaX) > 10) {
                         this.isDragging = true;
-                        this.dragPage.classList.add("dragging");
+                        page.classList.add("dragging");
                     }
 
-                    if (this.isDragging && deltaX < 0) {
-                        // Dragging left (turning page)
-                        const angle = Math.max(-180, (deltaX / 200) * 180);
-                        this.dragPage.style.transform = `rotateY(${angle}deg)`;
+                    if (this.isDragging) {
+                        if (!isFlipped && deltaX < 0) {
+                            // Dragging left (turning page forward)
+                            const angle = Math.max(-180, (deltaX / 200) * 180);
+                            page.style.transform = `rotateY(${angle}deg)`;
+                        } else if (isFlipped && deltaX > 0) {
+                            // Dragging right (turning page backward)
+                            const angle = Math.min(0, -180 + (deltaX / 200) * 180);
+                            page.style.transform = `rotateY(${angle}deg)`;
+                        }
                     }
                 }
 
@@ -524,18 +531,45 @@
 
                     const page = this.dragPage;
                     page.style.cursor = "grab";
+                    const isFlipped = page.classList.contains("flipped");
 
                     if (this.isDragging) {
                         const currentTransform = page.style.transform;
                         const angle = this.extractAngle(currentTransform);
 
-                        // If dragged more than threshold, complete the flip
-                        if (angle < -this.dragThreshold) {
-                            this.flipPage(this.currentDragPage);
+                        if (!isFlipped) {
+                            // Forward flip
+                            if (angle < -this.dragThreshold) {
+                                this.flipPage(this.currentDragPage);
+                            } else {
+                                // Snap back
+                                page.classList.remove("dragging");
+                                page.style.transform = "";
+                            }
                         } else {
-                            // Snap back
-                            page.classList.remove("dragging");
-                            page.style.transform = "";
+                            // Backward flip
+                            if (angle > -180 + this.dragThreshold) {
+                                // Unflip
+                                page.classList.remove("flipped", "dragging");
+                                page.style.transform = "";
+                                this.currentPage = this.getCurrentPage();
+                                this.updateZIndices();
+                                this.updateControls();
+                                // Play flip sound on backward drag
+                                const audio = document.getElementById("pageFlipSound");
+                                if (audio) {
+                                    try {
+                                        audio.currentTime = 0;
+                                        audio.play();
+                                    } catch (error) {
+                                        console.error("Audio play error:", error);
+                                    }
+                                }
+                            } else {
+                                // Snap back to flipped
+                                page.classList.remove("dragging");
+                                page.style.transform = "";
+                            }
                         }
                     }
 
