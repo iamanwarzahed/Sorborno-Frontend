@@ -132,6 +132,7 @@
 .recommended-card .course-tag {
     color: #f51404;
 }
+
 .payment-table {
     border-radius: var(--radius-3);
     overflow: hidden;

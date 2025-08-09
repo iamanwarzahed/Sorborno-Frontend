@@ -178,6 +178,50 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+// open book close
+document.addEventListener("DOMContentLoaded", () => {
+  const readBtns = document.querySelectorAll(".btn-read-book");
+
+  readBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const bookWrapper = btn.closest(".book-wrapper");
+      if (!bookWrapper) return;
+
+      const readingPanel = bookWrapper.querySelector(".book-reading-panel");
+      const bookContainer = bookWrapper.querySelector(".book-container");
+
+      const isActive = readingPanel.classList.contains("active");
+
+      if (isActive) {
+        // Panel is open, so close it
+        readingPanel.classList.remove("active");
+        bookContainer.classList.remove("active");
+        btn.textContent = "Read";
+      } else {
+        // Panel is closed, so open it and close others
+
+        // Close all other panels and containers
+        document.querySelectorAll(".book-reading-panel.active").forEach(panel => {
+          panel.classList.remove("active");
+        });
+        document.querySelectorAll(".book-container.active").forEach(container => {
+          container.classList.remove("active");
+        });
+
+        // Reset all buttons text
+        readBtns.forEach(button => {
+          button.textContent = "Read";
+        });
+
+        // Open this one
+        readingPanel.classList.add("active");
+        bookContainer.classList.add("active");
+        btn.textContent = "Close";
+      }
+    });
+  });
+});
+
 
 // Tab Selection
 document.addEventListener("DOMContentLoaded", () => {
@@ -741,6 +785,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (nestedTabs.length) {
                         nestedTabs[0].click(); // Click the first inner tab
                     }
+                }
+                // When clicking the e-book tab, close all ebook reading panels
+                if (tab.dataset.tab === "e-book") {
+                    document
+                        .querySelectorAll(".book-container.active")
+                        .forEach((el) => el.classList.remove("active"));
+                    document
+                        .querySelectorAll(".book-reading-panel.active")
+                        .forEach((el) => el.classList.remove("active"));
                 }
             });
         });

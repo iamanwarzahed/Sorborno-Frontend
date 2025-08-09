@@ -233,20 +233,28 @@
 .tab-content.active {
     display: block;
 }
+.book-wrapper {
+    margin-bottom: 8px;
+    overflow: hidden;
+    border-radius: var(--radius-3);
+    border: 1px solid var(--primary-color);
+}
 .book-container {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid var(--primary-color);
     background-color: var(--base-2);
     padding: 12px 20px;
-    border-radius: var(--radius-3);
-    margin-bottom: 8px;
+    border-radius: 0;
+}
+.book-container.active {
+    border-bottom: 1px solid var(--primary-color);
 }
 .book-container img {
     max-width: 50px;
 }
+.btn-read-book,
 .btn-read {
     max-width: 120px;
     font-size: 14px;
@@ -254,6 +262,25 @@
 }
 .btn-read:hover {
     background-color: var(--secondary-color);
+}
+.book-reading-panel {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: all var(--transition-1);
+    background-color: var(--base-3);
+    position: relative;
+}
+.book-reading-panel .flip-book-container {
+    opacity: 0;
+}
+.book-reading-panel.active {
+    padding: 40px 20px;
+    max-height: 70vh;
+    min-height: 62vh;
+}
+.book-reading-panel.active .flip-book-container {
+    opacity: 1;
 }
 
 #popup-wrapper .btn-group {

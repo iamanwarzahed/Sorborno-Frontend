@@ -104,8 +104,8 @@
 }
 
 .controls {
-    position: fixed;
-    bottom: 30px;
+    position: absolute;
+    bottom: 2px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -142,10 +142,12 @@
     cursor: not-allowed;
     transform: none;
 }
-
+.book-container {
+    position: relative;
+}
 .instructions {
-    position: fixed;
-    top: 9%;
+    position: absolute;
+    top: 2px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.8);
@@ -160,7 +162,7 @@
 }
 
 .mobile-page-indicator {
-    position: fixed;
+    position: absolute;
     top: 70px;
     left: 50%;
     transform: translateX(-50%);

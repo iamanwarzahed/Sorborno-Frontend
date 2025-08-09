@@ -62,18 +62,18 @@ class ResponsiveFlipBook {
     }
 
     updateResponsiveDisplay() {
-        const desktopText = document.querySelector(".desktop-text");
-        const mobileText = document.querySelector(".mobile-text");
+        const desktopTexts = document.querySelectorAll(".desktop-text");
+        const mobileTexts = document.querySelectorAll(".mobile-text");
 
         if (this.isMobile) {
-            if (desktopText) desktopText.style.display = "none";
-            if (mobileText) mobileText.style.display = "inline";
+            desktopTexts.forEach((el) => (el.style.display = "none"));
+            mobileTexts.forEach((el) => (el.style.display = "inline"));
             this.setupMobileView();
         } else {
-            if (desktopText) desktopText.style.display = "inline";
-            if (mobileText) mobileText.style.display = "none";
+            desktopTexts.forEach((el) => (el.style.display = "inline"));
+            mobileTexts.forEach((el) => (el.style.display = "none"));
             this.setupDesktopView();
-            this.removeMobileEvents(); // remove mobile events if any
+            this.removeMobileEvents();
         }
     }
 

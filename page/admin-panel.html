@@ -7,7 +7,9 @@
         <link rel="stylesheet" href="../style/style.css" />
         <link rel="stylesheet" href="../style/default.css" />
         <link rel="stylesheet" href="../style/course-details.css" />
+        <link rel="stylesheet" href="../style/book-details.css" />
         <link rel="stylesheet" href="../style/my-course.css" />
+        <link rel="stylesheet" href="../style/book-3d.css" />
         <link rel="stylesheet" href="../style/admin-panel.css" />
         <link rel="stylesheet" href="../style/responsive.css" />
 
@@ -1330,13 +1332,15 @@
                     <button class="tab active" data-tab="myCourse">
                         My Course
                     </button>
-                    <button class="tab" data-tab="joining">Class Joining</button>
+                    <button class="tab" data-tab="joining">
+                        Class Joining
+                    </button>
                     <button class="tab" data-tab="e-book">E-Books</button>
                     <button class="tab" data-tab="payment">Payments</button>
                 </div>
 
                 <div>
-                    <div id="myCourse" class="tab-content active">
+                    <div id="myCourse" class="tab-content">
                         <div class="details-container">
                             <div class="left-panel">
                                 <div class="d-flex flex-column gap-20">
@@ -2950,45 +2954,397 @@
                             </div>
                         </div>
                     </div>
-                    <div id="e-book" class="tab-content">
+                    <div id="e-book" class="tab-content active">
                         <div class="min-container-height">
-                            <div class="book-container">
-                                <div class="d-flex gap-10 item-center">
-                                    <div class="icon">
-                                        <img
-                                            src="../assets/book-image.png"
-                                            alt="book image"
-                                        />
+                            <div class="book-wrapper">
+                                <div class="book-container">
+                                    <div class="d-flex gap-10 item-center">
+                                        <div class="icon">
+                                            <img
+                                                src="../assets/book-image.png"
+                                                alt="book image"
+                                            />
+                                        </div>
+                                        <div class="certificate-content">
+                                            <div class="certificate-title">
+                                                Book Title Here
+                                            </div>
+                                            <div class="certificate-subtitle">
+                                                Short not about this book
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="certificate-content">
-                                        <div class="certificate-title">
-                                            Book Title Here
-                                        </div>
-                                        <div class="certificate-subtitle">
-                                            Short not about this book
-                                        </div>
+                                    <div class="btn btn-win btn-read-book">
+                                        Open
                                     </div>
                                 </div>
-                                <div class="btn btn-win btn-read">Read</div>
+                                <div class="book-reading-panel d-flex justify-center">
+                                    <div class="instructions">
+                                        <span class="desktop-text"
+                                            >Drag left/right or click pages to
+                                            flip • Use controls below</span
+                                        >
+                                        <span class="mobile-text"
+                                            >Tap to flip pages or use controls
+                                            below</span
+                                        >
+                                    </div>
+
+                                    <div class="mobile-page-indicator">
+                                        Page
+                                        <span id="currentPageNum">1</span> of
+                                        <span id="totalPageNum">8</span>
+                                    </div>
+
+                                    <div class="flip-book-container">
+                                        <!-- Cover Page -->
+                                        <div
+                                            class="page mobile-active"
+                                            data-page="0"
+                                        >
+                                            <div class="page-front cover-page">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-image.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-1.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Page 1 -->
+                                        <div
+                                            class="page mobile-right"
+                                            data-page="1"
+                                        >
+                                            <div class="page-front">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-2.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-3.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Page 2 -->
+                                        <div
+                                            class="page mobile-right"
+                                            data-page="2"
+                                        >
+                                            <div class="page-front">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-4.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-3.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Page 3 -->
+                                        <div
+                                            class="page mobile-right"
+                                            data-page="3"
+                                        >
+                                            <div class="page-front">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-4.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-3.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Back Cover -->
+                                        <div
+                                            class="page mobile-right"
+                                            data-page="4"
+                                        >
+                                            <div class="page-front">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-4.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back back-cover">
+                                                <div
+                                                    class="placeholder-content"
+                                                    style="background: none"
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="controls">
+                                        <button
+                                            class="book-controller"
+                                            id="bookPrevBtn"
+                                        >
+                                            Previous
+                                        </button>
+                                        <button
+                                            class="book-controller"
+                                            id="bookNextBtn"
+                                        >
+                                            Next
+                                        </button>
+                                        <button
+                                            class="book-controller"
+                                            id="bookResetBtn"
+                                        >
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="book-container">
-                                <div class="d-flex gap-10 item-center">
-                                    <div class="icon">
-                                        <img
-                                            src="../assets/book-image.png"
-                                            alt="book image"
-                                        />
+                            <div class="book-wrapper">
+                                <div class="book-container">
+                                    <div class="d-flex gap-10 item-center">
+                                        <div class="icon">
+                                            <img
+                                                src="../assets/book-image.png"
+                                                alt="book image"
+                                            />
+                                        </div>
+                                        <div class="certificate-content">
+                                            <div class="certificate-title">
+                                                Book Title Here
+                                            </div>
+                                            <div class="certificate-subtitle">
+                                                Short not about this book
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="certificate-content">
-                                        <div class="certificate-title">
-                                            Book Title Here
-                                        </div>
-                                        <div class="certificate-subtitle">
-                                            Short not about this book
-                                        </div>
+                                    <div class="btn btn-win btn-read-book">
+                                        Open
                                     </div>
                                 </div>
-                                <div class="btn btn-win btn-read">Read</div>
+                                <div class="book-reading-panel d-flex justify-center">
+                                    <div class="instructions">
+                                        <span class="desktop-text"
+                                            >Drag left/right or click pages to
+                                            flip • Use controls below</span
+                                        >
+                                        <span class="mobile-text"
+                                            >Tap to flip pages or use controls
+                                            below</span
+                                        >
+                                    </div>
+
+                                    <div class="mobile-page-indicator">
+                                        Page
+                                        <span id="currentPageNum">1</span> of
+                                        <span id="totalPageNum">8</span>
+                                    </div>
+
+                                    <div class="flip-book-container">
+                                        <!-- Cover Page -->
+                                        <div
+                                            class="page mobile-active"
+                                            data-page="0"
+                                        >
+                                            <div class="page-front cover-page">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-image.png"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-1.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Page 1 -->
+                                        <div
+                                            class="page mobile-right"
+                                            data-page="1"
+                                        >
+                                            <div class="page-front">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-2.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-3.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Page 2 -->
+                                        <div
+                                            class="page mobile-right"
+                                            data-page="2"
+                                        >
+                                            <div class="page-front">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-4.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-3.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Page 3 -->
+                                        <div
+                                            class="page mobile-right"
+                                            data-page="3"
+                                        >
+                                            <div class="page-front">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-4.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-3.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Back Cover -->
+                                        <div
+                                            class="page mobile-right"
+                                            data-page="4"
+                                        >
+                                            <div class="page-front">
+                                                <div
+                                                    class="placeholder-content"
+                                                >
+                                                    <img
+                                                        src="../assets/book-page-4.jpg"
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="page-back back-cover">
+                                                <div
+                                                    class="placeholder-content"
+                                                    style="background: none"
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="controls">
+                                        <button
+                                            class="book-controller"
+                                            id="bookPrevBtn"
+                                        >
+                                            Previous
+                                        </button>
+                                        <button
+                                            class="book-controller"
+                                            id="bookNextBtn"
+                                        >
+                                            Next
+                                        </button>
+                                        <button
+                                            class="book-controller"
+                                            id="bookResetBtn"
+                                        >
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2996,71 +3352,283 @@
                         <div class="min-container-height">
                             <div class="payment-table">
                                 <div class="payment-row payment-header">
-                                    <div class="payment-item payment-for-title">For</div>
-                                    <div class="payment-item payment-amount-title">Amount</div>
-                                    <div class="payment-item payment-by-title">By</div>
-                                    <div class="payment-item payment-date-title">Date</div>
+                                    <div class="payment-item payment-for-title">
+                                        For
+                                    </div>
+                                    <div
+                                        class="payment-item payment-amount-title"
+                                    >
+                                        Amount
+                                    </div>
+                                    <div class="payment-item payment-by-title">
+                                        By
+                                    </div>
+                                    <div
+                                        class="payment-item payment-date-title"
+                                    >
+                                        Date
+                                    </div>
                                 </div>
                                 <div class="payment-body">
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                     <div class="payment-row payment-content">
-                                        <div class="payment-item"><div class="payment-for-content" title="JavaScript Workshop for Absolute Beginners">JavaScript Workshop for Absolute Beginners</div></div>
-                                        <div class="payment-item payment-amount-content">$500</div>
-                                        <div class="payment-item payment-by-content">Bank transfer</div>
-                                        <div class="payment-item payment-date-content">25-11-2025</div>
+                                        <div class="payment-item">
+                                            <div
+                                                class="payment-for-content"
+                                                title="JavaScript Workshop for Absolute Beginners"
+                                            >
+                                                JavaScript Workshop for Absolute
+                                                Beginners
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="payment-item payment-amount-content"
+                                        >
+                                            $500
+                                        </div>
+                                        <div
+                                            class="payment-item payment-by-content"
+                                        >
+                                            Bank transfer
+                                        </div>
+                                        <div
+                                            class="payment-item payment-date-content"
+                                        >
+                                            25-11-2025
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -3329,14 +3897,26 @@
         </div>
 
         <!-- Popup -->
-        <div id="popup-wrapper" class="overlay-wrapper">
+        <div
+            id="popup-wrapper"
+            class="overlay-wrapper"
+            data-close-outside="false"
+        >
             <div class="overlay"></div>
             <div id="popup-container" class="overlay-container">
                 <div class="drawer-header">
                     <div class="d-flex item-center gap-8">
                         <div class="drawer-title active">Book Title</div>
+                        <div class="d-flex item-center gap-8">
+                            <div class="price d-flex item-center gap-4">
+                                <del>$8000</del>
+                                <div>$500</div>
+                            </div>
+                            <div class="saving-tag">50% off 3000 taka save</div>
+                        </div>
                     </div>
                     <div class="btn-group">
+                        <div class="btn">Add to Cart</div>
                         <div class="icon drawer-close btn-close">
                             <svg
                                 width="24px"
@@ -3364,15 +3944,149 @@
                         </div>
                     </div>
                 </div>
-                <div class="drawer-body">
-                    <img src="../assets/book-page-1.jpg" alt="book page" />
-                    <img src="../assets/book-page-2.jpg" alt="book page" />
-                    <img src="../assets/book-page-3.jpg" alt="book page" />
-                    <img src="../assets/book-page-4.jpg" alt="book page" />
+                <div class="drawer-body book-container">
+                    <div class="instructions">
+                        <span class="desktop-text"
+                            >Drag left/right or click pages to flip • Use
+                            controls below</span
+                        >
+                        <span class="mobile-text"
+                            >Tap to flip pages or use controls below</span
+                        >
+                    </div>
+
+                    <div class="mobile-page-indicator">
+                        Page <span id="currentPageNum">1</span> of
+                        <span id="totalPageNum">8</span>
+                    </div>
+
+                    <div class="flip-book-container">
+                        <!-- Cover Page -->
+                        <div class="page mobile-active" data-page="0">
+                            <div class="page-front cover-page">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-image.png"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="page-back">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-page-1.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 1 -->
+                        <div class="page mobile-right" data-page="1">
+                            <div class="page-front">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-page-2.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="page-back">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-page-3.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 2 -->
+                        <div class="page mobile-right" data-page="2">
+                            <div class="page-front">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-page-4.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="page-back">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-page-3.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 3 -->
+                        <div class="page mobile-right" data-page="3">
+                            <div class="page-front">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-page-4.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="page-back">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-page-3.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Back Cover -->
+                        <div class="page mobile-right" data-page="4">
+                            <div class="page-front">
+                                <div class="placeholder-content">
+                                    <img
+                                        src="../assets/book-page-4.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="page-back back-cover">
+                                <div
+                                    class="placeholder-content"
+                                    style="background: none"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="controls">
+                        <button class="book-controller" id="bookPrevBtn">
+                            Previous
+                        </button>
+                        <button class="book-controller" id="bookNextBtn">
+                            Next
+                        </button>
+                        <button class="book-controller" id="bookResetBtn">
+                            Reset
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <script src="../main.js"></script>
+        <script src="../book-3d.js"></script>
+
+        <audio
+            id="pageFlipSound"
+            src="assets/turnpage.mp3"
+            preload="auto"
+        ></audio>
+        <audio
+            id="bookCloseSound"
+            src="../assets/book-close.mp3"
+            preload="auto"
+        ></audio>
     </body>
 </html>
