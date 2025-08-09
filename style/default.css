@@ -61,6 +61,9 @@
 .w-full {
     width: 100%;
 }
+.w-fit {
+    width: fit-content;
+}
 .w-360 {
     max-width: 360px;
 }
@@ -76,4 +79,8 @@
 }
 .text-start {
     text-align: start;
+}
+
+.text-primary {
+    color: var(--primary-color);
 }

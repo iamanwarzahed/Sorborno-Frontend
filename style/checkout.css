@@ -1,0 +1,199 @@
+.payment-wrapper {
+    background-color: #ebf1eb;
+    padding: 32px;
+    border-radius: 16px;
+}
+.payment-header-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--soft-color);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+}
+.payment-container {
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    gap: 40px;
+}
+.payment-info-card {
+    padding: 20px;
+    border-radius: var(--radius-3);
+    border: 1px solid var(--base-3);
+    background-color: var(--base-1);
+}
+img.course-for-payment {
+    max-width: 112px;
+}
+.payment-course-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+.course-start-info {
+    background-color: var(--light-color);
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 500;
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: var(--radius-2);
+}
+.payment-details-container {
+    padding: 8px 16px;
+    margin-top: 16px;
+}
+.payment-details {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 16px;
+}
+.fee-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+.course-fee {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--soft-color);
+}
+.coupon-display-box {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+#displayBox {
+    cursor: pointer;
+    padding: 4px 8px;
+    background-color: var(--soft-green);
+    border-radius: var(--radius-2);
+}
+#displayBox:hover {
+    background-color: var(--light-primary);
+}
+#displayValue {
+    text-transform: uppercase;
+}
+#editorBox {
+    display: none;
+}
+.total-payment {
+    border-top: 1px solid var(--soft-color);
+    margin-top: 10px;
+    padding-top: 16px;
+}
+.total-payment .payment-details {
+    margin-bottom: 0;
+}
+.phone-icon {
+    background-color: var(--soft-primary);
+    padding: 8px;
+    border-radius: 50%;
+    color: var(--primary-color);
+}
+.call-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.call-number {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.short-title {
+    font-size: 164px;
+    font-weight: 600;
+    text-align: start;
+    margin-bottom: 24px;
+}
+.payment-option-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border: 2px solid var(--base-3);
+    border-radius: var(--radius-3);
+}
+.payment-option-card img {
+    max-width: 180px;
+    max-height: 44px;
+    height: 3vw;
+}
+.payment-title {
+    color: #070707;
+    font-size: 18px;
+    font-weight: 600;
+}
+.notification-card {
+    background-color: var(--base-2);
+}
+.notification-btn {
+    background-color: var(--primary-color);
+    color: var(--text-reverse);
+    font-size: 20px;
+}
+.notification-btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+/* Hide the native radio but keep it accessible */
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Custom radio circle */
+.custom-radio {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--base-3);
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    flex-shrink: 0;
+    transition: border-color 0.3s ease;
+}
+
+/* Inner dot for checked state */
+.custom-radio::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+/* When radio is checked, style the custom radio */
+input[type="radio"]:checked + .custom-radio {
+    border-color: var(--primary-color);
+}
+input[type="radio"]:checked + .custom-radio::after {
+    background-color: var(--primary-color);
+}
+input[type="radio"]:checked + .custom-radio + .payment-option-card {
+  border-color: var(--primary-color);
+}
+
+
+@media (max-width: 992px) {
+    .payment-container {
+        grid-template-columns: 1fr;
+    }
+    .payment-container .right-panel {
+        display: block;
+        max-width: 512px;
+        margin: 0 auto;
+    }
+}

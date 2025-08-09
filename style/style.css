@@ -1,9 +1,13 @@
 :root {
     --text-color: #070707;
+    --text-light: #4b534b;
     --dark-color: #0e9b50;
     --primary-color: #009245;
     --secondary-color: #0feb75;
+    --light-primary: #a2ffce;
+    --soft-primary: #b8fbd8;
     --tertiary-color: #010e07;
+    --soft-green: #daffef;
     --soft-color: #959c99;
     --light-medium-color: #e8fff3;
     --light-soft-color: #d0d4d2;
@@ -54,6 +58,13 @@ img {
     height: auto;
 }
 
+label.radio {
+    cursor: pointer;;
+}
+label.radio input {
+    margin: 0;
+}
+
 .icon {
     line-height: 0;
 }
@@ -97,6 +108,9 @@ a.btn {
     justify-content: center;
     gap: 4px;
     text-decoration: none;
+}
+a.btn.w-full {
+    width: 100%;
 }
 
 .btn:hover {
@@ -1214,6 +1228,57 @@ a.course-item:hover {
 }
 .min-container-height {
     min-height: 32.7vh;
+}
+
+.notification-card {
+    margin-top: 12px;
+    background-color: #ffffff;
+    padding: 16px;
+    border: 1px solid #eaecf0;
+    border-radius: 8px;
+}
+.notification-title {
+    color: #1d2939;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 32px;
+    margin-bottom: 20px;
+}
+.notification-btn {
+    padding: 12px 24px;
+    background-color: #e9eeeb;
+    color: #101828;
+    border-radius: 6px;
+    text-align: center;
+    display: block;
+    border: none;
+    font-size: 14px;
+    line-height: 20px;
+    transition: all var(--transition-1);
+    cursor: pointer;
+    width: 100%;
+}
+.notification-btn:hover {
+    background-color: #d9dddb;
+}
+.notification-wrapper {
+    margin-top: 12px;
+    background-color: #eef1f0;
+    padding: 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+.get-promo {
+    white-space: nowrap;
+    background-color: #ebd300;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-1);
+}
+.get-promo:hover {
+    background-color: #ceba04;
 }
 
 /* Animations */

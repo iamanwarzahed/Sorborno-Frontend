@@ -16,44 +16,6 @@
     border-radius: 4px;
     box-shadow: 0px 0px 4px 0px #00000013;
 }
-.notification-card {
-    margin-top: 12px;
-    background-color: #ffffff;
-    padding: 16px;
-    border: 1px solid #eaecf0;
-    border-radius: 8px;
-}
-.notification-title {
-    color: #1d2939;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 32px;
-    margin-bottom: 20px;
-}
-.notification-btn {
-    padding: 12px 24px;
-    background-color: #e9eeeb;
-    color: #101828;
-    border-radius: 6px;
-    text-align: center;
-    display: block;
-    border: none;
-    font-size: 14px;
-    line-height: 20px;
-    transition: all var(--transition-1);
-    cursor: pointer;
-    width: 100%;
-}
-.notification-btn:hover {
-    background-color: #d9dddb;
-}
-.notification-wrapper {
-    margin-top: 12px;
-    background-color: #eef1f0;
-    padding: 16px;
-    border: 1px solid var(--primary-color);
-    border-radius: 4px;
-}
 .batch-breadcrumb {
     display: flex;
     align-items: center;
@@ -76,17 +38,6 @@
     cursor: default;
     transition: all var(--transition-1) ease;
     margin-right: 4px;
-}
-.get-promo {
-    white-space: nowrap;
-    background-color: #ebd300;
-    padding: 12px 24px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all var(--transition-1);
-}
-.get-promo:hover {
-    background-color: #ceba04;
 }
 .course-card {
     background-color: #ffffff;
