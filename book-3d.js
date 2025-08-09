@@ -14,10 +14,9 @@ class ResponsiveFlipBook {
         this.isTouchDevice =
             "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-        // Mobile state
+        // Mobile state - simplified without flip state
         this.mobileCurrentPageIndex = 0;
-        this.mobileShowingBack = false;
-        this.totalMobileViews = this.totalPages * 2; // front and back of each page
+        this.totalMobileViews = this.totalPages; // Only front pages now
 
         // Desktop state
         this.currentPage = 0;
@@ -39,7 +38,6 @@ class ResponsiveFlipBook {
             }
         };
         this.boundTouchEnd = this.boundEndDrag;
-        // ===================================================================
 
         // Store desktop page click handlers for removal
         this.desktopClickHandlers = [];
@@ -83,7 +81,7 @@ class ResponsiveFlipBook {
     }
 
     setupMobileView() {
-        // Reset all pages
+        // Reset all pages - simplified without flip classes
         this.pages.forEach((page, index) => {
             page.classList.remove(
                 "mobile-active",
@@ -95,14 +93,13 @@ class ResponsiveFlipBook {
             );
 
             if (index === 0) {
-                page.classList.add("mobile-active", "mobile-flip-front");
+                page.classList.add("mobile-active");
             } else {
                 page.classList.add("mobile-right");
             }
         });
 
         this.mobileCurrentPageIndex = 0;
-        this.mobileShowingBack = false;
         this.updateMobileIndicator();
 
         this.removeDesktopEvents(); // remove desktop events if any
@@ -136,9 +133,8 @@ class ResponsiveFlipBook {
         const totalPageNum = document.getElementById("totalPageNum");
 
         if (currentPageNum && totalPageNum) {
-            const visualPage =
-                this.mobileCurrentPageIndex * 2 +
-                (this.mobileShowingBack ? 2 : 1);
+            // Simplified - just show current page number (no front/back)
+            const visualPage = this.mobileCurrentPageIndex + 1;
             currentPageNum.textContent = visualPage;
             totalPageNum.textContent = this.totalMobileViews;
         }
@@ -347,65 +343,53 @@ class ResponsiveFlipBook {
     }
 
     nextMobilePage() {
-        const currentPage = this.pages[this.mobileCurrentPageIndex];
+        console.log(`NextMobile: Current page ${this.mobileCurrentPageIndex}, Total pages ${this.totalPages}`);
+        
+        // Simplified - only slide to next page, no flipping
+        if (this.mobileCurrentPageIndex < this.totalPages - 1) {
+            const currentPage = this.pages[this.mobileCurrentPageIndex];
+            const nextPage = this.pages[this.mobileCurrentPageIndex + 1];
 
-        if (!this.mobileShowingBack) {
-            // First click: flip to show back of current page
-            this.mobileShowingBack = true;
-            currentPage.classList.remove("mobile-flip-front");
-            currentPage.classList.add("mobile-flip-back");
+            console.log(`Sliding from page ${this.mobileCurrentPageIndex} to ${this.mobileCurrentPageIndex + 1}`);
+
+            // Slide current page left
+            currentPage.classList.remove("mobile-active");
+            currentPage.classList.add("mobile-left");
+
+            // Bring next page from right
+            nextPage.classList.remove("mobile-right");
+            nextPage.classList.add("mobile-active");
+
+            this.mobileCurrentPageIndex++;
+            
+            this.updateMobileIndicator();
+            this.updateMobileZIndices();
+            this.updateControls();
         } else {
-            // Second click: slide to next page
-            if (this.mobileCurrentPageIndex < this.totalPages - 1) {
-                const nextPage = this.pages[this.mobileCurrentPageIndex + 1];
-
-                // Slide current page left
-                currentPage.classList.remove("mobile-active");
-                currentPage.classList.add("mobile-left");
-
-                // Bring next page from right
-                nextPage.classList.remove("mobile-right");
-                nextPage.classList.add("mobile-active", "mobile-flip-front");
-
-                this.mobileCurrentPageIndex++;
-                this.mobileShowingBack = false;
-            }
+            console.log("Already at last page, cannot go next");
         }
-
-        this.updateMobileIndicator();
-        this.updateMobileZIndices();
-        this.updateControls();
     }
 
     prevMobilePage() {
-        const currentPage = this.pages[this.mobileCurrentPageIndex];
+        // Simplified - only slide to previous page, no flipping
+        if (this.mobileCurrentPageIndex > 0) {
+            const currentPage = this.pages[this.mobileCurrentPageIndex];
+            const prevPage = this.pages[this.mobileCurrentPageIndex - 1];
 
-        if (this.mobileShowingBack) {
-            // Flip back to front of current page
-            this.mobileShowingBack = false;
-            currentPage.classList.remove("mobile-flip-back");
-            currentPage.classList.add("mobile-flip-front");
-        } else {
-            // Go to previous page
-            if (this.mobileCurrentPageIndex > 0) {
-                const prevPage = this.pages[this.mobileCurrentPageIndex - 1];
+            // Slide current page right
+            currentPage.classList.remove("mobile-active");
+            currentPage.classList.add("mobile-right");
 
-                // Slide current page right
-                currentPage.classList.remove("mobile-active");
-                currentPage.classList.add("mobile-right");
+            // Bring previous page from left
+            prevPage.classList.remove("mobile-left");
+            prevPage.classList.add("mobile-active");
 
-                // Bring previous page from left, show its back
-                prevPage.classList.remove("mobile-left");
-                prevPage.classList.add("mobile-active", "mobile-flip-back");
-
-                this.mobileCurrentPageIndex--;
-                this.mobileShowingBack = true;
-            }
+            this.mobileCurrentPageIndex--;
+            
+            this.updateMobileIndicator();
+            this.updateMobileZIndices();
+            this.updateControls();
         }
-
-        this.updateMobileIndicator();
-        this.updateMobileZIndices();
-        this.updateControls();
     }
 
     // Desktop dragging methods
@@ -729,10 +713,10 @@ class ResponsiveFlipBook {
                 page.style.zIndex = 1000;
             } else if (index < activeIndex) {
                 // Pages to the left - lower z-index
-                page.style.zIndex = index;
+                page.style.zIndex = 100 + index;
             } else {
                 // Pages to the right - higher than left pages but below active
-                page.style.zIndex = activeIndex;
+                page.style.zIndex = 200 + index;
             }
         });
     }
@@ -757,16 +741,13 @@ class ResponsiveFlipBook {
 
     updateControls() {
         if (this.isMobile) {
-            // Mobile button logic
-            const isFirstView =
-                this.mobileCurrentPageIndex === 0 && !this.mobileShowingBack;
-            const isLastView =
-                this.mobileCurrentPageIndex === this.totalPages - 1 &&
-                this.mobileShowingBack;
+            // Mobile button logic - simplified without flip states
+            const isFirstPage = this.mobileCurrentPageIndex === 0;
+            const isLastPage = this.mobileCurrentPageIndex === this.totalPages - 1;
 
-            this.prevBtn.disabled = isFirstView;
-            this.nextBtn.disabled = isLastView;
-            this.resetBtn.disabled = isFirstView;
+            this.prevBtn.disabled = isFirstPage;
+            this.nextBtn.disabled = isLastPage;
+            this.resetBtn.disabled = isFirstPage;
         } else {
             // Desktop button logic
             this.prevBtn.disabled = this.currentPage === 0;

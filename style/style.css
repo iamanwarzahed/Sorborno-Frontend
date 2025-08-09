@@ -1280,6 +1280,23 @@ a.course-item:hover {
 .get-promo:hover {
     background-color: #ceba04;
 }
+.hurry-container {
+    background-color: var(--soft-green);
+    border-radius: var(--radius-3);
+}
+.hurry-title {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 600;
+}
+.join-now {
+    background-color: var(--primary-color);
+    color: var(--text-reverse);
+}
+.join-now:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
 
 /* Animations */
 @keyframes scroll-up {

@@ -879,3 +879,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+// Progress bar
+document.querySelectorAll(".progress-wrapper").forEach((wrapper) => {
+    const completed = parseInt(wrapper.dataset.completed, 10) || 0;
+    const total = parseInt(wrapper.dataset.total, 10) || 1; // avoid divide by zero
+
+    const percentage = Math.min((completed / total) * 100, 100); // max 100%
+
+    const progressText = wrapper.querySelector(".progress-text");
+    const progressBar = wrapper.querySelector(".progress-bar");
+
+    // Set text like "2/18"
+    progressText.textContent = `${completed}/${total}`;
+
+    // Set progress bar width
+    progressBar.style.width = `${percentage}%`;
+});

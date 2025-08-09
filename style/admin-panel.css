@@ -59,13 +59,29 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    min-width: 325px;
+    /* min-width: 325px; */
     width: 100%;
     cursor: pointer;
+    margin: 0;
+    max-width: unset;
+    flex-basis: 48%;
+}
+.my-course-wrapper {
+    display: block;
+}
+.my-course-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 .course-img img {
     max-width: 180px;
     border-radius: 8px;
+}
+.my-course-img img {
+    border-radius: 8px;
+    aspect-ratio: 16/7;
+    height: 100px;
 }
 .course-content {
     text-align: start;
@@ -132,4 +148,36 @@
 .payment-by-content,
 .payment-date-content {
     text-align: center;
+}
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 8px;
+    margin-top: 12px;
+}
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--base-3); /* light gray */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color); /* blue */
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: #555;
+    text-align: start;
+}
+@media (max-width: 566px) {
+    .course-item {
+        flex-basis: 100%;
+    }    
 }
