@@ -1,4 +1,4 @@
-class ResponsiveFlipbook {
+class ResponsiveFlipBook {
     constructor() {
         this.pages = document.querySelectorAll(".page");
         this.totalPages = this.pages.length;
@@ -21,10 +21,11 @@ class ResponsiveFlipbook {
 
         // Desktop state
         this.currentPage = 0;
+        this.isAnimating = false; // Prevent dragging during button animations
 
-        this.prevBtn = document.getElementById("prevBtn");
-        this.nextBtn = document.getElementById("nextBtn");
-        this.resetBtn = document.getElementById("resetBtn");
+        this.prevBtn = document.getElementById("bookPrevBtn");
+        this.nextBtn = document.getElementById("bookNextBtn");
+        this.resetBtn = document.getElementById("bookResetBtn");
 
         // Bind handlers for removeEventListener use
         this.boundOnDrag = (e) => this.drag(e);
@@ -118,7 +119,6 @@ class ResponsiveFlipbook {
                 "mobile-flip-front",
                 "mobile-flip-back",
                 "flipped",
-                "dragging"
             );
             page.style.transform = "";
             page.style.zIndex = "";
@@ -410,7 +410,7 @@ class ResponsiveFlipbook {
 
     // Desktop dragging methods
     startDrag(event, pageIndex) {
-        if (this.isMobile || pageIndex >= this.totalPages) return;
+        if (this.isMobile || pageIndex >= this.totalPages || this.isAnimating) return;
 
         const page = this.pages[pageIndex];
         this.isDragging = false;
@@ -424,14 +424,13 @@ class ResponsiveFlipbook {
     }
 
     drag(event) {
-        if (this.isMobile || this.currentDragPage === undefined) return;
+        if (this.isMobile || this.currentDragPage === undefined || this.isAnimating) return;
 
         const currentX = event.clientX || event.pageX;
         const deltaX = currentX - this.dragStartX;
 
         if (Math.abs(deltaX) > 10 && !this.isDragging) {
             this.isDragging = true;
-            this.dragPage.classList.add("dragging");
             this.dragDirection = deltaX > 0 ? "right" : "left";
             this.updateZIndices();
         }
@@ -442,16 +441,39 @@ class ResponsiveFlipbook {
 
             if (this.dragDirection === "left" && !isFlipped) {
                 const angle = Math.max(-180, (deltaX / 200) * 180);
-                page.style.transform = `rotateY(${angle}deg)`;
+                this.applyBendingTransform(page, angle);
             } else if (this.dragDirection === "right" && isFlipped) {
                 const angle = Math.min(0, -180 + (deltaX / 200) * 180);
-                page.style.transform = `rotateY(${angle}deg)`;
+                this.applyBendingTransform(page, angle);
             }
         }
     }
 
+    // Apply simple realistic page bending
+    applyBendingTransform(page, rotationAngle) {
+        // Simple bending using border-radius to curve the page
+        const normalizedAngle = Math.abs(rotationAngle) / 180;
+        const bendAmount = Math.sin(normalizedAngle * Math.PI) * 20; // Max 30px curve
+        
+        // Create curved page effect by adjusting border-radius
+        if (Math.abs(rotationAngle) > 10 && Math.abs(rotationAngle) < 170) {
+            if (rotationAngle < -90) {
+                // Curving left side when flipping forward
+                page.style.borderRadius = `0 ${bendAmount}px ${bendAmount}px 0`;
+            } else {
+                // Curving right side when flipping back
+                page.style.borderRadius = `${bendAmount}px 0 0 ${bendAmount}px`;
+            }
+        } else {
+            page.style.borderRadius = '';
+        }
+        
+        // Simple rotation with perspective
+        page.style.transform = `perspective(1000px) rotateY(${rotationAngle}deg)`;
+    }
+
     endDrag() {
-        if (this.isMobile || this.currentDragPage === undefined) return;
+        if (this.isMobile || this.currentDragPage === undefined || this.isAnimating) return;
 
         const page = this.dragPage;
         page.style.cursor = "grab";
@@ -469,27 +491,16 @@ class ResponsiveFlipbook {
                 !isFlipped &&
                 angle < -this.dragThreshold
             ) {
-                this.flipPageForward(this.currentDragPage);
+                this.flipPageForwardDrag(this.currentDragPage);
             } else if (
                 this.dragDirection === "right" &&
                 isFlipped &&
                 angle > -180 + this.dragThreshold
             ) {
-                this.flipPageBackward(this.currentDragPage);
+                this.flipPageBackwardDrag(this.currentDragPage);
             } else {
-                // Snap back
-                page.classList.remove("dragging");
-                page.style.transform = isFlipped
-                    ? "rotateY(-180deg)"
-                    : "rotateY(0deg)";
-                setTimeout(() => {
-                    if (
-                        (isFlipped && page.classList.contains("flipped")) ||
-                        (!isFlipped && !page.classList.contains("flipped"))
-                    ) {
-                        page.style.transform = "";
-                    }
-                }, 600);
+                // Snap back with bending animation
+                this.snapBackWithBending(page, isFlipped);
             }
         }
 
@@ -499,13 +510,33 @@ class ResponsiveFlipbook {
         this.updateZIndices();
     }
 
+    // Simple snap back animation
+    snapBackWithBending(page, isFlipped) {
+        // Clean up any bending effects immediately for drag
+        page.style.borderRadius = '';
+        page.style.transition = 'transform 0.3s ease';
+        
+        // Simple snap back to position
+        page.style.transform = isFlipped ? "rotateY(-180deg)" : "rotateY(0deg)";
+        
+        setTimeout(() => {
+            page.style.transition = '';
+            if (
+                (isFlipped && page.classList.contains("flipped")) ||
+                (!isFlipped && !page.classList.contains("flipped"))
+            ) {
+                page.style.transform = "";
+            }
+        }, 300);
+    }
+
     extractAngle(transform) {
         const match = transform.match(/rotateY\(([^)]+)deg\)/);
         return match ? parseFloat(match[1]) : 0;
     }
 
     flipPage(pageIndex) {
-        if (pageIndex >= this.totalPages) return;
+        if (pageIndex >= this.totalPages || this.isAnimating) return;
 
         const page = this.pages[pageIndex];
         if (!page.classList.contains("flipped")) {
@@ -515,21 +546,110 @@ class ResponsiveFlipbook {
         }
     }
 
+    // Simple page flip forward with realistic bending animation
     flipPageForward(pageIndex) {
         const page = this.pages[pageIndex];
-        page.classList.remove("dragging");
-        page.style.transform = "";
+        
+        // Create realistic bending animation for button clicks
+        this.animatePageFlipWithBending(page, 0, -180, () => {
+            page.classList.add("flipped");
+            this.updateDesktopState();
+        });
+        
+        this.playFlipSound();
+    }
+
+    // Simple page flip backward with realistic bending animation
+    flipPageBackward(pageIndex) {
+        const page = this.pages[pageIndex];
+        
+        // Create realistic bending animation for button clicks
+        this.animatePageFlipWithBending(page, -180, 0, () => {
+            page.classList.remove("flipped");
+            this.updateDesktopState();
+        });
+        
+        this.playFlipSound();
+    }
+
+    // Immediate page flip forward for dragging (no animation)
+    flipPageForwardDrag(pageIndex) {
+        const page = this.pages[pageIndex];
+        
+        // Clean up any drag transforms immediately
+        page.style.borderRadius = '';
+        page.style.transform = '';
+        page.style.transition = '';
+        
+        // Add flipped class and update state
         page.classList.add("flipped");
         this.updateDesktopState();
         this.playFlipSound();
     }
 
-    flipPageBackward(pageIndex) {
+    // Immediate page flip backward for dragging (no animation)
+    flipPageBackwardDrag(pageIndex) {
         const page = this.pages[pageIndex];
-        page.classList.remove("flipped", "dragging");
-        page.style.transform = "";
+        
+        // Clean up any drag transforms immediately
+        page.style.borderRadius = '';
+        page.style.transform = '';
+        page.style.transition = '';
+        
+        // Remove flipped class and update state
+        page.classList.remove("flipped");
         this.updateDesktopState();
         this.playFlipSound();
+    }
+
+    // Animate page flip with realistic bending effect
+    animatePageFlipWithBending(page, startAngle, endAngle, onComplete) {
+        const duration = 600; // Animation duration in ms
+        const startTime = performance.now();
+        
+        // Set animation flag to prevent dragging during animation
+        this.isAnimating = true;
+        
+        // Temporarily disable any CSS transitions to prevent conflicts
+        const originalTransition = page.style.transition;
+        page.style.transition = 'none';
+        
+        // Set initial transform immediately to prevent jump
+        this.applyBendingTransform(page, startAngle);
+        
+        const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Use easeInOutQuad for smooth animation
+            const easeProgress = progress < 0.5 
+                ? 2 * progress * progress 
+                : -1 + (4 - 2 * progress) * progress;
+            
+            const currentAngle = startAngle + (endAngle - startAngle) * easeProgress;
+            
+            // Apply the bending transform during animation
+            this.applyBendingTransform(page, currentAngle);
+            
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                // Animation complete - clean up
+                page.style.borderRadius = '';
+                page.style.transform = '';
+                page.style.transition = originalTransition; // Restore original transition
+                
+                // Clear animation flag
+                this.isAnimating = false;
+                
+                // Execute completion callback if provided
+                if (onComplete) {
+                    onComplete();
+                }
+            }
+        };
+        
+        requestAnimationFrame(animate);
     }
 
     playFlipSound() {
@@ -651,5 +771,5 @@ class ResponsiveFlipbook {
 
 // Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-    new ResponsiveFlipbook();
+    new ResponsiveFlipBook();
 });

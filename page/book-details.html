@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../style/style.css" />
         <link rel="stylesheet" href="../style/default.css" />
         <link rel="stylesheet" href="../style/book-details.css" />
+        <link rel="stylesheet" href="../style/book-3d.css" />
         <link rel="stylesheet" href="../style/responsive.css" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1735,9 +1736,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a
-                                class="btn-course"
-                                href="book-details.html"
+                            <a class="btn-course" href="book-details.html"
                                 >View details</a
                             >
                         </div>
@@ -1868,9 +1867,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a
-                                class="btn-course"
-                                href="book-details.html"
+                            <a class="btn-course" href="book-details.html"
                                 >View details</a
                             >
                         </div>
@@ -2001,9 +1998,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a
-                                class="btn-course"
-                                href="book-details.html"
+                            <a class="btn-course" href="book-details.html"
                                 >View details</a
                             >
                         </div>
@@ -2134,9 +2129,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a
-                                class="btn-course"
-                                href="book-details.html"
+                            <a class="btn-course" href="book-details.html"
                                 >View details</a
                             >
                         </div>
@@ -2536,7 +2529,11 @@
         </div>
 
         <!-- Popup -->
-        <div id="popup-wrapper" class="overlay-wrapper" data-close-outside="false">
+        <div
+            id="popup-wrapper"
+            class="overlay-wrapper"
+            data-close-outside="false"
+        >
             <div class="overlay"></div>
             <div id="popup-container" class="overlay-container">
                 <div class="drawer-header">
@@ -2579,15 +2576,116 @@
                         </div>
                     </div>
                 </div>
-                <div class="drawer-body">
-                    <img src="../assets/book-page-1.jpg" alt="book page" />
-                    <img src="../assets/book-page-2.jpg" alt="book page" />
-                    <img src="../assets/book-page-3.jpg" alt="book page" />
-                    <img src="../assets/book-page-4.jpg" alt="book page" />
+                <div class="drawer-body book-container">
+                    <div class="instructions">
+                        <span class="desktop-text"
+                            >Drag left/right or click pages to flip • Use
+                            controls below</span
+                        >
+                        <span class="mobile-text"
+                            >Tap to flip pages or use controls below</span
+                        >
+                    </div>
+
+                    <div class="mobile-page-indicator">
+                        Page <span id="currentPageNum">1</span> of
+                        <span id="totalPageNum">8</span>
+                    </div>
+
+                    <div class="flip-book-container">
+                        <!-- Cover Page -->
+                        <div class="page mobile-active" data-page="0">
+                            <div class="page-front cover-page">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-image.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="page-back">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-page-1.jpg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 1 -->
+                        <div class="page mobile-right" data-page="1">
+                            <div class="page-front">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-page-2.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="page-back">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-page-3.jpg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 2 -->
+                        <div class="page mobile-right" data-page="2">
+                            <div class="page-front">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-page-4.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="page-back">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-page-3.jpg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 3 -->
+                        <div class="page mobile-right" data-page="3">
+                            <div class="page-front">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-page-4.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="page-back">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-page-3.jpg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Back Cover -->
+                        <div class="page mobile-right" data-page="4">
+                            <div class="page-front">
+                                <div class="placeholder-content">
+                                    <img src="../assets/book-page-4.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="page-back back-cover">
+                                <div
+                                    class="placeholder-content"
+                                    style="background: none"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="controls">
+                        <button class="book-controller" id="bookPrevBtn">Previous</button>
+                        <button class="book-controller" id="bookNextBtn">Next</button>
+                        <button class="book-controller" id="bookResetBtn">Reset</button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <script src="../main.js"></script>
+        <script src="../book-3d.js"></script>
+
+        <audio
+            id="pageFlipSound"
+            src="assets/turnpage.mp3"
+            preload="auto"
+        ></audio>
+        <audio
+            id="bookCloseSound"
+            src="../assets/book-close.mp3"
+            preload="auto"
+        ></audio>
     </body>
 </html>

@@ -1,22 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Georgia", serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1200px;
-    overflow: hidden;
-    padding: 20px;
-}
-
-.flipbook-container {
+.flip-book-container {
     position: relative;
     width: min(700px, 90vw);
     height: min(500px, 70vh);
@@ -131,7 +113,7 @@ body {
     z-index: 1000;
 }
 
-.btn {
+.book-controller {
     padding: 12px 24px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
@@ -144,18 +126,18 @@ body {
 }
 
 @media (max-width: 480px) {
-    .btn {
+    .book-controller {
         padding: 10px 16px;
         font-size: 0.8em;
     }
 }
 
-.btn:hover:not(:disabled) {
+.book-controller:hover:not(:disabled) {
     background: rgba(0, 0, 0, 0.9);
     transform: translateY(-2px);
 }
 
-.btn:disabled {
+.book-controller:disabled {
     background: rgba(0, 0, 0, 0.3);
     cursor: not-allowed;
     transform: none;
@@ -163,7 +145,7 @@ body {
 
 .instructions {
     position: fixed;
-    top: 20px;
+    top: 9%;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.8);

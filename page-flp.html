@@ -3,9 +3,28 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Responsive 3D Flipbook with Bidirectional Drag</title>
-        <link rel="stylesheet" href="style/style.css" />
+        <title>Responsive 3D Flipook with Bidirectional Drag</title>
         <link rel="stylesheet" href="style/book-3d.css" />
+        <link rel="stylesheet" href="style/style.css" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Georgia", serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                perspective: 1200px;
+                overflow: hidden;
+                padding: 20px;
+            }
+        </style>
     </head>
     <body>
         <div class="instructions">
@@ -23,7 +42,7 @@
             <span id="totalPageNum">8</span>
         </div>
 
-        <div class="flipbook-container">
+        <div class="flip-book-container">
             <!-- Cover Page -->
             <div class="page mobile-active" data-page="0">
                 <div class="page-front cover-page">
@@ -88,18 +107,20 @@
                     </div>
                 </div>
                 <div class="page-back back-cover">
-                    <div class="placeholder-content" style="background: none">
-                    </div>
+                    <div
+                        class="placeholder-content"
+                        style="background: none"
+                    ></div>
                 </div>
             </div>
         </div>
 
         <div class="controls">
-            <button class="btn" id="prevBtn">Previous</button>
-            <button class="btn" id="nextBtn">Next</button>
-            <button class="btn" id="resetBtn">Reset</button>
+            <button class="book-controller" id="bookPrevBtn">Previous</button>
+            <button class="book-controller" id="bookNextBtn">Next</button>
+            <button class="book-controller" id="bookResetBtn">Reset</button>
         </div>
-        
+
         <script src="book-3d.js"></script>
 
         <audio
