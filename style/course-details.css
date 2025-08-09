@@ -129,7 +129,7 @@ ul.course-learning-container {
     color: var(--text-color);
 }
 .week-3 {
-     color: var(--text-reverse);
+    color: var(--text-reverse);
     background-color: var(--img-bg);
 }
 .in-roll-container {
@@ -139,6 +139,65 @@ ul.course-learning-container {
     padding-top: 12px;
     margin-top: 12px;
     border-top: 1px solid var(--primary-color);
+}
+
+.course-img {
+    position: relative;
+    display: inline-block;
+}
+.play-button-style {
+    position: absolute;
+top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 16px 14px 12px 18px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(197, 235, 198, 0.7);
+    animation: pulse-shadow 1.5s infinite;
+}
+
+@keyframes pulse-shadow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(197, 235, 198, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(197, 235, 198, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(197, 235, 198, 0);
+    }
+}
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.video-modal-content {
+    position: relative;
+    max-width: 800px;
+    width: 90%;
+    background: black;
+}
+.video-modal-content iframe {
+    width: 100%;
+    height: 450px;
+}
+.video-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
 }
 
 @media (max-width: 992px) {
@@ -173,7 +232,7 @@ ul.course-learning-container {
     }
 }
 .accordion {
-    max-width: 100%;   
+    max-width: 100%;
 }
 
 .syllabus-item {
@@ -188,13 +247,13 @@ ul.course-learning-container {
     color: var(--text-color);
 }
 .syllabus-icon {
-    color: #9DA1A9;
+    color: #9da1a9;
 }
 .syllabus-item.active .syllabus-icon {
     color: var(--primary-color);
 }
 .syllabus-btn {
-     color: #9DA1A9;
+    color: #9da1a9;
 }
 .syllabus-item.active .syllabus-btn {
     background-color: var(--primary-shadow);

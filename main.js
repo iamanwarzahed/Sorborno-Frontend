@@ -180,48 +180,53 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // open book close
 document.addEventListener("DOMContentLoaded", () => {
-  const readBtns = document.querySelectorAll(".btn-read-book");
+    const readBtns = document.querySelectorAll(".btn-read-book");
 
-  readBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const bookWrapper = btn.closest(".book-wrapper");
-      if (!bookWrapper) return;
+    readBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const bookWrapper = btn.closest(".book-wrapper");
+            if (!bookWrapper) return;
 
-      const readingPanel = bookWrapper.querySelector(".book-reading-panel");
-      const bookContainer = bookWrapper.querySelector(".book-container");
+            const readingPanel = bookWrapper.querySelector(
+                ".book-reading-panel"
+            );
+            const bookContainer = bookWrapper.querySelector(".book-container");
 
-      const isActive = readingPanel.classList.contains("active");
+            const isActive = readingPanel.classList.contains("active");
 
-      if (isActive) {
-        // Panel is open, so close it
-        readingPanel.classList.remove("active");
-        bookContainer.classList.remove("active");
-        btn.textContent = "Read";
-      } else {
-        // Panel is closed, so open it and close others
+            if (isActive) {
+                // Panel is open, so close it
+                readingPanel.classList.remove("active");
+                bookContainer.classList.remove("active");
+                btn.textContent = "Read";
+            } else {
+                // Panel is closed, so open it and close others
 
-        // Close all other panels and containers
-        document.querySelectorAll(".book-reading-panel.active").forEach(panel => {
-          panel.classList.remove("active");
+                // Close all other panels and containers
+                document
+                    .querySelectorAll(".book-reading-panel.active")
+                    .forEach((panel) => {
+                        panel.classList.remove("active");
+                    });
+                document
+                    .querySelectorAll(".book-container.active")
+                    .forEach((container) => {
+                        container.classList.remove("active");
+                    });
+
+                // Reset all buttons text
+                readBtns.forEach((button) => {
+                    button.textContent = "Read";
+                });
+
+                // Open this one
+                readingPanel.classList.add("active");
+                bookContainer.classList.add("active");
+                btn.textContent = "Close";
+            }
         });
-        document.querySelectorAll(".book-container.active").forEach(container => {
-          container.classList.remove("active");
-        });
-
-        // Reset all buttons text
-        readBtns.forEach(button => {
-          button.textContent = "Read";
-        });
-
-        // Open this one
-        readingPanel.classList.add("active");
-        bookContainer.classList.add("active");
-        btn.textContent = "Close";
-      }
     });
-  });
 });
-
 
 // Tab Selection
 document.addEventListener("DOMContentLoaded", () => {
@@ -676,6 +681,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll(".info-tab");
     const detailsSection = document.getElementById("details-container");
+    const mentorsSection = document.getElementById("mentors-container");
     const syllabusSection = document.getElementById("syllabus-container");
     const syllabusBtn = document.getElementById("view-syllabus");
     const infoTabContainer = document.querySelector(".info-tab-container");
@@ -701,7 +707,11 @@ document.addEventListener("DOMContentLoaded", () => {
             setActiveTab(index);
 
             const targetSection =
-                index === 0 ? detailsSection : syllabusSection;
+                index === 0
+                    ? detailsSection
+                    : index === 1
+                    ? syllabusSection
+                    : mentorsSection;
             const scrollTo = getOffsetTop(targetSection);
 
             isAutoScrolling = true;
@@ -742,10 +752,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const currentScroll =
             window.scrollY + infoTabContainer.offsetHeight + OFFSET;
-        const detailsTop = detailsSection.offsetTop;
         const syllabusTop = syllabusSection.offsetTop;
+        const mentorsTop = mentorsSection.offsetTop;
 
-        if (currentScroll >= syllabusTop) {
+        if (currentScroll >= mentorsTop - 50) {
+            setActiveTab(2); // Mentors
+        } else if (currentScroll >= syllabusTop) {
             setActiveTab(1); // Syllabus
         } else {
             setActiveTab(0); // Details
@@ -807,5 +819,42 @@ document.addEventListener("DOMContentLoaded", () => {
             );
             if (joiningTab) joiningTab.click();
         });
+    });
+});
+
+// Video button
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.querySelector("[data-modal]");
+    const videoFrame = document.getElementById("videoFrame");
+    const closeBtn = document.querySelector("[data-close]");
+
+    document
+        .querySelectorAll(".play-button[data-video-link]")
+        .forEach((btn) => {
+            btn.addEventListener("click", () => {
+                let videoLink = btn.dataset.videoLink;
+
+                // Force autoplay and mute for browser compatibility
+                if (!videoLink.includes("autoplay=1")) {
+                    videoLink += videoLink.includes("?")
+                        ? "&autoplay=1&mute=1"
+                        : "?autoplay=1&mute=1";
+                }
+
+                videoFrame.src = videoLink;
+                modal.style.display = "flex";
+            });
+        });
+
+    closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+        videoFrame.src = "";
+    });
+
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            videoFrame.src = "";
+        }
     });
 });

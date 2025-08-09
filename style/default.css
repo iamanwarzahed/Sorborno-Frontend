@@ -1,3 +1,6 @@
+.absolute {
+    position: absolute;
+} 
 .d-flex {
     display: flex;
 }
