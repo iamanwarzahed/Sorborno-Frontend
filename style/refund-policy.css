@@ -1,0 +1,13 @@
+.container {
+    padding: 0 20px;
+}
+.policy-subtitle {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+li {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
