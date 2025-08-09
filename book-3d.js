@@ -62,18 +62,18 @@ class ResponsiveFlipBook {
     }
 
     updateResponsiveDisplay() {
-        const desktopTexts = document.querySelectorAll(".desktop-text");
-        const mobileTexts = document.querySelectorAll(".mobile-text");
+        const desktopText = document.querySelector(".desktop-text");
+        const mobileText = document.querySelector(".mobile-text");
 
         if (this.isMobile) {
-            desktopTexts.forEach((el) => (el.style.display = "none"));
-            mobileTexts.forEach((el) => (el.style.display = "inline"));
+            if (desktopText) desktopText.style.display = "none";
+            if (mobileText) mobileText.style.display = "inline";
             this.setupMobileView();
         } else {
-            desktopTexts.forEach((el) => (el.style.display = "inline"));
-            mobileTexts.forEach((el) => (el.style.display = "none"));
+            if (desktopText) desktopText.style.display = "inline";
+            if (mobileText) mobileText.style.display = "none";
             this.setupDesktopView();
-            this.removeMobileEvents();
+            this.removeMobileEvents(); // remove mobile events if any
         }
     }
 
@@ -453,7 +453,7 @@ class ResponsiveFlipBook {
     applyBendingTransform(page, rotationAngle) {
         // Simple bending using border-radius to curve the page
         const normalizedAngle = Math.abs(rotationAngle) / 180;
-        const bendAmount = Math.sin(normalizedAngle * Math.PI) * 20; // Max 30px curve
+        const bendAmount = Math.sin(normalizedAngle * Math.PI) * 30; // Max 30px curve
         
         // Create curved page effect by adjusting border-radius
         if (Math.abs(rotationAngle) > 10 && Math.abs(rotationAngle) < 170) {
@@ -554,9 +554,8 @@ class ResponsiveFlipBook {
         this.animatePageFlipWithBending(page, 0, -180, () => {
             page.classList.add("flipped");
             this.updateDesktopState();
+            this.playFlipSound(); // Play sound after flip completes
         });
-        
-        this.playFlipSound();
     }
 
     // Simple page flip backward with realistic bending animation
@@ -567,9 +566,8 @@ class ResponsiveFlipBook {
         this.animatePageFlipWithBending(page, -180, 0, () => {
             page.classList.remove("flipped");
             this.updateDesktopState();
+            this.playFlipSound(); // Play sound after flip completes
         });
-        
-        this.playFlipSound();
     }
 
     // Immediate page flip forward for dragging (no animation)
@@ -654,10 +652,19 @@ class ResponsiveFlipBook {
 
     playFlipSound() {
         const audio = document.getElementById("pageFlipSound");
+        console.log(audio)
         if (audio) {
             try {
-                audio.currentTime = 0;
-                audio.play();
+                // Create a small delay to ensure audio plays properly
+                setTimeout(() => {
+                    audio.currentTime = 0;
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.error("Audio play error:", error);
+                        });
+                    }
+                }, 10);
             } catch (error) {
                 console.error("Audio play error:", error);
             }
