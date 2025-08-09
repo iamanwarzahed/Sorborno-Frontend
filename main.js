@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const wrapper = document.getElementById("login-wrapper");
     const drawer = document.getElementById("overlay-container");
     const closeBtn = document.querySelector(".drawer-close");
-    
+
     const accountTitle = document.querySelector(".account-header-title");
     // const bookingTitle = document.querySelector(".booking-header-title");
     const accountContainer = document.querySelector(".login-step");
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const profileContainer = document.querySelector(".profile-info-update");
     const imageContainer = document.querySelector(".image-uploader");
     // const hideForBooking = document.querySelectorAll(".hide-for-booking");
-    
+
     function closeDrawer() {
         wrapper.classList.remove("active");
         accountTitle.style.display = "";
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         imageContainer.style.display = "";
         // hideForBooking.forEach(el => el.style.display = "");
     }
-    
+
     loginButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
             event.stopPropagation();
@@ -165,9 +165,11 @@ document.addEventListener("DOMContentLoaded", () => {
             closeDrawer();
             return;
         }
-
+        const shouldCloseOnOutside =
+            wrapper.getAttribute("data-close-outside") !== "false";
         if (
             wrapper.classList.contains("active") &&
+            shouldCloseOnOutside &&
             !drawer.contains(e.target) &&
             !e.target.closest(".book-img") &&
             !e.target.closest(".btn-read")
@@ -715,16 +717,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tabs.forEach((tab) => {
             tab.addEventListener("click", () => {
-                const groupWrapper = tabContainer.nextElementSibling || tabContainer.parentElement;
+                const groupWrapper =
+                    tabContainer.nextElementSibling ||
+                    tabContainer.parentElement;
 
                 // Remove active in this group
                 tabs.forEach((t) => t.classList.remove("active"));
-                const groupContents = groupWrapper.querySelectorAll(":scope > .tab-content");
+                const groupContents = groupWrapper.querySelectorAll(
+                    ":scope > .tab-content"
+                );
                 groupContents.forEach((c) => c.classList.remove("active"));
 
                 // Activate clicked tab and its content
                 tab.classList.add("active");
-                const target = groupWrapper.querySelector(`#${tab.dataset.tab}`);
+                const target = groupWrapper.querySelector(
+                    `#${tab.dataset.tab}`
+                );
                 if (target) target.classList.add("active");
 
                 // If the clicked tab is "joining", reset its nested tabs
@@ -741,7 +749,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clicking a course-action should open joining in outer tabs
     document.querySelectorAll(".course-action").forEach((course) => {
         course.addEventListener("click", () => {
-            const joiningTab = document.querySelector('.tabs .tab[data-tab="joining"]');
+            const joiningTab = document.querySelector(
+                '.tabs .tab[data-tab="joining"]'
+            );
             if (joiningTab) joiningTab.click();
         });
     });
