@@ -699,68 +699,89 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setActiveTab(index) {
         tabs.forEach((t) => t.classList.remove("active"));
-        tabs[index].classList.add("active");
+        if (tabs[index]) {
+            tabs[index].classList.add("active");
+        }
     }
 
+    // Handle tab clicks dynamically
     tabs.forEach((tab, index) => {
         tab.addEventListener("click", () => {
             setActiveTab(index);
 
-            const targetSection =
-                index === 0
-                    ? detailsSection
-                    : index === 1
-                    ? syllabusSection
-                    : mentorsSection;
-            const scrollTo = getOffsetTop(targetSection);
+            let targetSection;
+            if (tabs.length === 3) {
+                targetSection =
+                    index === 0
+                        ? detailsSection
+                        : index === 1
+                        ? syllabusSection
+                        : mentorsSection;
+            } else {
+                targetSection = index === 0 ? detailsSection : mentorsSection;
+            }
 
-            isAutoScrolling = true;
-            window.scrollTo({
-                top: scrollTo,
-                behavior: "smooth",
-            });
+            if (targetSection) {
+                const scrollTo = getOffsetTop(targetSection);
 
-            // Disable scroll updates temporarily
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                isAutoScrolling = false;
-            }, 500); // adjust duration to match smooth scroll
+                isAutoScrolling = true;
+                window.scrollTo({
+                    top: scrollTo,
+                    behavior: "smooth",
+                });
+
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isAutoScrolling = false;
+                }, 500);
+            }
         });
     });
 
-    syllabusBtn.addEventListener("click", () => {
-        setActiveTab(1);
-
-        const targetSection = syllabusSection;
-        const scrollTo = getOffsetTop(targetSection);
-
-        isAutoScrolling = true;
-        window.scrollTo({
-            top: scrollTo,
-            behavior: "smooth",
+    // Handle syllabus button only if exists
+    if (syllabusBtn && syllabusSection) {
+        syllabusBtn.addEventListener("click", () => {
+            if (tabs.length >= 2) {
+                setActiveTab(1);
+                const scrollTo = getOffsetTop(syllabusSection);
+                isAutoScrolling = true;
+                window.scrollTo({
+                    top: scrollTo,
+                    behavior: "smooth",
+                });
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isAutoScrolling = false;
+                }, 500);
+            }
         });
+    }
 
-        // Disable scroll updates temporarily
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            isAutoScrolling = false;
-        }, 500); // adjust duration to match smooth scroll
-    });
-
+    // Scroll detection
     window.addEventListener("scroll", () => {
         if (isAutoScrolling) return;
 
         const currentScroll =
             window.scrollY + infoTabContainer.offsetHeight + OFFSET;
-        const syllabusTop = syllabusSection.offsetTop;
-        const mentorsTop = mentorsSection.offsetTop;
 
-        if (currentScroll >= mentorsTop - 50) {
-            setActiveTab(2); // Mentors
-        } else if (currentScroll >= syllabusTop) {
-            setActiveTab(1); // Syllabus
+        if (tabs.length === 3) {
+            const syllabusTop = syllabusSection.offsetTop;
+            const mentorsTop = mentorsSection.offsetTop;
+
+            if (currentScroll >= mentorsTop - 50) {
+                setActiveTab(2);
+            } else if (currentScroll >= syllabusTop) {
+                setActiveTab(1);
+            } else {
+                setActiveTab(0);
+            }
         } else {
-            setActiveTab(0); // Details
+            const mentorsTop = mentorsSection.offsetTop;
+            if (currentScroll >= mentorsTop - 50) {
+                setActiveTab(1);
+            } else {
+                setActiveTab(0);
+            }
         }
     });
 });
