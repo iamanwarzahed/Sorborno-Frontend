@@ -1,0 +1,124 @@
+.hero-container {
+    display: grid;
+    align-items: center;
+    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+    padding: 80px 20px;
+}
+.subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.title {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+.title2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 16px;
+}
+.description {
+    font-size: 14px;
+    color: var(--text-color);
+}
+.success-wrapper {
+    background-color: var(--base-3);
+}
+.success-wrapper .container {
+    padding: 80px 20px;
+}
+.team-container,
+.success-container {
+    display: grid;
+    align-items: center;
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+}
+.success-counter-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.counter-wrapper {
+    border: 0;
+}
+.counter-style-1 {
+    background-color: #d1fadf;
+}
+.counter-style-2 {
+    background-color: #dae4ff;
+}
+.counter-style-3 {
+    background-color: #ffe8db;
+}
+.counter-style-4 {
+    background-color: #fff2cc;
+}
+.story-wrapper {
+    padding: 40px 0;
+}
+.story-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 3fr 5fr;
+    gap: 40px;
+    background-color: var(--primary-color);
+    padding: 16px;
+    border-radius: var(--radius-3);
+}
+.story-container .title2,
+.story-container .description {
+    color: var(--text-reverse);
+}
+.story-container .description {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+@media (max-width: 992px) {
+    .hero-container {
+        gap: 0px;
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+    .success-wrapper .container {
+        padding: 40px 20px;
+    }
+    .success-container {
+        gap: 0px;
+        grid-template-columns: 1fr;
+    }
+    .story-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .story-container .lh-0.w-fit {
+        max-width: 560px;
+        margin: 0 auto;
+        border-radius: var(--radius-3);
+        overflow: hidden;
+    }
+    .success-counter-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .team-container {
+        grid-template-columns: 1fr;
+    }
+    .team-container .lh-0.w-fit {
+        border-radius: var(--radius-3);
+        overflow: hidden;
+    }
+}
+@media (max-width: 500px) {
+    .success-counter-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
