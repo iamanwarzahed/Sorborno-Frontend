@@ -677,18 +677,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Scroll and selection
+// Universal scroll and tab selection handler
 document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll(".info-tab");
-    const detailsSection = document.getElementById("details-container");
-    const mentorsSection = document.getElementById("mentors-container");
-    const syllabusSection = document.getElementById("syllabus-container");
-    const syllabusBtn = document.getElementById("view-syllabus");
     const infoTabContainer = document.querySelector(".info-tab-container");
+    const syllabusBtn = document.getElementById("view-syllabus");
 
     const OFFSET = 150;
     let isAutoScrolling = false;
     let scrollTimeout;
+
+    // Dynamically detect sections based on what exists in the DOM
+    function detectSections() {
+        const sections = [];
+
+        // Check for different possible section patterns
+        const possibleSections = [
+            "details-container",
+            "syllabus-container",
+            "mentors-container",
+            "chapter-container",
+            "review-container",
+        ];
+
+        possibleSections.forEach((id) => {
+            const section = document.getElementById(id);
+            if (section) {
+                sections.push(section);
+            }
+        });
+
+        return sections;
+    }
+
+    const sections = detectSections();
 
     function getOffsetTop(element) {
         const rect = element.getBoundingClientRect();
@@ -704,23 +726,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Handle tab clicks dynamically
+    // Handle tab clicks dynamically based on detected sections
     tabs.forEach((tab, index) => {
         tab.addEventListener("click", () => {
             setActiveTab(index);
 
-            let targetSection;
-            if (tabs.length === 3) {
-                targetSection =
-                    index === 0
-                        ? detailsSection
-                        : index === 1
-                        ? syllabusSection
-                        : mentorsSection;
-            } else {
-                targetSection = index === 0 ? detailsSection : mentorsSection;
-            }
-
+            const targetSection = sections[index];
             if (targetSection) {
                 const scrollTo = getOffsetTop(targetSection);
 
@@ -738,51 +749,48 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Handle syllabus button only if exists
-    if (syllabusBtn && syllabusSection) {
-        syllabusBtn.addEventListener("click", () => {
-            if (tabs.length >= 2) {
-                setActiveTab(1);
-                const scrollTo = getOffsetTop(syllabusSection);
-                isAutoScrolling = true;
-                window.scrollTo({
-                    top: scrollTo,
-                    behavior: "smooth",
-                });
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    isAutoScrolling = false;
-                }, 500);
-            }
-        });
+    // Handle syllabus button only if exists (for compatibility with existing code)
+    if (syllabusBtn) {
+        const syllabusSection = document.getElementById("syllabus-container");
+        if (syllabusSection) {
+            syllabusBtn.addEventListener("click", () => {
+                const syllabusIndex = sections.indexOf(syllabusSection);
+                if (syllabusIndex !== -1) {
+                    setActiveTab(syllabusIndex);
+                    const scrollTo = getOffsetTop(syllabusSection);
+                    isAutoScrolling = true;
+                    window.scrollTo({
+                        top: scrollTo,
+                        behavior: "smooth",
+                    });
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        isAutoScrolling = false;
+                    }, 500);
+                }
+            });
+        }
     }
 
-    // Scroll detection
+    // Scroll detection - works with any number of sections
     window.addEventListener("scroll", () => {
-        if (isAutoScrolling) return;
+        if (isAutoScrolling || sections.length === 0) return;
 
         const currentScroll =
             window.scrollY + infoTabContainer.offsetHeight + OFFSET;
 
-        if (tabs.length === 3) {
-            const syllabusTop = syllabusSection.offsetTop;
-            const mentorsTop = mentorsSection.offsetTop;
+        // Find which section we're currently viewing
+        let activeIndex = 0;
 
-            if (currentScroll >= mentorsTop - 50) {
-                setActiveTab(2);
-            } else if (currentScroll >= syllabusTop) {
-                setActiveTab(1);
-            } else {
-                setActiveTab(0);
-            }
-        } else {
-            const mentorsTop = mentorsSection.offsetTop;
-            if (currentScroll >= mentorsTop - 50) {
-                setActiveTab(1);
-            } else {
-                setActiveTab(0);
+        for (let i = sections.length - 1; i >= 0; i--) {
+            const sectionTop = sections[i].offsetTop;
+            if (currentScroll >= sectionTop - 50) {
+                activeIndex = i;
+                break;
             }
         }
+
+        setActiveTab(activeIndex);
     });
 });
 
