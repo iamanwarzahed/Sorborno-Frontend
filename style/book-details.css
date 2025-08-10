@@ -93,6 +93,10 @@ header .btn-group {
    min-height: 60vh;
    overflow: hidden;
 }
+.accordion-item.active .accordion-content {
+    max-height: 200vh;
+    padding: 16px;
+}
 @media (max-width: 620px) {
     .stars {
         margin-top: -16px;
