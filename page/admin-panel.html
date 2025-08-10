@@ -3099,7 +3099,7 @@
                                         >
                                     </div>
 
-                                    <div class="mobile-page-indicator">
+                                    <div class="page-indicator">
                                         Page
                                         <span id="currentPageNum">1</span> of
                                         <span id="totalPageNum">8</span>
@@ -3296,7 +3296,7 @@
                                         >
                                     </div>
 
-                                    <div class="mobile-page-indicator">
+                                    <div class="page-indicator">
                                         Page
                                         <span id="currentPageNum">1</span> of
                                         <span id="totalPageNum">8</span>
@@ -3996,185 +3996,6 @@
                     <div>
                         &copy; <span id="year"></span> All rights reserved by
                         <a href="#">Soroborno</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Popup -->
-        <div
-            id="popup-wrapper"
-            class="overlay-wrapper"
-            data-close-outside="false"
-        >
-            <div class="overlay"></div>
-            <div id="popup-container" class="overlay-container">
-                <div class="drawer-header">
-                    <div class="d-flex item-center gap-8">
-                        <div class="drawer-title active">Book Title</div>
-                        <div class="d-flex item-center gap-8">
-                            <div class="price d-flex item-center gap-4">
-                                <del>$8000</del>
-                                <div>$500</div>
-                            </div>
-                            <div class="saving-tag">50% off 3000 taka save</div>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <div class="btn">Add to Cart</div>
-                        <div class="icon drawer-close btn-close">
-                            <svg
-                                width="24px"
-                                height="24px"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g
-                                    id="SVGRepo_tracerCarrier"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <path
-                                        d="M16 8L8 16M8.00001 8L16 16"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    ></path>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="drawer-body book-container">
-                    <div class="instructions">
-                        <span class="desktop-text"
-                            >Drag left/right or click pages to flip • Use
-                            controls below</span
-                        >
-                        <span class="mobile-text"
-                            >Tap to flip pages or use controls below</span
-                        >
-                    </div>
-
-                    <div class="mobile-page-indicator">
-                        Page <span id="currentPageNum">1</span> of
-                        <span id="totalPageNum">8</span>
-                    </div>
-
-                    <div class="flip-book-container">
-                        <!-- Cover Page -->
-                        <div class="page mobile-active" data-page="0">
-                            <div class="page-front cover-page">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-image.png"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                            <div class="page-back">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-1.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Page 1 -->
-                        <div class="page mobile-right" data-page="1">
-                            <div class="page-front">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-2.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                            <div class="page-back">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-3.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Page 2 -->
-                        <div class="page mobile-right" data-page="2">
-                            <div class="page-front">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-4.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                            <div class="page-back">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-3.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Page 3 -->
-                        <div class="page mobile-right" data-page="3">
-                            <div class="page-front">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-4.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                            <div class="page-back">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-3.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Back Cover -->
-                        <div class="page mobile-right" data-page="4">
-                            <div class="page-front">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-4.jpg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                            <div class="page-back back-cover">
-                                <div
-                                    class="placeholder-content"
-                                    style="background: none"
-                                ></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="controls">
-                        <button class="book-controller" id="bookPrevBtn">
-                            Previous
-                        </button>
-                        <button class="book-controller" id="bookNextBtn">
-                            Next
-                        </button>
-                        <button class="book-controller" id="bookResetBtn">
-                            Reset
-                        </button>
                     </div>
                 </div>
             </div>

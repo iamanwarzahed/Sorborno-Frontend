@@ -8,20 +8,22 @@ class ResponsiveFlipBook {
         this.dragThreshold = 50;
 
         // Only phones are mobile, tablets and desktop use dragging
-        this.isMobile = window.innerWidth <= 480;
+        this.isMobile = window.innerWidth <= 960; // Fixed: consistent with handleResize
 
         // Detect if device supports touch
         this.isTouchDevice =
             "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-        // Mobile state - simplified without flip state
+        // Mobile state
         this.mobileCurrentPageIndex = 0;
-        this.totalMobileViews = this.totalPages; // Only front pages now
+        this.mobileShowingBack = false;
+        this.totalMobileViews = this.totalPages * 2; // front and back of each page
 
         // Desktop state
         this.currentPage = 0;
         this.isAnimating = false; // Prevent dragging during button animations
 
+        // Fixed: correct button IDs to match HTML
         this.prevBtn = document.getElementById("bookPrevBtn");
         this.nextBtn = document.getElementById("bookNextBtn");
         this.resetBtn = document.getElementById("bookResetBtn");
@@ -51,7 +53,7 @@ class ResponsiveFlipBook {
     handleResize() {
         const wasMobile = this.isMobile;
         // Mobile breakpoint includes tablets
-        this.isMobile = window.innerWidth <= 650;
+        this.isMobile = window.innerWidth <= 960;
 
         if (wasMobile !== this.isMobile) {
             this.reset();
@@ -60,16 +62,16 @@ class ResponsiveFlipBook {
     }
 
     updateResponsiveDisplay() {
-        const desktopText = document.querySelector(".desktop-text");
-        const mobileText = document.querySelector(".mobile-text");
+        const desktopTexts = document.querySelectorAll(".desktop-text");
+        const mobileTexts = document.querySelectorAll(".mobile-text");
 
         if (this.isMobile) {
-            if (desktopText) desktopText.style.display = "none";
-            if (mobileText) mobileText.style.display = "inline";
+            desktopTexts.forEach((el) => (el.style.display = "none"));
+            mobileTexts.forEach((el) => (el.style.display = "inline"));
             this.setupMobileView();
         } else {
-            if (desktopText) desktopText.style.display = "inline";
-            if (mobileText) mobileText.style.display = "none";
+            desktopTexts.forEach((el) => (el.style.display = "inline"));
+            mobileTexts.forEach((el) => (el.style.display = "none"));
             this.setupDesktopView();
             this.removeMobileEvents(); // remove mobile events if any
         }
@@ -81,7 +83,7 @@ class ResponsiveFlipBook {
     }
 
     setupMobileView() {
-        // Reset all pages - simplified without flip classes
+        // Reset all pages
         this.pages.forEach((page, index) => {
             page.classList.remove(
                 "mobile-active",
@@ -93,14 +95,16 @@ class ResponsiveFlipBook {
             );
 
             if (index === 0) {
-                page.classList.add("mobile-active");
+                page.classList.add("mobile-active", "mobile-flip-front");
             } else {
                 page.classList.add("mobile-right");
             }
         });
 
         this.mobileCurrentPageIndex = 0;
+        this.mobileShowingBack = false;
         this.updateMobileIndicator();
+        this.updateMobileZIndices();
 
         this.removeDesktopEvents(); // remove desktop events if any
         this.setupMobileEvents(); // add mobile events
@@ -115,7 +119,7 @@ class ResponsiveFlipBook {
                 "mobile-right",
                 "mobile-flip-front",
                 "mobile-flip-back",
-                "flipped",
+                "flipped"
             );
             page.style.transform = "";
             page.style.zIndex = "";
@@ -126,6 +130,36 @@ class ResponsiveFlipBook {
 
         this.removeMobileEvents();
         this.setupDesktopEvents();
+        this.updateDesktopIndicator(); // Fixed: add desktop indicator update
+    }
+
+    updateDesktopIndicator() {
+        const currentPageNum = document.getElementById("currentPageNum");
+        const totalPageNum = document.getElementById("totalPageNum");
+
+        if (currentPageNum && totalPageNum) {
+            let visualPageText;
+            let totalVisualPages;
+
+            if (this.currentPage === 0) {
+                // No pages flipped - showing cover (1 page)
+                visualPageText = "1";
+            } else if (this.currentPage === this.totalPages) {
+                // All pages flipped - showing back cover (1 page)
+                visualPageText = this.totalPages * 2;
+            } else {
+                // Middle state - showing 2 pages spread
+                const leftPage = this.currentPage * 2;
+                const rightPage = leftPage + 1;
+                visualPageText = `${leftPage}-${rightPage}`;
+            }
+
+            // Total visual pages = front and back of each physical page
+            totalVisualPages = this.totalPages * 2;
+
+            currentPageNum.textContent = visualPageText;
+            totalPageNum.textContent = totalVisualPages;
+        }
     }
 
     updateMobileIndicator() {
@@ -133,8 +167,9 @@ class ResponsiveFlipBook {
         const totalPageNum = document.getElementById("totalPageNum");
 
         if (currentPageNum && totalPageNum) {
-            // Simplified - just show current page number (no front/back)
-            const visualPage = this.mobileCurrentPageIndex + 1;
+            const visualPage =
+                this.mobileCurrentPageIndex * 2 +
+                (this.mobileShowingBack ? 2 : 1);
             currentPageNum.textContent = visualPage;
             totalPageNum.textContent = this.totalMobileViews;
         }
@@ -343,58 +378,81 @@ class ResponsiveFlipBook {
     }
 
     nextMobilePage() {
-        console.log(`NextMobile: Current page ${this.mobileCurrentPageIndex}, Total pages ${this.totalPages}`);
-        
-        // Simplified - only slide to next page, no flipping
-        if (this.mobileCurrentPageIndex < this.totalPages - 1) {
-            const currentPage = this.pages[this.mobileCurrentPageIndex];
-            const nextPage = this.pages[this.mobileCurrentPageIndex + 1];
+        const currentPage = this.pages[this.mobileCurrentPageIndex];
 
-            console.log(`Sliding from page ${this.mobileCurrentPageIndex} to ${this.mobileCurrentPageIndex + 1}`);
-
-            // Slide current page left
-            currentPage.classList.remove("mobile-active");
-            currentPage.classList.add("mobile-left");
-
-            // Bring next page from right
-            nextPage.classList.remove("mobile-right");
-            nextPage.classList.add("mobile-active");
-
-            this.mobileCurrentPageIndex++;
-            
-            this.updateMobileIndicator();
-            this.updateMobileZIndices();
-            this.updateControls();
+        if (!this.mobileShowingBack) {
+            // First click: flip to show back of current page
+            this.mobileShowingBack = true;
+            currentPage.classList.remove("mobile-flip-front");
+            currentPage.classList.add("mobile-flip-back");
+            this.playFlipSound();
         } else {
-            console.log("Already at last page, cannot go next");
+            // Second click: slide to next page
+            if (this.mobileCurrentPageIndex < this.totalPages - 1) {
+                const nextPage = this.pages[this.mobileCurrentPageIndex + 1];
+
+                // Slide current page left
+                currentPage.classList.remove(
+                    "mobile-active",
+                    "mobile-flip-back"
+                );
+                currentPage.classList.add("mobile-left");
+
+                // Bring next page from right
+                nextPage.classList.remove("mobile-right");
+                nextPage.classList.add("mobile-active", "mobile-flip-front");
+
+                this.mobileCurrentPageIndex++;
+                this.mobileShowingBack = false;
+                this.playFlipSound();
+            }
         }
+
+        this.updateMobileIndicator();
+        this.updateMobileZIndices();
+        this.updateControls();
     }
 
     prevMobilePage() {
-        // Simplified - only slide to previous page, no flipping
-        if (this.mobileCurrentPageIndex > 0) {
-            const currentPage = this.pages[this.mobileCurrentPageIndex];
-            const prevPage = this.pages[this.mobileCurrentPageIndex - 1];
+        const currentPage = this.pages[this.mobileCurrentPageIndex];
 
-            // Slide current page right
-            currentPage.classList.remove("mobile-active");
-            currentPage.classList.add("mobile-right");
+        if (this.mobileShowingBack) {
+            // Flip back to front of current page
+            this.mobileShowingBack = false;
+            currentPage.classList.remove("mobile-flip-back");
+            currentPage.classList.add("mobile-flip-front");
+            this.playFlipSound();
+        } else {
+            // Go to previous page
+            if (this.mobileCurrentPageIndex > 0) {
+                const prevPage = this.pages[this.mobileCurrentPageIndex - 1];
 
-            // Bring previous page from left
-            prevPage.classList.remove("mobile-left");
-            prevPage.classList.add("mobile-active");
+                // Slide current page right
+                currentPage.classList.remove(
+                    "mobile-active",
+                    "mobile-flip-front"
+                );
+                currentPage.classList.add("mobile-right");
 
-            this.mobileCurrentPageIndex--;
-            
-            this.updateMobileIndicator();
-            this.updateMobileZIndices();
-            this.updateControls();
+                // Bring previous page from left, show its back
+                prevPage.classList.remove("mobile-left");
+                prevPage.classList.add("mobile-active", "mobile-flip-back");
+
+                this.mobileCurrentPageIndex--;
+                this.mobileShowingBack = true;
+                this.playFlipSound();
+            }
         }
+
+        this.updateMobileIndicator();
+        this.updateMobileZIndices();
+        this.updateControls();
     }
 
     // Desktop dragging methods
     startDrag(event, pageIndex) {
-        if (this.isMobile || pageIndex >= this.totalPages || this.isAnimating) return;
+        if (this.isMobile || pageIndex >= this.totalPages || this.isAnimating)
+            return;
 
         const page = this.pages[pageIndex];
         this.isDragging = false;
@@ -408,7 +466,12 @@ class ResponsiveFlipBook {
     }
 
     drag(event) {
-        if (this.isMobile || this.currentDragPage === undefined || this.isAnimating) return;
+        if (
+            this.isMobile ||
+            this.currentDragPage === undefined ||
+            this.isAnimating
+        )
+            return;
 
         const currentX = event.clientX || event.pageX;
         const deltaX = currentX - this.dragStartX;
@@ -438,7 +501,7 @@ class ResponsiveFlipBook {
         // Simple bending using border-radius to curve the page
         const normalizedAngle = Math.abs(rotationAngle) / 180;
         const bendAmount = Math.sin(normalizedAngle * Math.PI) * 30; // Max 30px curve
-        
+
         // Create curved page effect by adjusting border-radius
         if (Math.abs(rotationAngle) > 10 && Math.abs(rotationAngle) < 170) {
             if (rotationAngle < -90) {
@@ -449,15 +512,20 @@ class ResponsiveFlipBook {
                 page.style.borderRadius = `${bendAmount}px 0 0 ${bendAmount}px`;
             }
         } else {
-            page.style.borderRadius = '';
+            page.style.borderRadius = "";
         }
-        
+
         // Simple rotation with perspective
         page.style.transform = `perspective(1000px) rotateY(${rotationAngle}deg)`;
     }
 
     endDrag() {
-        if (this.isMobile || this.currentDragPage === undefined || this.isAnimating) return;
+        if (
+            this.isMobile ||
+            this.currentDragPage === undefined ||
+            this.isAnimating
+        )
+            return;
 
         const page = this.dragPage;
         page.style.cursor = "grab";
@@ -497,14 +565,14 @@ class ResponsiveFlipBook {
     // Simple snap back animation
     snapBackWithBending(page, isFlipped) {
         // Clean up any bending effects immediately for drag
-        page.style.borderRadius = '';
-        page.style.transition = 'transform 0.3s ease';
-        
+        page.style.borderRadius = "";
+        page.style.transition = "transform 0.3s ease";
+
         // Simple snap back to position
         page.style.transform = isFlipped ? "rotateY(-180deg)" : "rotateY(0deg)";
-        
+
         setTimeout(() => {
-            page.style.transition = '';
+            page.style.transition = "";
             if (
                 (isFlipped && page.classList.contains("flipped")) ||
                 (!isFlipped && !page.classList.contains("flipped"))
@@ -533,7 +601,7 @@ class ResponsiveFlipBook {
     // Simple page flip forward with realistic bending animation
     flipPageForward(pageIndex) {
         const page = this.pages[pageIndex];
-        
+
         // Create realistic bending animation for button clicks
         this.animatePageFlipWithBending(page, 0, -180, () => {
             page.classList.add("flipped");
@@ -545,7 +613,7 @@ class ResponsiveFlipBook {
     // Simple page flip backward with realistic bending animation
     flipPageBackward(pageIndex) {
         const page = this.pages[pageIndex];
-        
+
         // Create realistic bending animation for button clicks
         this.animatePageFlipWithBending(page, -180, 0, () => {
             page.classList.remove("flipped");
@@ -557,12 +625,12 @@ class ResponsiveFlipBook {
     // Immediate page flip forward for dragging (no animation)
     flipPageForwardDrag(pageIndex) {
         const page = this.pages[pageIndex];
-        
+
         // Clean up any drag transforms immediately
-        page.style.borderRadius = '';
-        page.style.transform = '';
-        page.style.transition = '';
-        
+        page.style.borderRadius = "";
+        page.style.transform = "";
+        page.style.transition = "";
+
         // Add flipped class and update state
         page.classList.add("flipped");
         this.updateDesktopState();
@@ -572,12 +640,12 @@ class ResponsiveFlipBook {
     // Immediate page flip backward for dragging (no animation)
     flipPageBackwardDrag(pageIndex) {
         const page = this.pages[pageIndex];
-        
+
         // Clean up any drag transforms immediately
-        page.style.borderRadius = '';
-        page.style.transform = '';
-        page.style.transition = '';
-        
+        page.style.borderRadius = "";
+        page.style.transform = "";
+        page.style.transition = "";
+
         // Remove flipped class and update state
         page.classList.remove("flipped");
         this.updateDesktopState();
@@ -588,55 +656,56 @@ class ResponsiveFlipBook {
     animatePageFlipWithBending(page, startAngle, endAngle, onComplete) {
         const duration = 600; // Animation duration in ms
         const startTime = performance.now();
-        
+
         // Set animation flag to prevent dragging during animation
         this.isAnimating = true;
-        
+
         // Temporarily disable any CSS transitions to prevent conflicts
         const originalTransition = page.style.transition;
-        page.style.transition = 'none';
-        
+        page.style.transition = "none";
+
         // Set initial transform immediately to prevent jump
         this.applyBendingTransform(page, startAngle);
-        
+
         const animate = (currentTime) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            
+
             // Use easeInOutQuad for smooth animation
-            const easeProgress = progress < 0.5 
-                ? 2 * progress * progress 
-                : -1 + (4 - 2 * progress) * progress;
-            
-            const currentAngle = startAngle + (endAngle - startAngle) * easeProgress;
-            
+            const easeProgress =
+                progress < 0.5
+                    ? 2 * progress * progress
+                    : -1 + (4 - 2 * progress) * progress;
+
+            const currentAngle =
+                startAngle + (endAngle - startAngle) * easeProgress;
+
             // Apply the bending transform during animation
             this.applyBendingTransform(page, currentAngle);
-            
+
             if (progress < 1) {
                 requestAnimationFrame(animate);
             } else {
                 // Animation complete - clean up
-                page.style.borderRadius = '';
-                page.style.transform = '';
+                page.style.borderRadius = "";
+                page.style.transform = "";
                 page.style.transition = originalTransition; // Restore original transition
-                
+
                 // Clear animation flag
                 this.isAnimating = false;
-                
+
                 // Execute completion callback if provided
                 if (onComplete) {
                     onComplete();
                 }
             }
         };
-        
+
         requestAnimationFrame(animate);
     }
 
     playFlipSound() {
         const audio = document.getElementById("pageFlipSound");
-        console.log(audio)
         if (audio) {
             try {
                 // Create a small delay to ensure audio plays properly
@@ -644,7 +713,7 @@ class ResponsiveFlipBook {
                     audio.currentTime = 0;
                     const playPromise = audio.play();
                     if (playPromise !== undefined) {
-                        playPromise.catch(error => {
+                        playPromise.catch((error) => {
                             console.error("Audio play error:", error);
                         });
                     }
@@ -677,6 +746,7 @@ class ResponsiveFlipBook {
         this.currentPage = Array.from(this.pages).filter((p) =>
             p.classList.contains("flipped")
         ).length;
+        this.updateDesktopIndicator();
         this.updateControls();
         setTimeout(() => this.updateZIndices(), 50);
     }
@@ -741,13 +811,16 @@ class ResponsiveFlipBook {
 
     updateControls() {
         if (this.isMobile) {
-            // Mobile button logic - simplified without flip states
-            const isFirstPage = this.mobileCurrentPageIndex === 0;
-            const isLastPage = this.mobileCurrentPageIndex === this.totalPages - 1;
+            // Mobile button logic
+            const isFirstView =
+                this.mobileCurrentPageIndex === 0 && !this.mobileShowingBack;
+            const isLastView =
+                this.mobileCurrentPageIndex === this.totalPages - 1 &&
+                this.mobileShowingBack;
 
-            this.prevBtn.disabled = isFirstPage;
-            this.nextBtn.disabled = isLastPage;
-            this.resetBtn.disabled = isFirstPage;
+            this.prevBtn.disabled = isFirstView;
+            this.nextBtn.disabled = isLastView;
+            this.resetBtn.disabled = isFirstView;
         } else {
             // Desktop button logic
             this.prevBtn.disabled = this.currentPage === 0;

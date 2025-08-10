@@ -91,3 +91,16 @@ header .btn-group {
    min-height: 60vh;
    overflow: hidden;
 }
+@media (max-width: 620px) {
+    .stars {
+        margin-top: -16px;
+        margin-bottom: 8px;
+    }
+    .book-author {
+        text-align: center;
+    }
+    .btn-group.w-360 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
