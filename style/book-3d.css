@@ -1,7 +1,7 @@
 .flip-book-container {
     position: relative;
     width: min(700px, 90vw);
-    height: min(500px, 70vh);
+    height: min(500px, 90vh);
     transform-style: preserve-3d;
 }
 

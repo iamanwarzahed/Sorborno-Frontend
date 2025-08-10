@@ -2006,29 +2006,11 @@
                 <div class="right-panel">
                     <div class="course-short-info">
                         <div class="course-learning-wrapper mb-20">
-                            <div class="short-title">What will learn</div>
-                            <ul class="course-learning-container">
-                                <li class="course-learning-item">
-                                    Course topic 1
-                                </li>
-                                <li class="course-learning-item">
-                                    Course topic 2
-                                </li>
-                            </ul>
-                            <div class="in-roll-container">
-                                <div class="d-flex item-center justify-between">
-                                    <div>Course Fee</div>
-                                    <div class="saving-tag">
-                                        50% off 3000 taka save
-                                    </div>
-                                    <div class="price d-flex item-center gap-4">
-                                        <del>$8000</del>
-                                        <div>$500</div>
-                                    </div>
+                            <div class="lh-0 course-img">
+                                <img src="../assets/details.jpg" alt="course">
+                                <div class="play-button play-button-style" data-video-link="https://www.youtube.com/embed/G1eCzSJwQjA?si=rDbcEwbTQPel0Tly">
+                                    ▶
                                 </div>
-                                <a href="checkout.html" class="btn w-full"
-                                    >In Roll</a
-                                >
                             </div>
                         </div>
                     </div>
@@ -3140,9 +3122,21 @@
             </div>
         </div>
 
+        <!-- Video Modal -->
+        <div class="video-modal" id="videoModal" data-modal>
+            <div class="video-modal-content">
+                <span class="video-modal-close" data-close>&times;</span>
+                <iframe
+                    id="videoFrame"
+                    frameborder="0"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+
         <script src="../main.js"></script>
         <script src="../book-3d.js"></script>
-
+        
         <audio
             id="pageFlipSound"
             src="../assets/turnpage.mp3"

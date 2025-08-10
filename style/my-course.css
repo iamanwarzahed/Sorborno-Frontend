@@ -276,8 +276,12 @@
 }
 .book-reading-panel.active {
     padding: 40px 20px;
-    max-height: 70vh;
+    max-height: 100vh;
     min-height: 62vh;
+}
+.book-reading-panel .flip-book-container {
+    width: min(60vw, 90vw);
+    height: min(640px, 90vh);
 }
 .book-reading-panel.active .flip-book-container {
     opacity: 1;

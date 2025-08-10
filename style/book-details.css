@@ -97,6 +97,10 @@ header .btn-group {
     max-height: 200vh;
     padding: 16px;
 }
+.course-learning-wrapper {
+    padding: 0;
+    border: 0;
+}
 @media (max-width: 620px) {
     .stars {
         margin-top: -16px;
