@@ -3086,7 +3086,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="book-reading-panel d-flex justify-center"
+                                    class="book-reading-panel d-flex justify-center book-container-3d"
                                 >
                                     <div class="instructions">
                                         <span class="desktop-text"
@@ -3105,6 +3105,30 @@
                                         <span id="totalPageNum">8</span>
                                     </div>
 
+                                    <div
+                                        class="zoom-controls"
+                                        id="zoomControls"
+                                    >
+                                        <button class="zoom-btn" id="zoomInBtn">
+                                            Zoom In
+                                        </button>
+                                        <div class="zoom-level" id="zoomLevel">
+                                            100%
+                                        </div>
+                                        <button
+                                            class="zoom-btn"
+                                            id="zoomOutBtn"
+                                        >
+                                            Zoom Out
+                                        </button>
+                                        <button
+                                            class="zoom-btn"
+                                            id="resetZoomBtn"
+                                        >
+                                            Reset
+                                        </button>
+                                    </div>
+
                                     <div class="flip-book-container">
                                         <!-- Cover Page -->
                                         <div
@@ -3112,23 +3136,27 @@
                                             data-page="0"
                                         >
                                             <div class="page-front cover-page">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-image.png"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-image.png"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-1.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-1.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3139,23 +3167,27 @@
                                             data-page="1"
                                         >
                                             <div class="page-front">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-2.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-2.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-3.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-3.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3166,23 +3198,27 @@
                                             data-page="2"
                                         >
                                             <div class="page-front">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-4.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-4.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-3.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-3.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3193,23 +3229,27 @@
                                             data-page="3"
                                         >
                                             <div class="page-front">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-4.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-4.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-3.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-3.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3220,13 +3260,15 @@
                                             data-page="4"
                                         >
                                             <div class="page-front">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-4.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-4.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back back-cover">
@@ -3239,6 +3281,12 @@
                                     </div>
 
                                     <div class="book-controls">
+                                        <button
+                                            class="book-controller"
+                                            id="bookZoomBtn"
+                                        >
+                                            Zoom
+                                        </button>
                                         <button
                                             class="book-controller"
                                             id="bookPrevBtn"
@@ -3283,7 +3331,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="book-reading-panel d-flex justify-center"
+                                    class="book-reading-panel d-flex justify-center book-container-3d"
                                 >
                                     <div class="instructions">
                                         <span class="desktop-text"
@@ -3302,6 +3350,30 @@
                                         <span id="totalPageNum">8</span>
                                     </div>
 
+                                    <div
+                                        class="zoom-controls"
+                                        id="zoomControls"
+                                    >
+                                        <button class="zoom-btn" id="zoomInBtn">
+                                            Zoom In
+                                        </button>
+                                        <div class="zoom-level" id="zoomLevel">
+                                            100%
+                                        </div>
+                                        <button
+                                            class="zoom-btn"
+                                            id="zoomOutBtn"
+                                        >
+                                            Zoom Out
+                                        </button>
+                                        <button
+                                            class="zoom-btn"
+                                            id="resetZoomBtn"
+                                        >
+                                            Reset
+                                        </button>
+                                    </div>
+
                                     <div class="flip-book-container">
                                         <!-- Cover Page -->
                                         <div
@@ -3309,23 +3381,27 @@
                                             data-page="0"
                                         >
                                             <div class="page-front cover-page">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-image.png"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-image.png"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-1.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-1.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3336,23 +3412,27 @@
                                             data-page="1"
                                         >
                                             <div class="page-front">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-2.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-2.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-3.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-3.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3363,23 +3443,27 @@
                                             data-page="2"
                                         >
                                             <div class="page-front">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-4.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-4.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-3.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-3.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3390,23 +3474,27 @@
                                             data-page="3"
                                         >
                                             <div class="page-front">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-4.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-4.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-3.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-3.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3417,13 +3505,15 @@
                                             data-page="4"
                                         >
                                             <div class="page-front">
-                                                <div
-                                                    class="placeholder-content"
-                                                >
-                                                    <img
-                                                        src="../assets/book-page-4.jpg"
-                                                        alt=""
-                                                    />
+                                                <div class="zoom-wrapper">
+                                                    <div
+                                                        class="placeholder-content"
+                                                    >
+                                                        <img
+                                                            src="../assets/book-page-4.jpg"
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="page-back back-cover">
@@ -3436,6 +3526,12 @@
                                     </div>
 
                                     <div class="book-controls">
+                                        <button
+                                            class="book-controller"
+                                            id="bookZoomBtn"
+                                        >
+                                            Zoom
+                                        </button>
                                         <button
                                             class="book-controller"
                                             id="bookPrevBtn"

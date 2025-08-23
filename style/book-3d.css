@@ -224,3 +224,128 @@
         transform: rotateY(-180deg);
     }
 }
+
+
+/* REPLACE your zoom-related CSS with this wrapper-based approach */
+
+/* Remove zoom mode from page itself */
+.page.zoom-mode {
+    cursor: move !important;
+    transition: none !important;
+}
+
+/* Add zoom wrapper styles */
+.zoom-wrapper {
+    width: 100%;
+    height: 100%;
+    transition: none;
+    transform-origin: center center;
+}
+
+/* Apply zoom/pan to the wrapper, not the page */
+.page.zoom-mode .zoom-wrapper {
+    transform: scale(var(--zoom-scale, 1)) translate(var(--pan-x, 0), var(--pan-y, 0));
+    transform-origin: center center;
+}
+
+/* Keep all your existing page transforms intact */
+/* Desktop flip behavior - NO CHANGES */
+@media (min-width: 959px) {
+    .page.flipped {
+        transform: rotateY(-180deg);
+    }
+}
+
+/* Mobile transforms - NO CHANGES */
+@media (max-width: 960px) {
+    .page.mobile-active {
+        z-index: 10;
+        transform: translateX(0);
+    }
+
+    .page.mobile-left {
+        transform: translateX(-100%);
+        z-index: 5;
+    }
+
+    .page.mobile-right {
+        transform: translateX(100%);
+        z-index: 5;
+    }
+
+    .page.mobile-flip-front {
+        transform: rotateY(0deg);
+    }
+
+    .page.mobile-flip-back {
+        transform: rotateY(-180deg);
+    }
+}
+
+/* Keep page-front and page-back transforms intact */
+.page-front,
+.page-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-back {
+    transform: rotateY(180deg);
+}
+
+/* Zoom button active state */
+.book-controller.zoom-active {
+    background: rgba(74, 226, 125, 0.9);
+}
+
+.book-controller.zoom-active:hover:not(:disabled) {
+    background: rgb(74, 226, 112);
+}
+
+/* Zoom controls panel */
+.zoom-controls {
+    position: absolute;
+    top: 50px;
+    right: 2px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 100px;
+}
+
+.zoom-controls.active {
+    display: flex;
+}
+
+.zoom-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background 0.2s;
+}
+
+.zoom-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.zoom-level {
+    text-align: center;
+    font-size: 0.7em;
+    margin: 5px 0;
+}

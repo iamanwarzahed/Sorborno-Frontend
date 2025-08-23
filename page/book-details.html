@@ -1436,7 +1436,10 @@
                                         </div>
                                         <div class="accordion-content">
                                             <div class="lh-0">
-                                                <img src="../assets/book-page-3.jpg" alt="">
+                                                <img
+                                                    src="../assets/book-page-3.jpg"
+                                                    alt=""
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -1482,7 +1485,10 @@
                                         </div>
                                         <div class="accordion-content">
                                             <div class="lh-0">
-                                                <img src="../assets/book-page-4.jpg" alt="">
+                                                <img
+                                                    src="../assets/book-page-4.jpg"
+                                                    alt=""
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -1528,7 +1534,10 @@
                                         </div>
                                         <div class="accordion-content">
                                             <div class="lh-0">
-                                                <img src="../assets/book-page-3.jpg" alt="">
+                                                <img
+                                                    src="../assets/book-page-3.jpg"
+                                                    alt=""
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -1576,7 +1585,10 @@
                                         </div>
                                         <div class="accordion-content">
                                             <div class="lh-0">
-                                                <img src="../assets/book-page-4.jpg" alt="">
+                                                <img
+                                                    src="../assets/book-page-4.jpg"
+                                                    alt=""
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -1622,7 +1634,10 @@
                                         </div>
                                         <div class="accordion-content">
                                             <div class="lh-0">
-                                                <img src="../assets/book-page-4.jpg" alt="">
+                                                <img
+                                                    src="../assets/book-page-4.jpg"
+                                                    alt=""
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -1668,7 +1683,10 @@
                                         </div>
                                         <div class="accordion-content">
                                             <div class="lh-0">
-                                                <img src="../assets/book-page-3.jpg" alt="">
+                                                <img
+                                                    src="../assets/book-page-3.jpg"
+                                                    alt=""
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -2010,8 +2028,11 @@
                     <div class="course-short-info">
                         <div class="course-learning-wrapper mb-20">
                             <div class="lh-0 course-img">
-                                <img src="../assets/details.jpg" alt="course">
-                                <div class="play-button play-button-style" data-video-link="https://www.youtube.com/embed/G1eCzSJwQjA?si=rDbcEwbTQPel0Tly">
+                                <img src="../assets/details.jpg" alt="course" />
+                                <div
+                                    class="play-button play-button-style"
+                                    data-video-link="https://www.youtube.com/embed/G1eCzSJwQjA?si=rDbcEwbTQPel0Tly"
+                                >
                                     ▶
                                 </div>
                             </div>
@@ -2994,7 +3015,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="drawer-body book-container">
+                <div class="drawer-body book-container book-container-3d">
                     <div class="instructions">
                         <span class="desktop-text"
                             >Drag left/right or click pages to flip • Use
@@ -3010,23 +3031,41 @@
                         <span id="totalPageNum">8</span>
                     </div>
 
+                    <div class="zoom-controls" id="zoomControls">
+                        <button class="zoom-btn" id="zoomInBtn">Zoom In</button>
+                        <div class="zoom-level" id="zoomLevel">100%</div>
+                        <button class="zoom-btn" id="zoomOutBtn">
+                            Zoom Out
+                        </button>
+                        <button class="zoom-btn" id="resetZoomBtn">
+                            Reset
+                        </button>
+                    </div>
+
                     <div class="flip-book-container">
                         <!-- Cover Page -->
-                        <div class="page mobile-active" data-page="0">
+                        <div
+                            class="mobile-active page mobile-right"
+                            data-page="0"
+                        >
                             <div class="page-front cover-page">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-image.png"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-image.png"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div class="page-back">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-1.jpg"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-page-1.jpg"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3034,19 +3073,23 @@
                         <!-- Page 1 -->
                         <div class="page mobile-right" data-page="1">
                             <div class="page-front">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-2.jpg"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-page-2.jpg"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div class="page-back">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-3.jpg"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-page-3.jpg"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3054,19 +3097,23 @@
                         <!-- Page 2 -->
                         <div class="page mobile-right" data-page="2">
                             <div class="page-front">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-4.jpg"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-page-4.jpg"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div class="page-back">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-3.jpg"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-page-3.jpg"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3074,19 +3121,23 @@
                         <!-- Page 3 -->
                         <div class="page mobile-right" data-page="3">
                             <div class="page-front">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-4.jpg"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-page-4.jpg"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div class="page-back">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-3.jpg"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-page-3.jpg"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3094,11 +3145,13 @@
                         <!-- Back Cover -->
                         <div class="page mobile-right" data-page="4">
                             <div class="page-front">
-                                <div class="placeholder-content">
-                                    <img
-                                        src="../assets/book-page-4.jpg"
-                                        alt=""
-                                    />
+                                <div class="zoom-wrapper">
+                                    <div class="placeholder-content">
+                                        <img
+                                            src="../assets/book-page-4.jpg"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div class="page-back back-cover">
@@ -3111,6 +3164,9 @@
                     </div>
 
                     <div class="book-controls">
+                        <button class="book-controller" id="bookZoomBtn">
+                            Zoom
+                        </button>
                         <button class="book-controller" id="bookPrevBtn">
                             Previous
                         </button>
@@ -3139,7 +3195,7 @@
 
         <script src="../main.js"></script>
         <script src="../book-3d.js"></script>
-        
+
         <audio
             id="pageFlipSound"
             src="../assets/turnpage.mp3"

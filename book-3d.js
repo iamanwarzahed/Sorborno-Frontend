@@ -1,14 +1,27 @@
 class ResponsiveFlipBook {
-    constructor() {
-        this.pages = document.querySelectorAll(".page");
+    constructor(container) {
+        this.container = container; // Store the specific flip-book-container
+        this.pages = container.querySelectorAll(".page");
         this.totalPages = this.pages.length;
 
         this.isDragging = false;
         this.dragStartX = 0;
         this.dragThreshold = 50;
 
+        // Zoom state
+        this.isZoomMode = false;
+        this.zoomScale = 1;
+        this.panX = 0;
+        this.panY = 0;
+        this.minZoom = 1;
+        this.maxZoom = 3;
+        this.zoomStep = 0.2;
+        this.isPanning = false;
+        this.panStartX = 0;
+        this.panStartY = 0;
+
         // Only phones are mobile, tablets and desktop use dragging
-        this.isMobile = window.innerWidth <= 960; // Fixed: consistent with handleResize
+        this.isMobile = window.innerWidth <= 960;
 
         // Detect if device supports touch
         this.isTouchDevice =
@@ -23,25 +36,38 @@ class ResponsiveFlipBook {
         this.currentPage = 0;
         this.isAnimating = false; // Prevent dragging during button animations
 
-        // Fixed: correct button IDs to match HTML
-        this.prevBtn = document.getElementById("bookPrevBtn");
-        this.nextBtn = document.getElementById("bookNextBtn");
-        this.resetBtn = document.getElementById("bookResetBtn");
+        // Control buttons within the specific container
+        this.prevBtns = container.querySelectorAll("#bookPrevBtn");
+        this.nextBtns = container.querySelectorAll("#bookNextBtn");
+        this.resetBtns = container.querySelectorAll("#bookResetBtn");
+        this.zoomBtn = container.querySelector("#bookZoomBtn");
+        this.zoomControls = container.querySelectorAll("#zoomControls");
+        this.zoomInBtns = container.querySelectorAll("#zoomInBtn");
+        this.zoomOutBtns = container.querySelectorAll("#zoomOutBtn");
+        this.resetZoomBtns = container.querySelectorAll("#resetZoomBtn");
+        this.zoomLevels = container.querySelectorAll("#zoomLevel");
 
-        // Bind handlers for removeEventListener use
+        // Bind handlers
+        this.boundOnPan = (e) => this.pan(e);
+        this.boundEndPan = () => this.endPan();
         this.boundOnDrag = (e) => this.drag(e);
         this.boundEndDrag = () => this.endDrag();
-
-        // === NEW: Bind touch move and end handlers for desktop dragging ===
         this.boundTouchMove = (e) => {
-            if (this.currentDragPage !== undefined) {
-                e.preventDefault(); // Prevent scrolling while dragging
+            if (this.isZoomMode && this.isPanning) {
+                e.preventDefault();
+                this.pan(e.touches[0]);
+            } else if (this.currentDragPage !== undefined) {
+                e.preventDefault();
                 this.drag(e.touches[0]);
             }
         };
-        this.boundTouchEnd = this.boundEndDrag;
-
-        // Store desktop page click handlers for removal
+        this.boundTouchEnd = () => {
+            if (this.isZoomMode && this.isPanning) {
+                this.endPan();
+            } else {
+                this.boundEndDrag();
+            }
+        };
         this.desktopClickHandlers = [];
 
         this.init();
@@ -52,7 +78,6 @@ class ResponsiveFlipBook {
 
     handleResize() {
         const wasMobile = this.isMobile;
-        // Mobile breakpoint includes tablets
         this.isMobile = window.innerWidth <= 960;
 
         if (wasMobile !== this.isMobile) {
@@ -62,8 +87,8 @@ class ResponsiveFlipBook {
     }
 
     updateResponsiveDisplay() {
-        const desktopTexts = document.querySelectorAll(".desktop-text");
-        const mobileTexts = document.querySelectorAll(".mobile-text");
+        const desktopTexts = this.container.querySelectorAll(".desktop-text");
+        const mobileTexts = this.container.querySelectorAll(".mobile-text");
 
         if (this.isMobile) {
             desktopTexts.forEach((el) => (el.style.display = "none"));
@@ -73,17 +98,17 @@ class ResponsiveFlipBook {
             desktopTexts.forEach((el) => (el.style.display = "inline"));
             mobileTexts.forEach((el) => (el.style.display = "none"));
             this.setupDesktopView();
-            this.removeMobileEvents(); // remove mobile events if any
+            this.removeMobileEvents();
         }
     }
 
     init() {
         this.setupEventListeners();
+        this.setupZoomEventListeners();
         this.updateControls();
     }
 
     setupMobileView() {
-        // Reset all pages
         this.pages.forEach((page, index) => {
             page.classList.remove(
                 "mobile-active",
@@ -106,12 +131,13 @@ class ResponsiveFlipBook {
         this.updateMobileIndicator();
         this.updateMobileZIndices();
 
-        this.removeDesktopEvents(); // remove desktop events if any
-        this.setupMobileEvents(); // add mobile events
+        this.removeDesktopEvents();
+        if (!this.isZoomMode) {
+            this.setupMobileEvents();
+        }
     }
 
     setupDesktopView() {
-        // Reset all pages for desktop
         this.pages.forEach((page, index) => {
             page.classList.remove(
                 "mobile-active",
@@ -127,44 +153,40 @@ class ResponsiveFlipBook {
 
         this.currentPage = 0;
         this.updateZIndices();
-
         this.removeMobileEvents();
-        this.setupDesktopEvents();
-        this.updateDesktopIndicator(); // Fixed: add desktop indicator update
+        if (!this.isZoomMode) {
+            this.setupDesktopEvents();
+        }
+        this.updateDesktopIndicator();
     }
 
     updateDesktopIndicator() {
-        const currentPageNum = document.getElementById("currentPageNum");
-        const totalPageNum = document.getElementById("totalPageNum");
+        const currentPageNum = this.container.querySelector("#currentPageNum");
+        const totalPageNum = this.container.querySelector("#totalPageNum");
 
         if (currentPageNum && totalPageNum) {
             let visualPageText;
             let totalVisualPages;
 
             if (this.currentPage === 0) {
-                // No pages flipped - showing cover (1 page)
                 visualPageText = "1";
             } else if (this.currentPage === this.totalPages) {
-                // All pages flipped - showing back cover (1 page)
                 visualPageText = this.totalPages * 2;
             } else {
-                // Middle state - showing 2 pages spread
                 const leftPage = this.currentPage * 2;
                 const rightPage = leftPage + 1;
                 visualPageText = `${leftPage}-${rightPage}`;
             }
 
-            // Total visual pages = front and back of each physical page
             totalVisualPages = this.totalPages * 2;
-
             currentPageNum.textContent = visualPageText;
             totalPageNum.textContent = totalVisualPages;
         }
     }
 
     updateMobileIndicator() {
-        const currentPageNum = document.getElementById("currentPageNum");
-        const totalPageNum = document.getElementById("totalPageNum");
+        const currentPageNum = this.container.querySelector("#currentPageNum");
+        const totalPageNum = this.container.querySelector("#totalPageNum");
 
         if (currentPageNum && totalPageNum) {
             const visualPage =
@@ -176,15 +198,18 @@ class ResponsiveFlipBook {
     }
 
     setupEventListeners() {
-        // Mobile and desktop page click handled separately now
+        this.prevBtns.forEach((btn) =>
+            btn.addEventListener("click", () => this.previousPage())
+        );
+        this.nextBtns.forEach((btn) =>
+            btn.addEventListener("click", () => this.nextPage())
+        );
+        this.resetBtns.forEach((btn) =>
+            btn.addEventListener("click", () => this.reset())
+        );
 
-        // Control buttons
-        this.prevBtn.addEventListener("click", () => this.previousPage());
-        this.nextBtn.addEventListener("click", () => this.nextPage());
-        this.resetBtn.addEventListener("click", () => this.reset());
-
-        // Prevent context menu on pages
-        document.addEventListener("contextmenu", (e) => {
+        // Prevent context menu on pages within this container
+        this.container.addEventListener("contextmenu", (e) => {
             if (e.target.closest(".page")) {
                 e.preventDefault();
             }
@@ -197,13 +222,12 @@ class ResponsiveFlipBook {
         this.pages.forEach((page, index) => {
             page.style.cursor = "grab";
 
-            // Mouse events for desktop
             const mouseDownHandler = (e) => this.startDrag(e, index);
             page.addEventListener("mousedown", mouseDownHandler);
 
             if (this.isTouchDevice) {
                 const touchStartHandler = (e) => {
-                    e.preventDefault(); // Prevent scrolling while dragging
+                    e.preventDefault();
                     this.startDrag(e.touches[0], index);
                 };
                 page.addEventListener("touchstart", touchStartHandler, {
@@ -217,29 +241,28 @@ class ResponsiveFlipBook {
             }
         });
 
-        document.addEventListener("mousemove", this.boundOnDrag);
-        document.addEventListener("mouseup", this.boundEndDrag);
+        this.container.addEventListener("mousemove", this.boundOnDrag);
+        this.container.addEventListener("mouseup", this.boundEndDrag);
 
         if (this.isTouchDevice) {
-            // Bind touchmove handler to a named function so we can remove it later
             this.boundTouchMoveHandler = (e) => {
                 if (this.isDragging) {
-                    e.preventDefault(); // Prevent page scrolling while dragging
+                    e.preventDefault();
                     this.drag(e.touches[0]);
                 }
             };
 
-            document.addEventListener("touchmove", this.boundTouchMoveHandler, {
+            this.container.addEventListener("touchmove", this.boundTouchMoveHandler, {
                 passive: false,
             });
-            document.addEventListener("touchend", this.boundEndDrag);
+            this.container.addEventListener("touchend", this.boundEndDrag);
         }
 
         this.setupDesktopPageClicks();
     }
 
     removeDesktopEvents() {
-        this.pages.forEach((page, index) => {
+        this.pages.forEach((page) => {
             page.style.cursor = "";
 
             if (page._mouseDownHandler) {
@@ -252,18 +275,18 @@ class ResponsiveFlipBook {
             }
         });
 
-        document.removeEventListener("mousemove", this.boundOnDrag);
-        document.removeEventListener("mouseup", this.boundEndDrag);
+        this.container.removeEventListener("mousemove", this.boundOnDrag);
+        this.container.removeEventListener("mouseup", this.boundEndDrag);
 
         if (this.isTouchDevice) {
             if (this.boundTouchMoveHandler) {
-                document.removeEventListener(
+                this.container.removeEventListener(
                     "touchmove",
                     this.boundTouchMoveHandler
                 );
                 delete this.boundTouchMoveHandler;
             }
-            document.removeEventListener("touchend", this.boundEndDrag);
+            this.container.removeEventListener("touchend", this.boundEndDrag);
         }
 
         this.removeDesktopPageClicks();
@@ -272,12 +295,10 @@ class ResponsiveFlipBook {
     setupMobileEvents() {
         this.removeMobileEvents();
 
-        // Add touch and click events for mobile pages
         this.pages.forEach((page, index) => {
             const mobileClickHandler = (e) => {
                 e.preventDefault();
                 if (index === this.mobileCurrentPageIndex) {
-                    // Only respond to clicks on the active page
                     this.nextPage();
                 }
             };
@@ -285,7 +306,6 @@ class ResponsiveFlipBook {
             const mobileTouchHandler = (e) => {
                 e.preventDefault();
                 if (index === this.mobileCurrentPageIndex) {
-                    // Only respond to touches on the active page
                     this.nextPage();
                 }
             };
@@ -297,7 +317,6 @@ class ResponsiveFlipBook {
                 });
             }
 
-            // Store handlers for cleanup
             page._mobileClickHandler = mobileClickHandler;
             page._mobileTouchHandler = mobileTouchHandler;
         });
@@ -332,7 +351,6 @@ class ResponsiveFlipBook {
                 }
             };
 
-            // Add both click and touch handlers
             page.addEventListener("click", clickHandler);
             if (this.isTouchDevice) {
                 page.addEventListener("touchend", touchHandler, {
@@ -340,7 +358,6 @@ class ResponsiveFlipBook {
                 });
             }
 
-            // Store handlers for cleanup
             this.desktopClickHandlers[index] = {
                 click: clickHandler,
                 touch: touchHandler,
@@ -381,27 +398,20 @@ class ResponsiveFlipBook {
         const currentPage = this.pages[this.mobileCurrentPageIndex];
 
         if (!this.mobileShowingBack) {
-            // First click: flip to show back of current page
             this.mobileShowingBack = true;
             currentPage.classList.remove("mobile-flip-front");
             currentPage.classList.add("mobile-flip-back");
             this.playFlipSound();
         } else {
-            // Second click: slide to next page
             if (this.mobileCurrentPageIndex < this.totalPages - 1) {
                 const nextPage = this.pages[this.mobileCurrentPageIndex + 1];
-
-                // Slide current page left
                 currentPage.classList.remove(
                     "mobile-active",
                     "mobile-flip-back"
                 );
                 currentPage.classList.add("mobile-left");
-
-                // Bring next page from right
                 nextPage.classList.remove("mobile-right");
                 nextPage.classList.add("mobile-active", "mobile-flip-front");
-
                 this.mobileCurrentPageIndex++;
                 this.mobileShowingBack = false;
                 this.playFlipSound();
@@ -417,27 +427,20 @@ class ResponsiveFlipBook {
         const currentPage = this.pages[this.mobileCurrentPageIndex];
 
         if (this.mobileShowingBack) {
-            // Flip back to front of current page
             this.mobileShowingBack = false;
             currentPage.classList.remove("mobile-flip-back");
             currentPage.classList.add("mobile-flip-front");
             this.playFlipSound();
         } else {
-            // Go to previous page
             if (this.mobileCurrentPageIndex > 0) {
                 const prevPage = this.pages[this.mobileCurrentPageIndex - 1];
-
-                // Slide current page right
                 currentPage.classList.remove(
                     "mobile-active",
                     "mobile-flip-front"
                 );
                 currentPage.classList.add("mobile-right");
-
-                // Bring previous page from left, show its back
                 prevPage.classList.remove("mobile-left");
                 prevPage.classList.add("mobile-active", "mobile-flip-back");
-
                 this.mobileCurrentPageIndex--;
                 this.mobileShowingBack = true;
                 this.playFlipSound();
@@ -449,7 +452,6 @@ class ResponsiveFlipBook {
         this.updateControls();
     }
 
-    // Desktop dragging methods
     startDrag(event, pageIndex) {
         if (this.isMobile || pageIndex >= this.totalPages || this.isAnimating)
             return;
@@ -496,26 +498,20 @@ class ResponsiveFlipBook {
         }
     }
 
-    // Apply simple realistic page bending
     applyBendingTransform(page, rotationAngle) {
-        // Simple bending using border-radius to curve the page
         const normalizedAngle = Math.abs(rotationAngle) / 180;
-        const bendAmount = Math.sin(normalizedAngle * Math.PI) * 30; // Max 30px curve
+        const bendAmount = Math.sin(normalizedAngle * Math.PI) * 30;
 
-        // Create curved page effect by adjusting border-radius
         if (Math.abs(rotationAngle) > 10 && Math.abs(rotationAngle) < 170) {
             if (rotationAngle < -90) {
-                // Curving left side when flipping forward
                 page.style.borderRadius = `0 ${bendAmount}px ${bendAmount}px 0`;
             } else {
-                // Curving right side when flipping back
                 page.style.borderRadius = `${bendAmount}px 0 0 ${bendAmount}px`;
             }
         } else {
             page.style.borderRadius = "";
         }
 
-        // Simple rotation with perspective
         page.style.transform = `perspective(1000px) rotateY(${rotationAngle}deg)`;
     }
 
@@ -551,7 +547,6 @@ class ResponsiveFlipBook {
             ) {
                 this.flipPageBackwardDrag(this.currentDragPage);
             } else {
-                // Snap back with bending animation
                 this.snapBackWithBending(page, isFlipped);
             }
         }
@@ -562,13 +557,245 @@ class ResponsiveFlipBook {
         this.updateZIndices();
     }
 
-    // Simple snap back animation
+    setupZoomEventListeners() {
+        // Scope button listeners to the specific container
+        this.container.addEventListener("click", (e) => {
+            const btn = e.target.closest("button");
+            if (!btn) return;
+
+            if (btn.id === "bookZoomBtn") {
+                this.toggleZoomMode();
+            } else if (btn.id === "zoomInBtn") {
+                this.zoomIn();
+            } else if (btn.id === "zoomOutBtn") {
+                this.zoomOut();
+            } else if (btn.id === "resetZoomBtn") {
+                this.resetZoom();
+            }
+        });
+    }
+
+    toggleZoomMode() {
+        this.isZoomMode = !this.isZoomMode;
+
+        const zoomBtns = this.container.querySelectorAll("#bookZoomBtn");
+        const controlBlocks = this.container.querySelectorAll("#zoomControls");
+
+        if (this.isZoomMode) {
+            zoomBtns.forEach((b) => {
+                b.textContent = "Exit Zoom";
+                b.classList.add("zoom-active");
+            });
+            controlBlocks.forEach((c) => c.classList.add("active"));
+            this.enableZoomMode();
+        } else {
+            zoomBtns.forEach((b) => {
+                b.textContent = "Zoom";
+                b.classList.remove("zoom-active");
+            });
+            controlBlocks.forEach((c) => c.classList.remove("active"));
+            this.disableZoomMode();
+        }
+    }
+
+    enableZoomMode() {
+        this.removeDesktopEvents();
+        this.removeMobileEvents();
+
+        this.pages.forEach((page) => {
+            page.classList.add("zoom-mode");
+        });
+
+        this.setupZoomInteractions();
+        this.updateZoomTransform();
+    }
+
+    disableZoomMode() {
+        this.resetZoom();
+        this.pages.forEach((page) => {
+            page.classList.remove("zoom-mode");
+        });
+
+        const zoomWrappers = this.container.querySelectorAll(".zoom-wrapper");
+        zoomWrappers.forEach((wrapper) => {
+            wrapper.style.setProperty("--zoom-scale", "1");
+            wrapper.style.setProperty("--pan-x", "0px");
+            wrapper.style.setProperty("--pan-y", "0px");
+        });
+
+        if (this.isMobile) {
+            this.setupMobileEvents();
+        } else {
+            this.setupDesktopEvents();
+        }
+
+        this.removeZoomInteractions();
+    }
+
+    setupZoomInteractions() {
+        this.pages.forEach((page) => {
+            const mouseDownHandler = (e) => {
+                if (!this.isZoomMode) return;
+                this.startPan(e);
+            };
+            page.addEventListener("mousedown", mouseDownHandler);
+
+            if (this.isTouchDevice) {
+                const touchStartHandler = (e) => {
+                    if (!this.isZoomMode) return;
+                    e.preventDefault();
+                    this.startPan(e.touches[0]);
+                };
+                page.addEventListener("touchstart", touchStartHandler, {
+                    passive: false,
+                });
+                page._zoomTouchStartHandler = touchStartHandler;
+            }
+
+            page._zoomMouseDownHandler = mouseDownHandler;
+        });
+
+        this.container.addEventListener("mousemove", this.boundOnPan);
+        this.container.addEventListener("mouseup", this.boundEndPan);
+
+        if (this.isTouchDevice) {
+            this.container.addEventListener("touchmove", this.boundTouchMove, {
+                passive: false,
+            });
+            this.container.addEventListener("touchend", this.boundTouchEnd);
+        }
+    }
+
+    removeZoomInteractions() {
+        this.pages.forEach((page) => {
+            if (page._zoomMouseDownHandler) {
+                page.removeEventListener(
+                    "mousedown",
+                    page._zoomMouseDownHandler
+                );
+                delete page._zoomMouseDownHandler;
+            }
+            if (page._zoomTouchStartHandler) {
+                page.removeEventListener(
+                    "touchstart",
+                    page._zoomTouchStartHandler
+                );
+                delete page._zoomTouchStartHandler;
+            }
+        });
+
+        this.container.removeEventListener("mousemove", this.boundOnPan);
+        this.container.removeEventListener("mouseup", this.boundEndPan);
+
+        if (this.isTouchDevice) {
+            this.container.removeEventListener("touchmove", this.boundTouchMove);
+            this.container.removeEventListener("touchend", this.boundTouchEnd);
+        }
+    }
+
+    startPan(event) {
+        if (!this.isZoomMode) return;
+
+        this.isPanning = true;
+        this.panStartX = (event.clientX || event.pageX) - this.panX;
+        this.panStartY = (event.clientY || event.pageY) - this.panY;
+
+        this.pages.forEach((page) => {
+            page.style.cursor = "grabbing";
+        });
+    }
+
+    pan(event) {
+        if (!this.isZoomMode || !this.isPanning) return;
+
+        const currentX = event.clientX || event.pageX;
+        const currentY = event.clientY || event.pageY;
+
+        const newPanX = currentX - this.panStartX;
+        const newPanY = currentY - this.panStartY;
+
+        const container = this.container.querySelector(".flip-book-container");
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+
+        const maxPanX = (containerWidth * (this.zoomScale - 1)) / 2;
+        const maxPanY = (containerHeight * (this.zoomScale - 1)) / 2;
+
+        this.panX = Math.max(-maxPanX, Math.min(maxPanX, newPanX));
+        this.panY = Math.max(-maxPanY, Math.min(maxPanY, newPanY));
+
+        this.updateZoomTransform();
+    }
+
+    endPan() {
+        if (!this.isZoomMode) return;
+
+        this.isPanning = false;
+        this.pages.forEach((page) => {
+            page.style.cursor = "move";
+        });
+    }
+
+    zoomIn() {
+        if (this.zoomScale < this.maxZoom) {
+            this.zoomScale = Math.min(
+                this.maxZoom,
+                this.zoomScale + this.zoomStep
+            );
+            this.updateZoomTransform();
+            this.updateZoomLevel();
+        }
+    }
+
+    zoomOut() {
+        if (this.zoomScale > this.minZoom) {
+            this.zoomScale = Math.max(
+                this.minZoom,
+                this.zoomScale - this.zoomStep
+            );
+
+            const container = this.container.querySelector(".flip-book-container");
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+
+            const maxPanX = (containerWidth * (this.zoomScale - 1)) / 2;
+            const maxPanY = (containerHeight * (this.zoomScale - 1)) / 2;
+
+            this.panX = Math.max(-maxPanX, Math.min(maxPanX, this.panX));
+            this.panY = Math.max(-maxPanY, Math.min(maxPanY, this.panY));
+
+            this.updateZoomTransform();
+            this.updateZoomLevel();
+        }
+    }
+
+    resetZoom() {
+        this.zoomScale = 1;
+        this.panX = 0;
+        this.panY = 0;
+        this.updateZoomTransform();
+        this.updateZoomLevel();
+    }
+
+    updateZoomTransform() {
+        const zoomWrappers = this.container.querySelectorAll(".zoom-wrapper");
+        zoomWrappers.forEach((wrapper) => {
+            wrapper.style.setProperty("--zoom-scale", this.zoomScale);
+            wrapper.style.setProperty("--pan-x", `${this.panX}px`);
+            wrapper.style.setProperty("--pan-y", `${this.panY}px`);
+        });
+    }
+
+    updateZoomLevel() {
+        const pct = `${Math.round(this.zoomScale * 100)}%`;
+        this.zoomLevels.forEach((el) => {
+            el.textContent = pct;
+        });
+    }
+
     snapBackWithBending(page, isFlipped) {
-        // Clean up any bending effects immediately for drag
         page.style.borderRadius = "";
         page.style.transition = "transform 0.3s ease";
-
-        // Simple snap back to position
         page.style.transform = isFlipped ? "rotateY(-180deg)" : "rotateY(0deg)";
 
         setTimeout(() => {
@@ -598,103 +825,70 @@ class ResponsiveFlipBook {
         }
     }
 
-    // Simple page flip forward with realistic bending animation
     flipPageForward(pageIndex) {
         const page = this.pages[pageIndex];
-
-        // Create realistic bending animation for button clicks
         this.animatePageFlipWithBending(page, 0, -180, () => {
             page.classList.add("flipped");
             this.updateDesktopState();
-            this.playFlipSound(); // Play sound after flip completes
+            this.playFlipSound();
         });
     }
 
-    // Simple page flip backward with realistic bending animation
     flipPageBackward(pageIndex) {
         const page = this.pages[pageIndex];
-
-        // Create realistic bending animation for button clicks
         this.animatePageFlipWithBending(page, -180, 0, () => {
             page.classList.remove("flipped");
             this.updateDesktopState();
-            this.playFlipSound(); // Play sound after flip completes
+            this.playFlipSound();
         });
     }
 
-    // Immediate page flip forward for dragging (no animation)
     flipPageForwardDrag(pageIndex) {
         const page = this.pages[pageIndex];
-
-        // Clean up any drag transforms immediately
         page.style.borderRadius = "";
         page.style.transform = "";
         page.style.transition = "";
-
-        // Add flipped class and update state
         page.classList.add("flipped");
         this.updateDesktopState();
         this.playFlipSound();
     }
 
-    // Immediate page flip backward for dragging (no animation)
     flipPageBackwardDrag(pageIndex) {
         const page = this.pages[pageIndex];
-
-        // Clean up any drag transforms immediately
         page.style.borderRadius = "";
         page.style.transform = "";
         page.style.transition = "";
-
-        // Remove flipped class and update state
         page.classList.remove("flipped");
         this.updateDesktopState();
         this.playFlipSound();
     }
 
-    // Animate page flip with realistic bending effect
     animatePageFlipWithBending(page, startAngle, endAngle, onComplete) {
-        const duration = 600; // Animation duration in ms
+        const duration = 600;
         const startTime = performance.now();
-
-        // Set animation flag to prevent dragging during animation
         this.isAnimating = true;
-
-        // Temporarily disable any CSS transitions to prevent conflicts
         const originalTransition = page.style.transition;
         page.style.transition = "none";
-
-        // Set initial transform immediately to prevent jump
         this.applyBendingTransform(page, startAngle);
 
         const animate = (currentTime) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-
-            // Use easeInOutQuad for smooth animation
             const easeProgress =
                 progress < 0.5
                     ? 2 * progress * progress
                     : -1 + (4 - 2 * progress) * progress;
-
             const currentAngle =
                 startAngle + (endAngle - startAngle) * easeProgress;
-
-            // Apply the bending transform during animation
             this.applyBendingTransform(page, currentAngle);
 
             if (progress < 1) {
                 requestAnimationFrame(animate);
             } else {
-                // Animation complete - clean up
                 page.style.borderRadius = "";
                 page.style.transform = "";
-                page.style.transition = originalTransition; // Restore original transition
-
-                // Clear animation flag
+                page.style.transition = originalTransition;
                 this.isAnimating = false;
-
-                // Execute completion callback if provided
                 if (onComplete) {
                     onComplete();
                 }
@@ -708,7 +902,6 @@ class ResponsiveFlipBook {
         const audio = document.getElementById("pageFlipSound");
         if (audio) {
             try {
-                // Create a small delay to ensure audio plays properly
                 setTimeout(() => {
                     audio.currentTime = 0;
                     const playPromise = audio.play();
@@ -772,20 +965,14 @@ class ResponsiveFlipBook {
     }
 
     updateMobileZIndices() {
-        // For mobile, the currently active page should be on top
-        // Pages to the left go behind, pages to the right also behind in order
-
         const activeIndex = this.mobileCurrentPageIndex;
 
         this.pages.forEach((page, index) => {
             if (index === activeIndex) {
-                // Active page on top
                 page.style.zIndex = 1000;
             } else if (index < activeIndex) {
-                // Pages to the left - lower z-index
                 page.style.zIndex = 100 + index;
             } else {
-                // Pages to the right - higher than left pages but below active
                 page.style.zIndex = 200 + index;
             }
         });
@@ -811,26 +998,30 @@ class ResponsiveFlipBook {
 
     updateControls() {
         if (this.isMobile) {
-            // Mobile button logic
             const isFirstView =
                 this.mobileCurrentPageIndex === 0 && !this.mobileShowingBack;
             const isLastView =
                 this.mobileCurrentPageIndex === this.totalPages - 1 &&
                 this.mobileShowingBack;
 
-            this.prevBtn.disabled = isFirstView;
-            this.nextBtn.disabled = isLastView;
-            this.resetBtn.disabled = isFirstView;
+            this.prevBtns.forEach((b) => (b.disabled = isFirstView));
+            this.nextBtns.forEach((b) => (b.disabled = isLastView));
+            this.resetBtns.forEach((b) => (b.disabled = isFirstView));
         } else {
-            // Desktop button logic
-            this.prevBtn.disabled = this.currentPage === 0;
-            this.resetBtn.disabled = this.currentPage === 0;
-            this.nextBtn.disabled = this.currentPage === this.totalPages;
+            this.prevBtns.forEach((b) => (b.disabled = this.currentPage === 0));
+            this.resetBtns.forEach(
+                (b) => (b.disabled = this.currentPage === 0)
+            );
+            this.nextBtns.forEach(
+                (b) => (b.disabled = this.currentPage === this.totalPages)
+            );
         }
     }
 }
 
-// Initialize when DOM is loaded
+// Initialize for each flip-book-container
 document.addEventListener("DOMContentLoaded", () => {
-    new ResponsiveFlipBook();
+    document.querySelectorAll(".book-container-3d").forEach((container) => {
+        new ResponsiveFlipBook(container);
+    });
 });
