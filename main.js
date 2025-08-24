@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Close on outside click (overlay or anywhere outside drawer)
+    // Close on outside click
     document.addEventListener("click", (event) => {
         if (
             wrapper.classList.contains("active") &&
@@ -63,15 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginButtons = document.querySelectorAll(".btn.login");
     const inRoll = document.querySelectorAll(".btn-in-roll");
     const wrapper = document.getElementById("login-wrapper");
+    const noBtn = document.getElementById("btn-no");
+    const yesBtn = document.getElementById("btn-yes");
     const drawer = document.getElementById("overlay-container");
     const closeBtn = document.querySelector(".drawer-close");
 
     const accountTitle = document.querySelector(".account-header-title");
-    // const bookingTitle = document.querySelector(".booking-header-title");
     const accountContainer = document.querySelector(".login-step");
     const nameLabel = document.querySelector(".profile-name-label");
     const profileContainer = document.querySelector(".profile-info-update");
+    const cancelContainer = document.querySelector(".cancel-section");
     const imageContainer = document.querySelector(".image-uploader");
+    // const bookingTitle = document.querySelector(".booking-header-title");
     // const hideForBooking = document.querySelectorAll(".hide-for-booking");
 
     function closeDrawer() {
@@ -81,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // bookingTitle.style.display = "none";
         accountContainer.classList.add("active");
         profileContainer.classList.remove("active");
+        cancelContainer.classList.remove("active");
         imageContainer.style.display = "";
         // hideForBooking.forEach(el => el.style.display = "");
     }
@@ -110,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 imageContainer.style.display = "none";
                 profileContainer.classList.add("active");
                 accountContainer.classList.remove("active");
+                cancelContainer.classList.remove("active");
                 accountTitle.style.display = "none";
                 wrapper.classList.add("active");
                 nameLabel.style.display = "none";
@@ -119,19 +124,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        closeDrawer();
-    });
-
-    // Close on outside click (overlay or anywhere outside drawer)
-    document.addEventListener("click", (event) => {
-        if (
-            wrapper.classList.contains("active") &&
-            !drawer.contains(event.target) &&
-            !event.target.closest(".btn.login")
-        ) {
+        if (closeBtn.classList.contains("login-close")) {
+            accountTitle.textContent = "Do You want to Leave?";
+            closeBtn.classList.remove("login-close");
+            cancelContainer.classList.add("active");
+            accountContainer.classList.remove("active");
+            profileContainer.classList.remove("active");
+        } else {
             closeDrawer();
         }
     });
+    yesBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeDrawer();
+    });
+    noBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        accountTitle.style.display = "";
+        // bookingTitle.style.display = "none";
+        accountContainer.classList.add("active");
+        cancelContainer.classList.remove("active");
+        closeBtn.classList.add("login-close");
+    });
+
+    // Close on outside click
+    // document.addEventListener("click", (event) => {
+    //     if (
+    //         wrapper.classList.contains("active") &&
+    //         !drawer.contains(event.target) &&
+    //         !event.target.closest(".btn.login")
+    //     ) {
+    //         closeDrawer();
+    //     }
+    // });
 });
 // popup close
 document.addEventListener("DOMContentLoaded", () => {
@@ -159,24 +184,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Unified event handler: close on icon OR outside
-    document.addEventListener("click", (e) => {
-        if (e.target.closest(".drawer-close")) {
-            e.stopPropagation();
-            closeDrawer();
-            return;
-        }
-        const shouldCloseOnOutside =
-            wrapper.getAttribute("data-close-outside") !== "false";
-        if (
-            wrapper.classList.contains("active") &&
-            shouldCloseOnOutside &&
-            !drawer.contains(e.target) &&
-            !e.target.closest(".book-img") &&
-            !e.target.closest(".btn-read")
-        ) {
-            closeDrawer();
-        }
-    });
+    // document.addEventListener("click", (e) => {
+    //     if (e.target.closest(".drawer-close")) {
+    //         e.stopPropagation();
+    //         closeDrawer();
+    //         return;
+    //     }
+    //     const shouldCloseOnOutside =
+    //         wrapper.getAttribute("data-close-outside") !== "false";
+    //     if (
+    //         wrapper.classList.contains("active") &&
+    //         shouldCloseOnOutside &&
+    //         !drawer.contains(e.target) &&
+    //         !e.target.closest(".book-img") &&
+    //         !e.target.closest(".btn-read")
+    //     ) {
+    //         closeDrawer();
+    //     }
+    // });
 });
 // open book close
 document.addEventListener("DOMContentLoaded", () => {
@@ -246,6 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const otpTitle = document.querySelector(".otp-header-title");
     const accountContainer = document.querySelector(".login-step");
     const profileContainer = document.querySelector(".profile-info-update");
+    const cancelContainer = document.querySelector(".cancel-section");
     const otpContainer = document.querySelector(".otp-verification-container");
     const titles = document.querySelectorAll(".account-title");
 
@@ -301,17 +327,19 @@ document.addEventListener("DOMContentLoaded", () => {
             accountTitle.classList.remove("active");
             profileTitle.classList.add("active");
             accountContainer.classList.remove("active");
+            cancelContainer.classList.remove("active");
             profileContainer.classList.add("active");
         }
     });
     otpBtn?.addEventListener("click", (e) => {
         e.preventDefault();
-
+        console.log("first");
         if (accountTitle && otpTitle) {
             accountTitle.classList.remove("active");
             otpTitle.classList.add("active");
             accountContainer.classList.remove("active");
             profileContainer.classList.remove("active");
+            cancelContainer.classList.remove("active");
             otpContainer.classList.add("active");
         }
     });

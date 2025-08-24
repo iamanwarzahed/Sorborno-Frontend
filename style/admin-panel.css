@@ -181,3 +181,7 @@
         flex-basis: 100%;
     }    
 }
+.account-profile {
+    width: fit-content;
+    margin: 20px auto 0;
+}

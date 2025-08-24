@@ -200,6 +200,7 @@
     gap: 12px;
     max-width: 90vw;
     overflow: auto;
+    white-space: nowrap;
 }
 
 .tab {
