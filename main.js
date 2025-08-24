@@ -263,6 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const forgetButtons = document.querySelectorAll(".forget-password");
     const loginBtn = document.querySelector(".login-btn");
     const otpBtn = document.getElementById("otp-btn");
+    const otpVerifyBtn = document.getElementById("otp-verify");
     const editNumber = document.getElementById("number-edit");
     const registrationBtn = document.getElementById("registration-btn");
 
@@ -273,6 +274,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const profileContainer = document.querySelector(".profile-info-update");
     const cancelContainer = document.querySelector(".cancel-section");
     const otpContainer = document.querySelector(".otp-verification-container");
+    const otpSendContainer = document.querySelector(".opt-send-container");
+    const otpPasswordContainer = document.querySelector(".opt-password-container");
     const titles = document.querySelectorAll(".account-title");
 
     function activateTab(tabType) {
@@ -341,6 +344,22 @@ document.addEventListener("DOMContentLoaded", () => {
             profileContainer.classList.remove("active");
             cancelContainer.classList.remove("active");
             otpContainer.classList.add("active");
+            otpSendContainer.style.display = ""
+            otpPasswordContainer.style.display = "none"
+        }
+    });
+    otpVerifyBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("first");
+        if (accountTitle && otpTitle) {
+            accountTitle.classList.remove("active");
+            otpTitle.classList.add("active");
+            accountContainer.classList.remove("active");
+            profileContainer.classList.remove("active");
+            cancelContainer.classList.remove("active");
+            otpContainer.classList.add("active");
+            otpSendContainer.style.display = "none"
+            otpPasswordContainer.style.display = ""
         }
     });
     editNumber?.addEventListener("click", (e) => {
