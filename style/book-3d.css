@@ -1,7 +1,7 @@
 .flip-book-container {
     position: relative;
-    width: min(700px, 90vw);
-    height: min(500px, 90vh);
+    width: min(550px, 80vw);
+    height: min(400px, 90vh);
     transform-style: preserve-3d;
 }
 
@@ -105,7 +105,7 @@
 
 .book-controls {
     position: absolute;
-    bottom: 2px;
+    bottom: 6px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -114,20 +114,19 @@
 }
 
 .book-controller {
-    padding: 12px 24px;
+    padding: 6px 12px 5px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    font-size: clamp(0.8em, 2vw, 1em);
+    font-size: clamp(0.8rem, 1vw, 1rem);
     transition: all 0.3s;
     backdrop-filter: blur(10px);
 }
 
 @media (max-width: 480px) {
     .book-controller {
-        padding: 10px 16px;
         font-size: 0.8em;
     }
 }
@@ -183,9 +182,9 @@
         padding: 8px 16px;
     }
     /* Mobile responsive adjustments */
-    .flipbook-container {
-        width: min(350px, 90vw);
-        height: min(500px, 80vh);
+    .flip-book-container {
+        width: min(350px, 80vw);
+        height: min(400px, 90vh);
         overflow: hidden;
     }
     /* Mobile: Full width pages */
@@ -225,7 +224,6 @@
     }
 }
 
-
 /* REPLACE your zoom-related CSS with this wrapper-based approach */
 
 /* Remove zoom mode from page itself */
@@ -244,7 +242,8 @@
 
 /* Apply zoom/pan to the wrapper, not the page */
 .page.zoom-mode .zoom-wrapper {
-    transform: scale(var(--zoom-scale, 1)) translate(var(--pan-x, 0), var(--pan-y, 0));
+    transform: scale(var(--zoom-scale, 1))
+        translate(var(--pan-x, 0), var(--pan-y, 0));
     transform-origin: center center;
 }
 
