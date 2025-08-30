@@ -204,12 +204,12 @@
 }
 
 .tab {
-    padding: 10px 20px;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    padding: 6px 16px;
+    border: 1px solid var(--border-primary-color);
+    color: var(--text-light);
     background: none;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     outline: none;
     transition: all 0.3s;
     cursor: pointer;
@@ -248,6 +248,7 @@
     background-color: var(--base-2);
     padding: 12px 20px;
     border-radius: 0;
+    margin: 0;
 }
 .book-container.active {
     border-bottom: 1px solid var(--primary-color);

@@ -150,9 +150,9 @@
     left: 2px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 20px;
-    font-size: clamp(0.7em, 2vw, 0.9em);
+    font-size: clamp(0.6em, 2vw, 0.8em);
     z-index: 1000;
     backdrop-filter: blur(10px);
     text-align: center;
@@ -161,8 +161,8 @@
 
 .page-indicator {
     position: absolute;
-    top: 10px;
-    right: 2px;
+    top: 2px;
+    /* right: 2px; */
     background: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 5px 15px;

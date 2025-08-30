@@ -81,17 +81,18 @@ header .btn-group {
     border-bottom: 0px;
 }
 #popup-wrapper .drawer-body {
-    border: 5px dashed var(--primary-color);
-    border-radius: var(--radius-4);
-    padding: 50px;
+    /* border: 5px dashed var(--primary-color); */
+    /* border-radius: var(--radius-4); */
+    padding: 0px;
     line-height: 0;
     display: flex;
     flex-direction: column;
-    background-color: var(--soft-color);
+    /* background-color: var(--soft-color); */
     gap: 20px;
     max-height: 70vh;
     min-height: 60vh;
     overflow: hidden;
+    box-shadow: none;
 }
 .accordion-item.active .accordion-content {
     max-height: 200vh;
@@ -116,4 +117,12 @@ header .btn-group {
         margin-left: auto;
         margin-right: auto;
     }
+}
+.book-popup-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.overlay-container {
+    padding: 10px;
 }

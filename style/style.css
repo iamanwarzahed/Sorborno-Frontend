@@ -23,6 +23,7 @@
     --shadow2: rgba(0, 0, 0, 0.5);
     --shadow3: rgba(0, 0, 0, 0.7);
     --primary-shadow: rgba(17, 233, 118, 0.205);
+    --border-primary-color: #e0e0e0;
 
     --category-header: #91ff00;
     --teacher-header: #0099ff;
@@ -50,6 +51,7 @@ body,
 html {
     margin: 0;
     padding: 0;
+    background-color: #f9f9fa;
 }
 
 img {
@@ -59,7 +61,7 @@ img {
 }
 
 label.radio {
-    cursor: pointer;;
+    cursor: pointer;
 }
 label.radio input {
     margin: 0;
@@ -85,6 +87,12 @@ label.radio input {
     justify-content: center;
     flex-wrap: wrap;
     gap: 40px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    justify-items: center;
 }
 
 /* Button */
@@ -169,6 +177,9 @@ header .container {
     position: relative;
     font-size: 16px;
 }
+.menu .btn {
+    border-color: var(--border-primary-color);
+}
 
 .menu .btn .angle > svg {
     transition: all var(--transition-1);
@@ -233,7 +244,7 @@ header .container {
     margin: 0 auto;
     padding: 4px 8px;
     border-radius: var(--radius-3);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     position: relative;
     display: flex;
     align-items: center;
@@ -263,12 +274,12 @@ header .container {
     z-index: 99999;
     box-shadow: 0 3px 4px 0px var(--shadow1);
     border-radius: 0 0 var(--radius-3) var(--radius-3);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     border-top: none;
     box-sizing: content-box;
 }
 .search-result {
-    border-top: 1px solid var(--primary-color);
+    border-top: 1px solid var(--border-primary-color);
     padding-top: 10px;
     overflow: auto;
     max-height: 30vh;
@@ -370,12 +381,12 @@ a.nav-item {
     border-radius: var(--radius-4);
 }
 #login-wrapper .drawer-header {
-   margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 #popup-wrapper .drawer-body,
 #login-wrapper .drawer-body {
-   height: fit-content;
-   max-height: 90hv;
+    height: fit-content;
+    max-height: 90hv;
 }
 #popup-wrapper.active .overlay-container,
 #login-wrapper.active .overlay-container {
@@ -492,14 +503,14 @@ a.nav-item {
     font-size: 16px;
     font-weight: 500;
     height: 40px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     border-radius: var(--radius-2);
     padding: 0 12px;
 }
 .login-form input:focus {
     outline: 0;
     box-shadow: none;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--primary-color);
 }
 .login-form .btn {
     width: 100%;
@@ -759,7 +770,7 @@ button.controls:hover {
     width: 100%;
 }
 .custom-select {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     border-radius: var(--radius-2);
     cursor: pointer;
     background: var(--base-1);
@@ -795,7 +806,7 @@ button.controls:hover {
     top: calc(100% + 2px);
     left: -0.8px;
     right: -0.8px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     border-radius: var(--radius-2);
     background: var(--base-1);
     z-index: 100;
@@ -898,15 +909,21 @@ button.controls:hover {
 .skill-item {
     text-align: center;
     position: relative;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     border-radius: var(--radius-4);
     padding: 20px 14px;
     overflow: hidden;
     cursor: pointer;
+    aspect-ratio: 3/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    background-color: var(--text-reverse);
 }
 
 .skill-img {
-    max-width: 100px;
+    max-width: 70%;
     margin: 0 auto;
     margin-bottom: 12px;
     aspect-ratio: 16/8;
@@ -945,10 +962,12 @@ button.controls:hover {
 /* Counter Number */
 .counter-wrapper {
     text-align: center;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     border-radius: var(--radius-4);
     padding: 20px 14px;
-    min-width: 22%;
+    /* min-width: 22%; */
+    width: 100%;
+    background-color: var(--text-reverse);
 }
 
 .counter-value {
@@ -962,11 +981,13 @@ button.controls:hover {
 
 /* Category */
 .category-wrapper {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
+    background-color: var(--text-reverse);
     position: relative;
     padding: 16px 20px;
     border-radius: var(--radius-3);
     min-width: 22%;
+    width: 100%;
     gap: 20px;
 }
 .category-wrapper img {
@@ -1040,7 +1061,8 @@ a.course-item:hover {
     margin-bottom: 16px;
 }
 .course-item {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
+    background-color: var(--text-reverse);
     border-radius: var(--radius-3);
     position: relative;
     text-align: center;
@@ -1056,7 +1078,7 @@ a.course-item:hover {
     margin: 0 auto;
     border-radius: var(--radius-6) var(--radius-6) var(--radius-4)
         var(--radius-4);
-        line-height: 0;
+    line-height: 0;
 }
 .course-img-container img {
     width: 100%;
@@ -1189,7 +1211,8 @@ a.course-item:hover {
     font-size: 1rem;
     box-sizing: border-box;
     cursor: pointer;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
+    background-color: var(--text-reverse);
     box-shadow: 0 4px 10px var(--shadow1);
     border-radius: var(--radius-3);
 }
@@ -1265,7 +1288,8 @@ a.course-item:hover {
     margin-top: 12px;
     background-color: #eef1f0;
     padding: 16px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
+    background-color: var(--text-reverse);
     border-radius: 4px;
 }
 
@@ -1370,7 +1394,7 @@ a.course-item:hover {
 .contact-form input {
     padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     border-radius: 6px;
     font-size: 16px;
     transition: border-color 0.3s;
@@ -1677,7 +1701,7 @@ a.btn-win {
 .live-chat-wrapper {
     max-width: 300px;
     width: 100%;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
     border-radius: var(--radius-3) var(--radius-3) 0 0;
     box-shadow: 0px 0px 4px 0px var(--shadow2);
     position: fixed;
@@ -1789,6 +1813,7 @@ a.btn-win {
 }
 .course-learning-wrapper {
     padding: 20px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--border-primary-color);
+    background-color: var(--text-reverse);
     border-radius: var(--radius-4);
 }

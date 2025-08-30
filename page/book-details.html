@@ -762,7 +762,7 @@
                     <div class="drawer-title otp-header-title">
                         OTP Verification
                     </div>
-                    <div class=" icon drawer-close btn-close login-close">
+                    <div class="icon drawer-close btn-close login-close">
                         <svg
                             width="24px"
                             height="24px"
@@ -993,7 +993,9 @@
                                     >
                                 </div>
                                 <div class="help-btn">
-                                    <a class="login-btn" href="terms.html">Terms & Condition</a>
+                                    <a class="login-btn" href="terms.html"
+                                        >Terms & Condition</a
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -1021,7 +1023,11 @@
                                     pattern="[\d\s\+\-]{7,15}"
                                 />
 
-                                <button class="btn" id="otp-verify" type="submit">
+                                <button
+                                    class="btn"
+                                    id="otp-verify"
+                                    type="submit"
+                                >
                                     Submit
                                     <div class="icon">
                                         <svg
@@ -1072,15 +1078,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="login-process-wrapper opt-password-container">
+                        <div
+                            class="login-process-wrapper opt-password-container"
+                        >
                             <form
                                 class="login-form otp-form"
                                 action="#"
                                 method="POST"
                             >
-                                <label for="new-pass-id"
-                                    >New Password</label
-                                >
+                                <label for="new-pass-id">New Password</label>
                                 <input
                                     type="password"
                                     id="new-pass-id"
@@ -3041,7 +3047,7 @@
         >
             <div class="overlay"></div>
             <div id="popup-container" class="overlay-container">
-                <div class="drawer-header">
+                <!-- <div class="drawer-header">
                     <div class="d-flex item-center gap-8">
                         <div class="drawer-title active">Book Title</div>
                         <div class="d-flex item-center gap-8">
@@ -3054,7 +3060,7 @@
                     </div>
                     <div class="btn-group">
                         <div class="btn">Add to Cart</div>
-                        <div class=" icon drawer-close btn-close login-close">
+                        <div id="popup-close" class=" icon btn-close">
                             <svg
                                 width="24px"
                                 height="24px"
@@ -3080,9 +3086,35 @@
                             </svg>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="drawer-body book-container book-container-3d">
-                    <div class="instructions">
+                    <div id="popup-close" class="icon btn-close book-popup-close">
+                        <svg
+                            width="24px"
+                            height="24px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                                id="SVGRepo_tracerCarrier"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M16 8L8 16M8.00001 8L16 16"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- <div class="instructions">
                         <span class="desktop-text"
                             >Drag left/right or click pages to flip • Use
                             controls below</span
@@ -3090,7 +3122,7 @@
                         <span class="mobile-text"
                             >Tap to flip pages or use controls below</span
                         >
-                    </div>
+                    </div> -->
 
                     <div class="page-indicator">
                         Page <span id="currentPageNum">1</span> of

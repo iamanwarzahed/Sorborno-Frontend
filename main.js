@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const noBtn = document.getElementById("btn-no");
     const yesBtn = document.getElementById("btn-yes");
     const drawer = document.getElementById("overlay-container");
-    const closeBtn = document.querySelector(".drawer-close");
+    // const closeBtn = document.querySelector(".drawer-close");
+    const closeBtns = document.querySelectorAll(".drawer-close");
 
     const accountTitle = document.querySelector(".account-header-title");
     const accountContainer = document.querySelector(".login-step");
@@ -122,17 +123,31 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    closeBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (closeBtn.classList.contains("login-close")) {
-            accountTitle.textContent = "Do You want to Leave?";
-            closeBtn.classList.remove("login-close");
-            cancelContainer.classList.add("active");
-            accountContainer.classList.remove("active");
-            profileContainer.classList.remove("active");
-        } else {
-            closeDrawer();
-        }
+    // closeBtn.addEventListener("click", (e) => {
+    //     e.stopPropagation();
+    //     if (closeBtn.classList.contains("login-close")) {
+    //         accountTitle.textContent = "Do You want to Leave?";
+    //         closeBtn.classList.remove("login-close");
+    //         cancelContainer.classList.add("active");
+    //         accountContainer.classList.remove("active");
+    //         profileContainer.classList.remove("active");
+    //     } else {
+    //         closeDrawer();
+    //     }
+    // });
+    closeBtns.forEach((closeBtn) => {
+        closeBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (closeBtn.classList.contains("login-close")) {
+                accountTitle.textContent = "Do You want to Leave?";
+                closeBtn.classList.remove("login-close");
+                cancelContainer.classList.add("active");
+                accountContainer.classList.remove("active");
+                profileContainer.classList.remove("active");
+            } else {
+                closeDrawer();
+            }
+        });
     });
     yesBtn.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -164,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const drawer = document.getElementById("popup-container");
     const bookImg = document.querySelector(".book-img");
     const readBtn = document.querySelector(".btn-read");
+    const closeBtn = document.getElementById("popup-close");
 
     function openDrawer() {
         wrapper.classList.add("active");
@@ -181,6 +197,11 @@ document.addEventListener("DOMContentLoaded", () => {
     readBtn?.addEventListener("click", (e) => {
         e.stopPropagation();
         openDrawer();
+    });
+
+    closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeDrawer();
     });
 
     // Unified event handler: close on icon OR outside
@@ -275,7 +296,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelContainer = document.querySelector(".cancel-section");
     const otpContainer = document.querySelector(".otp-verification-container");
     const otpSendContainer = document.querySelector(".opt-send-container");
-    const otpPasswordContainer = document.querySelector(".opt-password-container");
+    const otpPasswordContainer = document.querySelector(
+        ".opt-password-container"
+    );
     const titles = document.querySelectorAll(".account-title");
 
     function activateTab(tabType) {
@@ -344,8 +367,8 @@ document.addEventListener("DOMContentLoaded", () => {
             profileContainer.classList.remove("active");
             cancelContainer.classList.remove("active");
             otpContainer.classList.add("active");
-            otpSendContainer.style.display = ""
-            otpPasswordContainer.style.display = "none"
+            otpSendContainer.style.display = "";
+            otpPasswordContainer.style.display = "none";
         }
     });
     otpVerifyBtn?.addEventListener("click", (e) => {
@@ -358,8 +381,8 @@ document.addEventListener("DOMContentLoaded", () => {
             profileContainer.classList.remove("active");
             cancelContainer.classList.remove("active");
             otpContainer.classList.add("active");
-            otpSendContainer.style.display = "none"
-            otpPasswordContainer.style.display = ""
+            otpSendContainer.style.display = "none";
+            otpPasswordContainer.style.display = "";
         }
     });
     editNumber?.addEventListener("click", (e) => {
